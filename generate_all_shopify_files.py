@@ -867,79 +867,92 @@ def generate_dedicated_sections():
     </div>
   </div>
 
-  <!-- Interactive Flip-Through Stepper (Inspired by Alicia Souza PDP Reference) -->
-  <section class="py-16 sm:py-20 bg-white border-t border-[#C6B58E]/30" id="shopify-flip-through-section">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-6">
-        <h2 class="font-sans font-bold text-2xl sm:text-3xl text-[#363638] tracking-tight">
+  <!-- =========================================================================
+       Interactive Flip-Through Inner Pages Component (Digital Book Preview)
+       ========================================================================= -->
+  <section class="py-20 sm:py-24 bg-[#F8F5ED] border-t border-[#C6B58E]/30 overflow-hidden relative select-none" id="shopify-flip-through-section" aria-label="Interactive Journal Page Preview">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Heading: DM Serif Display, Espresso Charcoal (#363638), Generous Spacing -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <span class="text-xs uppercase font-bold tracking-[0.2em] text-[#927B53] bg-white/80 px-3.5 py-1.5 rounded-full border border-[#C6B58E]/40 shadow-sm inline-block mb-3">
+          Interactive Product Preview
+        </span>
+        <h2 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-[#363638] tracking-tight">
           Flip through a few inner pages!
         </h2>
+        <p class="text-sm text-[#363638]/70 mt-3 font-sans max-w-md mx-auto">
+          Experience the tactile rhythm of the 2027 Chronicle. Grab any page corner or use the controls below to leaf through.
+        </p>
       </div>
 
-      <div class="max-w-xs sm:max-w-sm mx-auto mb-8 relative flex items-center justify-between px-2" id="shopify-flip-stepper">
-        <div class="absolute left-2 right-2 top-1/2 -translate-y-1/2 h-[1.5px] bg-[#C6B58E]/40 z-0"></div>
-        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(0)" aria-label="Page 1">
-          <span class="w-4 h-4 rounded-full border-2 border-[#4D351D] bg-white flex items-center justify-center shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-[#4D351D]"></span>
-          </span>
-        </button>
-        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(1)" aria-label="Page 2">
-          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
-        </button>
-        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(2)" aria-label="Page 3">
-          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
-        </button>
-        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(3)" aria-label="Page 4">
-          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
-        </button>
-        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(4)" aria-label="Page 5">
-          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
-        </button>
+      <!-- Interactive Book Display Container with Realistic Desk Shadow & Spine -->
+      <div class="relative mx-auto flex items-center justify-center p-3 sm:p-6 sm:pb-8 rounded-3xl bg-white/60 border border-[#C6B58E]/40 shadow-tactile-lg backdrop-blur-sm" id="shopify-flip-desk">
+        
+        <!-- Left & Right Hover Drag / Click Hints for Desktop -->
+        <div class="hidden md:flex absolute top-4 left-6 items-center gap-1.5 text-[11px] font-semibold text-[#927B53]/70 pointer-events-none">
+          <span>&larr; Drag corner or tap to turn back</span>
+        </div>
+        <div class="hidden md:flex absolute top-4 right-6 items-center gap-1.5 text-[11px] font-semibold text-[#927B53]/70 pointer-events-none">
+          <span>Drag corner or tap to turn next &rarr;</span>
+        </div>
+
+        <!-- Canvas Mount Target for St.PageFlip -->
+        <div id="shopify-page-flip-book" class="mx-auto flex items-center justify-center cursor-grab active:cursor-grabbing max-w-full"></div>
       </div>
 
-      <!-- Centered Interactive Book Page Container (Realistic 3D Page Turn Engine) -->
-      <div class="relative max-w-[340px] sm:max-w-[400px] mx-auto rounded-2xl shadow-2xl border border-[#C6B58E]/40 bg-[#FAF7F0] overflow-hidden transition-shadow hover:shadow-tactile-lg" id="shopify-flip-wrapper">
-        <div id="shopify-page-flip-book" class="w-full flex items-center justify-center min-h-[453px] sm:min-h-[533px]"></div>
+      <!-- Spread Title & Description Indicator -->
+      <div class="text-center mt-5">
+        <p class="text-base font-serif-display font-semibold text-[#363638]" id="shopify-flip-title">
+          Cover: The 2027 Bound Chronicle
+        </p>
+        <p class="text-xs text-[#363638]/60 font-sans mt-0.5" id="shopify-flip-desc">
+          Artisanal gold debossed Japanese bookcloth with custom studio foil emblem
+        </p>
       </div>
 
-      <!-- Drag Corner & Tap Hint -->
-      <p class="text-[11px] text-[#927B53] font-medium text-center mt-3 flex items-center justify-center gap-1.5 select-none">
-        <svg class="w-3.5 h-3.5 text-[#4D351D] opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-        <span><strong>Grab &amp; drag any page corner</strong> to turn the journal page, or use buttons below</span>
-      </p>
-
-      <div class="text-center mt-4">
-        <p class="text-xs font-semibold text-[#363638]" id="shopify-flip-title">2027 Chronicle Cover &amp; Title Spread</p>
-        <p class="text-[11px] text-[#363638]/60 mt-0.5" id="shopify-flip-desc">Artisanal gold debossed cover artwork with gold ribbon marker</p>
-      </div>
-
-      <div class="flex items-center justify-center gap-3 mt-6">
+      <!-- Navigation Controls ("< BACK" / "NEXT >") styled in Deep Coffee (#4D351D) with Page Counter -->
+      <div class="flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
         <button type="button" 
                 id="shopify-flip-back" 
                 onclick="changeShopifyFlip(-1)" 
-                class="px-8 py-2.5 border border-[#C6B58E]/40 text-xs font-bold uppercase tracking-widest text-[#363638]/40 bg-white rounded-md transition-all cursor-not-allowed select-none" 
+                class="px-7 py-3 rounded-full border border-[#4D351D]/40 text-[#4D351D]/60 bg-white/90 hover:bg-white hover:text-[#4D351D] hover:border-[#4D351D] text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm disabled:opacity-40" 
+                aria-label="Previous Page"
                 disabled>
           &lsaquo; Back
         </button>
-        
+
+        <div class="px-5 py-2.5 rounded-full bg-white border border-[#C6B58E]/40 text-xs font-semibold text-[#363638] select-none shadow-sm" id="shopify-flip-counter">
+          Page 1 of 6
+        </div>
+
         <button type="button" 
                 id="shopify-flip-next" 
                 onclick="changeShopifyFlip(1)" 
-                class="px-8 py-2.5 border border-[#363638] text-xs font-bold uppercase tracking-widest text-[#363638] bg-white hover:bg-[#363638] hover:text-[#E9DFC2] rounded-md transition-all shadow-sm select-none">
+                class="px-7 py-3 rounded-full border border-[#4D351D] bg-[#4D351D] text-[#E9DFC2] hover:bg-[#363638] text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg" 
+                aria-label="Next Page">
           Next &rsaquo;
         </button>
       </div>
+
+      <!-- Touch Swipe & Keyboard Navigation Hint -->
+      <p class="text-center text-[11px] text-[#927B53]/80 mt-4 select-none flex items-center justify-center gap-2">
+        <svg class="w-3.5 h-3.5 text-[#4D351D] opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>Swipe or drag any page corner &bull; Supports keyboard &larr; / &rarr; arrow keys</span>
+      </p>
+
     </div>
   </section>
 
   <script src="{{ 'page-flip.browser.js' | asset_url }}"></script>
   <script>
     var shopifyFlipPages = [
-      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: '2027 Chronicle Cover & Title Spread', desc: 'Artisanal gold debossed cover artwork with woven ribbon bookmark.' },
-      { img: "{{ 'flip_monthly.jpg' | asset_url }}", title: 'Monthly Panoramic Overview & Habit Columns', desc: 'Double-page calendar grids with Sunday starts, moon phases, and budget tracking.' },
-      { img: "{{ 'flip_weekly.jpg' | asset_url }}", title: '52-Week Focus Dashboard', desc: 'Clean horizontal weekday layout with daily micro-gratitude and task priorities.' },
-      { img: "{{ 'flip_habits.jpg' | asset_url }}", title: 'Habit & Wellness Ritual Trackers', desc: '31-day visual micro-grids tracking movement, sleep, hydration, and reading.' },
-      { img: "{{ 'flip_stickers.jpg' | asset_url }}", title: 'Dot-Grid Creative Sandbox & Planning Stickers', desc: 'Subtle 5mm ivory dot-grid pages paired with 4 die-cut gilded sticker sheets.' }
+      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: 'Cover: The 2027 Bound Chronicle', desc: 'Artisanal gold debossed Japanese bookcloth with metallic gold foil stamping.' },
+      { img: "{{ 'artist_calendar.jpg' | asset_url }}", title: 'Foundation Spread: Personal Info & Vision Blueprint', desc: 'Dedicated 4-page reflection space for yearly intentions, reading lists, and milestones.' },
+      { img: "{{ 'flip_monthly.jpg' | asset_url }}", title: 'Monthly Panoramic Overview & Budget Grid', desc: 'Spacious double-page calendar grids with Sunday starts, moon phases, and budget tracking.' },
+      { img: "{{ 'flip_habits.jpg' | asset_url }}", title: 'Monthly Habit & Wellness Ritual Trackers', desc: '31-day micro-grids to monitor movement, sleep, hydration, and meditative rituals.' },
+      { img: "{{ 'flip_weekly.jpg' | asset_url }}", title: '52 Weekly Focus Dashboards', desc: 'Weekday schedules with daily micro-gratitude prompts and prioritized checkboxes.' },
+      { img: "{{ 'flip_stickers.jpg' | asset_url }}", title: 'Creative Dot-Grid Sandbox & Sticker Sheets', desc: 'Subtle 5mm ivory dot-grid pages with rear memory pocket and 4 gilded sticker sheets.' }
     ];
     var currentShopifyFlip = 0;
     var shopifyPageFlip = null;
@@ -948,24 +961,24 @@ def generate_dedicated_sections():
       var bookEl = document.getElementById('shopify-page-flip-book');
       if (!bookEl || typeof St === 'undefined' || !St.PageFlip) return;
 
-      var container = document.getElementById('shopify-flip-wrapper');
-      var baseWidth = container ? Math.min(container.offsetWidth || 380, 400) : 380;
-      var baseHeight = Math.round(baseWidth * (4 / 3));
+      var isMobile = window.innerWidth < 768;
+      var width = isMobile ? Math.min(window.innerWidth - 64, 340) : 380;
+      var height = Math.round(width * 1.333);
 
       try {
         shopifyPageFlip = new St.PageFlip(bookEl, {
-          width: baseWidth,
-          height: baseHeight,
+          width: width,
+          height: height,
           size: 'fixed',
           minWidth: 260,
           maxWidth: 440,
           minHeight: 347,
           maxHeight: 587,
-          maxShadowOpacity: 0.5,
-          showCover: false,
+          maxShadowOpacity: 0.55,
+          showCover: true,
           mobileScrollSupport: true,
           usePortrait: true,
-          flippingTime: 750,
+          flippingTime: 700,
           drawShadow: true,
           showPageCorners: true,
           useMouseEvents: true,
@@ -999,7 +1012,7 @@ def generate_dedicated_sections():
       var descEl = document.getElementById('shopify-flip-desc');
       var prevBtn = document.getElementById('shopify-flip-back');
       var nextBtn = document.getElementById('shopify-flip-next');
-      var dots = document.querySelectorAll('#shopify-flip-stepper .stepper-dot');
+      var counterEl = document.getElementById('shopify-flip-counter');
 
       var page = shopifyFlipPages[currentShopifyFlip];
       if (page) {
@@ -1007,31 +1020,33 @@ def generate_dedicated_sections():
         if (descEl) descEl.innerText = page.desc;
       }
 
-      dots.forEach(function(dot, idx) {
-        if (idx === currentShopifyFlip) {
-          dot.innerHTML = '<span class="w-4 h-4 rounded-full border-2 border-[#4D351D] bg-white flex items-center justify-center shadow-sm"><span class="w-2 h-2 rounded-full bg-[#4D351D]"></span></span>';
+      if (counterEl) {
+        if (currentShopifyFlip === 0) {
+          counterEl.innerText = 'Cover (Front)';
+        } else if (currentShopifyFlip === shopifyFlipPages.length - 1) {
+          counterEl.innerText = 'Back Cover';
         } else {
-          dot.innerHTML = '<span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>';
+          counterEl.innerText = 'Spread ' + currentShopifyFlip + ' of ' + (shopifyFlipPages.length - 1);
         }
-      });
+      }
 
       if (prevBtn) {
         if (currentShopifyFlip === 0) {
           prevBtn.disabled = true;
-          prevBtn.className = 'px-8 py-2.5 border border-[#C6B58E]/40 text-xs font-bold uppercase tracking-widest text-[#363638]/40 bg-white rounded-md transition-all cursor-not-allowed select-none';
+          prevBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm';
         } else {
           prevBtn.disabled = false;
-          prevBtn.className = 'px-8 py-2.5 border border-[#363638] text-xs font-bold uppercase tracking-widest text-[#363638] bg-white hover:bg-[#363638] hover:text-[#E9DFC2] rounded-md transition-all shadow-sm select-none';
+          prevBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D] text-[#4D351D] bg-white hover:bg-[#4D351D] hover:text-[#E9DFC2] text-xs font-bold uppercase tracking-widest transition-all shadow-sm select-none hover:shadow';
         }
       }
 
       if (nextBtn) {
         if (currentShopifyFlip === shopifyFlipPages.length - 1) {
           nextBtn.disabled = true;
-          nextBtn.className = 'px-8 py-2.5 border border-[#C6B58E]/40 text-xs font-bold uppercase tracking-widest text-[#363638]/40 bg-white rounded-md transition-all cursor-not-allowed select-none';
+          nextBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm';
         } else {
           nextBtn.disabled = false;
-          nextBtn.className = 'px-8 py-2.5 border border-[#363638] text-xs font-bold uppercase tracking-widest text-[#363638] bg-white hover:bg-[#363638] hover:text-[#E9DFC2] rounded-md transition-all shadow-sm select-none';
+          nextBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D] bg-[#4D351D] text-[#E9DFC2] hover:bg-[#363638] text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg';
         }
       }
     }
