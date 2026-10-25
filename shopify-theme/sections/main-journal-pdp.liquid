@@ -262,61 +262,55 @@
         <div id="shopify-page-flip-book" class="mx-auto flex items-center justify-center cursor-grab active:cursor-grabbing max-w-full"></div>
       </div>
 
-      <!-- Spread Title & Description Indicator -->
-      <div class="text-center mt-5">
-        <p class="text-base font-serif-display font-semibold text-[#363638]" id="shopify-flip-title">
-          Front Cover: The 2027 Bound Chronicle
-        </p>
-        <p class="text-xs text-[#363638]/60 font-sans mt-0.5" id="shopify-flip-desc">
-          Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem
-        </p>
-      </div>
-
-      <!-- Navigation Controls ("< BACK" / "NEXT >") styled in Deep Coffee (#4D351D) with Page Counter -->
-      <div class="flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+      <!-- Navigation Controls ("< BACK" / "NEXT >") styled in Deep Coffee (#4D351D) -->
+      <div class="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
         <button type="button" 
                 id="shopify-flip-back" 
                 onclick="changeShopifyFlip(-1)" 
-                class="px-7 py-3 rounded-full border border-[#4D351D]/40 text-[#4D351D]/60 bg-white/90 hover:bg-white hover:text-[#4D351D] hover:border-[#4D351D] text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm disabled:opacity-40" 
+                class="px-8 sm:px-10 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm disabled:opacity-40" 
                 aria-label="Previous Page"
                 disabled>
           &lsaquo; Back
         </button>
 
-        <div class="px-5 py-2.5 rounded-full bg-white border border-[#C6B58E]/40 text-xs font-semibold text-[#363638] select-none shadow-sm" id="shopify-flip-counter">
-          Front Cover
-        </div>
-
         <button type="button" 
                 id="shopify-flip-next" 
                 onclick="changeShopifyFlip(1)" 
-                class="px-7 py-3 rounded-full border border-[#4D351D] bg-[#4D351D] text-[#E9DFC2] hover:bg-[#363638] text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg" 
+                class="px-8 sm:px-10 py-3 rounded-full border border-[#4D351D] bg-[#4D351D] text-[#E9DFC2] hover:bg-[#363638] text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg" 
                 aria-label="Next Page">
           Next &rsaquo;
         </button>
       </div>
-
-      <!-- Touch Swipe & Keyboard Navigation Hint -->
-      <p class="text-center text-[11px] text-[#927B53]/80 mt-4 select-none flex items-center justify-center gap-2">
-        <svg class="w-3.5 h-3.5 text-[#4D351D] opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-        <span>Swipe or drag any page corner &bull; Supports keyboard &larr; / &rarr; arrow keys</span>
-      </p>
 
     </div>
   </section>
 
   <script src="{{ 'page-flip.browser.js' | asset_url }}"></script>
   <script>
-    var shopifyFlipPages = [
-      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: 'Front Cover: The 2027 Bound Chronicle', desc: 'Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem.' },
-      { img: "{{ 'flip_page_01_belonging.jpg' | asset_url }}", title: 'Opening Spread (Left): Belonging Nameplate & Manifesto', desc: 'Gold-leaf framed owner inscription page with contact details and intention lines.' },
-      { img: "{{ 'flip_page_02_vision.jpg' | asset_url }}", title: 'Opening Spread (Right): 2027 Yearly Vision & Milestones', desc: 'Dedicated quarterly aspiration quadrants for Career, Health, Joy & Financial goals.' },
-      { img: "{{ 'flip_page_03_monthly.jpg' | asset_url }}", title: 'Monthly Spread (Left): Panoramic Calendar Grid', desc: 'Spacious double-page calendar view with Monday-Thursday grids and monthly priorities.' },
-      { img: "{{ 'flip_page_04_habits.jpg' | asset_url }}", title: 'Monthly Spread (Right): Habit Tracker & Budget Ledger', desc: '31-day visual micro-grids for daily rituals alongside monthly income and savings tracking.' },
-      { img: "{{ 'flip_page_05_weekly_left.jpg' | asset_url }}", title: 'Weekly Focus (Left): Monday – Wednesday Timetable', desc: 'Daily priority circles, hourly schedule timeblocks (6am–8pm), and micro-gratitude prompts.' },
-      { img: "{{ 'flip_page_06_weekly_right.jpg' | asset_url }}", title: 'Weekly Horizons (Right): Thursday – Sunday & Dot-Grid Sandbox', desc: 'Weekend rituals schedule with generous 5mm ivory dot-grid sandbox for braindumps.' },
-      { img: "{{ 'flip_back_cover.jpg' | asset_url }}", title: 'Back Cover: Graffeine Tales Atelier Edition', desc: 'Matching Japanese bookcloth casing with gold debossed atelier hallmark, FSC certification & barcode.' }
-    ];
+    var shopifyFlipPages = [];
+
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.settings.page_image != blank %}
+          shopifyFlipPages.push("{{ block.settings.page_image | image_url: width: 900 }}");
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    // Fallback to high-resolution atelier journal pages if no custom images uploaded in theme editor
+    if (shopifyFlipPages.length === 0) {
+      shopifyFlipPages = [
+        "{{ 'flip_cover.jpg' | asset_url }}",
+        "{{ 'flip_page_01_belonging.jpg' | asset_url }}",
+        "{{ 'flip_page_02_vision.jpg' | asset_url }}",
+        "{{ 'flip_page_03_monthly.jpg' | asset_url }}",
+        "{{ 'flip_page_04_habits.jpg' | asset_url }}",
+        "{{ 'flip_page_05_weekly_left.jpg' | asset_url }}",
+        "{{ 'flip_page_06_weekly_right.jpg' | asset_url }}",
+        "{{ 'flip_back_cover.jpg' | asset_url }}"
+      ];
+    }
+
     var currentShopifyFlip = 0;
     var shopifyPageFlip = null;
 
@@ -348,7 +342,7 @@
           disableFlipByClick: false
         });
 
-        shopifyPageFlip.loadFromImages(shopifyFlipPages.map(function(p) { return p.img; }));
+        shopifyPageFlip.loadFromImages(shopifyFlipPages);
 
         shopifyPageFlip.on('flip', function(e) {
           currentShopifyFlip = e.data;
@@ -371,45 +365,26 @@
 
     function updateShopifyFlip(index) {
       if (typeof index === 'number') currentShopifyFlip = index;
-      var titleEl = document.getElementById('shopify-flip-title');
-      var descEl = document.getElementById('shopify-flip-desc');
       var prevBtn = document.getElementById('shopify-flip-back');
       var nextBtn = document.getElementById('shopify-flip-next');
-      var counterEl = document.getElementById('shopify-flip-counter');
-
-      var page = shopifyFlipPages[currentShopifyFlip];
-      if (page) {
-        if (titleEl) titleEl.innerText = page.title;
-        if (descEl) descEl.innerText = page.desc;
-      }
-
-      if (counterEl) {
-        if (currentShopifyFlip === 0) {
-          counterEl.innerText = 'Front Cover';
-        } else if (currentShopifyFlip === shopifyFlipPages.length - 1) {
-          counterEl.innerText = 'Back Cover';
-        } else {
-          counterEl.innerText = 'Inner Page ' + currentShopifyFlip + ' of ' + (shopifyFlipPages.length - 2);
-        }
-      }
 
       if (prevBtn) {
         if (currentShopifyFlip === 0) {
           prevBtn.disabled = true;
-          prevBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm';
+          prevBtn.className = 'px-8 sm:px-10 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm';
         } else {
           prevBtn.disabled = false;
-          prevBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D] text-[#4D351D] bg-white hover:bg-[#4D351D] hover:text-[#E9DFC2] text-xs font-bold uppercase tracking-widest transition-all shadow-sm select-none hover:shadow';
+          prevBtn.className = 'px-8 sm:px-10 py-3 rounded-full border border-[#4D351D] text-[#4D351D] bg-white hover:bg-[#4D351D] hover:text-[#E9DFC2] text-xs font-bold uppercase tracking-widest transition-all shadow-sm select-none hover:shadow';
         }
       }
 
       if (nextBtn) {
         if (currentShopifyFlip === shopifyFlipPages.length - 1) {
           nextBtn.disabled = true;
-          nextBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm';
+          nextBtn.className = 'px-8 sm:px-10 py-3 rounded-full border border-[#4D351D]/30 text-[#4D351D]/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm';
         } else {
           nextBtn.disabled = false;
-          nextBtn.className = 'px-7 py-3 rounded-full border border-[#4D351D] bg-[#4D351D] text-[#E9DFC2] hover:bg-[#363638] text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg';
+          nextBtn.className = 'px-8 sm:px-10 py-3 rounded-full border border-[#4D351D] bg-[#4D351D] text-[#E9DFC2] hover:bg-[#363638] text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg';
         }
       }
     }
@@ -434,6 +409,52 @@
 {% schema %}
 {
   "name": "Journal Luxury PDP",
-  "settings": []
+  "settings": [
+    {
+      "type": "header",
+      "content": "Flip-Through Inner Pages Settings"
+    },
+    {
+      "type": "text",
+      "id": "flip_heading",
+      "label": "Heading",
+      "default": "Flip through a few inner pages!"
+    },
+    {
+      "type": "text",
+      "id": "flip_subheading",
+      "label": "Subheading",
+      "default": "Experience the tactile rhythm of the 2027 Chronicle. Grab any page corner or use the controls below to leaf through."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "page_image",
+      "name": "Journal Page Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "page_image",
+          "label": "Page / Spread Image",
+          "info": "Upload a portrait (3:4) high-resolution image of a journal page or cover. In theme editor, add as many pages as you like and drag to reorder."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journal Luxury PDP",
+      "blocks": [
+        { "type": "page_image" },
+        { "type": "page_image" },
+        { "type": "page_image" },
+        { "type": "page_image" },
+        { "type": "page_image" },
+        { "type": "page_image" },
+        { "type": "page_image" },
+        { "type": "page_image" }
+      ]
+    }
+  ]
 }
 {% endschema %}

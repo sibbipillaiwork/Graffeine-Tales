@@ -789,45 +789,25 @@
         <div id="page-flip-book" class="mx-auto flex items-center justify-center cursor-grab active:cursor-grabbing max-w-full"></div>
       </div>
 
-      <!-- Spread Title & Description Indicator -->
-      <div class="text-center mt-5">
-        <p class="text-base font-serif-display font-semibold text-espresso" id="flip-page-title">
-          Front Cover: The 2027 Bound Chronicle
-        </p>
-        <p class="text-xs text-espresso/60 font-sans mt-0.5" id="flip-page-desc">
-          Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem
-        </p>
-      </div>
-
-      <!-- Navigation Controls ("< BACK" / "NEXT >") styled in Deep Coffee (#4D351D) with Page Counter -->
-      <div class="flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+      <!-- Navigation Controls ("< BACK" / "NEXT >") styled in Deep Coffee (#4D351D) -->
+      <div class="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
         <button type="button" 
                 id="flip-btn-back" 
                 onclick="changeFlipPage(-1)" 
-                class="px-7 py-3 rounded-full border border-deep-coffee/40 text-deep-coffee/60 bg-white/90 hover:bg-white hover:text-deep-coffee hover:border-deep-coffee text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm disabled:opacity-40" 
+                class="px-8 sm:px-10 py-3 rounded-full border border-deep-coffee/30 text-deep-coffee/40 bg-white/70 text-xs font-bold uppercase tracking-widest transition-all cursor-not-allowed select-none shadow-sm disabled:opacity-40" 
                 aria-label="Previous Page"
                 disabled>
           &lsaquo; Back
         </button>
 
-        <div class="px-5 py-2.5 rounded-full bg-white border border-sand/40 text-xs font-semibold text-espresso select-none shadow-sm" id="flip-page-counter">
-          Front Cover
-        </div>
-
         <button type="button" 
                 id="flip-btn-next" 
                 onclick="changeFlipPage(1)" 
-                class="px-7 py-3 rounded-full border border-deep-coffee bg-deep-coffee text-logo-cream hover:bg-espresso text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg" 
+                class="px-8 sm:px-10 py-3 rounded-full border border-deep-coffee bg-deep-coffee text-logo-cream hover:bg-espresso text-xs font-bold uppercase tracking-widest transition-all shadow-tactile select-none hover:shadow-lg" 
                 aria-label="Next Page">
           Next &rsaquo;
         </button>
       </div>
-
-      <!-- Touch Swipe & Keyboard Navigation Hint -->
-      <p class="text-center text-[11px] text-coffee-tan/80 mt-4 select-none flex items-center justify-center gap-2">
-        <svg class="w-3.5 h-3.5 text-deep-coffee opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-        <span>Swipe or drag any page corner &bull; Supports keyboard &larr; / &rarr; arrow keys</span>
-      </p>
 
     </div>
   </section>
