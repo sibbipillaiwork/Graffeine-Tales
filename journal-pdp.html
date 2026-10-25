@@ -16,6 +16,9 @@
 
   <!-- Tailwind CSS via CDN with Graffeine Tales Custom Palette -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Interactive 3D Book Page Turning Engine (St.PageFlip) -->
+  <script src="assets/page-flip.browser.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -798,27 +801,17 @@
         </button>
       </div>
 
-      <!-- Centered Interactive Book Page Container -->
-      <div class="relative max-w-[340px] sm:max-w-[420px] mx-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-sand/40 bg-white group cursor-pointer select-none transition-shadow hover:shadow-tactile-lg" id="flip-book-wrapper" onclick="handleFlipBookClick(event)">
-        <!-- Main Flip Page Image -->
-        <img id="flip-active-page-img" 
-             src="assets/flip_cover.jpg" 
-             alt="Flip through the 2027 Bound Chronicle" 
-             class="w-full h-full object-cover transition-all duration-300 transform scale-100 ease-out" />
-             
-        <!-- Realistic Spine Shadow on Left Edge -->
-        <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/20 via-black/5 to-transparent pointer-events-none"></div>
-        <!-- Inner Border Ring Sheen -->
-        <div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
-
-        <!-- Left / Right Click Hints on Desktop Hover -->
-        <div class="absolute inset-y-0 left-0 w-1/3 flex items-center justify-start pl-3 opacity-0 group-hover:opacity-80 transition-opacity pointer-events-none">
-          <span class="w-8 h-8 rounded-full bg-espresso/60 text-logo-cream flex items-center justify-center text-xs backdrop-blur-sm shadow">‹</span>
-        </div>
-        <div class="absolute inset-y-0 right-0 w-1/3 flex items-center justify-end pr-3 opacity-0 group-hover:opacity-80 transition-opacity pointer-events-none">
-          <span class="w-8 h-8 rounded-full bg-espresso/60 text-logo-cream flex items-center justify-center text-xs backdrop-blur-sm shadow">›</span>
-        </div>
+      <!-- Centered Interactive Book Page Container (Realistic 3D Page Turn Engine) -->
+      <div class="relative max-w-[340px] sm:max-w-[400px] mx-auto rounded-2xl shadow-2xl border border-sand/40 bg-[#FAF7F0] overflow-hidden transition-shadow hover:shadow-tactile-lg" id="flip-book-wrapper">
+        <!-- Canvas/DOM Mount Target for St.PageFlip -->
+        <div id="page-flip-book" class="w-full flex items-center justify-center min-h-[453px] sm:min-h-[533px]"></div>
       </div>
+
+      <!-- Drag Corner & Tap Hint -->
+      <p class="text-[11px] text-coffee-tan font-medium text-center mt-3 flex items-center justify-center gap-1.5 select-none">
+        <svg class="w-3.5 h-3.5 text-deep-coffee opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span><strong>Grab &amp; drag any page corner</strong> to turn the journal page, or use buttons below</span>
+      </p>
 
       <!-- Spread Title & Description Indicator -->
       <div class="text-center mt-4">
@@ -1546,7 +1539,7 @@
       }
     }
 
-    // 6. Interactive Flip-Through Stepper & Page Flipping
+    // 6. Realistic 3D Interactive Page Turning Engine (St.PageFlip)
     const flipPages = [
       {
         img: 'assets/flip_cover.jpg',
@@ -1576,30 +1569,72 @@
     ];
 
     let currentFlipIndex = 0;
+    let journalPageFlip = null;
 
-    function updateFlipDisplay() {
-      const img = document.getElementById('flip-active-page-img');
+    function initJournalPageFlip() {
+      const bookEl = document.getElementById('page-flip-book');
+      if (!bookEl || typeof St === 'undefined' || !St.PageFlip) return;
+
+      const container = document.getElementById('flip-book-wrapper');
+      const baseWidth = container ? Math.min(container.offsetWidth || 380, 400) : 380;
+      const baseHeight = Math.round(baseWidth * (4 / 3));
+
+      try {
+        journalPageFlip = new St.PageFlip(bookEl, {
+          width: baseWidth,
+          height: baseHeight,
+          size: 'fixed',
+          minWidth: 260,
+          maxWidth: 440,
+          minHeight: 347,
+          maxHeight: 587,
+          maxShadowOpacity: 0.5,
+          showCover: false,
+          mobileScrollSupport: true,
+          usePortrait: true,
+          flippingTime: 750,
+          drawShadow: true,
+          showPageCorners: true,
+          useMouseEvents: true,
+          disableFlipByClick: false
+        });
+
+        journalPageFlip.loadFromImages(flipPages.map(p => p.img));
+
+        // When the user drags and turns the page or clicks:
+        journalPageFlip.on('flip', (e) => {
+          currentFlipIndex = e.data;
+          updateFlipDisplay(currentFlipIndex);
+        });
+
+        journalPageFlip.on('init', () => {
+          updateFlipDisplay(0);
+        });
+      } catch (err) {
+        console.warn('PageFlip init notice:', err);
+      }
+    }
+
+    // Initialize on DOM ready or window load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initJournalPageFlip);
+    } else {
+      initJournalPageFlip();
+    }
+
+    function updateFlipDisplay(index) {
+      if (typeof index === 'number') currentFlipIndex = index;
       const titleEl = document.getElementById('flip-page-title');
       const descEl = document.getElementById('flip-page-desc');
       const prevBtn = document.getElementById('flip-btn-back');
       const nextBtn = document.getElementById('flip-btn-next');
       const dots = document.querySelectorAll('#flip-stepper-track .stepper-dot');
 
-      if (!img) return;
-
-      // Realistic book page transition
-      img.style.opacity = '0.4';
-      img.style.transform = 'scale(0.97) rotateY(4deg)';
-      
-      setTimeout(() => {
-        const page = flipPages[currentFlipIndex];
-        img.src = page.img;
+      const page = flipPages[currentFlipIndex];
+      if (page) {
         if (titleEl) titleEl.innerText = page.title;
         if (descEl) descEl.innerText = page.desc;
-
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1) rotateY(0deg)';
-      }, 150);
+      }
 
       // Update Stepper Dots (Active dot has double ring / halo as in Alicia Souza screenshot)
       dots.forEach((dot, idx) => {
@@ -1636,27 +1671,29 @@
     }
 
     function changeFlipPage(delta) {
-      const nextIdx = currentFlipIndex + delta;
-      if (nextIdx >= 0 && nextIdx < flipPages.length) {
-        currentFlipIndex = nextIdx;
-        updateFlipDisplay();
+      if (journalPageFlip) {
+        if (delta > 0) {
+          journalPageFlip.flipNext('bottom');
+        } else {
+          journalPageFlip.flipPrev('bottom');
+        }
+      } else {
+        const nextIdx = currentFlipIndex + delta;
+        if (nextIdx >= 0 && nextIdx < flipPages.length) {
+          currentFlipIndex = nextIdx;
+          updateFlipDisplay();
+        }
       }
     }
 
     function goToFlipPage(index) {
-      if (index >= 0 && index < flipPages.length) {
-        currentFlipIndex = index;
-        updateFlipDisplay();
-      }
-    }
-
-    function handleFlipBookClick(e) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      if (x > rect.width / 2) {
-        changeFlipPage(1);
+      if (journalPageFlip) {
+        journalPageFlip.flip(index, 'bottom');
       } else {
-        changeFlipPage(-1);
+        if (index >= 0 && index < flipPages.length) {
+          currentFlipIndex = index;
+          updateFlipDisplay();
+        }
       }
     }
 

@@ -897,14 +897,16 @@ def generate_dedicated_sections():
         </button>
       </div>
 
-      <div class="relative max-w-[340px] sm:max-w-[420px] mx-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-[#C6B58E]/40 bg-white group cursor-pointer select-none" id="shopify-flip-wrapper" onclick="handleShopifyFlipClick(event)">
-        <img id="shopify-flip-img" 
-             src="{{ 'flip_cover.jpg' | asset_url }}" 
-             alt="Flip through the journal" 
-             class="w-full h-full object-cover transition-all duration-300 transform scale-100 ease-out" />
-        <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/20 via-black/5 to-transparent pointer-events-none"></div>
-        <div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
+      <!-- Centered Interactive Book Page Container (Realistic 3D Page Turn Engine) -->
+      <div class="relative max-w-[340px] sm:max-w-[400px] mx-auto rounded-2xl shadow-2xl border border-[#C6B58E]/40 bg-[#FAF7F0] overflow-hidden transition-shadow hover:shadow-tactile-lg" id="shopify-flip-wrapper">
+        <div id="shopify-page-flip-book" class="w-full flex items-center justify-center min-h-[453px] sm:min-h-[533px]"></div>
       </div>
+
+      <!-- Drag Corner & Tap Hint -->
+      <p class="text-[11px] text-[#927B53] font-medium text-center mt-3 flex items-center justify-center gap-1.5 select-none">
+        <svg class="w-3.5 h-3.5 text-[#4D351D] opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span><strong>Grab &amp; drag any page corner</strong> to turn the journal page, or use buttons below</span>
+      </p>
 
       <div class="text-center mt-4">
         <p class="text-xs font-semibold text-[#363638]" id="shopify-flip-title">2027 Chronicle Cover &amp; Title Spread</p>
@@ -930,36 +932,80 @@ def generate_dedicated_sections():
     </div>
   </section>
 
+  <script src="{{ 'page-flip.browser.js' | asset_url }}"></script>
   <script>
     var shopifyFlipPages = [
-      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: '2027 Chronicle Cover & Title Spread', desc: 'Artisanal gold debossed cover artwork with woven ribbon marker.' },
+      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: '2027 Chronicle Cover & Title Spread', desc: 'Artisanal gold debossed cover artwork with woven ribbon bookmark.' },
       { img: "{{ 'flip_monthly.jpg' | asset_url }}", title: 'Monthly Panoramic Overview & Habit Columns', desc: 'Double-page calendar grids with Sunday starts, moon phases, and budget tracking.' },
       { img: "{{ 'flip_weekly.jpg' | asset_url }}", title: '52-Week Focus Dashboard', desc: 'Clean horizontal weekday layout with daily micro-gratitude and task priorities.' },
       { img: "{{ 'flip_habits.jpg' | asset_url }}", title: 'Habit & Wellness Ritual Trackers', desc: '31-day visual micro-grids tracking movement, sleep, hydration, and reading.' },
       { img: "{{ 'flip_stickers.jpg' | asset_url }}", title: 'Dot-Grid Creative Sandbox & Planning Stickers', desc: 'Subtle 5mm ivory dot-grid pages paired with 4 die-cut gilded sticker sheets.' }
     ];
     var currentShopifyFlip = 0;
+    var shopifyPageFlip = null;
 
-    function updateShopifyFlip() {
-      var img = document.getElementById('shopify-flip-img');
+    function initShopifyPageFlip() {
+      var bookEl = document.getElementById('shopify-page-flip-book');
+      if (!bookEl || typeof St === 'undefined' || !St.PageFlip) return;
+
+      var container = document.getElementById('shopify-flip-wrapper');
+      var baseWidth = container ? Math.min(container.offsetWidth || 380, 400) : 380;
+      var baseHeight = Math.round(baseWidth * (4 / 3));
+
+      try {
+        shopifyPageFlip = new St.PageFlip(bookEl, {
+          width: baseWidth,
+          height: baseHeight,
+          size: 'fixed',
+          minWidth: 260,
+          maxWidth: 440,
+          minHeight: 347,
+          maxHeight: 587,
+          maxShadowOpacity: 0.5,
+          showCover: false,
+          mobileScrollSupport: true,
+          usePortrait: true,
+          flippingTime: 750,
+          drawShadow: true,
+          showPageCorners: true,
+          useMouseEvents: true,
+          disableFlipByClick: false
+        });
+
+        shopifyPageFlip.loadFromImages(shopifyFlipPages.map(function(p) { return p.img; }));
+
+        shopifyPageFlip.on('flip', function(e) {
+          currentShopifyFlip = e.data;
+          updateShopifyFlip(currentShopifyFlip);
+        });
+
+        shopifyPageFlip.on('init', function() {
+          updateShopifyFlip(0);
+        });
+      } catch (err) {
+        console.warn('Shopify PageFlip init notice:', err);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initShopifyPageFlip);
+    } else {
+      initShopifyPageFlip();
+    }
+
+    function updateShopifyFlip(index) {
+      if (typeof index === 'number') currentShopifyFlip = index;
       var titleEl = document.getElementById('shopify-flip-title');
       var descEl = document.getElementById('shopify-flip-desc');
       var prevBtn = document.getElementById('shopify-flip-back');
       var nextBtn = document.getElementById('shopify-flip-next');
       var dots = document.querySelectorAll('#shopify-flip-stepper .stepper-dot');
 
-      if (!img) return;
-      img.style.opacity = '0.4';
-      img.style.transform = 'scale(0.97) rotateY(4deg)';
-
-      setTimeout(function() {
-        var page = shopifyFlipPages[currentShopifyFlip];
-        img.src = page.img;
+      var page = shopifyFlipPages[currentShopifyFlip];
+      if (page) {
         if (titleEl) titleEl.innerText = page.title;
         if (descEl) descEl.innerText = page.desc;
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1) rotateY(0deg)';
-      }, 150);
+      }
 
       dots.forEach(function(dot, idx) {
         if (idx === currentShopifyFlip) {
@@ -991,27 +1037,18 @@ def generate_dedicated_sections():
     }
 
     function changeShopifyFlip(delta) {
-      var nextIdx = currentShopifyFlip + delta;
-      if (nextIdx >= 0 && nextIdx < shopifyFlipPages.length) {
-        currentShopifyFlip = nextIdx;
-        updateShopifyFlip();
+      if (shopifyPageFlip) {
+        if (delta > 0) {
+          shopifyPageFlip.flipNext('bottom');
+        } else {
+          shopifyPageFlip.flipPrev('bottom');
+        }
       }
     }
 
     function goToShopifyFlip(idx) {
-      if (idx >= 0 && idx < shopifyFlipPages.length) {
-        currentShopifyFlip = idx;
-        updateShopifyFlip();
-      }
-    }
-
-    function handleShopifyFlipClick(e) {
-      var rect = e.currentTarget.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      if (x > rect.width / 2) {
-        changeShopifyFlip(1);
-      } else {
-        changeShopifyFlip(-1);
+      if (shopifyPageFlip) {
+        shopifyPageFlip.flip(idx, 'bottom');
       }
     }
   </script>
