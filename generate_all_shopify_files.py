@@ -664,12 +664,7 @@ def generate_dedicated_sections():
 
       <div class="lg:col-span-5 bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-[#C6B58E]/40 shadow-tactile-lg space-y-4 sm:space-y-6">
         <div>
-          <span class="text-xs uppercase font-bold tracking-[0.15em] text-[#927B53] bg-[#F8F5ED] px-3 py-1 rounded-full border border-[#C6B58E]/30 inline-block mb-2">Stationaries &bull; 2027 Edition</span>
           <h1 class="font-serif-display text-2xl sm:text-3xl lg:text-4xl text-[#363638] leading-tight">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</h1>
-          <div class="flex items-center gap-2 mt-2">
-            <span class="text-[#D4AF37]">★★★★★</span>
-            <span class="text-xs font-semibold text-[#363638]/70">5.0 (328 verified patrons)</span>
-          </div>
         </div>
 
         <div class="py-3 sm:py-4 border-y border-[#C6B58E]/30 flex items-baseline justify-between">
