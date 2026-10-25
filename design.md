@@ -255,12 +255,13 @@ flowchart TD
 
 ```
 GTB/
+├── journal-pdp.html             # Standalone Interactive Journals PDP Prototype
 ├── shopify-theme/
 │   ├── assets/
-│   │   ├── styles.css           # 160KB+ Full Design System & Responsive Tokens
+│   │   ├── styles.css           # Full Design System & Responsive Tokens
 │   │   ├── app.js               # Interactive Store Engine & State Management
 │   │   ├── shopify-cart.js      # Shopify AJAX Cart Bridge
-│   │   └── *.png, *.jpg         # 81 Flattened Studio Assets
+│   │   └── *.png, *.jpg         # 86 Flattened Studio Assets (incl. Flip-Through Spreads)
 │   ├── config/
 │   │   ├── settings_schema.json # Theme Customizer Options (Colors, Shipping)
 │   │   └── settings_data.json   # Store Default Settings
@@ -268,9 +269,9 @@ GTB/
 │   │   └── theme.liquid         # Main HTML5 Document & Header Hook
 │   ├── locales/
 │   │   └── en.default.json      # UI Translation Keys
-│   ├── sections/                # 26 Modular Liquid Sections
+│   ├── sections/                # 26 Modular Liquid Sections (incl. main-journal-pdp)
 │   ├── snippets/                # Product Card & Icon Snippets
-│   └── templates/               # OS 2.0 JSON Templates (index, product, collection, cart, page, 404)
-├── Graffeine-Tales-Shopify-Theme.zip  # Ready-to-upload Theme Archive (41.5 MB)
+│   └── templates/               # OS 2.0 JSON Templates (index, product, product.journal, collection, cart, page, 404)
+├── Graffeine-Tales-Shopify-Theme.zip  # Ready-to-upload Theme Archive (46.1 MB)
 └── design.md                    # This Design Document
 ```

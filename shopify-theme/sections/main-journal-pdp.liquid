@@ -227,6 +227,155 @@
       </div>
     </div>
   </div>
+
+  <!-- Interactive Flip-Through Stepper (Inspired by Alicia Souza PDP Reference) -->
+  <section class="py-16 sm:py-20 bg-white border-t border-[#C6B58E]/30" id="shopify-flip-through-section">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-6">
+        <h2 class="font-sans font-bold text-2xl sm:text-3xl text-[#363638] tracking-tight">
+          Flip through a few inner pages!
+        </h2>
+      </div>
+
+      <div class="max-w-xs sm:max-w-sm mx-auto mb-8 relative flex items-center justify-between px-2" id="shopify-flip-stepper">
+        <div class="absolute left-2 right-2 top-1/2 -translate-y-1/2 h-[1.5px] bg-[#C6B58E]/40 z-0"></div>
+        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(0)" aria-label="Page 1">
+          <span class="w-4 h-4 rounded-full border-2 border-[#4D351D] bg-white flex items-center justify-center shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[#4D351D]"></span>
+          </span>
+        </button>
+        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(1)" aria-label="Page 2">
+          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
+        </button>
+        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(2)" aria-label="Page 3">
+          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
+        </button>
+        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(3)" aria-label="Page 4">
+          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
+        </button>
+        <button type="button" class="stepper-dot relative z-10 w-6 h-6 flex items-center justify-center bg-white rounded-full transition-transform hover:scale-110" onclick="goToShopifyFlip(4)" aria-label="Page 5">
+          <span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>
+        </button>
+      </div>
+
+      <div class="relative max-w-[340px] sm:max-w-[420px] mx-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-[#C6B58E]/40 bg-white group cursor-pointer select-none" id="shopify-flip-wrapper" onclick="handleShopifyFlipClick(event)">
+        <img id="shopify-flip-img" 
+             src="{{ 'flip_cover.jpg' | asset_url }}" 
+             alt="Flip through the journal" 
+             class="w-full h-full object-cover transition-all duration-300 transform scale-100 ease-out" />
+        <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/20 via-black/5 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
+      </div>
+
+      <div class="text-center mt-4">
+        <p class="text-xs font-semibold text-[#363638]" id="shopify-flip-title">2027 Chronicle Cover &amp; Title Spread</p>
+        <p class="text-[11px] text-[#363638]/60 mt-0.5" id="shopify-flip-desc">Artisanal gold debossed cover artwork with gold ribbon marker</p>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <button type="button" 
+                id="shopify-flip-back" 
+                onclick="changeShopifyFlip(-1)" 
+                class="px-8 py-2.5 border border-[#C6B58E]/40 text-xs font-bold uppercase tracking-widest text-[#363638]/40 bg-white rounded-md transition-all cursor-not-allowed select-none" 
+                disabled>
+          &lsaquo; Back
+        </button>
+        
+        <button type="button" 
+                id="shopify-flip-next" 
+                onclick="changeShopifyFlip(1)" 
+                class="px-8 py-2.5 border border-[#363638] text-xs font-bold uppercase tracking-widest text-[#363638] bg-white hover:bg-[#363638] hover:text-[#E9DFC2] rounded-md transition-all shadow-sm select-none">
+          Next &rsaquo;
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var shopifyFlipPages = [
+      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: '2027 Chronicle Cover & Title Spread', desc: 'Artisanal gold debossed cover artwork with woven ribbon marker.' },
+      { img: "{{ 'flip_monthly.jpg' | asset_url }}", title: 'Monthly Panoramic Overview & Habit Columns', desc: 'Double-page calendar grids with Sunday starts, moon phases, and budget tracking.' },
+      { img: "{{ 'flip_weekly.jpg' | asset_url }}", title: '52-Week Focus Dashboard', desc: 'Clean horizontal weekday layout with daily micro-gratitude and task priorities.' },
+      { img: "{{ 'flip_habits.jpg' | asset_url }}", title: 'Habit & Wellness Ritual Trackers', desc: '31-day visual micro-grids tracking movement, sleep, hydration, and reading.' },
+      { img: "{{ 'flip_stickers.jpg' | asset_url }}", title: 'Dot-Grid Creative Sandbox & Planning Stickers', desc: 'Subtle 5mm ivory dot-grid pages paired with 4 die-cut gilded sticker sheets.' }
+    ];
+    var currentShopifyFlip = 0;
+
+    function updateShopifyFlip() {
+      var img = document.getElementById('shopify-flip-img');
+      var titleEl = document.getElementById('shopify-flip-title');
+      var descEl = document.getElementById('shopify-flip-desc');
+      var prevBtn = document.getElementById('shopify-flip-back');
+      var nextBtn = document.getElementById('shopify-flip-next');
+      var dots = document.querySelectorAll('#shopify-flip-stepper .stepper-dot');
+
+      if (!img) return;
+      img.style.opacity = '0.4';
+      img.style.transform = 'scale(0.97) rotateY(4deg)';
+
+      setTimeout(function() {
+        var page = shopifyFlipPages[currentShopifyFlip];
+        img.src = page.img;
+        if (titleEl) titleEl.innerText = page.title;
+        if (descEl) descEl.innerText = page.desc;
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1) rotateY(0deg)';
+      }, 150);
+
+      dots.forEach(function(dot, idx) {
+        if (idx === currentShopifyFlip) {
+          dot.innerHTML = '<span class="w-4 h-4 rounded-full border-2 border-[#4D351D] bg-white flex items-center justify-center shadow-sm"><span class="w-2 h-2 rounded-full bg-[#4D351D]"></span></span>';
+        } else {
+          dot.innerHTML = '<span class="w-2 h-2 rounded-full bg-[#C6B58E]/60 hover:bg-[#4D351D] transition-colors block"></span>';
+        }
+      });
+
+      if (prevBtn) {
+        if (currentShopifyFlip === 0) {
+          prevBtn.disabled = true;
+          prevBtn.className = 'px-8 py-2.5 border border-[#C6B58E]/40 text-xs font-bold uppercase tracking-widest text-[#363638]/40 bg-white rounded-md transition-all cursor-not-allowed select-none';
+        } else {
+          prevBtn.disabled = false;
+          prevBtn.className = 'px-8 py-2.5 border border-[#363638] text-xs font-bold uppercase tracking-widest text-[#363638] bg-white hover:bg-[#363638] hover:text-[#E9DFC2] rounded-md transition-all shadow-sm select-none';
+        }
+      }
+
+      if (nextBtn) {
+        if (currentShopifyFlip === shopifyFlipPages.length - 1) {
+          nextBtn.disabled = true;
+          nextBtn.className = 'px-8 py-2.5 border border-[#C6B58E]/40 text-xs font-bold uppercase tracking-widest text-[#363638]/40 bg-white rounded-md transition-all cursor-not-allowed select-none';
+        } else {
+          nextBtn.disabled = false;
+          nextBtn.className = 'px-8 py-2.5 border border-[#363638] text-xs font-bold uppercase tracking-widest text-[#363638] bg-white hover:bg-[#363638] hover:text-[#E9DFC2] rounded-md transition-all shadow-sm select-none';
+        }
+      }
+    }
+
+    function changeShopifyFlip(delta) {
+      var nextIdx = currentShopifyFlip + delta;
+      if (nextIdx >= 0 && nextIdx < shopifyFlipPages.length) {
+        currentShopifyFlip = nextIdx;
+        updateShopifyFlip();
+      }
+    }
+
+    function goToShopifyFlip(idx) {
+      if (idx >= 0 && idx < shopifyFlipPages.length) {
+        currentShopifyFlip = idx;
+        updateShopifyFlip();
+      }
+    }
+
+    function handleShopifyFlipClick(e) {
+      var rect = e.currentTarget.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      if (x > rect.width / 2) {
+        changeShopifyFlip(1);
+      } else {
+        changeShopifyFlip(-1);
+      }
+    }
+  </script>
 </div>
 {% schema %}
 {
