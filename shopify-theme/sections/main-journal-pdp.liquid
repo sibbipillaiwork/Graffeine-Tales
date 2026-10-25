@@ -25,6 +25,38 @@
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes pagePeelCurl {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        filter: drop-shadow(-2px -2px 3px rgba(77, 53, 29, 0.22));
+      }
+      15% {
+        transform: translate(-3px, -3px) rotate(-3deg);
+        filter: drop-shadow(-5px -5px 7px rgba(77, 53, 29, 0.38));
+      }
+      30% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+        filter: drop-shadow(-3px -3px 4px rgba(77, 53, 29, 0.25));
+      }
+      45% {
+        transform: translate(-4px, -4px) rotate(-4deg);
+        filter: drop-shadow(-6px -6px 9px rgba(77, 53, 29, 0.42));
+      }
+      60%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        filter: drop-shadow(-2px -2px 3px rgba(77, 53, 29, 0.22));
+      }
+    }
+    .page-peel-fold {
+      animation: pagePeelCurl 4.2s ease-in-out infinite;
+      clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    }
+    #shopify-flip-page-peel-hint:hover .page-peel-fold {
+      animation-play-state: paused;
+      transform: translate(-5px, -5px) rotate(-5deg);
+      filter: drop-shadow(-7px -7px 11px rgba(77, 53, 29, 0.48));
+    }
   </style>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
@@ -384,9 +416,43 @@
 
         shopifyPageFlip.on('init', function() {
           updateShopifyFlip(0);
+          mountShopifyPagePeel();
         });
       } catch (err) {
         console.warn('Shopify PageFlip init notice:', err);
+      }
+    }
+
+    function mountShopifyPagePeel() {
+      var bookEl = document.getElementById('shopify-page-flip-book');
+      if (!bookEl) return;
+      var parentEl = bookEl.querySelector('.stf__parent') || bookEl;
+      var hint = document.getElementById('shopify-flip-page-peel-hint');
+      if (!hint) {
+        hint = document.createElement('div');
+        hint.id = 'shopify-flip-page-peel-hint';
+        hint.setAttribute('role', 'button');
+        hint.setAttribute('aria-label', 'Turn to next page');
+        hint.setAttribute('title', 'Tap corner to flip page');
+        hint.onclick = function(e) {
+          e.stopPropagation();
+          changeShopifyFlip(1);
+        };
+        hint.innerHTML = `
+          <div class="relative w-12 h-12 sm:w-14 sm:h-14 overflow-visible flex items-end justify-end group cursor-pointer">
+            <div class="page-peel-fold w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-[#EAE2D2] via-[#F8F5ED] to-[#DFD6C3] border-t border-l border-[#C6B58E] rounded-tl-lg flex items-end justify-end pb-1 pr-1 cursor-pointer transition-transform duration-300 group-hover:scale-110">
+              <svg class="w-3.5 h-3.5 text-[#4D351D]/85 transition-transform duration-300 group-hover:rotate-12 group-hover:text-[#4D351D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+            </div>
+            <div class="absolute -top-7 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-[#4D351D] text-[#E9DFC2] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap">
+              Flip page ›
+            </div>
+          </div>
+        `;
+        hint.className = 'absolute bottom-0 right-0 z-30 select-none cursor-pointer';
+        parentEl.appendChild(hint);
       }
     }
 
@@ -400,6 +466,15 @@
       if (typeof index === 'number') currentShopifyFlip = index;
       var prevBtn = document.getElementById('shopify-flip-back');
       var nextBtn = document.getElementById('shopify-flip-next');
+      var peelHint = document.getElementById('shopify-flip-page-peel-hint');
+
+      if (peelHint) {
+        if (currentShopifyFlip === shopifyFlipPages.length - 1) {
+          peelHint.style.display = 'none';
+        } else {
+          peelHint.style.display = 'block';
+        }
+      }
 
       if (prevBtn) {
         if (currentShopifyFlip === 0) {
