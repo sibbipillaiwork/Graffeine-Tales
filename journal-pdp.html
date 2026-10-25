@@ -801,30 +801,33 @@
   <section class="py-16 bg-espresso text-logo-cream relative overflow-hidden" id="pdp-video-commerce">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
-        <div>
-          <span class="text-xs uppercase font-bold tracking-[0.2em] text-sand bg-white/10 px-3 py-1 rounded-full border border-sand/20">
-            Stories in Motion &bull; Live Studio Reels
-          </span>
-          <h2 class="font-serif-display text-3xl sm:text-4xl text-logo-cream mt-3">
-            See the Journal in Action
-          </h2>
-          <p class="text-sm text-logo-cream/70 mt-1">
-            Tactile unboxings, fountain pen ink bleed tests, and everyday desk flips filmed in our studio.
-          </p>
-        </div>
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <h2 class="font-serif-display text-2xl sm:text-3xl md:text-4xl text-logo-cream">
+          See the Journal in Action
+        </h2>
 
-        <a href="index.html#stories-in-motion" class="mt-4 md:mt-0 text-xs text-sand hover:text-white font-bold flex items-center gap-1.5 transition-colors">
-          <span>View All Atelier Reels</span>
-          <span>&rarr;</span>
-        </a>
+        <!-- Carousel Navigation Controls -->
+        <div class="flex items-center gap-2">
+          <button type="button" 
+                  onclick="scrollReelsCarousel(-1)" 
+                  class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-logo-cream border border-sand/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95" 
+                  aria-label="Previous Reel">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button type="button" 
+                  onclick="scrollReelsCarousel(1)" 
+                  class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-logo-cream border border-sand/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95" 
+                  aria-label="Next Reel">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
 
-      <!-- 4 Shoppable 9:16 Video Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      <!-- Shoppable 9:16 Video Cards Carousel Track -->
+      <div id="pdp-reels-track" class="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-4 no-scrollbar scroll-smooth">
         
         <!-- Reel 1: ASMR Unboxing -->
-        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(0)">
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(0)">
           <img src="assets/prod_journal.jpg" alt="Journal ASMR Unboxing" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
           
           <!-- Gradient Scrim -->
@@ -850,7 +853,7 @@
         </div>
 
         <!-- Reel 2: Fountain Pen Bleed Test -->
-        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(1)">
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(1)">
           <img src="assets/cat_journals.jpg" alt="Fountain Pen Bleed Test" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
           <div class="absolute inset-0 flex items-center justify-center">
@@ -870,7 +873,7 @@
         </div>
 
         <!-- Reel 3: Sticker Sheet Setup -->
-        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(2)">
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(2)">
           <img src="assets/products/sticker_bookworm.jpg" alt="Sticker Setup Demo" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
           <div class="absolute inset-0 flex items-center justify-center">
@@ -890,7 +893,7 @@
         </div>
 
         <!-- Reel 4: Lay Flat Binding Demo -->
-        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(3)">
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(3)">
           <img src="assets/prod_waxseal.jpg" alt="180 Degree Binding Demo" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
           <div class="absolute inset-0 flex items-center justify-center">
@@ -1841,7 +1844,13 @@
       if (modal) modal.classList.remove('flex');
     }
 
-    // 8. Video Reel Modal
+    // 8. Video Reel Modal & Carousel
+    function scrollReelsCarousel(direction) {
+      const track = document.getElementById('pdp-reels-track');
+      if (!track) return;
+      track.scrollBy({ left: direction * 280, behavior: 'smooth' });
+    }
+
     function playPdpReel(index) {
       const modal = document.getElementById('pdp-reel-modal');
       if (modal) modal.classList.remove('hidden');
