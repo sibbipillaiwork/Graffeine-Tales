@@ -132,6 +132,19 @@ Subheadings:            'Quicksand', sans-serif (Category pills, metadata badges
   4. *Cart* (Slide-over drawer with live item badge)
   5. *Account* (Indian store concierge & tracking modal)
 
+### 3.9 Journals & Diaries Luxury PDP (Inspired by Premium Stationery & Alicia Souza Planners)
+- **Primary Canvas**: Warm Paper (`#F8F5ED`), Deep Coffee (`#4D351D`), Espresso Charcoal (`#363638`), and Logo Cream (`#E9DFC2`).
+- **Visual Sticky Gallery**: Multi-angle viewer (Front Cover, 180° Lay-Flat, Inner Spreads, Sticker Sheets, Kraft Gift Packaging with Wax Seal) with lightbox zoom.
+- **Buying Box**: Dynamic variant pills (Midnight Espresso Bookcloth, Terracotta Bloom, Sage Atelier, Celestial Indigo), layout selector (Dated 2027 vs. Undated), and 1-tap instant buy.
+- **What’s Inside (The Anatomy of the Chronicle)**: 6 structured cards detailing Yearly Blueprint, 12 Monthly Panoramic Overviews, 52 Weekly Dashboards, Habit Grids, 40 Dot-Grid pages, and Linen Gusset Pocket.
+- **Specifications Card Matrix**: 100 GSM FSC-certified bleed-resistant bamboo-cotton paper, true Smyth sewn 180° lay-flat binding, dual silk ribbons, A5 224-page format.
+- **Gilded Sticker Book Feature**: Dedicated highlight for the 4 included sheets (180+ functional, coffee ritual, and gilded tab stickers).
+- **Interactive Inner Page Flip**: Smooth scrollable spread inspector with full-resolution modal preview.
+- **Pincode Delivery Estimator**: Live Indian PIN code delivery estimation (2–3 days Bluedart Air for metros, 3–5 days standard).
+- **Video Commerce Reels**: 4 shoppable vertical video reels (ASMR unboxing, fountain pen bleed test, sticker setup, 180° flat desk flip).
+- **FAQ Accordion & Verified Reviews**: Accessible answers to nib bleeding, paper weights, transit guarantees, and 4.98/5 verified buyer reviews.
+- **Sticky Mobile Buy Bar**: Fixed bottom bar on mobile with title, price, and instant "Add to Bag" action.
+
 ---
 
 ## 4. HI-FI USER FLOWS (MERMAID ARCHITECTURE)

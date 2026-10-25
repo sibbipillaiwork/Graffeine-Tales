@@ -636,7 +636,77 @@ def generate_dedicated_sections():
     with open(os.path.join(THEME_DIR, "sections", "main-404.liquid"), "w", encoding="utf-8") as f:
         f.write(main_404_liquid)
 
-    print("Generated dedicated Shopify sections (main-product, main-collection, main-page, main-cart, main-404).")
+    # 6. main-journal-pdp.liquid (Dedicated Luxury Journal PDP)
+    main_journal_liquid = """{% comment %}
+  Graffeine Tales — Journal & Diaries Luxury PDP Section (Shopify OS 2.0)
+{% endcomment %}
+<div class="journal-pdp-wrapper bg-[#F8F5ED] text-[#363638] antialiased">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-[#363638]/60 flex items-center gap-2" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}" class="hover:text-[#4D351D] transition-colors">Home</a>
+    <span>&rsaquo;</span>
+    <a href="{{ routes.all_products_collection_url }}" class="hover:text-[#4D351D] transition-colors">Stationaries</a>
+    <span>&rsaquo;</span>
+    <span class="text-[#363638] font-medium truncate">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</span>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
+      <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
+        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-[#C6B58E]/40 shadow-tactile aspect-square flex items-center justify-center">
+          <div class="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+            <span class="bg-[#363638] text-[#E9DFC2] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">✦ Handmade Touch</span>
+            <span class="bg-[#2D6A4F] text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">100 GSM Natural Paper</span>
+            <span class="bg-[#D4AF37] text-[#363638] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Free Sticker Book</span>
+          </div>
+          <img id="main-product-img" src="{{ product.featured_image | default: 'prod_journal.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 bg-white/95 rounded-3xl p-6 sm:p-8 border border-[#C6B58E]/40 shadow-tactile-lg space-y-6">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-[0.15em] text-[#927B53] bg-[#F8F5ED] px-3 py-1 rounded-full border border-[#C6B58E]/30 inline-block mb-3">{{ product.type | default: 'Stationaries • Journals &amp; Diaries' }}</span>
+          <h1 class="font-serif-display text-3xl sm:text-4xl text-[#363638] leading-tight">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</h1>
+          <div class="flex items-center gap-2 mt-2">
+            <span class="text-[#D4AF37]">★★★★★</span>
+            <span class="text-xs font-semibold text-[#363638]/70">5.0 (328 verified patrons)</span>
+          </div>
+        </div>
+
+        <div class="py-4 border-y border-[#C6B58E]/30 flex items-baseline justify-between">
+          <div>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif-display text-3xl sm:text-4xl font-bold text-[#4D351D]">{{ product.price | money | default: '₹1,299' }}</span>
+              <span class="text-base text-[#363638]/40 line-through">₹1,699</span>
+              <span class="bg-[#C85A32]/10 text-[#C85A32] text-xs font-bold px-2.5 py-0.5 rounded-full">SAVE 24%</span>
+            </div>
+            <p class="text-xs text-[#363638]/60 mt-1">Inclusive of all domestic taxes &bull; Custom kraft box included</p>
+          </div>
+        </div>
+
+        {% form 'product', product, id: 'journal-pdp-form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+          <div class="flex items-center gap-3 mb-4">
+            <button type="submit" name="add" class="flex-1 bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] py-4 px-6 rounded-full font-bold text-sm tracking-wide flex items-center justify-center gap-3 shadow-tactile">
+              <span>Add to Atelier Bag</span>
+            </button>
+          </div>
+          <div>{{ form | payment_button }}</div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Journal Luxury PDP",
+  "settings": []
+}
+{% endschema %}
+"""
+    with open(os.path.join(THEME_DIR, "sections", "main-journal-pdp.liquid"), "w", encoding="utf-8") as f:
+        f.write(main_journal_liquid)
+
+    print("Generated dedicated Shopify sections (main-product, main-journal-pdp, main-collection, main-page, main-cart, main-404).")
 
 def generate_snippets():
     # 1. product-card.liquid
@@ -772,6 +842,20 @@ def generate_templates():
     }
     with open(os.path.join(THEME_DIR, "templates", "product.json"), "w", encoding="utf-8") as f:
         json.dump(product_json, f, indent=2)
+
+    # 2b. product.journal.json (Dedicated Luxury Journal PDP)
+    product_journal_json = {
+        "sections": {
+            "main": {
+                "type": "main-journal-pdp"
+            }
+        },
+        "order": [
+            "main"
+        ]
+    }
+    with open(os.path.join(THEME_DIR, "templates", "product.journal.json"), "w", encoding="utf-8") as f:
+        json.dump(product_journal_json, f, indent=2)
 
     # 3. collection.json
     collection_json = {

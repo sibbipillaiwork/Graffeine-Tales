@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 2027 Bound Chronicle &amp; Daily Journal — Graffeine Tales | Artisanal Stationery</title>
+  <meta name="description" content="Handcrafted A5 daily planner &amp; journal with 100 GSM bleed-resistant natural paper, 180° lay-flat Smyth sewn binding, dual silk ribbons, and 4 gilded sticker sheets. Where stories become art." />
+  
+  <!-- Favicon / Coffee Cup -->
+  <link rel="icon" type="image/png" href="assets/coffee_cup.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN with Graffeine Tales Custom Palette -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'warm-paper': '#F8F5ED',
+            'espresso': '#363638',
+            'logo-cream': '#E9DFC2',
+            'deep-coffee': '#4D351D',
+            'sand': '#C6B58E',
+            'coffee-tan': '#927B53',
+            'gold-wax': '#D4AF37',
+            'sage-craft': '#2D6A4F',
+            'terracotta': '#C85A32',
+            'cream-muted': '#F2EDE2',
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', '"Inter"', 'sans-serif'],
+            script: ['"Patrick Hand"', 'cursive'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'tactile': '0 10px 30px -5px rgba(77, 53, 29, 0.08), 0 4px 12px -2px rgba(77, 53, 29, 0.04)',
+            'tactile-lg': '0 20px 40px -10px rgba(54, 54, 56, 0.12), 0 8px 16px -4px rgba(77, 53, 29, 0.06)',
+            'glass': '0 8px 32px 0 rgba(77, 53, 29, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Global GTB Styles for Header/Footer/Modals Integration -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Specific PDP tactile refinements */
+    body {
+      background-color: #F8F5ED;
+      color: #363638;
+      font-family: 'DM Sans', 'Inter', sans-serif;
+    }
+    .font-serif-display {
+      font-family: 'DM Serif Display', Georgia, serif;
+    }
+    .font-script {
+      font-family: 'Patrick Hand', cursive;
+    }
+    
+    /* Steam animation for brand header mark */
+    @keyframes steamFloat {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-16px) scaleX(1.4); opacity: 0; }
+    }
+    .steam-wisp {
+      animation: steamFloat 2.6s infinite ease-out;
+    }
+    .steam-wisp.w2 {
+      animation-delay: 1.3s;
+    }
+
+    /* Thumbnail selection border */
+    .thumb-active {
+      border-color: #4D351D !important;
+      box-shadow: 0 0 0 2px #C6B58E;
+    }
+
+    /* Smooth accordion transitions */
+    .faq-answer {
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    }
+
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8F5ED;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C6B58E;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #927B53;
+    }
+
+    /* Inner Page Flip Carousel Glow */
+    .inner-page-card {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+    .inner-page-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px -8px rgba(77, 53, 29, 0.16);
+    }
+  </style>
+</head>
+
+<body class="bg-warm-paper text-espresso antialiased">
+
+  <!-- =========================================================================
+       1. TOP ANNOUNCEMENT BAR
+       ========================================================================= -->
+  <aside class="bg-espresso text-logo-cream text-xs py-2 px-4 border-b border-sand/20" aria-label="Announcement">
+    <div class="max-w-7xl mx-auto flex items-center justify-between text-center md:text-left">
+      <div class="hidden md:flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-gold-wax animate-pulse"></span>
+        <span class="font-medium tracking-wide">2027 Studio Journal Drop &bull; Handcrafted in Small Batches</span>
+      </div>
+      <div class="mx-auto md:mx-0 flex items-center gap-3">
+        <span>✨ <strong>FREE Studio Courier Shipping</strong> on orders above ₹1,499</span>
+        <span class="hidden sm:inline text-sand/60">|</span>
+        <span class="hidden sm:inline text-sand/90">Includes 4 Free Gilded Sticker Sheets</span>
+      </div>
+      <div class="hidden lg:flex items-center gap-4 text-xs">
+        <a href="index.html#about-us" class="hover:text-white transition-colors">Our Atelier Story</a>
+        <a href="mailto:hello@graffeinetales.com" class="hover:text-white transition-colors">Concierge</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. PRIMARY SITE HEADER & NAVIGATION
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-warm-paper/90 backdrop-blur-md border-b border-sand/30 transition-all duration-300" id="main-pdp-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Mobile Menu Toggle -->
+      <button type="button" class="lg:hidden p-2 text-espresso hover:text-deep-coffee" id="mobile-toggle-btn" aria-label="Open mobile menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <!-- Brand Logo with Steam Cup -->
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Graffeine Tales Home">
+        <div class="relative w-8 h-8 flex items-center justify-center">
+          <!-- Steam Animation -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none" aria-hidden="true">
+            <span class="w-1 h-3 bg-coffee-tan/70 rounded-full steam-wisp"></span>
+            <span class="w-1 h-3 bg-coffee-tan/70 rounded-full steam-wisp w2"></span>
+          </div>
+          <img src="assets/coffee_cup.png" alt="Graffeine Tales Emblem" class="w-7 h-7 object-contain group-hover:rotate-6 transition-transform" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif-display text-2xl tracking-wide text-espresso leading-none group-hover:text-deep-coffee transition-colors">Graffeine Tales</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-coffee-tan font-medium">Where Stories Become Art</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-espresso/90" aria-label="Main Navigation">
+        <a href="index.html" class="hover:text-deep-coffee transition-colors">Home</a>
+        <a href="index.html#category-section" class="hover:text-deep-coffee transition-colors">Stationaries</a>
+        <a href="journal-pdp.html" class="text-deep-coffee font-semibold border-b-2 border-deep-coffee pb-1">Journals &amp; Diaries</a>
+        <a href="index.html#bestsellers-section" class="hover:text-deep-coffee transition-colors">Coasters &amp; Décor</a>
+        <a href="index.html#stories-in-motion" class="hover:text-deep-coffee transition-colors">Stories in Motion</a>
+        <a href="index.html#about-us" class="hover:text-deep-coffee transition-colors">Our Story</a>
+      </nav>
+
+      <!-- Header Action Icons -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Search Trigger -->
+        <button type="button" class="p-2 text-espresso hover:text-deep-coffee transition-colors" id="header-search-trigger" title="Search editions (Cmd+K)">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-width="2"/></svg>
+        </button>
+
+        <!-- Wishlist Slide-Over Trigger -->
+        <button type="button" class="p-2 text-espresso hover:text-deep-coffee relative transition-colors" onclick="openWishlistDrawer()" title="Saved Wishlist">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-terracotta text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+        </button>
+
+        <!-- Cart Drawer Trigger -->
+        <button type="button" class="p-2 text-espresso hover:text-deep-coffee relative transition-colors" id="cart-trigger" title="Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-deep-coffee text-logo-cream text-[10px] font-bold rounded-full flex items-center justify-center" id="cart-badge-count">1</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. EDITORIAL BREADCRUMB
+       ========================================================================= -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-espresso/60 flex items-center gap-2" aria-label="Breadcrumb">
+    <a href="index.html" class="hover:text-deep-coffee transition-colors">Home</a>
+    <span>&rsaquo;</span>
+    <a href="index.html#category-section" class="hover:text-deep-coffee transition-colors">Stationaries</a>
+    <span>&rsaquo;</span>
+    <a href="index.html#catalogue-section" class="hover:text-deep-coffee transition-colors">Journals &amp; Planners</a>
+    <span>&rsaquo;</span>
+    <span class="text-espresso font-medium truncate">The 2027 Bound Chronicle</span>
+  </nav>
+
+  <!-- =========================================================================
+       4. TOP PRODUCT HERO GRID (2-Column Split Desktop | Stacked Mobile)
+       ========================================================================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
+      
+      <!-- ---------------------------------------------------------------------
+           LEFT COLUMN: VISUAL GALLERY & INNER PEEK
+           --------------------------------------------------------------------- -->
+      <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
+        
+        <!-- Main Image Stage with Badge Overlay -->
+        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-sand/40 shadow-tactile group aspect-square flex items-center justify-center cursor-zoom-in" id="gallery-stage" onclick="openLightbox()">
+          
+          <!-- Tactile Badge Overlays -->
+          <div class="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+            <span class="bg-espresso text-logo-cream text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1.5">
+              <span>✦</span> Handmade Touch
+            </span>
+            <span class="bg-[#2D6A4F] text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+              100 GSM Natural Paper
+            </span>
+            <span class="bg-gold-wax/90 text-espresso text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+              Free Sticker Book
+            </span>
+          </div>
+
+          <!-- Main Featured Photo -->
+          <img id="main-product-img" 
+               src="assets/prod_journal.jpg" 
+               alt="The 2027 Bound Chronicle &amp; Daily Journal in Midnight Espresso" 
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+
+          <!-- Fullscreen Expand Button -->
+          <button type="button" class="absolute bottom-4 right-4 bg-warm-paper/90 hover:bg-white text-espresso p-2.5 rounded-full shadow-md backdrop-blur-sm transition-transform hover:scale-110" aria-label="Enlarge Image" title="View Fullscreen Lightbox">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          </button>
+
+          <!-- Inner Spread Peek Watermark -->
+          <div class="absolute bottom-4 left-4 bg-espresso/70 text-logo-cream text-[11px] px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-1.5 pointer-events-none">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            <span>Tap to inspect spreads in detail</span>
+          </div>
+        </div>
+
+        <!-- Thumbnail Strip (Multi-angle & Inner Peeks) -->
+        <div class="grid grid-cols-5 gap-3" id="thumb-strip">
+          
+          <!-- Thumb 1: Front Cover Hero -->
+          <button type="button" class="thumb-btn thumb-active relative rounded-xl overflow-hidden aspect-square border-2 border-transparent bg-white p-0.5 transition-all" onclick="selectThumbnail(0, 'assets/prod_journal.jpg', 'Front Cover in Japanese Bookcloth')">
+            <img src="assets/prod_journal.jpg" alt="Front Cover" class="w-full h-full object-cover rounded-lg" />
+            <span class="absolute bottom-1 inset-x-1 bg-espresso/80 text-[9px] text-logo-cream py-0.5 text-center font-medium rounded truncate">Cover</span>
+          </button>
+
+          <!-- Thumb 2: Lay-Flat 180 Spread -->
+          <button type="button" class="thumb-btn relative rounded-xl overflow-hidden aspect-square border-2 border-transparent bg-white p-0.5 transition-all" onclick="selectThumbnail(1, 'assets/cat_journals.jpg', '180 Degree Lay-Flat Smyth Sewn Binding')">
+            <img src="assets/cat_journals.jpg" alt="Lay-Flat Spread" class="w-full h-full object-cover rounded-lg" />
+            <span class="absolute bottom-1 inset-x-1 bg-espresso/80 text-[9px] text-logo-cream py-0.5 text-center font-medium rounded truncate">180° Flat</span>
+          </button>
+
+          <!-- Thumb 3: Inner Monthly & Weekly Spreads -->
+          <button type="button" class="thumb-btn relative rounded-xl overflow-hidden aspect-square border-2 border-transparent bg-white p-0.5 transition-all" onclick="selectThumbnail(2, 'assets/products/artist_calendar.jpg', 'Weekly Intention & Timeblocking Spreads')">
+            <img src="assets/products/artist_calendar.jpg" alt="Inner Spreads" class="w-full h-full object-cover rounded-lg" />
+            <span class="absolute bottom-1 inset-x-1 bg-espresso/80 text-[9px] text-logo-cream py-0.5 text-center font-medium rounded truncate">Spreads</span>
+          </button>
+
+          <!-- Thumb 4: Gilded Sticker Book Sheets -->
+          <button type="button" class="thumb-btn relative rounded-xl overflow-hidden aspect-square border-2 border-transparent bg-white p-0.5 transition-all" onclick="selectThumbnail(3, 'assets/products/sticker_bookworm.jpg', '4 Sheets of Handcrafted Stickers Included')">
+            <img src="assets/products/sticker_bookworm.jpg" alt="Included Sticker Sheets" class="w-full h-full object-cover rounded-lg" />
+            <span class="absolute bottom-1 inset-x-1 bg-gold-wax text-[9px] text-espresso py-0.5 text-center font-bold rounded truncate">Stickers</span>
+          </button>
+
+          <!-- Thumb 5: Sustainable Gift Packaging with Wax Seal -->
+          <button type="button" class="thumb-btn relative rounded-xl overflow-hidden aspect-square border-2 border-transparent bg-white p-0.5 transition-all" onclick="selectThumbnail(4, 'assets/prod_waxseal.jpg', 'Kraft Gift Box with Wax Seal Emblem')">
+            <img src="assets/prod_waxseal.jpg" alt="Gift Packaging & Wax Seal" class="w-full h-full object-cover rounded-lg" />
+            <span class="absolute bottom-1 inset-x-1 bg-espresso/80 text-[9px] text-logo-cream py-0.5 text-center font-medium rounded truncate">Gift Box</span>
+          </button>
+        </div>
+
+        <!-- Quick Proof Badges Under Gallery -->
+        <div class="bg-white/80 rounded-xl p-4 border border-sand/30 flex items-center justify-around text-center text-xs text-espresso/80">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Fountain-Pen Tested</span>
+          </div>
+          <span class="text-sand">|</span>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Dispatches in 48 Hrs</span>
+          </div>
+          <span class="text-sand">|</span>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m4 10.5V21l4-2"/></svg>
+            <span>Plastic-Free Kraft Box</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ---------------------------------------------------------------------
+           RIGHT COLUMN: BUYING BOX & VARIANT CONFIGURATOR
+           --------------------------------------------------------------------- -->
+      <div class="lg:col-span-5 bg-white/90 rounded-3xl p-6 sm:p-8 border border-sand/40 shadow-tactile-lg space-y-6">
+        
+        <!-- Header Subhead & Title -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs uppercase font-bold tracking-[0.15em] text-coffee-tan bg-warm-paper px-3 py-1 rounded-full border border-sand/30">
+              Stationaries &bull; 2027 Edition
+            </span>
+            <div class="flex items-center gap-1.5 text-xs text-gold-wax font-bold">
+              <span>★★★★★</span>
+              <span class="text-espresso font-medium">5.0 (328 patrons)</span>
+            </div>
+          </div>
+
+          <h1 class="font-serif-display text-3xl sm:text-4xl text-espresso leading-tight" id="pdp-title">
+            The 2027 Bound Chronicle &amp; Daily Journal
+          </h1>
+
+          <p class="text-sm text-espresso/70 mt-2 font-script text-base">
+            "A tactile companion where thoughts, tea rings, and dreams find a permanent home."
+          </p>
+        </div>
+
+        <!-- Pricing Row with Savings & Tax Badge -->
+        <div class="py-4 border-y border-sand/30 flex items-baseline justify-between">
+          <div>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif-display text-3xl sm:text-4xl font-bold text-deep-coffee" id="pdp-price">₹1,299</span>
+              <span class="text-base text-espresso/40 line-through" id="pdp-mrp">₹1,699</span>
+              <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-2.5 py-0.5 rounded-full">
+                SAVE 24%
+              </span>
+            </div>
+            <p class="text-xs text-espresso/60 mt-1">Inclusive of all domestic taxes &bull; Custom studio box included</p>
+          </div>
+          <div class="text-right">
+            <span class="inline-flex items-center gap-1 text-xs text-sage-craft font-semibold bg-sage-craft/10 px-2.5 py-1 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-sage-craft"></span> In Stock (Ready to Ship)
+            </span>
+          </div>
+        </div>
+
+        <!-- 3. CHOOSE YOUR PLANNER: Interactive Variant Swatches -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold uppercase tracking-wider text-espresso">
+              1. Choose Cover Material &amp; Tone: 
+              <span class="font-serif-display text-sm text-deep-coffee font-normal ml-1" id="active-variant-label">Midnight Espresso Bookcloth</span>
+            </label>
+            <span class="text-[11px] text-coffee-tan underline cursor-pointer" onclick="openSizeGuideModal()">Fabric Guide</span>
+          </div>
+
+          <!-- Swatch Pill Grid -->
+          <div class="grid grid-cols-2 gap-2.5" id="variant-swatches">
+            
+            <!-- Swatch 1: Midnight Espresso (Active by default) -->
+            <button type="button" 
+                    class="variant-btn border-2 border-deep-coffee bg-warm-paper rounded-xl p-3 flex items-center gap-3 text-left transition-all relative shadow-sm"
+                    data-variant="espresso"
+                    data-name="Midnight Espresso Bookcloth"
+                    data-color="#363638"
+                    data-img="assets/prod_journal.jpg"
+                    onclick="selectVariant('espresso', 'Midnight Espresso Bookcloth', 'assets/prod_journal.jpg', this)">
+              <span class="w-6 h-6 rounded-full bg-[#363638] border-2 border-white shadow-inner flex-shrink-0"></span>
+              <div class="leading-tight">
+                <span class="text-xs font-bold block text-espresso">Midnight Espresso</span>
+                <span class="text-[10px] text-espresso/60">Gold Foil Debossed</span>
+              </div>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark">✓</span>
+            </button>
+
+            <!-- Swatch 2: Terracotta Bloom -->
+            <button type="button" 
+                    class="variant-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-3 flex items-center gap-3 text-left transition-all relative"
+                    data-variant="terracotta"
+                    data-name="Terracotta Bloom Cloth"
+                    data-color="#C85A32"
+                    data-img="assets/cat_journals.jpg"
+                    onclick="selectVariant('terracotta', 'Terracotta Bloom Cloth', 'assets/cat_journals.jpg', this)">
+              <span class="w-6 h-6 rounded-full bg-[#C85A32] border-2 border-white shadow-inner flex-shrink-0"></span>
+              <div class="leading-tight">
+                <span class="text-xs font-bold block text-espresso">Terracotta Bloom</span>
+                <span class="text-[10px] text-espresso/60">Botanical Texture</span>
+              </div>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark hidden">✓</span>
+            </button>
+
+            <!-- Swatch 3: Sage Atelier -->
+            <button type="button" 
+                    class="variant-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-3 flex items-center gap-3 text-left transition-all relative"
+                    data-variant="sage"
+                    data-name="Sage Atelier Linen"
+                    data-color="#4F6D5B"
+                    data-img="assets/products/artist_calendar.jpg"
+                    onclick="selectVariant('sage', 'Sage Atelier Linen', 'assets/products/artist_calendar.jpg', this)">
+              <span class="w-6 h-6 rounded-full bg-[#4F6D5B] border-2 border-white shadow-inner flex-shrink-0"></span>
+              <div class="leading-tight">
+                <span class="text-xs font-bold block text-espresso">Sage Atelier</span>
+                <span class="text-[10px] text-espresso/60">Organic Earth Weave</span>
+              </div>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark hidden">✓</span>
+            </button>
+
+            <!-- Swatch 4: Celestial Indigo -->
+            <button type="button" 
+                    class="variant-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-3 flex items-center gap-3 text-left transition-all relative"
+                    data-variant="indigo"
+                    data-name="Celestial Indigo Stardust"
+                    data-color="#243447"
+                    data-img="assets/products/starry_nights.jpg"
+                    onclick="selectVariant('indigo', 'Celestial Indigo Stardust', 'assets/products/starry_nights.jpg', this)">
+              <span class="w-6 h-6 rounded-full bg-[#243447] border-2 border-white shadow-inner flex-shrink-0"></span>
+              <div class="leading-tight">
+                <span class="text-xs font-bold block text-espresso">Celestial Indigo</span>
+                <span class="text-[10px] text-espresso/60">Silver Gilt Stamping</span>
+              </div>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark hidden">✓</span>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- 4. CHOOSE YOUR LAYOUT SPREAD -->
+        <div class="space-y-2">
+          <label class="text-xs font-bold uppercase tracking-wider text-espresso">2. Select Interior Layout Format:</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button type="button" class="layout-btn border-2 border-deep-coffee bg-warm-paper rounded-xl p-3 text-left text-xs font-medium text-espresso transition-all" onclick="selectLayout(this, 'Dated 2027 Full-Year (Weekly + Monthly)')">
+              <span class="font-bold block text-deep-coffee text-sm">Dated 2027 Year</span>
+              <span class="text-espresso/70 text-[11px]">Jan &ndash; Dec 2027 calendar grids</span>
+            </button>
+            <button type="button" class="layout-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-3 text-left text-xs font-medium text-espresso transition-all" onclick="selectLayout(this, 'Undated 365-Day Daily Freedom Format')">
+              <span class="font-bold block text-espresso text-sm">Undated 365 Days</span>
+              <span class="text-espresso/70 text-[11px]">Start whenever, zero wasted pages</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. QUANTITY STEPPER & PRIMARY BUY ACTIONS -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center gap-3">
+            
+            <!-- Quantity Control -->
+            <div class="flex items-center border border-sand bg-warm-paper rounded-full p-1 shadow-sm">
+              <button type="button" class="w-9 h-9 rounded-full hover:bg-white text-espresso font-bold flex items-center justify-center transition-colors" onclick="changeQty(-1)" aria-label="Decrease quantity">−</button>
+              <input type="number" id="pdp-qty-input" value="1" min="1" max="10" class="w-10 text-center bg-transparent text-espresso font-bold text-sm focus:outline-none" readonly />
+              <button type="button" class="w-9 h-9 rounded-full hover:bg-white text-espresso font-bold flex items-center justify-center transition-colors" onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+            </div>
+
+            <!-- Add to Cart Button (Deep Coffee #4D351D + Logo Cream #E9DFC2) -->
+            <button type="button" 
+                    id="pdp-add-cart-btn"
+                    class="flex-1 bg-deep-coffee hover:bg-espresso text-logo-cream py-4 px-6 rounded-full font-bold text-sm sm:text-base tracking-wide flex items-center justify-center gap-3 shadow-tactile transition-all duration-300 transform active:scale-95 group"
+                    onclick="handlePdpAddToCart()">
+              <svg class="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              <span>Add to Atelier Bag</span>
+            </button>
+
+          </div>
+
+          <!-- 1-Click Instant Checkout (Buy Now) -->
+          <button type="button" 
+                  class="w-full bg-espresso hover:bg-black text-logo-cream py-3.5 px-6 rounded-full font-semibold text-xs uppercase tracking-widest transition-all duration-200 border border-sand/30 flex items-center justify-center gap-2"
+                  onclick="handlePdpInstantBuy()">
+            <span>⚡ Buy It Now &bull; Instant UPI &amp; Cards</span>
+          </button>
+        </div>
+
+        <!-- 6. PINCODE DELIVERY ESTIMATE CHECKER -->
+        <div class="bg-warm-paper/70 rounded-2xl p-4 border border-sand/30 space-y-2">
+          <div class="flex items-center justify-between text-xs font-semibold text-espresso">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-coffee-tan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Estimate Delivery Time to Your City
+            </span>
+            <span class="text-coffee-tan text-[11px]">Pan-India Courier</span>
+          </div>
+
+          <div class="flex gap-2">
+            <input type="text" 
+                   id="pincode-input" 
+                   maxlength="6" 
+                   placeholder="Enter 6-digit Pincode (e.g. 560001, 110001)" 
+                   class="flex-1 bg-white border border-sand/40 rounded-xl px-3 py-2 text-xs text-espresso focus:outline-none focus:ring-1 focus:ring-deep-coffee" />
+            <button type="button" 
+                    onclick="checkDeliveryPincode()" 
+                    class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+              Check
+            </button>
+          </div>
+          <p id="pincode-result" class="text-xs text-espresso/80 font-medium hidden"></p>
+        </div>
+
+        <!-- Studio Free Shipping Meter -->
+        <div class="pt-2 text-xs text-espresso/70 space-y-1.5">
+          <div class="flex justify-between items-center text-[11px] font-medium">
+            <span>Free Shipping Goal (₹1,499)</span>
+            <span class="text-coffee-tan font-bold">Add ₹200 more for FREE Courier</span>
+          </div>
+          <div class="w-full h-1.5 bg-sand/30 rounded-full overflow-hidden">
+            <div class="h-full bg-deep-coffee rounded-full" style="width: 86%;"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       5. WHAT'S INSIDE — THE ANATOMY OF THE CHRONICLE
+       ========================================================================= -->
+  <section class="py-16 bg-white border-y border-sand/30" id="whats-inside-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-warm-paper px-3 py-1 rounded-full border border-sand/30">
+          Structural Architecture
+        </span>
+        <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">What’s Inside the Journal</h2>
+        <p class="text-sm text-espresso/70 mt-2">
+          Every page is architected to bring order to chaotic days while leaving generous breathing room for freehand sketches and weekend coffee thoughts.
+        </p>
+      </div>
+
+      <!-- 6-Grid Blueprint Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Spread 1: Yearly Goals & Vision -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 hover:shadow-tactile transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-sm">
+            01
+          </div>
+          <h3 class="font-serif-display text-xl text-espresso">Yearly Goals &amp; Life Blueprint</h3>
+          <p class="text-xs text-espresso/70 leading-relaxed">
+            Begin the year with a dedicated 4-page reflection space: intentional quarterly milestones, habits you want to cultivate, places to visit, and books to read before year's end.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-coffee-tan flex items-center gap-1.5">
+            <span>✦</span> 4 Dedicated Foundation Spreads
+          </div>
+        </div>
+
+        <!-- Spread 2: Monthly At-A-Glance Calendar -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 hover:shadow-tactile transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-sm">
+            02
+          </div>
+          <h3 class="font-serif-display text-xl text-espresso">12 Monthly Panoramic Overviews</h3>
+          <p class="text-xs text-espresso/70 leading-relaxed">
+            Spacious double-page calendar grids with Sunday starts, moon phases, major Indian cultural festivals, and an expansive side-column for monthly budget tracking.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-coffee-tan flex items-center gap-1.5">
+            <span>✦</span> Double-Page Clean Grids
+          </div>
+        </div>
+
+        <!-- Spread 3: Weekly Action & Timeblocking -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 hover:shadow-tactile transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-sm">
+            03
+          </div>
+          <h3 class="font-serif-display text-xl text-espresso">52 Weekly Focus Dashboards</h3>
+          <p class="text-xs text-espresso/70 leading-relaxed">
+            Horizontal or vertical weekday schedules paired with a daily micro-gratitude prompt, a weekly water and coffee tracker, and priority checkboxes that make productivity feel meditative.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-coffee-tan flex items-center gap-1.5">
+            <span>✦</span> 52 Week-by-Week Action Hubs
+          </div>
+        </div>
+
+        <!-- Spread 4: Habit & Mood Rituals -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 hover:shadow-tactile transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-sm">
+            04
+          </div>
+          <h3 class="font-serif-display text-xl text-espresso">Monthly Habit &amp; Ritual Trackers</h3>
+          <p class="text-xs text-espresso/70 leading-relaxed">
+            Track movement, reading streaks, hydration, and sleep quality across clean 31-day micro-grids without cluttered or overwhelming app notifications.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-coffee-tan flex items-center gap-1.5">
+            <span>✦</span> 12 Dedicated Habit Grids
+          </div>
+        </div>
+
+        <!-- Spread 5: Dot-Grid Creative Play -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 hover:shadow-tactile transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-sm">
+            05
+          </div>
+          <h3 class="font-serif-display text-xl text-espresso">40 Perforated Dot-Grid Notes</h3>
+          <p class="text-xs text-espresso/70 leading-relaxed">
+            At the back of the book, 40 subtle 5mm dot-grid ivory pages provide an unstructured sandbox for spontaneous brainstorming, wireframes, and weekend coffee sketches.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-coffee-tan flex items-center gap-1.5">
+            <span>✦</span> 5mm Subtle Silver Dot Grid
+          </div>
+        </div>
+
+        <!-- Spread 6: Rear Expandable Gusset Pocket -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 hover:shadow-tactile transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-sm">
+            06
+          </div>
+          <h3 class="font-serif-display text-xl text-espresso">Linen-Reinforced Memory Pocket</h3>
+          <p class="text-xs text-espresso/70 leading-relaxed">
+            Tuck away boarding passes, handwritten receipts, museum ticket stubs, and polaroids in the sturdy rear accordion envelope lined with organic unbleached linen fabric.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-coffee-tan flex items-center gap-1.5">
+            <span>✦</span> Stores Sticker Sheets &amp; Ephemera
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. PRODUCT FEATURES & SPECIFICATIONS CARD
+       ========================================================================= -->
+  <section class="py-16 bg-warm-paper" id="product-specifications">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left Column: Editorial Specs Description -->
+        <div class="lg:col-span-5 space-y-5">
+          <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-white px-3 py-1 rounded-full border border-sand/30">
+            Physical Craftsmanship
+          </span>
+          <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso leading-tight">
+            Engineered to Stay Flat. Built to Last a Lifetime.
+          </h2>
+          <p class="text-sm text-espresso/70 leading-relaxed">
+            We spent nine months testing 18 paper mills across Japan, Germany, and India until we found the holy grail: a dense 100 GSM natural bamboo-cotton hybrid that absorbs heavy fountain pen ink with zero feathering and zero show-through.
+          </p>
+
+          <div class="pt-3 space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-deep-coffee text-logo-cream flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+              <div>
+                <strong class="text-xs block text-espresso">True 180° Smyth Sewn Case Binding</strong>
+                <span class="text-xs text-espresso/70">Never fight a spine that snaps shut while you're writing with your coffee in one hand.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-deep-coffee text-logo-cream flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+              <div>
+                <strong class="text-xs block text-espresso">Dual Silk Ribbon Bookmarks</strong>
+                <span class="text-xs text-espresso/70">One for your active weekly dashboard, one for your monthly goals.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-deep-coffee text-logo-cream flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+              <div>
+                <strong class="text-xs block text-espresso">Heavyweight Bookcloth Hardcover</strong>
+                <span class="text-xs text-espresso/70">Resistant to water splashes, scuffs, and daily backpack transit.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Specs Matrix Grid -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-sand/40 shadow-tactile">
+          <h3 class="font-serif-display text-2xl text-espresso mb-6 pb-4 border-b border-sand/30">
+            Atelier Technical Specifications
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
+            
+            <div class="space-y-1 p-3 bg-warm-paper/60 rounded-xl border border-sand/20">
+              <span class="text-[10px] uppercase tracking-wider font-bold text-coffee-tan">Paper Stock &amp; Weight</span>
+              <p class="font-bold text-espresso text-sm">100 GSM Natural Bamboo-Cotton</p>
+              <p class="text-espresso/70">FSC-certified, acid-free, zero ghosting with 0.7mm gel pens &amp; fountain ink.</p>
+            </div>
+
+            <div class="space-y-1 p-3 bg-warm-paper/60 rounded-xl border border-sand/20">
+              <span class="text-[10px] uppercase tracking-wider font-bold text-coffee-tan">Binding Method</span>
+              <p class="font-bold text-espresso text-sm">180° Smyth Sewn Flat Binding</p>
+              <p class="text-espresso/70">Reinforced cloth spine. Lays flat completely without breaking or cracking.</p>
+            </div>
+
+            <div class="space-y-1 p-3 bg-warm-paper/60 rounded-xl border border-sand/20">
+              <span class="text-[10px] uppercase tracking-wider font-bold text-coffee-tan">Dimensions &amp; Weight</span>
+              <p class="font-bold text-espresso text-sm">A5 (148 x 210 mm) &bull; 520 Grams</p>
+              <p class="text-espresso/70">Perfect desk presence, portable enough to slip into any tote or messenger bag.</p>
+            </div>
+
+            <div class="space-y-1 p-3 bg-warm-paper/60 rounded-xl border border-sand/20">
+              <span class="text-[10px] uppercase tracking-wider font-bold text-coffee-tan">Page Count</span>
+              <p class="font-bold text-espresso text-sm">224 Numbered Ivory Pages</p>
+              <p class="text-espresso/70">Includes index, yearly goals, 12 months, 52 weeks, and 40 dot-grid pages.</p>
+            </div>
+
+            <div class="space-y-1 p-3 bg-warm-paper/60 rounded-xl border border-sand/20">
+              <span class="text-[10px] uppercase tracking-wider font-bold text-coffee-tan">Cover Material</span>
+              <p class="font-bold text-espresso text-sm">Textured Japanese Bookcloth</p>
+              <p class="text-espresso/70">Hot stamped with metallic foil emblem. Water-resistant and tactile.</p>
+            </div>
+
+            <div class="space-y-1 p-3 bg-warm-paper/60 rounded-xl border border-sand/20">
+              <span class="text-[10px] uppercase tracking-wider font-bold text-coffee-tan">Included Add-ons</span>
+              <p class="font-bold text-espresso text-sm">4 Gilded Sticker Sheets + Gift Box</p>
+              <p class="text-espresso/70">180+ die-cut planning stickers and sustainable kraft gift box with wax seal.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. FEATURES OF THE STICKER BOOK (GILDED COMPANION SET)
+       ========================================================================= -->
+  <section class="py-16 bg-[#F3EDE0] border-y border-sand/40 relative overflow-hidden" id="sticker-book-feature">
+    
+    <!-- Subtle background art stamp -->
+    <div class="absolute -right-20 -bottom-20 w-80 h-80 opacity-5 pointer-events-none">
+      <img src="assets/coffee_cup.png" alt="" class="w-full h-full object-contain" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left: Visual Preview of Stickers -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative bg-white rounded-3xl p-6 shadow-tactile border border-sand/40">
+            <span class="absolute top-4 right-4 bg-gold-wax text-espresso font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+              ✦ 4 Full Sheets &bull; 180+ Stickers
+            </span>
+            <img src="assets/products/sticker_bookworm.jpg" alt="Graffeine Tales Gilded Planning Stickers" class="rounded-2xl w-full h-auto object-cover" />
+            
+            <div class="mt-4 pt-3 border-t border-sand/30 flex items-center justify-between text-xs text-espresso/70">
+              <span class="font-script text-base text-deep-coffee">"For moments that deserve a little gilded joy."</span>
+              <span class="font-semibold text-coffee-tan">Gold Foil Details</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: What's In The Sticker Book -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-white px-3 py-1 rounded-full border border-sand/30">
+              Complimentary Atelier Gift
+            </span>
+            <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">
+              Features of the Gilded Sticker Book
+            </h2>
+            <p class="text-sm text-espresso/70 mt-2">
+              Every copy of The 2027 Bound Chronicle arrives with 4 exclusive sheets of hand-illustrated, matte vinyl planning stickers designed by our in-house illustrators.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            
+            <div class="bg-white/80 p-4 rounded-2xl border border-sand/30 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-base">📅</span>
+                <strong class="text-espresso font-bold">Sheet 01: Functional Markers</strong>
+              </div>
+              <p class="text-espresso/70">Appointments, deadlines, bills, flights, birthdays, and priority flags to keep key dates unmistakable.</p>
+            </div>
+
+            <div class="bg-white/80 p-4 rounded-2xl border border-sand/30 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-base">☕</span>
+                <strong class="text-espresso font-bold">Sheet 02: Coffee &amp; Cozy Rituals</strong>
+              </div>
+              <p class="text-espresso/70">Illustrated coffee cups, book stacks, rainy mornings, meditation icons, and sweet weekend tea reminders.</p>
+            </div>
+
+            <div class="bg-white/80 p-4 rounded-2xl border border-sand/30 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-base">✨</span>
+                <strong class="text-espresso font-bold">Sheet 03: Gold Foil Washi &amp; Accents</strong>
+              </div>
+              <p class="text-espresso/70">Real metallic gold hot-stamped stars, washi tape ribbons, and delicate botanical flourish borders.</p>
+            </div>
+
+            <div class="bg-white/80 p-4 rounded-2xl border border-sand/30 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-base">📑</span>
+                <strong class="text-espresso font-bold">Sheet 04: 12 Monthly Index Tabs</strong>
+              </div>
+              <p class="text-espresso/70">Heavy-duty laminated tabs to index every month from January to December for instantaneous flipping.</p>
+            </div>
+
+          </div>
+
+          <div class="bg-deep-coffee/5 p-4 rounded-xl border border-deep-coffee/15 flex items-center gap-3">
+            <span class="text-xl">🎁</span>
+            <span class="text-xs text-deep-coffee font-medium">
+              Included free in your journal parcel. No separate purchase required (Value ₹399).
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. SHIPPING & ATELIER DISPATCH TIMELINE
+       ========================================================================= -->
+  <section class="py-16 bg-white" id="shipping-timeline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-warm-paper px-3 py-1 rounded-full border border-sand/30">
+          Handmade &bull; Thoughtfully Packed
+        </span>
+        <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">From Our Hands to Your Desk</h2>
+        <p class="text-sm text-espresso/70 mt-2">
+          We treat each dispatch like an intimate personal letter. Here is what happens once you place your order:
+        </p>
+      </div>
+
+      <!-- 4-Step Timeline Process -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        
+        <!-- Step 1 -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 relative group">
+          <div class="w-10 h-10 rounded-full bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-xs">
+            DAY 1
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">Atelier Inspection</h3>
+          <p class="text-xs text-espresso/70">
+            Every page, ribbon, and spine stitch is inspected by hand. The cover is dusted and personalized.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 relative group">
+          <div class="w-10 h-10 rounded-full bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-xs">
+            DAY 2
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">Wax Seal Packaging</h3>
+          <p class="text-xs text-espresso/70">
+            Wrapped in Japanese tissue paper, tucked into a heavy kraft sleeve, and stamped with our studio gold wax seal.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 relative group">
+          <div class="w-10 h-10 rounded-full bg-deep-coffee text-logo-cream flex items-center justify-center font-bold text-xs">
+            DAYS 3-4
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">Express Courier Dispatch</h3>
+          <p class="text-xs text-espresso/70">
+            Handed to premium air partners (Bluedart / Delhivery / Air Courier) with live SMS &amp; WhatsApp tracking.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-warm-paper rounded-2xl p-6 border border-sand/30 space-y-3 relative group">
+          <div class="w-10 h-10 rounded-full bg-sage-craft text-white flex items-center justify-center font-bold text-xs">
+            DAY 5
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">Unboxing Ritual</h3>
+          <p class="text-xs text-espresso/70">
+            Arrives at your doorstep ready to become your sanctuary for the year ahead. 100% recyclable, zero plastic.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. FLIP THROUGH A FEW INNER PAGES! (INTERACTIVE SLIDER / LIGHTBOX)
+       ========================================================================= -->
+  <section class="py-16 bg-warm-paper border-t border-sand/30" id="flip-through-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-white px-3 py-1 rounded-full border border-sand/30">
+            Take an Inner Peek
+          </span>
+          <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">
+            Flip Through a Few Inner Pages!
+          </h2>
+          <p class="text-sm text-espresso/70 mt-1">
+            Click on any spread to inspect typography, line height, habit tracks, and layout proportions in high resolution.
+          </p>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="flex items-center gap-2 mt-4 md:mt-0">
+          <button type="button" class="p-2.5 rounded-full bg-white border border-sand/40 hover:bg-deep-coffee hover:text-white transition-colors shadow-sm" onclick="scrollInnerSlider(-1)" aria-label="Previous Page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button type="button" class="p-2.5 rounded-full bg-white border border-sand/40 hover:bg-deep-coffee hover:text-white transition-colors shadow-sm" onclick="scrollInnerSlider(1)" aria-label="Next Page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Scrollable Track of High-Res Spreads -->
+      <div class="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth no-scrollbar" id="inner-spreads-track">
+        
+        <!-- Spread Card 1 -->
+        <div class="inner-page-card flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-tactile snap-start cursor-pointer group" onclick="openPageModal('assets/products/artist_calendar.jpg', 'Annual Letter & Vision Blueprint Spread', 'Begin the year with space to articulate your deeper artistic and personal intentions.')">
+          <div class="aspect-[4/3] overflow-hidden bg-sand/10 relative">
+            <img src="assets/products/artist_calendar.jpg" alt="Annual Blueprint Spread" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <span class="absolute bottom-3 right-3 bg-espresso/80 text-logo-cream text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">Click to Zoom</span>
+          </div>
+          <div class="p-4 border-t border-sand/20">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-coffee-tan">Spread 01</span>
+            <h4 class="font-serif-display text-lg text-espresso mt-0.5">Yearly Vision &amp; Letter to Self</h4>
+            <p class="text-xs text-espresso/70 mt-1 line-clamp-2">Setting themes and aspirations with gentle, grounding prompts.</p>
+          </div>
+        </div>
+
+        <!-- Spread Card 2 -->
+        <div class="inner-page-card flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-tactile snap-start cursor-pointer group" onclick="openPageModal('assets/cat_journals.jpg', 'Monthly Panoramic View with Habit Tracker', 'Full 31-day overview with habit lines, moon cycles, and financial milestones.')">
+          <div class="aspect-[4/3] overflow-hidden bg-sand/10 relative">
+            <img src="assets/cat_journals.jpg" alt="Monthly Calendar Spread" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <span class="absolute bottom-3 right-3 bg-espresso/80 text-logo-cream text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">Click to Zoom</span>
+          </div>
+          <div class="p-4 border-t border-sand/20">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-coffee-tan">Spread 02</span>
+            <h4 class="font-serif-display text-lg text-espresso">Monthly Calendar &amp; Habit Trackers</h4>
+            <p class="text-xs text-espresso/70 mt-1 line-clamp-2">Spacious boxes for dinners, deadlines, and daily tea rituals.</p>
+          </div>
+        </div>
+
+        <!-- Spread Card 3 -->
+        <div class="inner-page-card flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-tactile snap-start cursor-pointer group" onclick="openPageModal('assets/prod_journal.jpg', 'Weekly Focus & Daily Micro-Gratitude', 'Clean horizontal weekday layout with priority flags and hydration tallies.')">
+          <div class="aspect-[4/3] overflow-hidden bg-sand/10 relative">
+            <img src="assets/prod_journal.jpg" alt="Weekly Focus Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <span class="absolute bottom-3 right-3 bg-espresso/80 text-logo-cream text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">Click to Zoom</span>
+          </div>
+          <div class="p-4 border-t border-sand/20">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-coffee-tan">Spread 03</span>
+            <h4 class="font-serif-display text-lg text-espresso">Weekly Priorities &amp; Schedule</h4>
+            <p class="text-xs text-espresso/70 mt-1 line-clamp-2">Organize tasks with clear priority check-circles and notes space.</p>
+          </div>
+        </div>
+
+        <!-- Spread Card 4 -->
+        <div class="inner-page-card flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-tactile snap-start cursor-pointer group" onclick="openPageModal('assets/products/starry_nights.jpg', 'Dot-Grid Creative Sandpit Page', 'Subtle 5mm ivory dot grid designed for sketches, mindmaps, and freeform writing.')">
+          <div class="aspect-[4/3] overflow-hidden bg-sand/10 relative">
+            <img src="assets/products/starry_nights.jpg" alt="Dot Grid Notes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <span class="absolute bottom-3 right-3 bg-espresso/80 text-logo-cream text-[10px] px-2.5 py-1 rounded-full backdrop-blur-sm">Click to Zoom</span>
+          </div>
+          <div class="p-4 border-t border-sand/20">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-coffee-tan">Spread 04</span>
+            <h4 class="font-serif-display text-lg text-espresso">Dot-Grid Creative Sandbox</h4>
+            <p class="text-xs text-espresso/70 mt-1 line-clamp-2">40 perforated ivory pages at the back for spontaneous ideas.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. VIDEO COMMERCE CAROUSEL ("Stories in Motion — Journal Edition")
+       ========================================================================= -->
+  <section class="py-16 bg-espresso text-logo-cream relative overflow-hidden" id="pdp-video-commerce">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-[0.2em] text-sand bg-white/10 px-3 py-1 rounded-full border border-sand/20">
+            Stories in Motion &bull; Live Studio Reels
+          </span>
+          <h2 class="font-serif-display text-3xl sm:text-4xl text-logo-cream mt-3">
+            See the Journal in Action
+          </h2>
+          <p class="text-sm text-logo-cream/70 mt-1">
+            Tactile unboxings, fountain pen ink bleed tests, and everyday desk flips filmed in our studio.
+          </p>
+        </div>
+
+        <a href="index.html#stories-in-motion" class="mt-4 md:mt-0 text-xs text-sand hover:text-white font-bold flex items-center gap-1.5 transition-colors">
+          <span>View All Atelier Reels</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+
+      <!-- 4 Shoppable 9:16 Video Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        
+        <!-- Reel 1: ASMR Unboxing -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(0)">
+          <img src="assets/prod_journal.jpg" alt="Journal ASMR Unboxing" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          
+          <!-- Gradient Scrim -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+
+          <!-- Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+
+          <!-- Pinned Shoppable Pill Tag -->
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">ASMR Journal Unboxing</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">₹1,299 &bull; Free Stickers</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handlePdpAddToCart();" title="1-Tap Add to Bag">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reel 2: Fountain Pen Bleed Test -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(1)">
+          <img src="assets/cat_journals.jpg" alt="Fountain Pen Bleed Test" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">Pen Bleed &amp; Ghosting Test</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">100 GSM Paper Demo</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handlePdpAddToCart();">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reel 3: Sticker Sheet Setup -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(2)">
+          <img src="assets/products/sticker_bookworm.jpg" alt="Sticker Setup Demo" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">Sticker Book Setup</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">Included in Parcel</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handlePdpAddToCart();">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reel 4: Lay Flat Binding Demo -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20" onclick="playPdpReel(3)">
+          <img src="assets/prod_waxseal.jpg" alt="180 Degree Binding Demo" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">180° Lay-Flat Desk Flip</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">Zero Spine Resistance</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handlePdpAddToCart();">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. FAQ ACCORDION COMPONENT
+       ========================================================================= -->
+  <section class="py-16 bg-white border-b border-sand/30" id="pdp-faqs">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-warm-paper px-3 py-1 rounded-full border border-sand/30">
+          Everything You Need to Know
+        </span>
+        <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-sm text-espresso/70 mt-2">
+          Have a question about paper weights, nib compatibility, or gift boxes? We've got you covered.
+        </p>
+      </div>
+
+      <!-- Accordion Items -->
+      <div class="space-y-4" id="faq-accordion-group">
+        
+        <!-- FAQ 1 -->
+        <div class="border border-sand/40 rounded-2xl bg-warm-paper/40 overflow-hidden">
+          <button type="button" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-sm text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Will my fountain pen or watercolor brush pens bleed through the pages?</span>
+            <span class="text-xl leading-none text-coffee-tan transition-transform duration-200 icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden px-6 text-xs text-espresso/80 leading-relaxed space-y-2">
+            <p class="pb-4">
+              <strong>Zero feathering and zero bleed-through.</strong> We use 100 GSM premium acid-free natural paper specifically selected and laboratory-tested with fine, medium, and broad fountain pen nibs (Pilot Kakuno, Lamy Safari, Pelikan 4001 inks) as well as Zebra Mildliners and Tombow Dual Brush markers.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border border-sand/40 rounded-2xl bg-warm-paper/40 overflow-hidden">
+          <button type="button" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-sm text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>What is the difference between the Dated and Undated formats?</span>
+            <span class="text-xl leading-none text-coffee-tan transition-transform duration-200 icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden px-6 text-xs text-espresso/80 leading-relaxed space-y-2">
+            <p class="pb-4">
+              The <strong>Dated 2027 Edition</strong> comes with all days, dates, and Indian national calendar festivals pre-printed from January 1 to December 31, 2027. The <strong>Undated Edition</strong> gives you 365 open daily and weekly spreads that you date yourself, making it ideal if you start mid-year or take journaling breaks without leaving empty wasted sheets.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border border-sand/40 rounded-2xl bg-warm-paper/40 overflow-hidden">
+          <button type="button" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-sm text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Are the 4 sticker sheets bound inside or packed separately?</span>
+            <span class="text-xl leading-none text-coffee-tan transition-transform duration-200 icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden px-6 text-xs text-espresso/80 leading-relaxed space-y-2">
+            <p class="pb-4">
+              The sticker sheets come nestled neatly inside the rear expandable gusset pocket. They are loose sheets on a protective backing so you can remove them, arrange them on your desk, and stick them wherever you like without tearing out pages from your journal.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="border border-sand/40 rounded-2xl bg-warm-paper/40 overflow-hidden">
+          <button type="button" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-sm text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Can I request a handwritten gift message or name personalization?</span>
+            <span class="text-xl leading-none text-coffee-tan transition-transform duration-200 icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden px-6 text-xs text-espresso/80 leading-relaxed space-y-2">
+            <p class="pb-4">
+              Yes! During checkout in the Cart drawer, you can add an optional gift message. Our studio calligrapher will handwrite your note on textured archival paper and seal it inside the box with a golden wax seal at no additional charge.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="border border-sand/40 rounded-2xl bg-warm-paper/40 overflow-hidden">
+          <button type="button" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-sm text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>How durable is the 180° Smyth Sewn binding over a whole year?</span>
+            <span class="text-xl leading-none text-coffee-tan transition-transform duration-200 icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden px-6 text-xs text-espresso/80 leading-relaxed space-y-2">
+            <p class="pb-4">
+              Unlike cheap glued "perfect bound" notebooks where pages fall out after a few months, Smyth Sewn binding physically stitches signatures of folded pages with high-tensile cotton thread before adhering them to the cloth spine. It is the gold standard of heirloom bookbinding and is guaranteed to stay intact for decades.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="border border-sand/40 rounded-2xl bg-warm-paper/40 overflow-hidden">
+          <button type="button" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-sm text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>What is your studio return, replacement, and transit policy?</span>
+            <span class="text-xl leading-none text-coffee-tan transition-transform duration-200 icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden px-6 text-xs text-espresso/80 leading-relaxed space-y-2">
+            <p class="pb-4">
+              We package every journal in high-density recycled honeycomb cardboard inside the outer courier box. In the rare event of transit damage, simply email us a photo at <a href="mailto:hello@graffeinetales.com" class="text-deep-coffee underline">hello@graffeinetales.com</a> within 48 hours and we will dispatch a replacement immediately with zero questions asked.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. REVIEWS & SOCIAL PROOF
+       ========================================================================= -->
+  <section class="py-16 bg-warm-paper" id="pdp-reviews">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Review Aggregate Header -->
+      <div class="bg-white rounded-3xl p-8 border border-sand/40 shadow-tactile mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          
+          <!-- Score -->
+          <div class="md:col-span-4 text-center md:text-left md:border-r md:border-sand/30 md:pr-8">
+            <div class="font-serif-display text-5xl font-bold text-deep-coffee">4.98</div>
+            <div class="flex items-center justify-center md:justify-start gap-1 text-gold-wax text-lg my-1">
+              ★★★★★
+            </div>
+            <p class="text-xs text-espresso/70 font-medium">Based on 328 verified atelier patrons</p>
+            <p class="text-xs text-sage-craft font-semibold mt-1">98% of reviewers recommend this edition</p>
+          </div>
+
+          <!-- Rating Breakdown Bars -->
+          <div class="md:col-span-5 space-y-2 text-xs">
+            <div class="flex items-center gap-3">
+              <span class="w-12 text-espresso font-medium">5 Star</span>
+              <div class="flex-1 h-2 bg-sand/30 rounded-full overflow-hidden">
+                <div class="h-full bg-gold-wax rounded-full" style="width: 96%;"></div>
+              </div>
+              <span class="w-8 text-right text-espresso/60">96%</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-12 text-espresso font-medium">4 Star</span>
+              <div class="flex-1 h-2 bg-sand/30 rounded-full overflow-hidden">
+                <div class="h-full bg-gold-wax rounded-full" style="width: 4%;"></div>
+              </div>
+              <span class="w-8 text-right text-espresso/60">4%</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-12 text-espresso/50">3 Star</span>
+              <div class="flex-1 h-2 bg-sand/30 rounded-full overflow-hidden">
+                <div class="h-full bg-gold-wax rounded-full" style="width: 0%;"></div>
+              </div>
+              <span class="w-8 text-right text-espresso/40">0%</span>
+            </div>
+          </div>
+
+          <!-- Write Review Action -->
+          <div class="md:col-span-3 text-center md:text-right">
+            <button type="button" class="bg-espresso hover:bg-black text-logo-cream px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-colors shadow-sm" onclick="showToast('✦ Thank you! The Atelier review form has been recorded.')">
+              Write a Review
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Real Patron Review Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/30 space-y-4 shadow-sm hover:shadow-tactile transition-shadow">
+          <div class="flex items-center justify-between">
+            <div class="text-gold-wax text-sm">★★★★★</div>
+            <span class="text-[10px] text-espresso/50 font-medium">2 days ago</span>
+          </div>
+          <p class="text-xs text-espresso/80 leading-relaxed italic font-serif text-sm">
+            "I use a wet Lamy broad nib fountain pen and was honestly prepared for some bleeding, but this paper is pure magic. It opens completely flat on my studio desk without me having to bend the spine backward. Worth every single rupee."
+          </p>
+          <div class="pt-3 border-t border-sand/20 flex items-center justify-between">
+            <div>
+              <strong class="text-xs block text-espresso font-bold">Ananya Deshmukh</strong>
+              <span class="text-[10px] text-espresso/60">Architect &bull; Bengaluru</span>
+            </div>
+            <span class="text-[10px] text-sage-craft font-semibold bg-sage-craft/10 px-2 py-0.5 rounded-full">
+              ✓ Verified Buyer
+            </span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/30 space-y-4 shadow-sm hover:shadow-tactile transition-shadow">
+          <div class="flex items-center justify-between">
+            <div class="text-gold-wax text-sm">★★★★★</div>
+            <span class="text-[10px] text-espresso/50 font-medium">1 week ago</span>
+          </div>
+          <p class="text-xs text-espresso/80 leading-relaxed italic font-serif text-sm">
+            "The unboxing experience alone made me tear up. The wax seal, the handwriting on the parchment card, and the bookcloth texture in Midnight Espresso is so deeply tactile. The stickers are gorgeous too!"
+          </p>
+          <div class="pt-3 border-t border-sand/20 flex items-center justify-between">
+            <div>
+              <strong class="text-xs block text-espresso font-bold">Rhea Sengupta</strong>
+              <span class="text-[10px] text-espresso/60">Writer &bull; Mumbai</span>
+            </div>
+            <span class="text-[10px] text-sage-craft font-semibold bg-sage-craft/10 px-2 py-0.5 rounded-full">
+              ✓ Verified Buyer
+            </span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/30 space-y-4 shadow-sm hover:shadow-tactile transition-shadow">
+          <div class="flex items-center justify-between">
+            <div class="text-gold-wax text-sm">★★★★★</div>
+            <span class="text-[10px] text-espresso/50 font-medium">2 weeks ago</span>
+          </div>
+          <p class="text-xs text-espresso/80 leading-relaxed italic font-serif text-sm">
+            "I gave this to my sister for her birthday in the gift box packaging and she hasn't stopped messaging me pictures of her weekly spreads. The habit tracker layout is the most sensible I've used in years."
+          </p>
+          <div class="pt-3 border-t border-sand/20 flex items-center justify-between">
+            <div>
+              <strong class="text-xs block text-espresso font-bold">Kavita Narang</strong>
+              <span class="text-[10px] text-espresso/60">Designer &bull; Delhi</span>
+            </div>
+            <span class="text-[10px] text-sage-craft font-semibold bg-sage-craft/10 px-2 py-0.5 rounded-full">
+              ✓ Verified Buyer
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. COMPLETE THE RITUAL (RELATED COMPANION EDITIONS)
+       ========================================================================= -->
+  <section class="py-16 bg-white border-t border-sand/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-warm-paper px-3 py-1 rounded-full border border-sand/30">
+            Companion Atelier Editions
+          </span>
+          <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">
+            Complete Your Daily Coffee Ritual
+          </h2>
+        </div>
+        <a href="index.html#catalogue-section" class="mt-3 sm:mt-0 text-xs font-bold text-deep-coffee hover:underline">
+          View Complete Studio Archive &rarr;
+        </a>
+      </div>
+
+      <!-- 3 Recommended Cross-Sell Products -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Companion 1: Teak Acrylic Coaster -->
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white">
+            <img src="assets/prod_coasters.jpg" alt="Lady TeaTrip Acrylic Coaster" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+          </div>
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase font-bold text-coffee-tan">Handcrafted Décor</span>
+            <h3 class="font-serif-display text-lg text-espresso">Lady TeaTrip Acrylic Coaster &amp; Teak Stand</h3>
+            <div class="flex items-center justify-between pt-2">
+              <span class="font-bold text-deep-coffee">₹699</span>
+              <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors" onclick="addToCart('prod-1', 1)">
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Companion 2: Wooden Sunflower Bookmark -->
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white">
+            <img src="assets/products/wood_flower_bookmark.jpg" alt="Sunflower Wooden Bookmark" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+          </div>
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase font-bold text-coffee-tan">Stationaries</span>
+            <h3 class="font-serif-display text-lg text-espresso">Handcrafted Sunflower Wooden Bookmark</h3>
+            <div class="flex items-center justify-between pt-2">
+              <span class="font-bold text-deep-coffee">₹349</span>
+              <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors" onclick="addToCart('prod-4', 1)">
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Companion 3: 2026 Artist Desk Calendar -->
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white">
+            <img src="assets/products/artist_calendar.jpg" alt="Progress Not Perfection Calendar" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+          </div>
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase font-bold text-coffee-tan">Calendars &amp; Planners</span>
+            <h3 class="font-serif-display text-lg text-espresso">Progress Not Perfection 2026 Desk Calendar</h3>
+            <div class="flex items-center justify-between pt-2">
+              <span class="font-bold text-deep-coffee">₹850</span>
+              <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors" onclick="addToCart('prod-2', 1)">
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       14. STICKY MOBILE BOTTOM BUY BAR
+       ========================================================================= -->
+  <div class="fixed bottom-0 inset-x-0 z-30 lg:hidden bg-warm-paper/95 backdrop-blur-md border-t border-sand/40 p-3 shadow-tactile-lg flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3 truncate">
+      <img src="assets/prod_journal.jpg" alt="Journal" class="w-11 h-11 rounded-lg object-cover border border-sand/30 flex-shrink-0" id="mobile-bar-img" />
+      <div class="truncate">
+        <h4 class="text-xs font-bold text-espresso truncate">The 2027 Bound Chronicle</h4>
+        <span class="text-sm font-bold text-deep-coffee" id="mobile-bar-price">₹1,299</span>
+      </div>
+    </div>
+    <button type="button" 
+            class="bg-deep-coffee hover:bg-espresso text-logo-cream px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-sm flex-shrink-0 transition-colors"
+            onclick="handlePdpAddToCart()">
+      Add to Bag
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       15. ARTISANAL FOOTER (ESPRESSO CHARCOAL #363638 + LOGO CREAM #E9DFC2)
+       ========================================================================= -->
+  <footer class="bg-espresso text-logo-cream pt-16 pb-24 lg:pb-12 border-t border-sand/20" id="main-footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Row: Brand & Newsletter -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-sand/20">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/coffee_cup.png" alt="Graffeine Tales" class="w-8 h-8 object-contain" />
+            <span class="font-serif-display text-2xl tracking-wide text-logo-cream">Graffeine Tales</span>
+          </div>
+          <p class="text-xs text-logo-cream/70 leading-relaxed max-w-sm">
+            Designer's eye. Artist's hands. Storyteller's imagination. Tactile stationery, handcrafted journals, and bespoke gifting created in our Indian atelier.
+          </p>
+          <div class="flex gap-4 text-xs text-sand">
+            <a href="https://instagram.com/graffeinetales" target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a>
+            <span>&bull;</span>
+            <a href="https://pinterest.com/graffeinetales" target="_blank" rel="noopener" class="hover:text-white transition-colors">Pinterest</a>
+            <span>&bull;</span>
+            <a href="mailto:hello@graffeinetales.com" class="hover:text-white transition-colors">hello@graffeinetales.com</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 grid grid-cols-2 gap-4 text-xs">
+          <div class="space-y-2.5">
+            <span class="font-bold uppercase tracking-wider text-sand block">Editions</span>
+            <a href="journal-pdp.html" class="block text-logo-cream/80 hover:text-white">Journals &amp; Diaries</a>
+            <a href="index.html#category-section" class="block text-logo-cream/80 hover:text-white">Desk Calendars</a>
+            <a href="index.html#category-section" class="block text-logo-cream/80 hover:text-white">Teak Coasters</a>
+            <a href="index.html#category-section" class="block text-logo-cream/80 hover:text-white">Bookmarks</a>
+          </div>
+          <div class="space-y-2.5">
+            <span class="font-bold uppercase tracking-wider text-sand block">Concierge</span>
+            <a href="mailto:hello@graffeinetales.com" class="block text-logo-cream/80 hover:text-white">Track Order</a>
+            <a href="mailto:hello@graffeinetales.com" class="block text-logo-cream/80 hover:text-white">Bulk Gifting</a>
+            <a href="#pdp-faqs" class="block text-logo-cream/80 hover:text-white">Shipping FAQ</a>
+            <a href="index.html#about-us" class="block text-logo-cream/80 hover:text-white">Our Story</a>
+          </div>
+        </div>
+
+        <!-- Newsletter Subscription -->
+        <div class="md:col-span-4 space-y-3">
+          <span class="text-xs uppercase font-bold tracking-wider text-sand block">The Sunday Coffee Letter</span>
+          <p class="text-xs text-logo-cream/70">
+            A quiet weekend letter exploring book arts, coffee brewing, and secret studio drops.
+          </p>
+          <form onsubmit="handleFooterNewsletterSubmit(event)" class="space-y-2">
+            <div class="flex gap-2">
+              <input type="email" id="footer-newsletter-email" placeholder="Enter your email address..." class="flex-1 bg-white/10 border border-sand/30 rounded-full px-4 py-2.5 text-xs text-white placeholder-logo-cream/50 focus:outline-none focus:border-sand" required />
+              <button type="submit" class="bg-sand hover:bg-white text-espresso font-bold px-5 py-2.5 rounded-full text-xs transition-colors">
+                Join
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-logo-cream/50 gap-4 text-center">
+        <p>&copy; 2026 Graffeine Tales Studio. All Rights Reserved. Where Stories Become Art.</p>
+        <div class="flex items-center gap-4 text-[11px]">
+          <span>Pan-India Courier Dispatch</span>
+          <span>&bull;</span>
+          <span>100% Secure SSL Checkout</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       16. LIGHTBOX & INNER SPREAD INSPECTION MODAL
+       ========================================================================= -->
+  <div id="pdp-lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full bg-espresso rounded-3xl overflow-hidden border border-sand/30 shadow-2xl p-6 text-logo-cream">
+      
+      <!-- Close Button -->
+      <button type="button" class="absolute top-4 right-4 p-2 text-sand hover:text-white transition-colors" onclick="closeLightbox()" aria-label="Close Modal">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div class="md:col-span-8 bg-black/40 rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center">
+          <img id="lightbox-img" src="assets/prod_journal.jpg" alt="Inspection" class="max-h-full max-w-full object-contain" />
+        </div>
+        <div class="md:col-span-4 space-y-4">
+          <span class="text-xs uppercase font-bold text-coffee-tan tracking-wider">Atelier Macro Peek</span>
+          <h3 class="font-serif-display text-2xl text-logo-cream" id="lightbox-title">The 2027 Bound Chronicle</h3>
+          <p class="text-xs text-logo-cream/70 leading-relaxed" id="lightbox-desc">
+            Examine the textured Japanese bookcloth, metallic gold debossing, and smooth ivory archival paper.
+          </p>
+          <div class="pt-4 border-t border-sand/20 flex gap-3">
+            <button type="button" class="flex-1 bg-deep-coffee hover:bg-sand hover:text-espresso text-logo-cream py-3 rounded-full text-xs font-bold transition-colors" onclick="handlePdpAddToCart(); closeLightbox();">
+              Add to Bag (₹1,299)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       17. REEL VIEWER MODAL FOR VIDEO COMMERCE
+       ========================================================================= -->
+  <div id="pdp-reel-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative max-w-sm w-full bg-espresso rounded-3xl overflow-hidden border border-sand/30 shadow-2xl aspect-[9/16] flex flex-col justify-between p-4">
+      
+      <div class="flex items-center justify-between text-logo-cream z-10">
+        <span class="text-xs font-bold" id="reel-modal-title">Stories in Motion</span>
+        <button type="button" class="p-1 hover:text-white" onclick="closePdpReelModal()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="absolute inset-0 flex items-center justify-center">
+        <img id="reel-modal-bg" src="assets/prod_journal.jpg" alt="" class="w-full h-full object-cover opacity-90" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+        <div class="absolute text-center text-white px-6">
+          <span class="w-14 h-14 rounded-full bg-deep-coffee/90 text-logo-cream flex items-center justify-center mx-auto mb-3 shadow-tactile animate-pulse">
+            ▶
+          </span>
+          <p class="text-xs text-logo-cream/90 font-medium">Video preview loading...</p>
+        </div>
+      </div>
+
+      <div class="z-10 bg-warm-paper/95 rounded-2xl p-3 text-espresso flex items-center justify-between">
+        <div>
+          <span class="text-xs font-bold block">The 2027 Bound Chronicle</span>
+          <span class="text-xs text-deep-coffee font-bold">₹1,299</span>
+        </div>
+        <button type="button" class="bg-deep-coffee text-logo-cream px-4 py-2 rounded-xl text-xs font-bold" onclick="handlePdpAddToCart(); closePdpReelModal();">
+          Add to Bag
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-espresso text-logo-cream text-xs font-medium py-3 px-6 rounded-full shadow-tactile-lg border border-sand/30 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+    <span id="toast-text">✦ Added to your Atelier Bag</span>
+  </div>
+
+  <!-- =========================================================================
+       18. CORE JAVASCRIPT & PDP INTERACTION CONTROLLER
+       ========================================================================= -->
+  <script>
+    // State variables
+    let currentQty = 1;
+    let currentVariant = 'espresso';
+    let currentVariantName = 'Midnight Espresso Bookcloth';
+    let currentLayout = 'Dated 2027 Year';
+
+    // 1. Thumbnail Selector
+    function selectThumbnail(index, imgSrc, caption) {
+      const mainImg = document.getElementById('main-product-img');
+      const mobileImg = document.getElementById('mobile-bar-img');
+      if (mainImg) mainImg.src = imgSrc;
+      if (mobileImg) mobileImg.src = imgSrc;
+
+      const thumbs = document.querySelectorAll('.thumb-btn');
+      thumbs.forEach((t, i) => {
+        if (i === index) {
+          t.classList.add('thumb-active');
+        } else {
+          t.classList.remove('thumb-active');
+        }
+      });
+    }
+
+    // 2. Variant Selector
+    function selectVariant(variantKey, variantName, imgSrc, buttonEl) {
+      currentVariant = variantKey;
+      currentVariantName = variantName;
+
+      // Update Label
+      const label = document.getElementById('active-variant-label');
+      if (label) label.textContent = variantName;
+
+      // Update Main Image
+      selectThumbnail(0, imgSrc, variantName);
+
+      // Update Swatch Button States
+      const btns = document.querySelectorAll('.variant-btn');
+      btns.forEach(btn => {
+        btn.classList.remove('border-deep-coffee', 'bg-warm-paper');
+        btn.classList.add('border-sand/40', 'bg-white');
+        const check = btn.querySelector('.check-mark');
+        if (check) check.classList.add('hidden');
+      });
+
+      buttonEl.classList.remove('border-sand/40', 'bg-white');
+      buttonEl.classList.add('border-deep-coffee', 'bg-warm-paper');
+      const activeCheck = buttonEl.querySelector('.check-mark');
+      if (activeCheck) activeCheck.classList.remove('hidden');
+
+      showToast(`Selected "${variantName}" edition`);
+    }
+
+    // 3. Layout Selector
+    function selectLayout(btn, layoutName) {
+      currentLayout = layoutName;
+      const btns = document.querySelectorAll('.layout-btn');
+      btns.forEach(b => {
+        b.classList.remove('border-deep-coffee', 'bg-warm-paper');
+        b.classList.add('border-sand/40', 'bg-white');
+      });
+      btn.classList.remove('border-sand/40', 'bg-white');
+      btn.classList.add('border-deep-coffee', 'bg-warm-paper');
+      showToast(`Layout changed to: ${layoutName}`);
+    }
+
+    // 4. Quantity Adjustments
+    function changeQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      const input = document.getElementById('pdp-qty-input');
+      if (input) input.value = currentQty;
+    }
+
+    // 5. Pincode Estimator
+    function checkDeliveryPincode() {
+      const input = document.getElementById('pincode-input');
+      const result = document.getElementById('pincode-result');
+      const val = input ? input.value.trim() : '';
+
+      if (!val || val.length !== 6 || isNaN(val)) {
+        if (result) {
+          result.classList.remove('hidden', 'text-sage-craft');
+          result.classList.add('text-terracotta');
+          result.textContent = 'Please enter a valid 6-digit Indian PIN code.';
+        }
+        return;
+      }
+
+      const majorMetros = ['11', '12', '40', '56', '50', '60', '70', '41'];
+      const prefix = val.substring(0, 2);
+      const isExpress = majorMetros.includes(prefix);
+
+      if (result) {
+        result.classList.remove('hidden', 'text-terracotta');
+        result.classList.add('text-sage-craft');
+        if (isExpress) {
+          result.innerHTML = `<strong>✨ Express Dispatch:</strong> Expected delivery in <strong>2&ndash;3 business days</strong> via Bluedart Air Courier. Free tracking on WhatsApp.`;
+        } else {
+          result.innerHTML = `<strong>🚚 Standard Dispatch:</strong> Expected delivery in <strong>3&ndash;5 business days</strong> via Delhivery Express.`;
+        }
+      }
+    }
+
+    // 6. Flip-Through Slider Scroll
+    function scrollInnerSlider(direction) {
+      const track = document.getElementById('inner-spreads-track');
+      if (track) {
+        track.scrollBy({ left: direction * 360, behavior: 'smooth' });
+      }
+    }
+
+    // 7. Lightbox and Modal
+    function openLightbox() {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      const mainImg = document.getElementById('main-product-img');
+      const targetImg = document.getElementById('lightbox-img');
+      if (targetImg && mainImg) targetImg.src = mainImg.src;
+      if (modal) modal.classList.remove('hidden');
+      if (modal) modal.classList.add('flex');
+    }
+
+    function openPageModal(imgSrc, title, desc) {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      const targetImg = document.getElementById('lightbox-img');
+      const titleEl = document.getElementById('lightbox-title');
+      const descEl = document.getElementById('lightbox-desc');
+
+      if (targetImg) targetImg.src = imgSrc;
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+
+      if (modal) modal.classList.remove('hidden');
+      if (modal) modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      if (modal) modal.classList.add('hidden');
+      if (modal) modal.classList.remove('flex');
+    }
+
+    // 8. Video Reel Modal
+    function playPdpReel(index) {
+      const modal = document.getElementById('pdp-reel-modal');
+      if (modal) modal.classList.remove('hidden');
+      if (modal) modal.classList.add('flex');
+    }
+
+    function closePdpReelModal() {
+      const modal = document.getElementById('pdp-reel-modal');
+      if (modal) modal.classList.add('hidden');
+      if (modal) modal.classList.remove('flex');
+    }
+
+    // 9. FAQ Accordion Toggle
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.icon');
+      const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+      // Close all other FAQs
+      const allAnswers = document.querySelectorAll('.faq-answer');
+      const allIcons = document.querySelectorAll('#faq-accordion-group .icon');
+      allAnswers.forEach(a => a.style.maxHeight = '0px');
+      allIcons.forEach(i => i.textContent = '+');
+
+      if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.textContent = '−';
+      }
+    }
+
+    // 10. Add To Cart Handler
+    function handlePdpAddToCart() {
+      const journalItem = {
+        id: 'prod-journal-2027',
+        name: `The 2027 Bound Chronicle (${currentVariantName})`,
+        price: 1299,
+        image: 'assets/prod_journal.jpg',
+        category: 'Stationaries • Journals &amp; Diaries',
+        qty: currentQty
+      };
+
+      // Add to localStorage cart
+      try {
+        let cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]');
+        const existing = cart.find(item => item.id === journalItem.id);
+        if (existing) {
+          existing.qty += currentQty;
+        } else {
+          cart.push(journalItem);
+        }
+        localStorage.setItem('gtb_cart', JSON.stringify(cart));
+      } catch (e) {
+        console.warn('Storage error', e);
+      }
+
+      // Update badge counts
+      const badges = document.querySelectorAll('#cart-badge-count, #bottom-cart-count');
+      badges.forEach(b => {
+        let count = parseInt(b.textContent || '0') + currentQty;
+        b.textContent = count;
+        b.style.display = 'inline-flex';
+      });
+
+      showToast(`✦ Added ${currentQty}x "${journalItem.name}" to your bag!`);
+
+      // If ShopifyCart bridge is available, send to Shopify
+      if (window.ShopifyCart && typeof window.ShopifyCart.addItem === 'function') {
+        window.ShopifyCart.addItem(1, currentQty, {
+          'Cover Variant': currentVariantName,
+          'Layout Format': currentLayout
+        });
+      }
+
+      // Open Cart Drawer if present
+      const drawer = document.getElementById('cart-drawer-overlay');
+      if (drawer) drawer.classList.add('open');
+    }
+
+    // 11. 1-Click Buy Now
+    function handlePdpInstantBuy() {
+      handlePdpAddToCart();
+      setTimeout(() => {
+        window.location.href = 'index.html#cart-drawer-overlay';
+      }, 500);
+    }
+
+    // 12. Toast Feedback
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-text');
+      if (!toast || !text) return;
+
+      text.innerHTML = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }, 3000);
+    }
+
+    // Close Modals on Escape Key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closePdpReelModal();
+      }
+    });
+  </script>
+
+  <!-- External App JS for Header/Search/Cart Drawers -->
+  <script src="app.js"></script>
+</body>
+</html>
