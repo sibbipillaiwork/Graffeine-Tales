@@ -2,6 +2,28 @@
   Graffeine Tales — Journal & Diaries Luxury PDP Section (Shopify OS 2.0)
 {% endcomment %}
 <div class="journal-pdp-wrapper bg-[#F8F5ED] text-[#363638] antialiased pb-20 sm:pb-24">
+  <style>
+    @keyframes btnShimmer {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      35%, 100% { transform: translateX(250%) skewX(-20deg); }
+    }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+      transform: translateX(-150%) skewX(-20deg);
+      animation: btnShimmer 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+  </style>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-start">
@@ -35,11 +57,11 @@
         {% form 'product', product, id: 'journal-pdp-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
           <div class="flex items-center gap-3 mb-4">
-            <button type="submit" name="add" class="flex-1 bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] py-4 px-6 rounded-full font-bold text-sm tracking-wide flex items-center justify-center gap-3 shadow-tactile transition-all">
-              <span>Add to Atelier Bag</span>
+            <button type="submit" name="add" class="btn-shimmer flex-1 bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] py-4 px-6 rounded-full font-bold text-sm tracking-wide flex items-center justify-center gap-3 shadow-tactile transition-all">
+              <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              <span class="relative z-10">Add to Cart</span>
             </button>
           </div>
-          <div>{{ form | payment_button }}</div>
         {% endform %}
 
         <!-- Editorial Lead Pitch Paragraph (Inspired by Alicia Souza PDP Structure) -->
@@ -403,9 +425,9 @@
         </div>
       </div>
       <div class="flex items-center gap-2 flex-shrink-0">
-        <button type="button" onclick="document.getElementById('journal-pdp-form').querySelector('button[name=add]').click()" class="bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider shadow-tactile transition-all active:scale-95 flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#E9DFC2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <span class="whitespace-nowrap">Add to Atelier Bag</span>
+        <button type="button" onclick="document.getElementById('journal-pdp-form').querySelector('button[name=add]').click()" class="btn-shimmer bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider shadow-tactile transition-all active:scale-95 flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#E9DFC2] relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="whitespace-nowrap relative z-10">Add to Cart</span>
         </button>
       </div>
     </div>
