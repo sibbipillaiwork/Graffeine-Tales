@@ -219,26 +219,26 @@
   <!-- =========================================================================
        4. TOP PRODUCT HERO GRID (2-Column Split Desktop | Stacked Mobile)
        ========================================================================= -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-start">
       
       <!-- ---------------------------------------------------------------------
            LEFT COLUMN: VISUAL GALLERY & INNER PEEK
            --------------------------------------------------------------------- -->
-      <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
+      <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:sticky lg:top-28">
         
         <!-- Main Image Stage with Badge Overlay -->
-        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-sand/40 shadow-tactile group aspect-square flex items-center justify-center cursor-zoom-in" id="gallery-stage" onclick="openLightbox()">
+        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-sand/40 shadow-tactile group aspect-[4/3] sm:aspect-square flex items-center justify-center cursor-zoom-in" id="gallery-stage" onclick="openLightbox()">
           
           <!-- Tactile Badge Overlays -->
-          <div class="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
-            <span class="bg-espresso text-logo-cream text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1.5">
+          <div class="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex flex-wrap gap-1.5 sm:gap-2">
+            <span class="bg-espresso text-logo-cream text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1.5">
               <span>✦</span> Handmade Touch
             </span>
-            <span class="bg-[#2D6A4F] text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+            <span class="bg-[#2D6A4F] text-white text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
               100 GSM Natural Paper
             </span>
-            <span class="bg-gold-wax/90 text-espresso text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+            <span class="bg-gold-wax/90 text-espresso text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
               Free Sticker Book
             </span>
           </div>
@@ -250,19 +250,19 @@
                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
 
           <!-- Fullscreen Expand Button -->
-          <button type="button" class="absolute bottom-4 right-4 bg-warm-paper/90 hover:bg-white text-espresso p-2.5 rounded-full shadow-md backdrop-blur-sm transition-transform hover:scale-110" aria-label="Enlarge Image" title="View Fullscreen Lightbox">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          <button type="button" class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-warm-paper/90 hover:bg-white text-espresso p-2 sm:p-2.5 rounded-full shadow-md backdrop-blur-sm transition-transform hover:scale-110" aria-label="Enlarge Image" title="View Fullscreen Lightbox">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
           </button>
 
           <!-- Inner Spread Peek Watermark -->
-          <div class="absolute bottom-4 left-4 bg-espresso/70 text-logo-cream text-[11px] px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-1.5 pointer-events-none">
+          <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-espresso/70 text-logo-cream text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-1.5 pointer-events-none">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-            <span>Tap to inspect spreads in detail</span>
+            <span>Tap to inspect spreads</span>
           </div>
         </div>
 
         <!-- Thumbnail Strip (Multi-angle & Inner Peeks) -->
-        <div class="grid grid-cols-5 gap-3" id="thumb-strip">
+        <div class="grid grid-cols-5 gap-2 sm:gap-3" id="thumb-strip">
           
           <!-- Thumb 1: Front Cover Hero -->
           <button type="button" class="thumb-btn thumb-active relative rounded-xl overflow-hidden aspect-square border-2 border-transparent bg-white p-0.5 transition-all" onclick="selectThumbnail(0, 'assets/prod_journal.jpg', 'Front Cover in Japanese Bookcloth')">
@@ -295,30 +295,12 @@
           </button>
         </div>
 
-        <!-- Quick Proof Badges Under Gallery -->
-        <div class="bg-white/80 rounded-xl p-4 border border-sand/30 flex items-center justify-around text-center text-xs text-espresso/80">
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span>Fountain-Pen Tested</span>
-          </div>
-          <span class="text-sand">|</span>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span>Dispatches in 48 Hrs</span>
-          </div>
-          <span class="text-sand">|</span>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m4 10.5V21l4-2"/></svg>
-            <span>Plastic-Free Kraft Box</span>
-          </div>
-        </div>
-
       </div>
 
       <!-- ---------------------------------------------------------------------
            RIGHT COLUMN: BUYING BOX & VARIANT CONFIGURATOR
            --------------------------------------------------------------------- -->
-      <div class="lg:col-span-5 bg-white/90 rounded-3xl p-6 sm:p-8 border border-sand/40 shadow-tactile-lg space-y-6">
+      <div class="lg:col-span-5 bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-sand/40 shadow-tactile-lg space-y-4 sm:space-y-6">
         
         <!-- Header Subhead & Title -->
         <div>
@@ -332,17 +314,13 @@
             </div>
           </div>
 
-          <h1 class="font-serif-display text-3xl sm:text-4xl text-espresso leading-tight" id="pdp-title">
+          <h1 class="font-serif-display text-2xl sm:text-3xl lg:text-4xl text-espresso leading-tight" id="pdp-title">
             The 2027 Bound Chronicle &amp; Daily Journal
           </h1>
-
-          <p class="text-sm text-espresso/70 mt-2 font-script text-base">
-            "A tactile companion where thoughts, tea rings, and dreams find a permanent home."
-          </p>
         </div>
 
         <!-- Pricing Row with Savings & Tax Badge -->
-        <div class="py-4 border-y border-sand/30 flex items-baseline justify-between">
+        <div class="py-3 sm:py-4 border-y border-sand/30 flex items-baseline justify-between">
           <div>
             <div class="flex items-baseline gap-3">
               <span class="font-serif-display text-3xl sm:text-4xl font-bold text-deep-coffee" id="pdp-price">₹1,299</span>
@@ -485,46 +463,10 @@
           </button>
         </div>
 
-        <!-- 6. PINCODE DELIVERY ESTIMATE CHECKER -->
-        <div class="bg-warm-paper/70 rounded-2xl p-4 border border-sand/30 space-y-2">
-          <div class="flex items-center justify-between text-xs font-semibold text-espresso">
-            <span class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-coffee-tan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              Estimate Delivery Time to Your City
-            </span>
-            <span class="text-coffee-tan text-[11px]">Pan-India Courier</span>
-          </div>
-
-          <div class="flex gap-2">
-            <input type="text" 
-                   id="pincode-input" 
-                   maxlength="6" 
-                   placeholder="Enter 6-digit Pincode (e.g. 560001, 110001)" 
-                   class="flex-1 bg-white border border-sand/40 rounded-xl px-3 py-2 text-xs text-espresso focus:outline-none focus:ring-1 focus:ring-deep-coffee" />
-            <button type="button" 
-                    onclick="checkDeliveryPincode()" 
-                    class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-2 rounded-xl text-xs font-bold transition-colors">
-              Check
-            </button>
-          </div>
-          <p id="pincode-result" class="text-xs text-espresso/80 font-medium hidden"></p>
-        </div>
-
-        <!-- Studio Free Shipping Meter -->
-        <div class="pt-2 text-xs text-espresso/70 space-y-1.5">
-          <div class="flex justify-between items-center text-[11px] font-medium">
-            <span>Free Shipping Goal (₹1,499)</span>
-            <span class="text-coffee-tan font-bold">Add ₹200 more for FREE Courier</span>
-          </div>
-          <div class="w-full h-1.5 bg-sand/30 rounded-full overflow-hidden">
-            <div class="h-full bg-deep-coffee rounded-full" style="width: 86%;"></div>
-          </div>
-        </div>
-
         <!-- =============================================================
              ALICIA SOUZA INSPIRED DROPDOWN ACCORDION STACK
              ============================================================= -->
-        <div class="pt-6 border-t border-sand/40 space-y-4">
+        <div class="pt-4 sm:pt-6 border-t border-sand/40 space-y-4">
           
           <!-- Editorial Lead Pitch Paragraph -->
           <p class="text-xs sm:text-sm text-espresso/80 leading-relaxed font-normal">
@@ -1394,8 +1336,61 @@
     </div>
   </div>
 
+  <!-- =========================================================================
+       STICKY BOTTOM BUY BAR (Persistent throughout the entire scroll)
+       ========================================================================= -->
+  <aside id="sticky-pdp-bar" 
+         class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-sand/40 shadow-tactile-lg transition-all duration-300 transform translate-y-0" 
+         aria-label="Sticky Purchase Bar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4">
+      
+      <!-- Left: Thumbnail & Price -->
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <img src="assets/prod_journal.jpg" 
+             id="sticky-bar-thumb" 
+             alt="The 2027 Bound Chronicle" 
+             class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover border border-sand/40 flex-shrink-0" />
+        <div class="min-w-0">
+          <p class="text-xs sm:text-sm font-semibold text-espresso truncate font-sans max-w-[130px] sm:max-w-xs md:max-w-sm">
+            The 2027 Bound Chronicle
+          </p>
+          <div class="flex items-baseline gap-1.5 sm:gap-2">
+            <span class="font-serif-display text-base sm:text-xl font-bold text-deep-coffee" id="sticky-bar-price">
+              ₹1,299
+            </span>
+            <span class="text-xs text-espresso/40 line-through" id="sticky-bar-mrp">
+              ₹1,699
+            </span>
+            <span class="bg-terracotta/10 text-terracotta text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden sm:inline">
+              SAVE 24%
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Quantity Selector (Desktop only) -->
+        <div class="hidden md:flex items-center border border-sand/50 rounded-full bg-warm-paper/70 p-0.5">
+          <button type="button" class="w-7 h-7 flex items-center justify-center text-espresso font-bold hover:bg-white rounded-full text-xs" onclick="changeQty(-1)">&minus;</button>
+          <span class="w-7 text-center text-xs font-semibold text-espresso" id="sticky-bar-qty">1</span>
+          <button type="button" class="w-7 h-7 flex items-center justify-center text-espresso font-bold hover:bg-white rounded-full text-xs" onclick="changeQty(1)">&plus;</button>
+        </div>
+
+        <!-- Add to Atelier Bag CTA -->
+        <button type="button" 
+                onclick="handlePdpAddToCart()" 
+                class="bg-deep-coffee hover:bg-espresso text-logo-cream px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider shadow-tactile transition-all duration-200 active:scale-95 flex items-center gap-2 flex-shrink-0">
+          <svg class="w-4 h-4 text-logo-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="whitespace-nowrap">Add to Atelier Bag</span>
+        </button>
+      </div>
+
+    </div>
+  </aside>
+
   <!-- Toast Notification Container -->
-  <div id="toast-notification" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-espresso text-logo-cream text-xs font-medium py-3 px-6 rounded-full shadow-tactile-lg border border-sand/30 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+  <div id="toast-notification" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-espresso text-logo-cream text-xs font-medium py-3 px-6 rounded-full shadow-tactile-lg border border-sand/30 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
     <span id="toast-text">✦ Added to your Atelier Bag</span>
   </div>
 
@@ -1412,9 +1407,9 @@
     // 1. Thumbnail Selector
     function selectThumbnail(index, imgSrc, caption) {
       const mainImg = document.getElementById('main-product-img');
-      const mobileImg = document.getElementById('mobile-bar-img');
+      const stickyThumb = document.getElementById('sticky-bar-thumb');
       if (mainImg) mainImg.src = imgSrc;
-      if (mobileImg) mobileImg.src = imgSrc;
+      if (stickyThumb) stickyThumb.src = imgSrc;
 
       const thumbs = document.querySelectorAll('.thumb-btn');
       thumbs.forEach((t, i) => {
@@ -1472,7 +1467,9 @@
     function changeQty(delta) {
       currentQty = Math.max(1, Math.min(10, currentQty + delta));
       const input = document.getElementById('pdp-qty-input');
+      const stickyQty = document.getElementById('sticky-bar-qty');
       if (input) input.value = currentQty;
+      if (stickyQty) stickyQty.innerText = currentQty;
     }
 
     // 5. Pincode Estimator

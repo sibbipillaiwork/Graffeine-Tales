@@ -1,8 +1,8 @@
 {% comment %}
   Graffeine Tales — Journal & Diaries Luxury PDP Section (Shopify OS 2.0)
 {% endcomment %}
-<div class="journal-pdp-wrapper bg-[#F8F5ED] text-[#363638] antialiased">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-[#363638]/60 flex items-center gap-2" aria-label="Breadcrumb">
+<div class="journal-pdp-wrapper bg-[#F8F5ED] text-[#363638] antialiased pb-20 sm:pb-24">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-[#363638]/60 flex items-center gap-2" aria-label="Breadcrumb">
     <a href="{{ routes.root_url }}" class="hover:text-[#4D351D] transition-colors">Home</a>
     <span>&rsaquo;</span>
     <a href="{{ routes.all_products_collection_url }}" class="hover:text-[#4D351D] transition-colors">Stationaries</a>
@@ -10,30 +10,30 @@
     <span class="text-[#363638] font-medium truncate">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</span>
   </nav>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
-      <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
-        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-[#C6B58E]/40 shadow-tactile aspect-square flex items-center justify-center">
-          <div class="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
-            <span class="bg-[#363638] text-[#E9DFC2] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">✦ Handmade Touch</span>
-            <span class="bg-[#2D6A4F] text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">100 GSM Natural Paper</span>
-            <span class="bg-[#D4AF37] text-[#363638] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Free Sticker Book</span>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-start">
+      <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:sticky lg:top-28">
+        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-[#C6B58E]/40 shadow-tactile aspect-[4/3] sm:aspect-square flex items-center justify-center">
+          <div class="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex flex-wrap gap-1.5 sm:gap-2">
+            <span class="bg-[#363638] text-[#E9DFC2] text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">✦ Handmade Touch</span>
+            <span class="bg-[#2D6A4F] text-white text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">100 GSM Natural Paper</span>
+            <span class="bg-[#D4AF37] text-[#363638] text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Free Sticker Book</span>
           </div>
           <img id="main-product-img" src="{{ product.featured_image | default: 'prod_journal.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="w-full h-full object-cover" />
         </div>
       </div>
 
-      <div class="lg:col-span-5 bg-white/95 rounded-3xl p-6 sm:p-8 border border-[#C6B58E]/40 shadow-tactile-lg space-y-6">
+      <div class="lg:col-span-5 bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-[#C6B58E]/40 shadow-tactile-lg space-y-4 sm:space-y-6">
         <div>
-          <span class="text-xs uppercase font-bold tracking-[0.15em] text-[#927B53] bg-[#F8F5ED] px-3 py-1 rounded-full border border-[#C6B58E]/30 inline-block mb-3">{{ product.type | default: 'Stationaries • Journals &amp; Diaries' }}</span>
-          <h1 class="font-serif-display text-3xl sm:text-4xl text-[#363638] leading-tight">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</h1>
+          <span class="text-xs uppercase font-bold tracking-[0.15em] text-[#927B53] bg-[#F8F5ED] px-3 py-1 rounded-full border border-[#C6B58E]/30 inline-block mb-2">Stationaries &bull; 2027 Edition</span>
+          <h1 class="font-serif-display text-2xl sm:text-3xl lg:text-4xl text-[#363638] leading-tight">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</h1>
           <div class="flex items-center gap-2 mt-2">
             <span class="text-[#D4AF37]">★★★★★</span>
             <span class="text-xs font-semibold text-[#363638]/70">5.0 (328 verified patrons)</span>
           </div>
         </div>
 
-        <div class="py-4 border-y border-[#C6B58E]/30 flex items-baseline justify-between">
+        <div class="py-3 sm:py-4 border-y border-[#C6B58E]/30 flex items-baseline justify-between">
           <div>
             <div class="flex items-baseline gap-3">
               <span class="font-serif-display text-3xl sm:text-4xl font-bold text-[#4D351D]">{{ product.price | money | default: '₹1,299' }}</span>
@@ -399,6 +399,29 @@
       }
     }
   </script>
+
+  <!-- Persistent Sticky Bottom Add-to-Cart Bar -->
+  <aside id="shopify-sticky-pdp-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#C6B58E]/40 shadow-tactile-lg transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <img src="{{ product.featured_image | default: 'prod_journal.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover border border-[#C6B58E]/40 flex-shrink-0" />
+        <div class="min-w-0">
+          <p class="text-xs sm:text-sm font-semibold text-[#363638] truncate max-w-[130px] sm:max-w-xs md:max-w-sm">{{ product.title | default: 'The 2027 Bound Chronicle' }}</p>
+          <div class="flex items-baseline gap-1.5 sm:gap-2">
+            <span class="font-serif-display text-base sm:text-xl font-bold text-[#4D351D]">{{ product.price | money | default: '₹1,299' }}</span>
+            <span class="text-xs text-[#363638]/40 line-through hidden xs:inline">₹1,699</span>
+            <span class="bg-[#C85A32]/10 text-[#C85A32] text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden sm:inline">SAVE 24%</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button type="button" onclick="document.getElementById('journal-pdp-form').querySelector('button[name=add]').click()" class="bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider shadow-tactile transition-all active:scale-95 flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#E9DFC2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="whitespace-nowrap">Add to Atelier Bag</span>
+        </button>
+      </div>
+    </div>
+  </aside>
 </div>
 {% schema %}
 {
