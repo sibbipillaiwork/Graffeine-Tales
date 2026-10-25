@@ -792,10 +792,10 @@
       <!-- Spread Title & Description Indicator -->
       <div class="text-center mt-5">
         <p class="text-base font-serif-display font-semibold text-espresso" id="flip-page-title">
-          Cover: The 2027 Bound Chronicle
+          Front Cover: The 2027 Bound Chronicle
         </p>
         <p class="text-xs text-espresso/60 font-sans mt-0.5" id="flip-page-desc">
-          Artisanal gold debossed bookcloth cover with custom studio foil emblem
+          Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem
         </p>
       </div>
 
@@ -811,7 +811,7 @@
         </button>
 
         <div class="px-5 py-2.5 rounded-full bg-white border border-sand/40 text-xs font-semibold text-espresso select-none shadow-sm" id="flip-page-counter">
-          Page 1 of 6
+          Front Cover
         </div>
 
         <button type="button" 
@@ -1535,33 +1535,43 @@
     const flipPages = [
       {
         img: 'assets/flip_cover.jpg',
-        title: 'Cover: The 2027 Bound Chronicle',
-        desc: 'Artisanal gold debossed Japanese bookcloth with metallic gold foil stamping.'
+        title: 'Front Cover: The 2027 Bound Chronicle',
+        desc: 'Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem.'
       },
       {
-        img: 'assets/products/artist_calendar.jpg',
-        title: 'Foundation Spread: Personal Info & Vision Blueprint',
-        desc: 'Dedicated 4-page reflection space for yearly intentions, reading lists, and milestones.'
+        img: 'assets/flip_page_01_belonging.jpg',
+        title: 'Opening Spread (Left): Belonging Nameplate & Manifesto',
+        desc: 'Gold-leaf framed owner inscription page with contact details and intention lines.'
       },
       {
-        img: 'assets/flip_monthly.jpg',
-        title: 'Monthly Panoramic Overview & Budget Grid',
-        desc: 'Spacious double-page calendar grids with Sunday starts, moon phases, and budget tracking.'
+        img: 'assets/flip_page_02_vision.jpg',
+        title: 'Opening Spread (Right): 2027 Yearly Vision & Milestones',
+        desc: 'Dedicated quarterly aspiration quadrants for Career, Health, Joy & Financial goals.'
       },
       {
-        img: 'assets/flip_habits.jpg',
-        title: 'Monthly Habit & Wellness Ritual Trackers',
-        desc: '31-day micro-grids to monitor movement, sleep, hydration, and meditative rituals.'
+        img: 'assets/flip_page_03_monthly.jpg',
+        title: 'Monthly Spread (Left): Panoramic Calendar Grid',
+        desc: 'Spacious double-page calendar view with Monday-Thursday grids and monthly priorities.'
       },
       {
-        img: 'assets/flip_weekly.jpg',
-        title: '52 Weekly Focus Dashboards',
-        desc: 'Weekday schedules with daily micro-gratitude prompts and prioritized checkboxes.'
+        img: 'assets/flip_page_04_habits.jpg',
+        title: 'Monthly Spread (Right): Habit Tracker & Budget Ledger',
+        desc: '31-day visual micro-grids for daily rituals alongside monthly income and savings tracking.'
       },
       {
-        img: 'assets/flip_stickers.jpg',
-        title: 'Creative Dot-Grid Sandbox & Sticker Sheets',
-        desc: 'Subtle 5mm ivory dot-grid pages with rear memory pocket and 4 gilded sticker sheets.'
+        img: 'assets/flip_page_05_weekly_left.jpg',
+        title: 'Weekly Focus (Left): Monday – Wednesday Timetable',
+        desc: 'Daily priority circles, hourly schedule timeblocks (6am–8pm), and micro-gratitude prompts.'
+      },
+      {
+        img: 'assets/flip_page_06_weekly_right.jpg',
+        title: 'Weekly Horizons (Right): Thursday – Sunday & Dot-Grid Sandbox',
+        desc: 'Weekend rituals schedule with generous 5mm ivory dot-grid sandbox for braindumps.'
+      },
+      {
+        img: 'assets/flip_back_cover.jpg',
+        title: 'Back Cover: Graffeine Tales Atelier Edition',
+        desc: 'Matching Japanese bookcloth casing with gold debossed atelier hallmark, FSC certification & barcode.'
       }
     ];
 
@@ -1636,11 +1646,11 @@
       // Update Page Counter Pill
       if (counterEl) {
         if (currentFlipIndex === 0) {
-          counterEl.innerText = 'Cover (Front)';
+          counterEl.innerText = 'Front Cover';
         } else if (currentFlipIndex === flipPages.length - 1) {
           counterEl.innerText = 'Back Cover';
         } else {
-          counterEl.innerText = `Spread ${currentFlipIndex} of ${flipPages.length - 1}`;
+          counterEl.innerText = `Inner Page ${currentFlipIndex} of ${flipPages.length - 2}`;
         }
       }
 

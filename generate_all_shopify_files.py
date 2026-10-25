@@ -904,10 +904,10 @@ def generate_dedicated_sections():
       <!-- Spread Title & Description Indicator -->
       <div class="text-center mt-5">
         <p class="text-base font-serif-display font-semibold text-[#363638]" id="shopify-flip-title">
-          Cover: The 2027 Bound Chronicle
+          Front Cover: The 2027 Bound Chronicle
         </p>
         <p class="text-xs text-[#363638]/60 font-sans mt-0.5" id="shopify-flip-desc">
-          Artisanal gold debossed Japanese bookcloth with custom studio foil emblem
+          Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem
         </p>
       </div>
 
@@ -923,7 +923,7 @@ def generate_dedicated_sections():
         </button>
 
         <div class="px-5 py-2.5 rounded-full bg-white border border-[#C6B58E]/40 text-xs font-semibold text-[#363638] select-none shadow-sm" id="shopify-flip-counter">
-          Page 1 of 6
+          Front Cover
         </div>
 
         <button type="button" 
@@ -947,12 +947,14 @@ def generate_dedicated_sections():
   <script src="{{ 'page-flip.browser.js' | asset_url }}"></script>
   <script>
     var shopifyFlipPages = [
-      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: 'Cover: The 2027 Bound Chronicle', desc: 'Artisanal gold debossed Japanese bookcloth with metallic gold foil stamping.' },
-      { img: "{{ 'artist_calendar.jpg' | asset_url }}", title: 'Foundation Spread: Personal Info & Vision Blueprint', desc: 'Dedicated 4-page reflection space for yearly intentions, reading lists, and milestones.' },
-      { img: "{{ 'flip_monthly.jpg' | asset_url }}", title: 'Monthly Panoramic Overview & Budget Grid', desc: 'Spacious double-page calendar grids with Sunday starts, moon phases, and budget tracking.' },
-      { img: "{{ 'flip_habits.jpg' | asset_url }}", title: 'Monthly Habit & Wellness Ritual Trackers', desc: '31-day micro-grids to monitor movement, sleep, hydration, and meditative rituals.' },
-      { img: "{{ 'flip_weekly.jpg' | asset_url }}", title: '52 Weekly Focus Dashboards', desc: 'Weekday schedules with daily micro-gratitude prompts and prioritized checkboxes.' },
-      { img: "{{ 'flip_stickers.jpg' | asset_url }}", title: 'Creative Dot-Grid Sandbox & Sticker Sheets', desc: 'Subtle 5mm ivory dot-grid pages with rear memory pocket and 4 gilded sticker sheets.' }
+      { img: "{{ 'flip_cover.jpg' | asset_url }}", title: 'Front Cover: The 2027 Bound Chronicle', desc: 'Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem.' },
+      { img: "{{ 'flip_page_01_belonging.jpg' | asset_url }}", title: 'Opening Spread (Left): Belonging Nameplate & Manifesto', desc: 'Gold-leaf framed owner inscription page with contact details and intention lines.' },
+      { img: "{{ 'flip_page_02_vision.jpg' | asset_url }}", title: 'Opening Spread (Right): 2027 Yearly Vision & Milestones', desc: 'Dedicated quarterly aspiration quadrants for Career, Health, Joy & Financial goals.' },
+      { img: "{{ 'flip_page_03_monthly.jpg' | asset_url }}", title: 'Monthly Spread (Left): Panoramic Calendar Grid', desc: 'Spacious double-page calendar view with Monday-Thursday grids and monthly priorities.' },
+      { img: "{{ 'flip_page_04_habits.jpg' | asset_url }}", title: 'Monthly Spread (Right): Habit Tracker & Budget Ledger', desc: '31-day visual micro-grids for daily rituals alongside monthly income and savings tracking.' },
+      { img: "{{ 'flip_page_05_weekly_left.jpg' | asset_url }}", title: 'Weekly Focus (Left): Monday – Wednesday Timetable', desc: 'Daily priority circles, hourly schedule timeblocks (6am–8pm), and micro-gratitude prompts.' },
+      { img: "{{ 'flip_page_06_weekly_right.jpg' | asset_url }}", title: 'Weekly Horizons (Right): Thursday – Sunday & Dot-Grid Sandbox', desc: 'Weekend rituals schedule with generous 5mm ivory dot-grid sandbox for braindumps.' },
+      { img: "{{ 'flip_back_cover.jpg' | asset_url }}", title: 'Back Cover: Graffeine Tales Atelier Edition', desc: 'Matching Japanese bookcloth casing with gold debossed atelier hallmark, FSC certification & barcode.' }
     ];
     var currentShopifyFlip = 0;
     var shopifyPageFlip = null;
@@ -1022,11 +1024,11 @@ def generate_dedicated_sections():
 
       if (counterEl) {
         if (currentShopifyFlip === 0) {
-          counterEl.innerText = 'Cover (Front)';
+          counterEl.innerText = 'Front Cover';
         } else if (currentShopifyFlip === shopifyFlipPages.length - 1) {
           counterEl.innerText = 'Back Cover';
         } else {
-          counterEl.innerText = 'Spread ' + currentShopifyFlip + ' of ' + (shopifyFlipPages.length - 1);
+          counterEl.innerText = 'Inner Page ' + currentShopifyFlip + ' of ' + (shopifyFlipPages.length - 2);
         }
       }
 
