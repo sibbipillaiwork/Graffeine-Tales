@@ -641,13 +641,6 @@ def generate_dedicated_sections():
   Graffeine Tales — Journal & Diaries Luxury PDP Section (Shopify OS 2.0)
 {% endcomment %}
 <div class="journal-pdp-wrapper bg-[#F8F5ED] text-[#363638] antialiased pb-20 sm:pb-24">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-[#363638]/60 flex items-center gap-2" aria-label="Breadcrumb">
-    <a href="{{ routes.root_url }}" class="hover:text-[#4D351D] transition-colors">Home</a>
-    <span>&rsaquo;</span>
-    <a href="{{ routes.all_products_collection_url }}" class="hover:text-[#4D351D] transition-colors">Stationaries</a>
-    <span>&rsaquo;</span>
-    <span class="text-[#363638] font-medium truncate">{{ product.title | default: 'The 2027 Bound Chronicle &amp; Daily Journal' }}</span>
-  </nav>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-start">
