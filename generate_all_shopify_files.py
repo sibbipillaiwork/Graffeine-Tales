@@ -875,15 +875,9 @@ def generate_dedicated_sections():
       
       <!-- Section Heading: DM Serif Display, Espresso Charcoal (#363638), Generous Spacing -->
       <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-        <span class="text-xs uppercase font-bold tracking-[0.2em] text-[#927B53] bg-white/80 px-3.5 py-1.5 rounded-full border border-[#C6B58E]/40 shadow-sm inline-block mb-3">
-          Interactive Product Preview
-        </span>
         <h2 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-[#363638] tracking-tight">
-          Flip through a few inner pages!
+          {{ section.settings.flip_heading | default: 'Flip through a few inner pages!' }}
         </h2>
-        <p class="text-sm text-[#363638]/70 mt-3 font-sans max-w-md mx-auto">
-          Experience the tactile rhythm of the 2027 Chronicle. Grab any page corner or use the controls below to leaf through.
-        </p>
       </div>
 
       <!-- Interactive Book Display Container with Realistic Desk Shadow & Spine -->
@@ -1058,12 +1052,6 @@ def generate_dedicated_sections():
       "id": "flip_heading",
       "label": "Heading",
       "default": "Flip through a few inner pages!"
-    },
-    {
-      "type": "text",
-      "id": "flip_subheading",
-      "label": "Subheading",
-      "default": "Experience the tactile rhythm of the 2027 Chronicle. Grab any page corner or use the controls below to leaf through."
     }
   ],
   "blocks": [
