@@ -369,16 +369,41 @@
         </div>
 
         <!-- 4. CHOOSE YOUR LAYOUT SPREAD -->
-        <div class="space-y-2">
-          <label class="text-xs font-bold uppercase tracking-wider text-espresso">2. Select Interior Layout Format:</label>
-          <div class="grid grid-cols-2 gap-3">
-            <button type="button" class="layout-btn border-2 border-deep-coffee bg-warm-paper rounded-xl p-3 text-left text-xs font-medium text-espresso transition-all" onclick="selectLayout(this, 'Dated 2027 Full-Year (Weekly + Monthly)')">
-              <span class="font-bold block text-deep-coffee text-sm">Dated 2027 Year</span>
-              <span class="text-espresso/70 text-[11px]">Jan &ndash; Dec 2027 calendar grids</span>
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold uppercase tracking-wider text-espresso">
+              2. Select Interior Layout: 
+              <span class="font-serif-display text-sm text-deep-coffee font-normal ml-1" id="active-layout-label">Dated 2027 Year</span>
+            </label>
+            <span class="text-[11px] text-coffee-tan font-medium">120 GSM Archival</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <!-- Option 1: Dated 2027 -->
+            <button type="button" 
+                    class="layout-btn border-2 border-deep-coffee bg-warm-paper rounded-xl p-2.5 sm:p-3 flex items-center gap-2.5 text-left transition-all relative shadow-sm group" 
+                    onclick="selectLayout(this, 'Dated 2027 Full-Year (Weekly + Monthly)', 'Dated 2027 Year')">
+              <span class="w-7 h-7 rounded-full bg-sand/60 text-deep-coffee flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </span>
+              <div class="leading-tight min-w-0 pr-4">
+                <span class="text-xs sm:text-sm font-bold block text-espresso truncate">Dated 2027 Year</span>
+                <span class="text-[10px] sm:text-[11px] text-espresso/60 block truncate">Jan &ndash; Dec Calendar</span>
+              </div>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold layout-check">✓</span>
             </button>
-            <button type="button" class="layout-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-3 text-left text-xs font-medium text-espresso transition-all" onclick="selectLayout(this, 'Undated 365-Day Daily Freedom Format')">
-              <span class="font-bold block text-espresso text-sm">Undated 365 Days</span>
-              <span class="text-espresso/70 text-[11px]">Start whenever, zero wasted pages</span>
+
+            <!-- Option 2: Undated 365 Days -->
+            <button type="button" 
+                    class="layout-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-2.5 sm:p-3 flex items-center gap-2.5 text-left transition-all relative group" 
+                    onclick="selectLayout(this, 'Undated 365-Day Daily Freedom Format', 'Undated 365 Days')">
+              <span class="w-7 h-7 rounded-full bg-sand/60 text-espresso/70 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </span>
+              <div class="leading-tight min-w-0 pr-4">
+                <span class="text-xs sm:text-sm font-bold block text-espresso truncate">Undated 365 Days</span>
+                <span class="text-[10px] sm:text-[11px] text-espresso/60 block truncate">Start Anytime &bull; 0 Waste</span>
+              </div>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold layout-check hidden">✓</span>
             </button>
           </div>
         </div>
@@ -1401,16 +1426,25 @@
     }
 
     // 3. Layout Selector
-    function selectLayout(btn, layoutName) {
+    function selectLayout(btn, layoutName, displayName) {
       currentLayout = layoutName;
+      const label = document.getElementById('active-layout-label');
+      if (label) label.textContent = displayName || layoutName;
+
       const btns = document.querySelectorAll('.layout-btn');
       btns.forEach(b => {
-        b.classList.remove('border-deep-coffee', 'bg-warm-paper');
-        b.classList.add('border-sand/40', 'bg-white');
+        b.classList.remove('border-deep-coffee', 'bg-warm-paper', 'border-2', 'shadow-sm');
+        b.classList.add('border-sand/40', 'bg-white', 'border');
+        const check = b.querySelector('.layout-check');
+        if (check) check.classList.add('hidden');
       });
-      btn.classList.remove('border-sand/40', 'bg-white');
-      btn.classList.add('border-deep-coffee', 'bg-warm-paper');
-      showToast(`Layout changed to: ${layoutName}`);
+
+      btn.classList.remove('border-sand/40', 'bg-white', 'border');
+      btn.classList.add('border-deep-coffee', 'bg-warm-paper', 'border-2', 'shadow-sm');
+      const activeCheck = btn.querySelector('.layout-check');
+      if (activeCheck) activeCheck.classList.remove('hidden');
+
+      showToast(`Layout changed to: ${displayName || layoutName}`);
     }
 
     // 4. Quantity Adjustments
