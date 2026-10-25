@@ -1,0 +1,128 @@
+<section class="section-padding main-product-section" id="MainProduct-{{ product.id }}">
+  <div class="container product-page-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: start; max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+    
+    <!-- Product Gallery -->
+    <div class="product-gallery" style="position: sticky; top: 100px;">
+      <div class="main-image-wrap" style="border-radius: 16px; overflow: hidden; background: #F8F5F0; box-shadow: 0 10px 30px rgba(90,56,37,0.08); border: 1px solid rgba(90,56,37,0.1);">
+        <img id="MainProductImage" 
+             src="{{ product.featured_image | img_url: '1000x' }}" 
+             alt="{{ product.title | escape }}" 
+             style="width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; display: block;" />
+      </div>
+      
+      {% if product.images.size > 1 %}
+        <div class="product-thumbnails" style="display: flex; gap: 12px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px;">
+          {% for img in product.images %}
+            <button type="button" 
+                    onclick="document.getElementById('MainProductImage').src='{{ img | img_url: '1000x' }}'"
+                    style="border: 2px solid {% if forloop.first %}var(--c-primary, #5A3825){% else %}transparent{% endif %}; border-radius: 8px; overflow: hidden; padding: 0; background: none; cursor: pointer; flex-shrink: 0; width: 72px; height: 72px;">
+              <img src="{{ img | img_url: '150x' }}" alt="{{ product.title | escape }}" style="width: 100%; height: 100%; object-fit: cover;" />
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Product Info & Buying Actions -->
+    <div class="product-info-wrap">
+      <span class="product-collection-tag" style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-accent, #C85A32);">
+        {{ product.type | default: 'Atelier Original Edition' }}
+      </span>
+
+      <h1 class="product-title" style="font-family: var(--font-display, 'DM Serif Display', serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--c-primary, #5A3825); margin: 12px 0 16px; line-height: 1.15;">
+        {{ product.title }}
+      </h1>
+
+      <!-- Ratings & Reviews Badge -->
+      <div class="product-meta-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <div class="stars-gold" style="color: #D4AF37; font-size: 1.1rem; letter-spacing: 2px;">★★★★★</div>
+        <span style="font-size: 0.9rem; color: #7A6B63; font-weight: 500;">5.0 (214 verified atelier patrons)</span>
+      </div>
+
+      <!-- Pricing Row -->
+      <div class="product-price-row" style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(90,56,37,0.12);">
+        <span class="current-price" style="font-size: 2rem; font-weight: 700; color: var(--c-primary, #5A3825); font-family: var(--font-display, 'DM Serif Display', serif);">
+          {{ product.price | money }}
+        </span>
+        {% if product.compare_at_price > product.price %}
+          <span class="compare-price" style="font-size: 1.15rem; text-decoration: line-through; color: #9E938A;">
+            {{ product.compare_at_price | money }}
+          </span>
+          <span class="save-tag" style="background: rgba(200,90,50,0.1); color: #C85A32; font-weight: 700; font-size: 0.85rem; padding: 4px 10px; border-radius: 999px;">
+            Save {{ product.compare_at_price | minus: product.price | money }}
+          </span>
+        {% endif %}
+      </div>
+
+      <!-- Product Form -->
+      {% form 'product', product, id: 'main-product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+
+        {% if product.variants.size > 1 %}
+          <div class="variants-picker" style="margin-bottom: 24px;">
+            <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #363638;">Select Edition / Variant:</label>
+            <select name="id" class="edition-select" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid rgba(90,56,37,0.2); font-family: inherit; font-size: 1rem; background: #FFF;">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                  {{ variant.title }} — {{ variant.price | money }} {% unless variant.available %}(Sold Out){% endunless %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        <!-- Quantity & Add to Cart Row -->
+        <div class="actions-row" style="display: flex; gap: 16px; margin-bottom: 20px;">
+          <div class="qty-stepper-wrap" style="display: flex; align-items: center; border: 1.5px solid rgba(90,56,37,0.2); border-radius: 999px; padding: 4px; background: #FFF;">
+            <button type="button" onclick="const q=document.getElementById('product-qty'); if(q.value>1)q.value--;" style="width: 36px; height: 36px; border: none; background: none; font-size: 1.2rem; cursor: pointer;">−</button>
+            <input type="number" id="product-qty" name="quantity" value="1" min="1" style="width: 44px; text-align: center; border: none; font-weight: 600; font-size: 1rem;" />
+            <button type="button" onclick="const q=document.getElementById('product-qty'); q.value++;" style="width: 36px; height: 36px; border: none; background: none; font-size: 1.2rem; cursor: pointer;">+</button>
+          </div>
+
+          <button type="submit" 
+                  name="add" 
+                  class="btn btn-primary" 
+                  style="flex: 1; padding: 16px 28px; border-radius: 999px; background: var(--c-primary, #5A3825); color: #FFF; font-weight: 600; font-size: 1.05rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s, background 0.2s;"
+                  {% unless product.available %}disabled{% endunless %}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>{% if product.available %}Add to Atelier Bag{% else %}Sold Out{% endif %}</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Buy Button (UPI / Shop Pay / Cards) -->
+        <div class="dynamic-checkout-wrap" style="margin-bottom: 28px;">
+          {{ form | payment_button }}
+        </div>
+      {% endform %}
+
+      <!-- Atelier Trust Markers -->
+      <div class="atelier-trust-box" style="background: rgba(90,56,37,0.04); border: 1px dashed rgba(90,56,37,0.2); border-radius: 12px; padding: 16px 20px; margin-bottom: 30px;">
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">✨</span>
+          <span style="font-size: 0.9rem; color: #4A3A31;"><strong>Handcrafted in Atelier:</strong> Every piece is individually hand-finished and inspected.</span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">🚚</span>
+          <span style="font-size: 0.9rem; color: #4A3A31;"><strong>Pan-India Express:</strong> Dispatched in 24–48 hours via Bluedart/Delhivery.</span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span style="font-size: 1.2rem;">🎁</span>
+          <span style="font-size: 0.9rem; color: #4A3A31;"><strong>Gift-Ready Packaging:</strong> Wrapped in sustainable kraft sleeve with wax seal emblem.</span>
+        </div>
+      </div>
+
+      <!-- Product Description & Story -->
+      <div class="product-description-content" style="color: #4A3A31; line-height: 1.7; font-size: 1.025rem;">
+        {{ product.description }}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Main Section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,89 @@
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay">
+    <div class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      
+      <div class="mobile-drawer-header">
+        <span class="mobile-drawer-title">Navigation Menu</span>
+        <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        
+        <!-- Mobile Quick Search -->
+        <div class="mobile-search-wrap">
+          <button class="mobile-search-trigger" onclick="openSearchFromMobile()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+            <span>Search handcrafted editions...</span>
+          </button>
+        </div>
+
+        <!-- Category Links (No serial numbers, no product counts) -->
+        <div class="mobile-category-group">
+          <span class="mobile-group-title">Shop by Category</span>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="filterFromMobile('all')">
+            <span>All Studio Editions</span>
+          </a>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="filterFromMobile('stationaries')">
+            <span>Stationaries &amp; Calendars</span>
+          </a>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="filterFromMobile('journals')">
+            <span>Journals &amp; Planners</span>
+          </a>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="filterFromMobile('decor')">
+            <span>Handcrafted Décor &amp; Coasters</span>
+          </a>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="filterFromMobile('events')">
+            <span>Events &amp; Personalized Gifting</span>
+          </a>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="filterFromMobile('bulk')">
+            <span>Bulk Orders &amp; Corporate</span>
+          </a>
+        </div>
+
+        <div class="mobile-nav-divider"></div>
+
+        <!-- Studio & Story Links -->
+          <a href="#about-us" class="mobile-nav-link" onclick="closeMobileDrawer()">
+            <span>Our Story • Atelier Philosophy</span>
+          </a>
+          <a href="#catalogue-section" class="mobile-nav-link" onclick="closeMobileDrawer()">
+            <span>Explore All Products</span>
+          </a>
+          <a href="#reviews-section" class="mobile-nav-link" onclick="closeMobileDrawer()">
+            <span>Client Reviews (2,400+)</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer (Currency removed, My Account added) -->
+      <div class="mobile-drawer-footer">
+        <button class="mobile-drawer-account-btn" id="mobile-drawer-account-btn" onclick="openAccountModal(); closeMobileDrawer();">
+          <div class="account-btn-left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>My Account</span>
+          </div>
+          <svg class="account-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+        <p class="mobile-copyright">© 2026 Graffeine Tales Studio. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </div>
+
+{% schema %}
+{
+  "name": "Mobile Navigation Drawer",
+  "settings": []
+}
+{% endschema %}

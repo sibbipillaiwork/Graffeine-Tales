@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "hero_carousel": {
+      "type": "hero-carousel"
+    },
+    "categories_grid": {
+      "type": "categories-grid"
+    },
+    "new_launch": {
+      "type": "new-launch"
+    },
+    "bestsellers": {
+      "type": "bestsellers"
+    },
+    "built_with_heart": {
+      "type": "built-with-heart"
+    },
+    "catalogue": {
+      "type": "catalogue"
+    },
+    "about_story": {
+      "type": "about-story"
+    },
+    "stories_reels": {
+      "type": "stories-reels"
+    },
+    "reviews": {
+      "type": "reviews"
+    }
+  },
+  "order": [
+    "hero_carousel",
+    "categories_grid",
+    "new_launch",
+    "bestsellers",
+    "built_with_heart",
+    "catalogue",
+    "about_story",
+    "stories_reels",
+    "reviews"
+  ]
+}

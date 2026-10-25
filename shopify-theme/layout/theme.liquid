@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}" />
+  {% else %}
+    <meta name="description" content="Discover tactile stationery, handcrafted journals, artisan decor and bespoke gifting by Graffeine Tales. Designer's eye. Artist's hands. Storyteller's imagination." />
+  {% endif %}
+
+  <!-- Favicon / Coffee Cup -->
+  <link rel="icon" type="image/png" href="{{ 'coffee_cup.png' | asset_url }}" />
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  <!-- Google Fonts: Brand Typography System -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0;400;600;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Main Theme Stylesheet -->
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+
+  <!-- Required Shopify Header Hook -->
+  {{ content_for_header }}
+
+  <!-- Shopify Theme Environment Bridge -->
+  <script>
+    window.ShopifyTheme = {
+      rootUrl: {{ routes.root_url | json }},
+      cartUrl: {{ routes.cart_url | json }},
+      cartAddUrl: {{ routes.cart_add_url | json }},
+      cartChangeUrl: {{ routes.cart_change_url | json }},
+      cartClearUrl: {{ routes.cart_clear_url | json }},
+      currency: {{ cart.currency.symbol | default: '₹' | json }},
+      freeShippingThreshold: {{ settings.free_shipping_threshold | default: 1499 }},
+      assetUrl: {{ 'coffee_cup.png' | asset_url | split: 'coffee_cup.png' | first | json }}
+    };
+  </script>
+</head>
+<body class="template-{{ template.name | default: 'index' }}">
+
+  <!-- Sticky & Mega-Menu Header -->
+  {% section 'header' %}
+
+  <!-- Main Content Body -->
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  <!-- Artisanal Footer -->
+  {% section 'footer' %}
+
+  <!-- Global Slide-Over Drawers & Modals -->
+  {% section 'cart-drawer' %}
+  {% section 'search-modal' %}
+  {% section 'wishlist-drawer' %}
+  {% section 'quick-view-modal' %}
+  {% section 'mobile-nav' %}
+  {% section 'mobile-bottom-nav' %}
+  {% section 'account-modal' %}
+  {% section 'story-modal' %}
+  {% section 'reel-viewer-modal' %}
+  {% section 'reel-ingest-modal' %}
+
+  <!-- Core Scripts -->
+  <script src="{{ 'app.js' | asset_url }}" defer></script>
+  <script src="{{ 'shopify-cart.js' | asset_url }}" defer></script>
+</body>
+</html>

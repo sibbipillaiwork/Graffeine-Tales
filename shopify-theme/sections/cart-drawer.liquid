@@ -1,0 +1,26 @@
+<div class="cart-drawer-overlay" id="cart-drawer-overlay">
+    <div class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      
+      <div class="cart-header">
+        <h3 class="cart-title" id="cart-title">Your Atelier Bag</h3>
+        <button class="close-btn" id="cart-close-btn" aria-label="Close cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Goal Tracker (Threshold ₹1,499) -->
+      <div class="shipping-goal-bar">
+        <div class="goal-label" id="shipping-goal-label">
+          <span>Add ₹800 more for FREE Shipping</span>
+          <span>47%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="shipping-progress-fill" style="width: 47%;"></div>
+        </div>
+
+{% schema %}
+{
+  "name": "Slide-Over Cart Drawer",
+  "settings": []
+}
+{% endschema %}

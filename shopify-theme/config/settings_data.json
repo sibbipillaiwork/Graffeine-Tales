@@ -1,0 +1,13 @@
+{
+  "current": {
+    "color_primary": "#5A3825",
+    "color_accent_clay": "#C85A32",
+    "color_bg_cream": "#FDFBF7",
+    "color_text_dark": "#363638",
+    "free_shipping_threshold": 1499,
+    "shipping_promo_text": "Add \u20b9{remaining} more for FREE Studio Courier Shipping",
+    "social_instagram": "https://instagram.com/graffeinetales",
+    "social_pinterest": "https://pinterest.com/graffeinetales",
+    "concierge_email": "hello@graffeinetales.com"
+  }
+}

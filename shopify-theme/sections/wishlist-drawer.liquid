@@ -1,0 +1,22 @@
+<div class="wishlist-drawer-overlay" id="wishlist-drawer-overlay">
+    <div class="wishlist-drawer" role="dialog" aria-modal="true" aria-labelledby="wishlist-title">
+      <div class="wishlist-header">
+        <div>
+          <h3 class="wishlist-title" id="wishlist-title">Saved Treasures</h3>
+          <span class="wishlist-count-label" id="wishlist-count-label">2 Saved Editions</span>
+        </div>
+        <button class="close-btn" id="wishlist-close-btn" aria-label="Close wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="wishlist-items-list" id="wishlist-items-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+{% schema %}
+{
+  "name": "Wishlist Drawer",
+  "settings": []
+}
+{% endschema %}

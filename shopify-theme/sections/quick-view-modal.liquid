@@ -1,0 +1,43 @@
+<div class="modal-overlay" id="quick-view-modal">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <div class="modal-image-col">
+        <img id="modal-img" src="{{ \'lady_teatrip.jpg\' | asset_url }}" alt="Product preview" />
+      </div>
+
+      <div class="modal-info-col">
+        <span class="modal-tag" id="modal-tag">Handcrafted Décor</span>
+        <h3 class="modal-title" id="modal-title">Lady TeaTrip Acrylic Coaster &amp; Stand</h3>
+        <div class="modal-price" id="modal-price">₹699 <span style="font-size: 0.9rem; text-decoration: line-through; color: var(--c-text-light); margin-left: 8px;">₹899</span></div>
+        <p class="modal-desc" id="modal-desc">Description goes here.</p>
+        
+        <div class="modal-specs">
+          <span class="specs-title">Edition Specifications:</span>
+          <ul id="modal-specs-list">
+            <!-- Dynamic specs -->
+          </ul>
+        </div>
+
+        <!-- Quantity Stepper & Add to Bag Row -->
+        <div class="modal-actions-row">
+          <div class="modal-qty-stepper">
+            <button class="qty-btn" onclick="adjustQuickViewQty(-1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-val" id="modal-qty-val">1</span>
+            <button class="qty-btn" onclick="adjustQuickViewQty(1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn btn-primary modal-cart-cta" id="modal-add-cart">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+{% schema %}
+{
+  "name": "Product Quick View Modal",
+  "settings": []
+}
+{% endschema %}

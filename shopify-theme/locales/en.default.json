@@ -1,0 +1,23 @@
+{
+  "general": {
+    "search": "Search handcrafted editions...",
+    "cart": "Shopping Bag",
+    "checkout": "Checkout Securely",
+    "free_shipping": "Free Studio Courier Shipping",
+    "add_to_cart": "Add to Bag",
+    "quick_view": "Quick View",
+    "bestseller": "Bestseller",
+    "subtotal": "Subtotal",
+    "taxes_shipping_at_checkout": "Taxes and shipping calculated at checkout. Handcrafted packaging included."
+  },
+  "products": {
+    "product": {
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "add_to_cart": "Add to Bag",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity"
+    }
+  }
+}

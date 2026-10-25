@@ -1,0 +1,111 @@
+<div class="reel-ingest-overlay" id="reel-ingest-modal" role="dialog" aria-modal="true" aria-labelledby="reel-ingest-title" style="display: none;">
+    <div class="reel-ingest-backdrop" onclick="closeReelIngestModal()"></div>
+    
+    <div class="reel-ingest-dialog">
+      <!-- Modal Header -->
+      <div class="reel-ingest-header">
+        <div class="ingest-header-text">
+          <span class="ingest-header-tag">✦ STUDIO CREATOR ENGINE</span>
+          <h3 class="reel-ingest-title" id="reel-ingest-title">Ingest Shoppable Reel</h3>
+          <p class="reel-ingest-subtitle">
+            Publish short-form craft reels directly to "Stories in Motion" via direct file upload or Instagram integration.
+          </p>
+        </div>
+        <button class="reel-ingest-close" onclick="closeReelIngestModal()" aria-label="Close Ingest Modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Ingestion Mode Tabs -->
+      <div class="ingest-tabs-bar" role="tablist">
+        <button class="ingest-tab-btn active" id="tab-btn-upload" onclick="switchIngestTab('upload')" role="tab" aria-selected="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>Manual Video Upload (MP4/WebM)</span>
+        </button>
+        <button class="ingest-tab-btn" id="tab-btn-instagram" onclick="switchIngestTab('instagram')" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          <span>Instagram Reel Integration</span>
+        </button>
+      </div>
+
+      <!-- Ingestion Form Body -->
+      <form class="reel-ingest-form" id="reel-ingest-form" onsubmit="handleReelIngestSubmit(event)">
+        
+        <!-- PANEL 1: MANUAL VIDEO UPLOAD -->
+        <div class="ingest-tab-panel active" id="panel-upload">
+          <!-- Drag & Drop Zone -->
+          <div class="ingest-dropzone" id="ingest-video-dropzone" onclick="document.getElementById('ingest-video-file').click()">
+            <input type="file" id="ingest-video-file" accept="video/mp4,video/webm,video/quicktime" style="display: none;" onchange="handleManualVideoSelect(event)" />
+            <div class="dropzone-inner" id="dropzone-prompt">
+              <div class="dropzone-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+              <h4>Choose Video File or Drag &amp; Drop</h4>
+              <p>Supports vertical 9:16 MP4, WebM, or MOV up to 100MB</p>
+              <span class="btn-browse-file">Browse Computer</span>
+            </div>
+            
+            <!-- Video File Selected Preview -->
+            <div class="dropzone-file-selected" id="dropzone-selected-info" style="display: none;">
+              <video class="ingest-video-mini-preview" id="ingest-mini-preview" muted playsinline></video>
+              <div class="selected-file-meta">
+                <strong id="selected-file-name">reel-video.mp4</strong>
+                <span id="selected-file-size">12.4 MB</span>
+                <span class="badge-status">✓ Ready for Processing</span>
+              </div>
+              <button type="button" class="btn-remove-file" onclick="removeSelectedVideoFile(event)">Remove</button>
+            </div>
+          </div>
+
+          <!-- Poster Image Select -->
+          <div class="ingest-field-group">
+            <label class="ingest-label" for="ingest-poster-select">Video Poster / Fallback Frame</label>
+            <select class="ingest-select" id="ingest-poster-select" onchange="handlePosterSelectChange(event)">
+              <option value="assets/products/lady_teatrip.jpg">Lady TeaTrip Acrylic Coaster (Warm Studio Still)</option>
+              <option value="assets/products/photo_thread_art_portrait.png">Photo Thread Art Keepsake (Embroidery Studio)</option>
+              <option value="assets/products/wood_flower_bookmark.jpg">Sunflower Wood Bookmark (Desk Setting)</option>
+              <option value="assets/products/artist_calendar.jpg">2026 Artist Calendar &amp; Easel</option>
+              <option value="assets/products/cherry_blossom.png">Cherry Blossom Botanical Frame</option>
+              <option value="assets/founder_craft.jpg">Artisan Hands &amp; Midnight Ink</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PANEL 2: INSTAGRAM REEL INTEGRATION -->
+        <div class="ingest-tab-panel" id="panel-instagram" style="display: none;">
+          <div class="ingest-field-group">
+            <label class="ingest-label" for="ingest-instagram-url">Instagram Reel URL / Link</label>
+            <div class="ingest-input-with-btn">
+              <input type="url" class="ingest-input" id="ingest-instagram-url" placeholder="https://www.instagram.com/reel/C31234abc..." />
+              <button type="button" class="btn-fetch-instagram" onclick="fetchInstagramReelPreview()">Fetch Reel</button>
+            </div>
+            <p class="ingest-hint">Paste any public Instagram Reel URL to stream seamlessly in your atelier feed.</p>
+          </div>
+
+          <!-- Instagram Live Preview Box -->
+          <div class="instagram-preview-box" id="instagram-preview-box" style="display: none;">
+            <div class="ig-preview-header">
+              <div class="ig-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                Instagram Reel Verified
+              </div>
+              <span id="ig-reel-id-label">Reel ID: C31234abc</span>
+            </div>
+            <div class="ig-mock-player">
+              <div class="ig-mock-aspect">
+                <iframe id="ig-preview-iframe" class="ig-preview-frame" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+              </div>
+            </div>
+          </div>
+
+{% schema %}
+{
+  "name": "Dual Reel Ingestion Modal",
+  "settings": []
+}
+{% endschema %}

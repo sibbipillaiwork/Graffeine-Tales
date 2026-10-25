@@ -1,0 +1,79 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Graffeine Tales Atelier",
+    "theme_version": "2.0.0",
+    "theme_author": "Graffeine Tales Studio",
+    "theme_documentation_url": "https://graffeinetales.com",
+    "theme_support_url": "mailto:hello@graffeinetales.com"
+  },
+  {
+    "name": "Colors & Aesthetics",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Brand Color (Warm Saddle)",
+        "default": "#5A3825"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_clay",
+        "label": "Terracotta Clay Accent",
+        "default": "#C85A32"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_cream",
+        "label": "Atelier Cream Background",
+        "default": "#FDFBF7"
+      },
+      {
+        "type": "color",
+        "id": "color_text_dark",
+        "label": "Espresso Dark Text",
+        "default": "#363638"
+      }
+    ]
+  },
+  {
+    "name": "Shipping & Checkout",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free Shipping Threshold (in store currency)",
+        "default": 1499
+      },
+      {
+        "type": "text",
+        "id": "shipping_promo_text",
+        "label": "Free Shipping Announcement",
+        "default": "Add \u20b9{remaining} more for FREE Studio Courier Shipping"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram Handle or URL",
+        "default": "https://instagram.com/graffeinetales"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest URL",
+        "default": "https://pinterest.com/graffeinetales"
+      },
+      {
+        "type": "text",
+        "id": "concierge_email",
+        "label": "Studio Concierge Email",
+        "default": "hello@graffeinetales.com"
+      }
+    ]
+  }
+]

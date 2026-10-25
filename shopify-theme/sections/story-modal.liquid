@@ -1,0 +1,50 @@
+<div class="story-modal-overlay" id="story-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="story-modal-title" style="display: none;">
+    <div class="story-modal-dialog">
+      <button class="story-modal-close" onclick="closeStoryModal()" aria-label="Close Story Dialog">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="story-modal-hero">
+        <img src="{{ \'founder_craft.jpg\' | asset_url }}" alt="Artisan hands sketching and crafting at studio desk" class="story-modal-img" />
+        <div class="story-modal-overlay-gradient"></div>
+        <div class="story-modal-hero-badge">Since 2024 • Handcrafted in Atelier</div>
+      </div>
+
+      <div class="story-modal-body">
+        <span class="story-modal-tag">The Graffeine Tales Chronicle</span>
+        <h3 class="story-modal-title" id="story-modal-title">The Story Behind Graffeine Tales</h3>
+        
+        <p class="story-modal-lead">
+          Born from events. Brewed with coffee. Made with art. Where creativity is brewed and stories are made tangible.
+        </p>
+        
+        <div class="story-modal-pillars">
+          <div class="story-pillar-item">
+            <h4>01. Design-Led</h4>
+            <p>Considered typography, expressive illustrations, and architectural proportion behind every edition.</p>
+          </div>
+          <div class="story-pillar-item">
+            <h4>02. Handmade &amp; Tactile</h4>
+            <p>Every bookmark, coaster easel, and thread art portrait is finished by human hands in our atelier.</p>
+          </div>
+          <div class="story-pillar-item">
+            <h4>03. Soulful Stories</h4>
+            <p>Objects meant to be treasured, passed on, and woven into personal weekend coffee rituals.</p>
+          </div>
+        </div>
+
+        <div class="story-modal-footer">
+          <a href="#catalogue-section" class="btn btn-sand" onclick="closeStoryModal()">Explore The Atelier Archive</a>
+        </div>
+      </div>
+    </div>
+
+{% schema %}
+{
+  "name": "Founder & Atelier Story Modal",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+<div class="account-modal-overlay" id="account-modal-overlay">
+    <div class="account-modal" role="dialog" aria-modal="true" aria-label="My Atelier Account">
+      
+      <div class="account-modal-header">
+        <div class="account-header-profile">
+          <div class="account-avatar">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="account-profile-info">
+            <h3 class="account-user-name">Atelier Member</h3>
+            <span class="account-user-tier">✦ Society Patron &bull; INR Store</span>
+          </div>
+        </div>
+        <button class="account-modal-close" id="account-modal-close" aria-label="Close Account Modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="account-modal-body">
+        
+        <div class="account-nav-grid">
+          <button class="account-card-item" onclick="showToast('Dispatch update: Orders shipped within 24-48 hrs via Bluedart/Delhivery.');">
+            <div class="account-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m7.5 4.27 9 5.15"/>
+                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                <path d="m3.3 7 8.7 5 8.7-5"/>
+                <path d="M12 22V12"/>
+              </svg>
+            </div>
+            <div class="account-card-text">
+              <strong>Track Orders</strong>
+              <span>Live dispatch & tracking in India</span>
+            </div>
+          </button>
+
+          <button class="account-card-item" onclick="closeAccountModal(); openWishlistDrawer();">
+            <div class="account-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </div>
+            <div class="account-card-text">
+              <strong>Saved Wishlist</strong>
+              <span>View your curated selections</span>
+            </div>
+          </button>
+
+          <button class="account-card-item" onclick="showToast('Your delivery addresses are securely synced.');">
+            <div class="account-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="account-card-text">
+              <strong>Saved Addresses</strong>
+              <span>Manage domestic shipping details</span>
+            </div>
+          </button>
+
+          <a href="mailto:hello@graffeinetales.com" class="account-card-item">
+            <div class="account-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="account-card-text">
+              <strong>Studio Concierge</strong>
+              <span>hello@graffeinetales.com</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="account-perks-box">
+          <div class="perks-badge">✦ SOCIETY MEMBER PRIVILEGE</div>
+          <h4>Enjoy 10% Off Your Next Order</h4>
+          <p>Apply code <strong>ATELIER10</strong> at checkout on all handcrafted editions.</p>
+        </div>
+
+      </div>
+    </div>
+
+{% schema %}
+{
+  "name": "Atelier My Account Modal",
+  "settings": []
+}
+{% endschema %}

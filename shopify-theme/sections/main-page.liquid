@@ -1,0 +1,17 @@
+<section class="section-padding main-page-section">
+  <div class="container" style="max-width: 900px; margin: 50px auto; padding: 0 24px;">
+    <h1 style="font-family: var(--font-display, 'DM Serif Display', serif); font-size: 2.8rem; color: var(--c-primary, #5A3825); margin-bottom: 24px;">
+      {{ page.title }}
+    </h1>
+    <div class="page-content" style="line-height: 1.8; color: #4A3A31; font-size: 1.05rem;">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Standard Page",
+  "settings": []
+}
+{% endschema %}

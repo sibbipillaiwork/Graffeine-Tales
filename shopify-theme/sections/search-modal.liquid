@@ -1,0 +1,22 @@
+<div class="search-modal-overlay" id="search-modal-overlay">
+    <div class="search-modal-dialog" role="dialog" aria-modal="true" aria-label="Search studio catalogue">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input type="text" id="search-modal-input" placeholder="Type to search desk calendars, acrylic coasters, bookmarks..." autocomplete="off" />
+        <button class="search-modal-close" id="search-modal-close" aria-label="Close search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-modal-results" id="search-modal-results">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+{% schema %}
+{
+  "name": "Instant Search Modal",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,324 @@
+<header class="site-header" id="main-header">
+    <div class="container nav-container">
+      
+      <!-- 1. Left: Hamburger Toggle (Mobile Only) -->
+      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Open mobile navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- 2. Center: Brand Logo with Animated Coffee Cup (Center on Mobile, Left on Desktop) -->
+      <a href="index.html" class="brand-logo-wrap" aria-label="Graffeine Tales Home">
+        <div class="brand-cup-container">
+          <div class="cup-steam-particles" aria-hidden="true">
+            <span class="steam-wisp w1"></span>
+            <span class="steam-wisp w2"></span>
+          </div>
+          <img src="{{ \'coffee_cup.png\' | asset_url }}" alt="Graffeine Coffee Cup Icon" class="brand-cup-img" />
+        </div>
+        <img src="{{ \'logo_dark.png\' | asset_url }}" alt="Graffeine Tales - Where Stories Become Art" class="brand-logo-img" />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="site-nav" aria-label="Main menu">
+        <ul class="nav-menu">
+          
+          <!-- Category 1: Stationaries -->
+          <li class="nav-item">
+            <a href="#category-section" class="nav-link">
+              Stationaries
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="mega-menu">
+              <div>
+                <ul class="mega-sublist">
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Desk Calendars &amp; Planners</span>
+                      <span class="sub-desc">Progress Not Perfection &amp; animal editions</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Magnetic &amp; Wooden Bookmarks</span>
+                      <span class="sub-desc">Tactile keepsakes for book lovers</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Laptop &amp; Phone Stickers</span>
+                      <span class="sub-desc">Waterproof vinyl with witty desi pop art</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Letterpress Notecards</span>
+                      <span class="sub-desc">Gold foil &amp; deckle edge cotton</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Botanical Sticky Notes</span>
+                      <span class="sub-desc">Subtle floral borders for desks</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Wax Seals &amp; Stamps</span>
+                      <span class="sub-desc">Solid brass with turned walnut handle</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-feature-card">
+                <img src="{{ \'artist_calendar.jpg\' | asset_url }}" alt="Desk Calendar" class="mega-feature-img" />
+                <span class="mega-feature-tag">Featured Drop</span>
+                <h4 class="mega-feature-title">2026 Artist Desk Calender</h4>
+              </div>
+            </div>
+          </li>
+
+          <!-- Category 2: Journals -->
+          <li class="nav-item">
+            <a href="#category-section" class="nav-link">
+              Journals
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="mega-menu">
+              <div>
+                <ul class="mega-sublist">
+                  <li class="mega-subitem">
+                    <a href="#category-section">
+                      <span class="sub-title">Hardcover Linen Journals</span>
+                      <span class="sub-desc">Archival 120gsm lay-flat binding</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#category-section">
+                      <span class="sub-title">Coffee Tasting Diaries</span>
+                      <span class="sub-desc">Guided prompts for roast rituals</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#category-section">
+                      <span class="sub-title">Everyday Dotted Notebooks</span>
+                      <span class="sub-desc">Smooth cream paper for pen &amp; ink</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#category-section">
+                      <span class="sub-title">Leatherette Keepsakes</span>
+                      <span class="sub-desc">Gold-debossed heirloom editions</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#category-section">
+                      <span class="sub-title">Pocket Traveler's Notebooks</span>
+                      <span class="sub-desc">Compact companions for ideas on-the-go</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#category-section">
+                      <span class="sub-title">Journal Accessories &amp; Clips</span>
+                      <span class="sub-desc">Brass clips &amp; silk ribbon bookmarks</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-feature-card">
+                <img src="{{ \'cat_journals.jpg\' | asset_url }}" alt="Linen Journals" class="mega-feature-img" />
+                <span class="mega-feature-tag">Best of Studio</span>
+                <h4 class="mega-feature-title">The Storyteller's Linen Edition</h4>
+              </div>
+            </div>
+          </li>
+
+          <!-- Category 3: Handcrafted Decor -->
+          <li class="nav-item">
+            <a href="#category-section" class="nav-link">
+              Handcrafted Décor
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="mega-menu">
+              <div>
+                <ul class="mega-sublist">
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Acrylic Coasters &amp; Stands</span>
+                      <span class="sub-desc">Lady TeaTrip, F1, Chugli Over Chai</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Photo Thread Art</span>
+                      <span class="sub-desc">Hand-stitched portraits &amp; botanical hoops</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Door Name Tags &amp; Plaques</span>
+                      <span class="sub-desc">Custom laser-cut wooden signage</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Soy &amp; Amber Wax Candles</span>
+                      <span class="sub-desc">Infused with roasted espresso &amp; cedar</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Botanical Wall Frames</span>
+                      <span class="sub-desc">Cherry blossom &amp; day/night motifs</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-feature-card">
+                <img src="{{ \'lady_teatrip.jpg\' | asset_url }}" alt="Lady TeaTrip" class="mega-feature-img" />
+                <span class="mega-feature-tag">Studio Original</span>
+                <h4 class="mega-feature-title">Lady TeaTrip Acrylic Coaster</h4>
+              </div>
+            </div>
+          </li>
+
+          <!-- Category 4: Events & Gifting -->
+          <li class="nav-item">
+            <a href="#catalogue-section" class="nav-link">
+              Events &amp; Gifting
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="mega-menu">
+              <div>
+                <ul class="mega-sublist">
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Personalized Handkerchiefs</span>
+                      <span class="sub-desc">Fine cotton with custom embroidered initials</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Curated Gift Hampers</span>
+                      <span class="sub-desc">Coasters, calendars &amp; artisanal treats</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Bespoke Wedding Suites</span>
+                      <span class="sub-desc">Custom invitations &amp; wax seal suites</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Celebration Gift Boxes</span>
+                      <span class="sub-desc">Rigid craft boxes with gold foil tags</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Gift Cards &amp; Vouchers</span>
+                      <span class="sub-desc">Digital atelier credit for loved ones</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-feature-card">
+                <img src="{{ \'cat_events.jpg\' | asset_url }}" alt="Events" class="mega-feature-img" />
+                <span class="mega-feature-tag">Bespoke Service</span>
+                <h4 class="mega-feature-title">Curated Wedding Keepsake Box</h4>
+              </div>
+            </div>
+          </li>
+
+          <!-- Category 5: Bulk Orders -->
+          <li class="nav-item">
+            <a href="#catalogue-section" class="nav-link">
+              Bulk Orders
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="mega-menu">
+              <div>
+                <ul class="mega-sublist">
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Corporate Welcome Kits</span>
+                      <span class="sub-desc">Branded coasters, calendars &amp; journals</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Client Appreciation Gifting</span>
+                      <span class="sub-desc">Tiered luxury packages with custom notes</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Event Favours (50+ Units)</span>
+                      <span class="sub-desc">Acrylic coasters &amp; personalized handkerchiefs</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Custom Brand Merch</span>
+                      <span class="sub-desc">Bespoke illustrations &amp; packaging design</span>
+                    </a>
+                  </li>
+                  <li class="mega-subitem">
+                    <a href="#catalogue-section">
+                      <span class="sub-title">Bulk Catalog &amp; Quote</span>
+                      <span class="sub-desc">Immediate estimates and sample requests</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-feature-card">
+                <img src="{{ \'cat_bulk.jpg\' | asset_url }}" alt="Bulk" class="mega-feature-img" />
+                <span class="mega-feature-tag">B2B Atelier</span>
+                <h4 class="mega-feature-title">Executive Welcome Curation</h4>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- Nav Icons (Search Modal, Wishlist Drawer, Cart Drawer) -->
+      <div class="nav-actions">
+        <!-- Search Trigger (Opens Instant Search Modal) -->
+        <button class="action-btn" id="header-search-trigger" aria-label="Search collection" title="Search catalogue (Ctrl+K)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+          <span class="kbd-hint">⌘K</span>
+        </button>
+
+        <!-- Wishlist Trigger (Opens Saved Items Drawer) -->
+        <button class="action-btn" id="wishlist-trigger" aria-label="Wishlist items" title="Saved Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+          <span class="action-badge" id="wishlist-badge-count">2</span>
+        </button>
+
+        <!-- Cart Trigger (Opens Slide-over Drawer) -->
+        <button class="action-btn" id="cart-trigger" aria-label="Open shopping cart" title="Atelier Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="action-badge" id="cart-badge-count">1</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+{% schema %}
+{
+  "name": "Header & Mega Navigation",
+  "settings": []
+}
+{% endschema %}
