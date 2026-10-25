@@ -686,12 +686,183 @@ def generate_dedicated_sections():
         {% form 'product', product, id: 'journal-pdp-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
           <div class="flex items-center gap-3 mb-4">
-            <button type="submit" name="add" class="flex-1 bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] py-4 px-6 rounded-full font-bold text-sm tracking-wide flex items-center justify-center gap-3 shadow-tactile">
+            <button type="submit" name="add" class="flex-1 bg-[#4D351D] hover:bg-[#363638] text-[#E9DFC2] py-4 px-6 rounded-full font-bold text-sm tracking-wide flex items-center justify-center gap-3 shadow-tactile transition-all">
               <span>Add to Atelier Bag</span>
             </button>
           </div>
           <div>{{ form | payment_button }}</div>
         {% endform %}
+
+        <!-- Editorial Lead Pitch Paragraph (Inspired by Alicia Souza PDP Structure) -->
+        <p class="text-xs sm:text-sm text-[#363638]/80 leading-relaxed font-normal pt-4 border-t border-[#C6B58E]/40">
+          <strong class="text-[#363638] font-semibold">Plan every day with ease using our 2027 Daily Planner!</strong> Featuring a daily layout, along with monthly grids, and a habit tracker which helps you stay organized and on top of your goals. The premium printed bookcloth cover with metallic gold foiling adds a touch of luxury, making it perfect for work, studio, or personal planning. Durable, stylish, and thoughtfully designed &ndash; your must-have planner for 2027!
+        </p>
+
+        <!-- Dropdown Accordion Stack -->
+        <div class="border-t border-[#C6B58E]/40 divide-y divide-[#C6B58E]/40" id="shopify-journal-accordion">
+          <!-- 1. What's Inside? -->
+          <div class="accordion-item">
+            <button type="button" class="w-full py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-[#363638] hover:text-[#4D351D] transition-colors group" onclick="toggleDetailsAccordion(this)">
+              <span>What’s Inside?</span>
+              <svg class="w-4 h-4 text-[#927B53] transition-transform duration-300 group-hover:text-[#4D351D] chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="pb-5 pt-1 text-xs text-[#363638]/80 space-y-2 leading-relaxed">
+                <ul class="space-y-2 pl-1">
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D] font-bold">✦</span><span><strong>1x The 2027 Bound Chronicle Hardcover Planner</strong> (A5 / 224 Numbered Ivory Pages)</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D] font-bold">✦</span><span><strong>4x Complimentary Gilded Planning Sticker Sheets</strong> (Over 180+ die-cut stickers)</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D] font-bold">✦</span><span><strong>1x Companion A6 Pocket Notes Booklet</strong> (32 pages, saddle-stitched for on-the-go ideas)</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D] font-bold">✦</span><span><strong>1x Linen-Reinforced Expandable Memory Pocket</strong> in the rear cover</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D] font-bold">✦</span><span><strong>2x Woven Silk Ribbon Markers</strong> (Espresso Charcoal &amp; Golden Sand)</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D] font-bold">✦</span><span><strong>1x Sustainable Kraft Keepsake Gift Box</strong> with metallic gold wax seal emblem</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Product Features -->
+          <div class="accordion-item">
+            <button type="button" class="w-full py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-[#363638] hover:text-[#4D351D] transition-colors group" onclick="toggleDetailsAccordion(this)">
+              <span>Product Features</span>
+              <svg class="w-4 h-4 text-[#927B53] transition-transform duration-300 group-hover:text-[#4D351D] chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="pb-5 pt-1 text-xs text-[#363638]/80 space-y-2.5 leading-relaxed">
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <div class="p-2.5 bg-[#F8F5ED] rounded-lg border border-[#C6B58E]/30">
+                    <span class="text-[10px] uppercase font-bold text-[#927B53] block">Paper Stock</span>
+                    <strong class="text-[#363638]">100 GSM Natural Paper</strong>
+                    <p class="text-[11px] text-[#363638]/70 mt-0.5">Bleed-proof bamboo-cotton, fountain-pen safe.</p>
+                  </div>
+                  <div class="p-2.5 bg-[#F8F5ED] rounded-lg border border-[#C6B58E]/30">
+                    <span class="text-[10px] uppercase font-bold text-[#927B53] block">Binding</span>
+                    <strong class="text-[#363638]">180° Smyth Sewn</strong>
+                    <p class="text-[11px] text-[#363638]/70 mt-0.5">True lay-flat binding with reinforced cloth spine.</p>
+                  </div>
+                  <div class="p-2.5 bg-[#F8F5ED] rounded-lg border border-[#C6B58E]/30">
+                    <span class="text-[10px] uppercase font-bold text-[#927B53] block">Size &amp; Pages</span>
+                    <strong class="text-[#363638]">A5 (148 x 210 mm)</strong>
+                    <p class="text-[11px] text-[#363638]/70 mt-0.5">224 numbered ivory pages, 520 grams.</p>
+                  </div>
+                  <div class="p-2.5 bg-[#F8F5ED] rounded-lg border border-[#C6B58E]/30">
+                    <span class="text-[10px] uppercase font-bold text-[#927B53] block">Cover Finish</span>
+                    <strong class="text-[#363638]">Japanese Bookcloth</strong>
+                    <p class="text-[11px] text-[#363638]/70 mt-0.5">Tactile textured cloth with gold hot foil stamping.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Planner Layout Includes -->
+          <div class="accordion-item">
+            <button type="button" class="w-full py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-[#363638] hover:text-[#4D351D] transition-colors group" onclick="toggleDetailsAccordion(this)">
+              <span>Planner Layout Includes</span>
+              <svg class="w-4 h-4 text-[#927B53] transition-transform duration-300 group-hover:text-[#4D351D] chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="pb-5 pt-1 text-xs text-[#363638]/80 space-y-2 leading-relaxed">
+                <ul class="space-y-1.5 pl-1">
+                  <li class="flex items-start gap-2"><span class="text-[#927B53]">✔</span><span><strong>Yearly Life Blueprint &amp; Goals:</strong> 4 pages dedicated to quarterly aspirations and reading lists.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#927B53]">✔</span><span><strong>12 Monthly Panoramic Spreads:</strong> Double-page calendar view with moon phases and budget tracking.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#927B53]">✔</span><span><strong>52 Weekly Focus Dashboards:</strong> Weekday schedule with daily gratitude prompts and habit check-boxes.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#927B53]">✔</span><span><strong>Monthly Habit &amp; Ritual Trackers:</strong> 31-day visual tracking for sleep, hydration, exercise, and reading.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#927B53]">✔</span><span><strong>40 Dot-Grid Ivory Sandbox Pages:</strong> Perforated 5mm dot grid for mindmaps, sketches, and notes.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#927B53]">✔</span><span><strong>Mid-Year Review &amp; Year-End Reflection:</strong> Guided prompts to celebrate growth.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Features Of The Sticker Book -->
+          <div class="accordion-item">
+            <button type="button" class="w-full py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-[#363638] hover:text-[#4D351D] transition-colors group" onclick="toggleDetailsAccordion(this)">
+              <span>Features Of The Sticker Book</span>
+              <svg class="w-4 h-4 text-[#927B53] transition-transform duration-300 group-hover:text-[#4D351D] chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="pb-5 pt-1 text-xs text-[#363638]/80 space-y-2 leading-relaxed">
+                <p class="font-medium text-[#363638]">Includes 4 full sheets with over 180+ die-cut matte planning stickers:</p>
+                <ul class="space-y-1.5 pl-1">
+                  <li class="flex items-start gap-2"><span class="text-[#D4AF37]">✦</span><span><strong>Sheet 1 (Functional Headers):</strong> Appointments, deadlines, paydays, flights, doctor, self-care.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#D4AF37]">✦</span><span><strong>Sheet 2 (Coffee &amp; Cozy Rituals):</strong> Illustrated mugs, steaming espresso, book stacks, rainy mornings.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#D4AF37]">✦</span><span><strong>Sheet 3 (Gold Foil Washi &amp; Accents):</strong> Metallic gold hot-stamped stars, washi tape ribbons, and flourish borders.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#D4AF37]">✦</span><span><strong>Sheet 4 (12 Monthly Index Tabs):</strong> Laminated index tabs from Jan to Dec to flip between months effortlessly.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Features Of The Pocket Planner -->
+          <div class="accordion-item">
+            <button type="button" class="w-full py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-[#363638] hover:text-[#4D351D] transition-colors group" onclick="toggleDetailsAccordion(this)">
+              <span>Features Of The Pocket Planner</span>
+              <svg class="w-4 h-4 text-[#927B53] transition-transform duration-300 group-hover:text-[#4D351D] chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="pb-5 pt-1 text-xs text-[#363638]/80 space-y-2 leading-relaxed">
+                <p>A slim companion pocket notebook designed for effortless mobility:</p>
+                <ul class="space-y-1.5 pl-1">
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D]">▪</span><span><strong>Size:</strong> A6 Slim (105 x 148 mm) &bull; 32 pages saddle-stitched.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D]">▪</span><span><strong>Layout:</strong> Unruled &amp; dotted micro-spreads for sudden sparks of creativity and cafe notes.</span></li>
+                  <li class="flex items-start gap-2"><span class="text-[#4D351D]">▪</span><span><strong>Portability:</strong> Slips into jacket pockets, small clutches, or inside the main journal's back envelope.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Shipping Timeline (Open by default as in screenshot) -->
+          <div class="accordion-item">
+            <button type="button" class="w-full py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-[#363638] hover:text-[#4D351D] transition-colors group active-accordion" onclick="toggleDetailsAccordion(this)">
+              <span>Shipping Timeline</span>
+              <svg class="w-4 h-4 text-[#927B53] transition-transform duration-300 group-hover:text-[#4D351D] chevron rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 400px;">
+              <div class="pb-5 pt-1 text-xs text-[#363638]/80 space-y-3 leading-relaxed">
+                <p class="font-medium text-[#363638]">
+                  Handmade &amp; packed with care. Dispatches in 2&ndash;3 working days.
+                </p>
+                <div class="space-y-2 pl-1 text-[11px]">
+                  <div class="flex items-start gap-2">
+                    <span class="w-5 h-5 rounded-full bg-[#4D351D] text-[#E9DFC2] flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">1</span>
+                    <div><strong>Day 1 &ndash; Atelier Inspection:</strong> Hand inspection of paper, ribbons, and spine stitching.</div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="w-5 h-5 rounded-full bg-[#4D351D] text-[#E9DFC2] flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">2</span>
+                    <div><strong>Day 2 &ndash; Wax Seal Packaging:</strong> Wrapped in archival tissue paper, boxed in recycled kraft with a gold wax seal.</div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="w-5 h-5 rounded-full bg-[#4D351D] text-[#E9DFC2] flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">3</span>
+                    <div><strong>Days 3-4 &ndash; Express Transit:</strong> Fast domestic air transit via Bluedart / Delhivery Express.</div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="w-5 h-5 rounded-full bg-[#2D6A4F] text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">4</span>
+                    <div><strong>Day 5 &ndash; Doorstep Delivery:</strong> Live SMS &amp; WhatsApp tracking provided upon studio dispatch.</div>
+                  </div>
+                </div>
+                <p class="text-[11px] text-[#2D6A4F] font-medium pt-1">✨ 100% plastic-free, recyclable protective honeycomb wrap.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function toggleDetailsAccordion(button) {
+            var panel = button.nextElementSibling;
+            var chevron = button.querySelector('.chevron');
+            var isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+
+            if (isOpen) {
+              panel.style.maxHeight = '0px';
+              if (chevron) chevron.classList.remove('rotate-180');
+              button.classList.remove('active-accordion');
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + 40 + 'px';
+              if (chevron) chevron.classList.add('rotate-180');
+              button.classList.add('active-accordion');
+            }
+          }
+        </script>
       </div>
     </div>
   </div>
