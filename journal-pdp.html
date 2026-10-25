@@ -148,6 +148,15 @@
       animation: btnShimmer 3s ease-in-out infinite;
       pointer-events: none;
     }
+
+    /* Hide scrollbar for carousel while preserving smooth touch scroll */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
 
@@ -247,38 +256,88 @@
            --------------------------------------------------------------------- -->
       <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:sticky lg:top-28">
         
-        <!-- Main Image Stage with Badge Overlay -->
-        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-sand/40 shadow-tactile group aspect-[4/3] sm:aspect-square flex items-center justify-center cursor-zoom-in" id="gallery-stage" onclick="openLightbox()">
+        <!-- Main Image Stage: 1:1 Aspect Ratio Scrollable Carousel -->
+        <div class="relative bg-[#EFE9DC] rounded-2xl sm:rounded-3xl overflow-hidden border border-sand/40 shadow-tactile group aspect-square flex items-center justify-center select-none" id="gallery-stage">
           
-          <!-- Tactile Badge Overlays -->
-          <div class="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex flex-wrap gap-1.5 sm:gap-2">
-            <span class="bg-espresso text-logo-cream text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1.5">
-              <span>✦</span> Handmade Touch
-            </span>
-            <span class="bg-[#2D6A4F] text-white text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-              100 GSM Natural Paper
-            </span>
-            <span class="bg-gold-wax/90 text-espresso text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-              Free Sticker Book
-            </span>
+          <!-- Carousel Scroll Track -->
+          <div id="pdp-carousel-track" class="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar" onscroll="onPdpCarouselScroll()">
+            <!-- Slide 0: Front Cover -->
+            <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(0)">
+              <img id="main-product-img" 
+                   src="assets/prod_journal.jpg" 
+                   alt="The 2027 Bound Chronicle &amp; Daily Journal in Midnight Espresso" 
+                   class="w-full h-full object-cover select-none" draggable="false" />
+            </div>
+
+            <!-- Slide 1: Lay-Flat Smyth Sewn Binding -->
+            <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(1)">
+              <img src="assets/cat_journals.jpg" 
+                   alt="180-Degree Lay-Flat Smyth-Sewn Binding" 
+                   class="w-full h-full object-cover select-none" draggable="false" />
+            </div>
+
+            <!-- Slide 2: Monthly & Weekly Planner Layout -->
+            <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(2)">
+              <img src="assets/flip_page_03_monthly.jpg" 
+                   alt="Monthly Overview &amp; Goal Setting Spreads" 
+                   class="w-full h-full object-cover select-none" draggable="false" />
+            </div>
+
+            <!-- Slide 3: Habit Tracker & Routines -->
+            <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(3)">
+              <img src="assets/flip_habits.jpg" 
+                   alt="Habit Tracker &amp; Mindful Routines Grid" 
+                   class="w-full h-full object-cover select-none" draggable="false" />
+            </div>
+
+            <!-- Slide 4: Included Sticker Sheets -->
+            <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(4)">
+              <img src="assets/products/sticker_bookworm.jpg" 
+                   alt="Gilded Sticker Sheets &amp; Ephemera Pack Included" 
+                   class="w-full h-full object-cover select-none" draggable="false" />
+            </div>
+
+            <!-- Slide 5: Custom Gift Box & Wax Seal -->
+            <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(5)">
+              <img src="assets/prod_waxseal.jpg" 
+                   alt="Custom Kraft Studio Box &amp; Wax Seal" 
+                   class="w-full h-full object-cover select-none" draggable="false" />
+            </div>
           </div>
 
-          <!-- Main Featured Photo -->
-          <img id="main-product-img" 
-               src="assets/prod_journal.jpg" 
-               alt="The 2027 Bound Chronicle &amp; Daily Journal in Midnight Espresso" 
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-
-          <!-- Fullscreen Expand Button -->
-          <button type="button" class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-warm-paper/90 hover:bg-white text-espresso p-2 sm:p-2.5 rounded-full shadow-md backdrop-blur-sm transition-transform hover:scale-110" aria-label="Enlarge Image" title="View Fullscreen Lightbox">
-            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          <!-- Carousel Navigation: Left Arrow -->
+          <button type="button" 
+                  onclick="scrollPdpCarousel(-1); event.stopPropagation();" 
+                  class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-espresso shadow-md backdrop-blur-sm flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 sm:opacity-80" 
+                  aria-label="Previous image">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
           </button>
 
-          <!-- Inner Spread Peek Watermark -->
-          <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-espresso/70 text-logo-cream text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-1.5 pointer-events-none">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-            <span>Tap to inspect spreads</span>
+          <!-- Carousel Navigation: Right Arrow -->
+          <button type="button" 
+                  onclick="scrollPdpCarousel(1); event.stopPropagation();" 
+                  class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-espresso shadow-md backdrop-blur-sm flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 sm:opacity-80" 
+                  aria-label="Next image">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+
+          <!-- Pagination Indicator: Floating Pill with Dots -->
+          <div class="absolute bottom-3 inset-x-0 z-20 flex items-center justify-center gap-1.5 pointer-events-none" id="carousel-dots-container">
+            <span class="carousel-dot h-1.5 w-6 rounded-full bg-deep-coffee transition-all duration-300 shadow-sm"></span>
+            <span class="carousel-dot h-1.5 w-1.5 rounded-full bg-espresso/35 transition-all duration-300"></span>
+            <span class="carousel-dot h-1.5 w-1.5 rounded-full bg-espresso/35 transition-all duration-300"></span>
+            <span class="carousel-dot h-1.5 w-1.5 rounded-full bg-espresso/35 transition-all duration-300"></span>
+            <span class="carousel-dot h-1.5 w-1.5 rounded-full bg-espresso/35 transition-all duration-300"></span>
+            <span class="carousel-dot h-1.5 w-1.5 rounded-full bg-espresso/35 transition-all duration-300"></span>
           </div>
+
+          <!-- Fullscreen Expand Button -->
+          <button type="button" 
+                  onclick="openLightboxFromCurrentSlide(); event.stopPropagation();" 
+                  class="absolute bottom-3 right-3 z-20 bg-warm-paper/90 hover:bg-white text-espresso p-2 sm:p-2.5 rounded-full shadow-md backdrop-blur-sm transition-transform hover:scale-110" 
+                  aria-label="Enlarge Image" title="View Fullscreen Lightbox">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          </button>
         </div>
 
       </div>
@@ -1392,6 +1451,64 @@
     let currentVariantName = 'Midnight Espresso Bookcloth';
     let currentLayout = 'Dated 2027 Year';
 
+    // 0. PDP Hero Carousel Controller
+    let currentSlideIndex = 0;
+
+    function scrollPdpCarousel(direction) {
+      const track = document.getElementById('pdp-carousel-track');
+      if (!track) return;
+      const slides = track.querySelectorAll('.pdp-slide');
+      if (!slides.length) return;
+      const slideWidth = track.clientWidth;
+      currentSlideIndex = Math.max(0, Math.min(slides.length - 1, currentSlideIndex + direction));
+      track.scrollTo({ left: currentSlideIndex * slideWidth, behavior: 'smooth' });
+      updateCarouselDots(currentSlideIndex);
+    }
+
+    function onPdpCarouselScroll() {
+      const track = document.getElementById('pdp-carousel-track');
+      if (!track) return;
+      const slideWidth = track.clientWidth;
+      if (!slideWidth) return;
+      const idx = Math.round(track.scrollLeft / slideWidth);
+      if (idx !== currentSlideIndex) {
+        currentSlideIndex = idx;
+        updateCarouselDots(idx);
+      }
+    }
+
+    function updateCarouselDots(activeIndex) {
+      const dots = document.querySelectorAll('#carousel-dots-container .carousel-dot');
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) {
+          dot.classList.remove('w-1.5', 'bg-espresso/35');
+          dot.classList.add('w-6', 'bg-deep-coffee');
+        } else {
+          dot.classList.remove('w-6', 'bg-deep-coffee');
+          dot.classList.add('w-1.5', 'bg-espresso/35');
+        }
+      });
+    }
+
+    function openLightboxFromSlide(index) {
+      currentSlideIndex = index;
+      const track = document.getElementById('pdp-carousel-track');
+      const slides = track ? track.querySelectorAll('.pdp-slide img') : [];
+      const targetImg = document.getElementById('lightbox-img');
+      const modal = document.getElementById('pdp-lightbox-modal');
+      if (slides[index] && targetImg) {
+        targetImg.src = slides[index].src;
+      }
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function openLightboxFromCurrentSlide() {
+      openLightboxFromSlide(currentSlideIndex);
+    }
+
     // 1. Thumbnail Selector
     function selectThumbnail(index, imgSrc, caption) {
       const mainImg = document.getElementById('main-product-img');
@@ -1418,8 +1535,13 @@
       const label = document.getElementById('active-variant-label');
       if (label) label.textContent = variantName;
 
-      // Update Main Image
+      // Update Main Image & scroll carousel to slide 0
       selectThumbnail(0, imgSrc, variantName);
+      const track = document.getElementById('pdp-carousel-track');
+      if (track) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        updateCarouselDots(0);
+      }
 
       // Update Swatch Button States
       const btns = document.querySelectorAll('.variant-btn');

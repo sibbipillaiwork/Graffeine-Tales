@@ -23,18 +23,47 @@
       animation: btnShimmer 3s ease-in-out infinite;
       pointer-events: none;
     }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-start">
       <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:sticky lg:top-28">
-        <div class="relative bg-[#EFE9DC] rounded-2xl overflow-hidden border border-[#C6B58E]/40 shadow-tactile aspect-[4/3] sm:aspect-square flex items-center justify-center">
-          <div class="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex flex-wrap gap-1.5 sm:gap-2">
-            <span class="bg-[#363638] text-[#E9DFC2] text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">✦ Handmade Touch</span>
-            <span class="bg-[#2D6A4F] text-white text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">100 GSM Natural Paper</span>
-            <span class="bg-[#D4AF37] text-[#363638] text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Free Sticker Book</span>
+        <!-- Main Image Stage: 1:1 Aspect Ratio Scrollable Carousel -->
+        <div class="relative bg-[#EFE9DC] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#C6B58E]/40 shadow-tactile group aspect-square flex items-center justify-center select-none" id="shopify-gallery-stage">
+          <div id="shopify-carousel-track" class="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+            {% if product.images.size > 0 %}
+              {% for image in product.images %}
+                <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center">
+                  <img src="{{ image | image_url: width: 1200 }}" alt="{{ image.alt | default: product.title | escape }}" class="w-full h-full object-cover" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" />
+                </div>
+              {% endfor %}
+            {% else %}
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center">
+                <img src="{{ 'prod_journal.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="w-full h-full object-cover" />
+              </div>
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center">
+                <img src="{{ 'cat_journals.jpg' | asset_url }}" alt="Lay Flat Spread" class="w-full h-full object-cover" />
+              </div>
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center">
+                <img src="{{ 'flip_page_03_monthly.jpg' | asset_url }}" alt="Planner Spread" class="w-full h-full object-cover" />
+              </div>
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center">
+                <img src="{{ 'flip_habits.jpg' | asset_url }}" alt="Habit Tracker" class="w-full h-full object-cover" />
+              </div>
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center">
+                <img src="{{ 'prod_waxseal.jpg' | asset_url }}" alt="Wax Seal Box" class="w-full h-full object-cover" />
+              </div>
+            {% endif %}
           </div>
-          <img id="main-product-img" src="{{ product.featured_image | default: 'prod_journal.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="w-full h-full object-cover" />
+          <!-- Navigation Arrows -->
+          <button type="button" onclick="scrollShopifyCarousel(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-[#363638] shadow-md backdrop-blur-sm flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 sm:opacity-80" aria-label="Previous image">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button type="button" onclick="scrollShopifyCarousel(1)" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-[#363638] shadow-md backdrop-blur-sm flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 sm:opacity-80" aria-label="Next image">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
 
@@ -407,6 +436,12 @@
       if (shopifyPageFlip) {
         shopifyPageFlip.flip(idx, 'bottom');
       }
+    }
+
+    function scrollShopifyCarousel(dir) {
+      const track = document.getElementById('shopify-carousel-track');
+      if (!track) return;
+      track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
     }
   </script>
 
