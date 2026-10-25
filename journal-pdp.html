@@ -1144,71 +1144,123 @@
   <section class="py-16 bg-white border-t border-sand/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
-        <div>
-          <span class="text-xs uppercase font-bold tracking-[0.2em] text-coffee-tan bg-warm-paper px-3 py-1 rounded-full border border-sand/30">
-            Companion Atelier Editions
-          </span>
-          <h2 class="font-serif-display text-3xl sm:text-4xl text-espresso mt-3">
-            Complete Your Daily Coffee Ritual
-          </h2>
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <h2 class="font-serif-display text-2xl sm:text-3xl md:text-4xl text-espresso">
+          You May Also Like
+        </h2>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="flex items-center gap-2">
+          <button type="button" 
+                  onclick="scrollCompanionCarousel(-1)" 
+                  class="w-9 h-9 rounded-full bg-warm-paper hover:bg-white text-espresso border border-sand/40 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm" 
+                  aria-label="Previous Products">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button type="button" 
+                  onclick="scrollCompanionCarousel(1)" 
+                  class="w-9 h-9 rounded-full bg-warm-paper hover:bg-white text-espresso border border-sand/40 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm" 
+                  aria-label="Next Products">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
-        <a href="index.html#catalogue-section" class="mt-3 sm:mt-0 text-xs font-bold text-deep-coffee hover:underline">
-          View Complete Studio Archive &rarr;
-        </a>
       </div>
 
-      <!-- 3 Recommended Cross-Sell Products -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Recommended Cross-Sell Products Carousel Track -->
+      <div id="companion-carousel-track" class="flex overflow-x-auto snap-x snap-mandatory gap-5 sm:gap-6 pb-4 no-scrollbar scroll-smooth">
         
         <!-- Companion 1: Teak Acrylic Coaster -->
-        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white">
-            <img src="assets/prod_coasters.jpg" alt="Lady TeaTrip Acrylic Coaster" class="w-full h-full object-cover hover:scale-105 transition-transform" />
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] uppercase font-bold text-coffee-tan">Handcrafted Décor</span>
-            <h3 class="font-serif-display text-lg text-espresso">Lady TeaTrip Acrylic Coaster &amp; Teak Stand</h3>
-            <div class="flex items-center justify-between pt-2">
-              <span class="font-bold text-deep-coffee">₹699</span>
-              <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors" onclick="addToCart('prod-1', 1)">
-                Add to Bag
-              </button>
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all w-[250px] sm:w-[270px] md:w-[290px] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="aspect-square rounded-xl overflow-hidden bg-white mb-3">
+              <img src="assets/prod_coasters.jpg" alt="Lady TeaTrip Acrylic Coaster" class="w-full h-full object-cover hover:scale-105 transition-transform" />
             </div>
+            <div class="space-y-1">
+              <span class="text-[10px] uppercase font-bold text-coffee-tan">Handcrafted Décor</span>
+              <h3 class="font-serif-display text-base sm:text-lg text-espresso line-clamp-2">Lady TeaTrip Acrylic Coaster &amp; Teak Stand</h3>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-sand/30 mt-auto">
+            <span class="font-bold text-deep-coffee text-base">₹699</span>
+            <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors shadow-sm" onclick="addToCart('prod-1', 1)">
+              Add to Cart
+            </button>
           </div>
         </div>
 
         <!-- Companion 2: Wooden Sunflower Bookmark -->
-        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white">
-            <img src="assets/products/wood_flower_bookmark.jpg" alt="Sunflower Wooden Bookmark" class="w-full h-full object-cover hover:scale-105 transition-transform" />
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] uppercase font-bold text-coffee-tan">Stationaries</span>
-            <h3 class="font-serif-display text-lg text-espresso">Handcrafted Sunflower Wooden Bookmark</h3>
-            <div class="flex items-center justify-between pt-2">
-              <span class="font-bold text-deep-coffee">₹349</span>
-              <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors" onclick="addToCart('prod-4', 1)">
-                Add to Bag
-              </button>
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all w-[250px] sm:w-[270px] md:w-[290px] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="aspect-square rounded-xl overflow-hidden bg-white mb-3">
+              <img src="assets/products/wood_flower_bookmark.jpg" alt="Sunflower Wooden Bookmark" class="w-full h-full object-cover hover:scale-105 transition-transform" />
             </div>
+            <div class="space-y-1">
+              <span class="text-[10px] uppercase font-bold text-coffee-tan">Stationaries</span>
+              <h3 class="font-serif-display text-base sm:text-lg text-espresso line-clamp-2">Handcrafted Sunflower Wooden Bookmark</h3>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-sand/30 mt-auto">
+            <span class="font-bold text-deep-coffee text-base">₹349</span>
+            <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors shadow-sm" onclick="addToCart('prod-4', 1)">
+              Add to Cart
+            </button>
           </div>
         </div>
 
         <!-- Companion 3: 2026 Artist Desk Calendar -->
-        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white">
-            <img src="assets/products/artist_calendar.jpg" alt="Progress Not Perfection Calendar" class="w-full h-full object-cover hover:scale-105 transition-transform" />
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] uppercase font-bold text-coffee-tan">Calendars &amp; Planners</span>
-            <h3 class="font-serif-display text-lg text-espresso">Progress Not Perfection 2026 Desk Calendar</h3>
-            <div class="flex items-center justify-between pt-2">
-              <span class="font-bold text-deep-coffee">₹850</span>
-              <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors" onclick="addToCart('prod-2', 1)">
-                Add to Bag
-              </button>
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all w-[250px] sm:w-[270px] md:w-[290px] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="aspect-square rounded-xl overflow-hidden bg-white mb-3">
+              <img src="assets/products/artist_calendar.jpg" alt="Progress Not Perfection Calendar" class="w-full h-full object-cover hover:scale-105 transition-transform" />
             </div>
+            <div class="space-y-1">
+              <span class="text-[10px] uppercase font-bold text-coffee-tan">Calendars &amp; Planners</span>
+              <h3 class="font-serif-display text-base sm:text-lg text-espresso line-clamp-2">Progress Not Perfection 2026 Desk Calendar</h3>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-sand/30 mt-auto">
+            <span class="font-bold text-deep-coffee text-base">₹850</span>
+            <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors shadow-sm" onclick="addToCart('prod-2', 1)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Companion 4: Artisanal Brass Wax Seal -->
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all w-[250px] sm:w-[270px] md:w-[290px] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="aspect-square rounded-xl overflow-hidden bg-white mb-3">
+              <img src="assets/prod_waxseal.jpg" alt="Artisanal Wax Seal Kit" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] uppercase font-bold text-coffee-tan">Wax Seals &amp; Gifting</span>
+              <h3 class="font-serif-display text-base sm:text-lg text-espresso line-clamp-2">Artisanal Brass Wax Seal &amp; Metallic Wax</h3>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-sand/30 mt-auto">
+            <span class="font-bold text-deep-coffee text-base">₹999</span>
+            <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors shadow-sm" onclick="addToCart('prod-3', 1)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Companion 5: Botanical Embroidery Hoop -->
+        <div class="bg-warm-paper rounded-2xl overflow-hidden border border-sand/40 p-4 space-y-3 hover:shadow-tactile transition-all w-[250px] sm:w-[270px] md:w-[290px] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="aspect-square rounded-xl overflow-hidden bg-white mb-3">
+              <img src="assets/prod_embroidery.jpg" alt="Handmade Botanical Embroidery" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] uppercase font-bold text-coffee-tan">Handmade Art</span>
+              <h3 class="font-serif-display text-base sm:text-lg text-espresso line-clamp-2">Handmade Botanical Embroidery Wall Hoop</h3>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-sand/30 mt-auto">
+            <span class="font-bold text-deep-coffee text-base">₹1,199</span>
+            <button type="button" class="bg-deep-coffee hover:bg-espresso text-logo-cream px-4 py-1.5 rounded-full text-xs font-bold transition-colors shadow-sm" onclick="addToCart('prod-5', 1)">
+              Add to Cart
+            </button>
           </div>
         </div>
 
@@ -1843,6 +1895,12 @@
       const track = document.getElementById('pdp-reels-track');
       if (!track) return;
       track.scrollBy({ left: direction * 280, behavior: 'smooth' });
+    }
+
+    function scrollCompanionCarousel(direction) {
+      const track = document.getElementById('companion-carousel-track');
+      if (!track) return;
+      track.scrollBy({ left: direction * 290, behavior: 'smooth' });
     }
 
     function playPdpReel(index) {
