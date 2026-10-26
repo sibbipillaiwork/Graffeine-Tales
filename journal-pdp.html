@@ -393,7 +393,7 @@
           <div class="flex items-baseline gap-3">
             <span class="font-serif-display text-3xl sm:text-4xl font-bold text-deep-coffee" id="pdp-price">₹1,299</span>
             <span class="text-base text-espresso/40 line-through" id="pdp-mrp">₹1,699</span>
-            <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-2.5 py-0.5 rounded-full">
+            <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-2.5 py-0.5 rounded-full" id="pdp-discount-badge">
               SAVE 24%
             </span>
           </div>
@@ -549,7 +549,7 @@
         <div class="pt-4 sm:pt-6 border-t border-sand/40 space-y-4">
           
           <!-- Editorial Lead Pitch Paragraph -->
-          <p class="text-xs sm:text-sm text-espresso/80 leading-relaxed font-normal">
+          <p class="text-xs sm:text-sm text-espresso/80 leading-relaxed font-normal" id="pdp-lead-pitch">
             <strong class="text-espresso font-semibold">Plan every day with ease using our 2027 Daily Planner!</strong> Featuring a daily layout, along with monthly grids, and a habit tracker which helps you stay organized and on top of your goals. The premium printed bookcloth cover with metallic gold foiling adds a touch of luxury, making it perfect for work, studio, or personal planning. Durable, stylish, and thoughtfully designed &ndash; your must-have planner for 2027!
           </p>
 
@@ -563,7 +563,7 @@
                 <svg class="w-4 h-4 text-coffee-tan transition-transform duration-300 group-hover:text-deep-coffee chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
               </button>
               <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                <div class="pb-5 pt-1 text-xs text-espresso/80 space-y-2 leading-relaxed">
+                <div class="pb-5 pt-1 text-xs text-espresso/80 space-y-2 leading-relaxed" id="pdp-whats-inside">
                   <ul class="space-y-2 pl-1">
                     <li class="flex items-start gap-2">
                       <span class="text-deep-coffee font-bold">✦</span>
@@ -601,7 +601,7 @@
                 <svg class="w-4 h-4 text-coffee-tan transition-transform duration-300 group-hover:text-deep-coffee chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
               </button>
               <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                <div class="pb-5 pt-1 text-xs text-espresso/80 space-y-2.5 leading-relaxed">
+                <div class="pb-5 pt-1 text-xs text-espresso/80 space-y-2.5 leading-relaxed" id="pdp-specs-content">
                   <div class="grid grid-cols-2 gap-2 text-xs">
                     <div class="p-2.5 bg-warm-paper rounded-lg border border-sand/30">
                       <span class="text-[10px] uppercase font-bold text-coffee-tan block">Paper Stock</span>
@@ -1685,8 +1685,272 @@
       }
     }
 
+    
+    // =========================================================================
+    // DYNAMIC JOURNAL CATALOG DATABASE
+    // All journals and diaries seamlessly supported by this luxury PDP UI
+    // =========================================================================
+    const JOURNAL_DATABASE = {
+      'prod-chronicle': {
+        id: 'prod-chronicle',
+        title: 'The 2027 Bound Chronicle & Daily Journal',
+        metaTitle: 'The 2027 Bound Chronicle & Daily Journal — Graffeine Tales | Artisanal Stationery',
+        price: 1299,
+        mrp: 1699,
+        discountText: 'SAVE 24%',
+        activeVariant: 'espresso',
+        activeVariantName: 'Midnight Espresso Bookcloth',
+        coverImg: 'assets/prod_journal.jpg',
+        leadPitch: '<strong class="text-espresso font-semibold">Plan every day with ease using our 2027 Daily Planner!</strong> Featuring a daily layout, along with monthly grids, and a habit tracker which helps you stay organized and on top of your goals. The premium printed bookcloth cover with metallic gold foiling adds a touch of luxury, making it perfect for work, studio, or personal planning. Durable, stylish, and thoughtfully designed &ndash; your must-have planner for 2027!',
+        swatches: [
+          { key: 'espresso', name: 'Midnight Espresso Bookcloth', color: '#363638', img: 'assets/prod_journal.jpg', desc: 'Gold Foil Debossed' },
+          { key: 'terracotta', name: 'Terracotta Bloom Cloth', color: '#C85A32', img: 'assets/cat_journals.jpg', desc: 'Botanical Texture' },
+          { key: 'sage', name: 'Sage Atelier Herbarium', color: '#2D6A4F', img: 'assets/prod_journal.jpg', desc: 'Debossed Leaves' },
+          { key: 'sand', name: 'Sand Dune Linen', color: '#C6B58E', img: 'assets/cat_journals.jpg', desc: 'Natural Tactile' }
+        ],
+        carousel: [
+          { src: 'assets/prod_journal.jpg', alt: 'The 2027 Bound Chronicle & Daily Journal in Midnight Espresso' },
+          { src: 'assets/cat_journals.jpg', alt: '180-Degree Lay-Flat Smyth-Sewn Binding' },
+          { src: 'assets/flip_page_03_monthly.jpg', alt: 'Monthly Overview & Goal Setting Spreads' },
+          { src: 'assets/flip_page_04_habits.jpg', alt: 'Habit Tracker & Mindful Routines Grid' },
+          { src: 'assets/products/sticker_bookworm.jpg', alt: 'Gilded Sticker Sheets & Ephemera Pack Included' },
+          { src: 'assets/prod_waxseal.jpg', alt: 'Custom Kraft Studio Box & Wax Seal' }
+        ],
+        flipPages: [
+          { img: 'assets/flip_cover.jpg', title: 'Front Cover: The 2027 Bound Chronicle', desc: 'Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem.' },
+          { img: 'assets/flip_page_01_belonging.jpg', title: 'Opening Spread (Left): Belonging Nameplate & Manifesto', desc: 'Gold-leaf framed owner inscription page with contact details and intention lines.' },
+          { img: 'assets/flip_page_02_vision.jpg', title: 'Opening Spread (Right): 2027 Yearly Vision & Milestones', desc: 'Dedicated quarterly aspiration quadrants for Career, Health, Joy & Financial goals.' },
+          { img: 'assets/flip_page_03_monthly.jpg', title: 'Monthly Spread (Left): Panoramic Calendar Grid', desc: 'Spacious double-page calendar view with Monday-Thursday grids and monthly priorities.' },
+          { img: 'assets/flip_page_04_habits.jpg', title: 'Monthly Spread (Right): Habit Tracker & Budget Ledger', desc: '31-day visual micro-grids for daily rituals alongside monthly income and savings tracking.' },
+          { img: 'assets/flip_page_05_weekly_left.jpg', title: 'Weekly Focus (Left): Monday – Wednesday Timetable', desc: 'Daily priority circles, hourly schedule timeblocks (6am–8pm), and micro-gratitude prompts.' },
+          { img: 'assets/flip_page_06_weekly_right.jpg', title: 'Weekly Horizons (Right): Thursday – Sunday & Dot-Grid Sandbox', desc: 'Weekend rituals schedule with generous 5mm ivory dot-grid sandbox for braindumps.' },
+          { img: 'assets/flip_back_cover.jpg', title: 'Back Cover: Graffeine Tales Atelier Edition', desc: 'Matching Japanese bookcloth casing with gold debossed atelier hallmark, FSC certification & barcode.' }
+        ],
+        whatsInside: [
+          '1x The 2027 Bound Chronicle Hardcover Planner (A5 / 224 Numbered Ivory Pages)',
+          '4x Complimentary Gilded Planning Sticker Sheets (Over 180+ die-cut stickers)',
+          '1x Companion A6 Pocket Notes Booklet (32 pages, saddle-stitched for on-the-go ideas)',
+          '1x Linen-Reinforced Expandable Memory Pocket in the rear cover',
+          '2x Woven Silk Ribbon Markers (Espresso Charcoal & Golden Sand)',
+          '1x Sustainable Kraft Keepsake Gift Box with metallic gold wax seal emblem'
+        ],
+        specs: [
+          { label: 'Paper Stock', title: '100 GSM Natural Paper', desc: 'Bleed-proof bamboo-cotton, fountain-pen safe.' },
+          { label: 'Binding', title: '180° Smyth Sewn', desc: 'True lay-flat binding with reinforced cloth spine.' },
+          { label: 'Size & Pages', title: 'A5 (148 x 210 mm)', desc: '224 numbered ivory pages, 520 grams.' }
+        ]
+      },
+      'prod-38': {
+        id: 'prod-38',
+        title: 'The Atelier Hardcover Linen Journal (Plain)',
+        metaTitle: 'The Atelier Hardcover Linen Journal (Plain) — Graffeine Tales | Heirloom Stationery',
+        price: 899,
+        mrp: 1199,
+        discountText: 'SAVE 25%',
+        activeVariant: 'natural',
+        activeVariantName: 'Natural Oat Woven Linen',
+        coverImg: 'assets/cat_journals.jpg',
+        leadPitch: '<strong class="text-espresso font-semibold">Immerse your daily thoughts in the pure tactile joy of hand-bound woven linen.</strong> Featuring 192 bleedproof unruled archival pages crafted from 120 GSM warm bamboo paper, this journal opens flat at 180° for uninterrupted sketching, calligraphy, watercolor, and reflective writing. Complete with a rear expandable accordion pocket, dual satin silk ribbons, and our signature gold-embossed atelier hallmark.',
+        swatches: [
+          { key: 'natural', name: 'Natural Oat Woven Linen', color: '#DFD6C3', img: 'assets/cat_journals.jpg', desc: 'Raw Tactile Texture' },
+          { key: 'espresso', name: 'Midnight Espresso Linen', color: '#363638', img: 'assets/prod_journal.jpg', desc: 'Deep Archival Tone' },
+          { key: 'sage', name: 'Sage Herbarium Linen', color: '#2D6A4F', img: 'assets/cat_journals.jpg', desc: 'Forest Weave' },
+          { key: 'terracotta', name: 'Terracotta Earth Linen', color: '#C85A32', img: 'assets/cat_journals.jpg', desc: 'Sunbaked Clay' }
+        ],
+        carousel: [
+          { src: 'assets/cat_journals.jpg', alt: 'The Atelier Hardcover Linen Journal in Natural Oat' },
+          { src: 'assets/prod_journal.jpg', alt: 'Hand-Bound Archival Linen Hardcover' },
+          { src: 'assets/flip_page_01_belonging.jpg', alt: 'Ex Libris Archival Inscription Spread' },
+          { src: 'assets/flip_page_06_weekly_right.jpg', alt: '120 GSM Bleedproof Warm Bamboo Paper' },
+          { src: 'assets/prod_waxseal.jpg', alt: 'Studio Gift Packaging with Wax Seal' }
+        ],
+        flipPages: [
+          { img: 'assets/flip_cover.jpg', title: 'Front Cover: The Atelier Hardcover Linen Journal', desc: 'Hand-stretched Japanese bookcloth linen with blind debossed atelier insignia.' },
+          { img: 'assets/flip_page_01_belonging.jpg', title: 'Opening Spread: Ex Libris Inscription & Provenance', desc: 'Gilded ownership plate with bespoke lines for author name, date began, and personal dedication.' },
+          { img: 'assets/flip_page_02_vision.jpg', title: 'Interior Spread: 192 Bleedproof Ivory Bamboo Pages', desc: '120 GSM natural unruled archival surface designed specifically for wet fountain pen inks.' },
+          { img: 'assets/flip_page_06_weekly_right.jpg', title: 'Tactile Laid Paper Texture & Micro Margin', desc: 'True 180° lay-flat Smyth sewn binding for edge-to-edge sketching and journaling comfort.' },
+          { img: 'assets/flip_page_04_habits.jpg', title: 'Subtle Dot-Grid Alignment & Keepsake Ledger', desc: '5mm subtle guidance grid at the back section for lists, trackers, and bullet journaling.' },
+          { img: 'assets/flip_back_cover.jpg', title: 'Back Cover: Expandable Accordion Keepsake Pocket', desc: 'Linen-reinforced gusseted back pocket for stamps, receipts, dried petals, and secret notes.' }
+        ],
+        whatsInside: [
+          '1x The Atelier Hardcover Linen Journal (192 Archival Pages / 120 GSM Bamboo Paper)',
+          '1x Gold-Stamped Linen Keepsake Bookmark Ribbon',
+          '1x Expandable Rear Gusseted Pocket for Memorabilia',
+          '1x Blind-Debossed Atelier Certification of Authenticity',
+          '1x Custom Protective Studio Kraft Shipping Box'
+        ],
+        specs: [
+          { label: 'Paper Stock', title: '120 GSM Bamboo Ivory Paper', desc: 'Bleedproof, zero feathering with fountain pen inks & light watercolor washes.' },
+          { label: 'Binding', title: '180° Smyth Sewn Lay-Flat', desc: 'Stitched in signatures with reinforced linen spine tape.' },
+          { label: 'Size & Pages', title: 'A5 (148 x 210 mm)', desc: '192 unruled pages, tactile hardcover, approx 480 grams.' }
+        ]
+      },
+      'prod-39': {
+        id: 'prod-39',
+        title: 'Slow Mornings & Reflections Guided Journal (Prompted)',
+        metaTitle: 'Slow Mornings & Reflections Guided Journal (Prompted) — Graffeine Tales | Mindful Living',
+        price: 999,
+        mrp: 1299,
+        discountText: 'SAVE 23%',
+        activeVariant: 'sage',
+        activeVariantName: 'Sage Atelier Herbarium',
+        coverImg: 'assets/prod_journal.jpg',
+        leadPitch: '<strong class="text-espresso font-semibold">Reclaim your quiet morning ritual before the world rushes in.</strong> This 90-day guided companion pairs evocative daily prompts with coffee musings, gratitude rituals, and unhurried weekly creative check-ins. Built on 100 GSM natural warm paper with gold foil debossed hardcover cloth and includes bespoke mindfulness sticker sheets.',
+        swatches: [
+          { key: 'sage', name: 'Sage Atelier Herbarium', color: '#2D6A4F', img: 'assets/prod_journal.jpg', desc: 'Botanical Gold Foil' },
+          { key: 'terracotta', name: 'Terracotta Bloom Cloth', color: '#C85A32', img: 'assets/cat_journals.jpg', desc: 'Morning Sun Tone' },
+          { key: 'espresso', name: 'Midnight Espresso Roast', color: '#363638', img: 'assets/prod_journal.jpg', desc: 'Rich Coffee Hue' },
+          { key: 'sand', name: 'Warm Sand Cream', color: '#C6B58E', img: 'assets/cat_journals.jpg', desc: 'Gentle Linen' }
+        ],
+        carousel: [
+          { src: 'assets/prod_journal.jpg', alt: 'Slow Mornings & Reflections Guided Journal' },
+          { src: 'assets/cat_journals.jpg', alt: 'Guided Daily Reflections & Mindful Prompts' },
+          { src: 'assets/flip_page_02_vision.jpg', alt: 'Quarterly Intentions & Grounding Milestones' },
+          { src: 'assets/flip_page_04_habits.jpg', alt: 'Morning Rituals & Habit Trackers' },
+          { src: 'assets/products/sticker_bookworm.jpg', alt: 'Illustrated Mindfulness Sticker Sheet' }
+        ],
+        flipPages: [
+          { img: 'assets/flip_cover.jpg', title: 'Front Cover: Slow Mornings & Reflections Companion', desc: 'Gold-foiled morning sun mantra debossed into tactile herbal bookcloth.' },
+          { img: 'assets/flip_page_01_belonging.jpg', title: 'Opening Spread: The Slow Morning Manifesto', desc: 'Foundational daily vow of presence, digital detox, and coffee contemplation.' },
+          { img: 'assets/flip_page_02_vision.jpg', title: '90-Day Mindful Grounding & Milestone Tracker', desc: 'Seasonal quadrants mapping inner peace, creative sparks, movement, and gratitude.' },
+          { img: 'assets/flip_page_03_monthly.jpg', title: 'Monthly Rhythm Overview & Gentle Intentions', desc: 'Low-pressure monthly calendar view for setting intentional quiet weekends and studio days.' },
+          { img: 'assets/flip_page_04_habits.jpg', title: 'Daily Rituals & Mindful Habit Ledger', desc: 'Micro habit tracking for mindful hydration, sunlight walks, 10-page reading, and journaling.' },
+          { img: 'assets/flip_page_05_weekly_left.jpg', title: 'Morning Prompt Spread: Stream of Consciousness', desc: 'Daily evocative questions designed to quiet anxiety and spark introspective clarity.' },
+          { img: 'assets/flip_page_06_weekly_right.jpg', title: 'Creative Sandbox & Gratitude Sanctuary', desc: 'Unruled warm dot-grid space for scrapbooking dried coffee rings, tickets, and doodles.' },
+          { img: 'assets/flip_back_cover.jpg', title: 'Back Cover: Keepsake Envelope & Sticker Sheets', desc: 'Rear pocket housing 2 sheets of matte mindfulness stickers and gold seal stamp.' }
+        ],
+        whatsInside: [
+          '1x Slow Mornings Guided Journal (90 Days of Structured Mindful Prompts)',
+          '2x Complimentary Botanical Mindfulness Sticker Sheets',
+          '1x Dual Woven Silk Ribbon Bookmark (Sage & Warm Sand)',
+          '1x Expandable Back Envelope for Ephemera & Notes',
+          '1x Custom Protective Studio Kraft Shipping Box'
+        ],
+        specs: [
+          { label: 'Format', title: '90-Day Guided Companion', desc: 'Structured morning prompts, gratitude boxes & weekly creative resets.' },
+          { label: 'Paper', title: '100 GSM Bleed-Proof Natural Paper', desc: 'Fountain-pen safe with subtle botanical page numbering.' },
+          { label: 'Dimensions', title: 'A5 Compact (148 x 210 mm)', desc: '208 pages, gold foil debossed spine and cover, 510 grams.' }
+        ]
+      }
+    };
+
+    function hydrateJournalPDP() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedId = urlParams.get('id') || 'prod-chronicle';
+      const config = JOURNAL_DATABASE[requestedId] || JOURNAL_DATABASE['prod-chronicle'];
+
+      // Update state tracking
+      currentJournalId = config.id;
+      currentJournalPrice = config.price;
+      currentJournalTitle = config.title;
+      currentJournalImage = config.coverImg;
+      currentVariant = config.activeVariant;
+      currentVariantName = config.activeVariantName;
+
+      // 1. Document title
+      if (config.metaTitle) document.title = config.metaTitle;
+
+      // 2. Title & Pricing
+      const titleEl = document.getElementById('pdp-title');
+      if (titleEl) titleEl.textContent = config.title;
+
+      const priceEl = document.getElementById('pdp-price');
+      if (priceEl) priceEl.textContent = '₹' + config.price.toLocaleString('en-IN');
+
+      const mrpEl = document.getElementById('pdp-mrp');
+      if (mrpEl) mrpEl.textContent = '₹' + config.mrp.toLocaleString('en-IN');
+
+      const discountEl = document.getElementById('pdp-discount-badge');
+      if (discountEl) discountEl.textContent = config.discountText;
+
+      const variantLabel = document.getElementById('active-variant-label');
+      if (variantLabel) variantLabel.textContent = config.activeVariantName;
+
+      // 3. Lead Pitch
+      const pitchEl = document.getElementById('pdp-lead-pitch');
+      if (pitchEl) pitchEl.innerHTML = config.leadPitch;
+
+      // 4. What's Inside Accordion
+      const whatsInsideEl = document.getElementById('pdp-whats-inside');
+      if (whatsInsideEl && config.whatsInside) {
+        whatsInsideEl.innerHTML = `
+          <ul class="space-y-2 pl-1">
+            ${config.whatsInside.map(item => `
+              <li class="flex items-start gap-2">
+                <span class="text-deep-coffee font-bold">✦</span>
+                <span>${item}</span>
+              </li>
+            `).join('')}
+          </ul>
+        `;
+      }
+
+      // 5. Specs Accordion
+      const specsEl = document.getElementById('pdp-specs-content');
+      if (specsEl && config.specs) {
+        specsEl.innerHTML = `
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            ${config.specs.map(s => `
+              <div class="p-2.5 bg-warm-paper rounded-lg border border-sand/30">
+                <span class="text-[10px] uppercase font-bold text-coffee-tan block">${s.label}</span>
+                <strong class="text-espresso">${s.title}</strong>
+                <p class="text-[11px] text-espresso/70 mt-0.5">${s.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // 6. Variant Swatches
+      const swatchesEl = document.getElementById('variant-swatches');
+      if (swatchesEl && config.swatches) {
+        swatchesEl.innerHTML = config.swatches.map((sw, idx) => `
+          <button type="button" 
+                  class="variant-btn ${idx === 0 ? 'border-2 border-deep-coffee bg-warm-paper shadow-sm' : 'border border-sand/40 bg-white hover:bg-warm-paper'} rounded-xl p-3 flex items-center gap-3 text-left transition-all relative"
+                  data-variant="${sw.key}"
+                  data-name="${sw.name}"
+                  data-color="${sw.color}"
+                  data-img="${sw.img}"
+                  onclick="selectVariant('${sw.key}', '${sw.name}', '${sw.img}', this)">
+            <span class="w-6 h-6 rounded-full border-2 border-white shadow-inner flex-shrink-0" style="background-color: ${sw.color}"></span>
+            <div class="leading-tight">
+              <span class="text-xs font-bold block text-espresso">${sw.name.split(' ')[0]} ${sw.name.split(' ')[1] || ''}</span>
+              <span class="text-[10px] text-espresso/60">${sw.desc}</span>
+            </div>
+            <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark ${idx === 0 ? '' : 'hidden'}">✓</span>
+          </button>
+        `).join('');
+      }
+
+      // 7. Carousel Track
+      const carouselTrack = document.getElementById('pdp-carousel-track');
+      if (carouselTrack && config.carousel) {
+        carouselTrack.innerHTML = config.carousel.map((slide, idx) => `
+          <div class="pdp-slide w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightboxFromSlide(${idx})">
+            <img ${idx === 0 ? 'id="main-product-img"' : ''} 
+                 src="${slide.src}" 
+                 alt="${slide.alt}" 
+                 class="w-full h-full object-cover select-none" draggable="false" />
+          </div>
+        `).join('');
+      }
+
+      // 8. Carousel Dots Container
+      const dotsContainer = document.getElementById('carousel-dots-container');
+      if (dotsContainer && config.carousel) {
+        dotsContainer.innerHTML = config.carousel.map((_, idx) => `
+          <button type="button" onclick="scrollPdpCarousel(${idx} - currentSlideIndex)" class="carousel-dot transition-all duration-300 h-1.5 rounded-full ${idx === 0 ? 'w-6 bg-deep-coffee' : 'w-1.5 bg-espresso/35'}" aria-label="Go to image ${idx + 1}"></button>
+        `).join('');
+      }
+
+      // 9. Flip Pages for 3D Book
+      if (config.flipPages) {
+        flipPages = config.flipPages;
+      }
+    }
+
     // 6. Realistic 3D Interactive Page Turning Engine (St.PageFlip)
-    const flipPages = [
+    let flipPages = [
       {
         img: 'assets/flip_cover.jpg',
         title: 'Front Cover: The 2027 Bound Chronicle',
@@ -1816,6 +2080,7 @@
     }
 
     // Initialize on DOM ready or window load
+    hydrateJournalPDP();
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initJournalPageFlip);
     } else {
@@ -1998,12 +2263,17 @@
     }
 
     // 10. Add To Cart Handler
+    let currentJournalId = 'prod-chronicle';
+    let currentJournalPrice = 1299;
+    let currentJournalTitle = 'The 2027 Bound Chronicle & Daily Journal';
+    let currentJournalImage = 'assets/prod_journal.jpg';
+
     function handlePdpAddToCart() {
       const journalItem = {
-        id: 'prod-journal-2027',
-        name: `The 2027 Bound Chronicle (${currentVariantName})`,
-        price: 1299,
-        image: 'assets/prod_journal.jpg',
+        id: currentJournalId,
+        name: `${currentJournalTitle} (${currentVariantName})`,
+        price: currentJournalPrice,
+        image: currentJournalImage,
         category: 'Stationaries • Journals &amp; Diaries',
         qty: currentQty
       };

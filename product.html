@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisanal Product Details — Graffeine Tales | Handcrafted Goods</title>
+  <meta name="description" content="Handcrafted artisanal décor, desk calendars, and luxury stationery by Graffeine Tales Studio. Where stories become art." />
+  
+  <!-- Favicon / Coffee Cup -->
+  <link rel="icon" type="image/png" href="assets/coffee_cup.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'warm-paper': '#F8F5ED',
+            'espresso': '#363638',
+            'logo-cream': '#E9DFC2',
+            'deep-coffee': '#4D351D',
+            'sand': '#C6B58E',
+            'coffee-tan': '#927B53',
+            'gold-wax': '#D4AF37',
+            'sage-craft': '#2D6A4F',
+            'terracotta': '#C85A32',
+            'cream-muted': '#F2EDE2',
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', '"Inter"', 'sans-serif'],
+            script: ['"Patrick Hand"', 'cursive'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'tactile': '0 10px 30px -5px rgba(77, 53, 29, 0.08), 0 4px 12px -2px rgba(77, 53, 29, 0.04)',
+            'tactile-lg': '0 20px 40px -10px rgba(54, 54, 56, 0.12), 0 8px 16px -4px rgba(77, 53, 29, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      background-color: #F8F5ED;
+      color: #363638;
+      font-family: 'DM Sans', 'Inter', sans-serif;
+    }
+    .font-serif-display {
+      font-family: 'DM Serif Display', Georgia, serif;
+    }
+    .font-script {
+      font-family: 'Patrick Hand', cursive;
+    }
+    @keyframes steamFloat {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-16px) scaleX(1.4); opacity: 0; }
+    }
+    .steam-wisp {
+      animation: steamFloat 2.6s infinite ease-out;
+    }
+    .steam-wisp.w2 {
+      animation-delay: 1.3s;
+    }
+    @keyframes btnShimmer {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      35%, 100% { transform: translateX(250%) skewX(-20deg); }
+    }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+      transform: translateX(-150%) skewX(-20deg);
+      animation: btnShimmer 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased selection:bg-sand selection:text-espresso min-h-screen flex flex-col justify-between">
+
+  <!-- =========================================================================
+       1. TOP BRAND BANNER / ANNOUNCEMENT STRIP
+       ========================================================================= -->
+  <aside class="bg-espresso text-logo-cream py-2 px-4 text-center text-xs tracking-wide border-b border-sand/20" aria-label="Announcement">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold-wax animate-ping"></span>
+      <p class="font-medium">
+        Free Express Shipping on Orders Above ₹999 &bull; Handcrafted in India with Studio Care
+      </p>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. PRIMARY LUXURY NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-warm-paper/95 backdrop-blur-md border-b border-sand/30 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo / Identity -->
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none" aria-label="Graffeine Tales Home">
+        <div class="relative w-10 h-10 flex items-center justify-center">
+          <svg class="absolute -top-3 left-3 w-5 h-5 pointer-events-none overflow-visible" viewBox="0 0 20 20" fill="none">
+            <path class="steam-wisp" d="M4 16C4 13 6 11 4 8C3 6 3 4 5 1" stroke="#927B53" stroke-width="1.5" stroke-linecap="round"/>
+            <path class="steam-wisp w2" d="M10 16C10 13 12 11 10 8C9 6 9 4 11 1" stroke="#927B53" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <img src="assets/coffee_cup.png" alt="Graffeine Tales Studio Cup" class="w-9 h-9 object-contain drop-shadow-sm group-hover:scale-105 transition-transform" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif-display text-xl sm:text-2xl text-espresso tracking-tight leading-none group-hover:text-deep-coffee transition-colors">
+            Graffeine Tales
+          </span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-coffee-tan mt-0.5">
+            Artisanal Goods &bull; Est. 2024
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-espresso/80">
+        <a href="index.html" class="hover:text-deep-coffee transition-colors">Home</a>
+        <a href="journal-pdp.html" class="hover:text-deep-coffee transition-colors">Journals &amp; Diaries</a>
+        <a href="index.html#bestsellers-section" class="text-deep-coffee font-semibold border-b-2 border-deep-coffee pb-1">Coasters &amp; Décor</a>
+        <a href="index.html#catalogue-section" class="hover:text-deep-coffee transition-colors">Artisanal Catalog</a>
+        <a href="about.html" class="hover:text-deep-coffee transition-colors">Our Story</a>
+      </nav>
+
+      <!-- Action Icons -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <a href="index.html" class="p-2 text-espresso hover:text-deep-coffee transition-colors" title="Back to Store">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </a>
+        <button type="button" class="p-2 text-espresso hover:text-deep-coffee relative transition-colors" onclick="toggleCartDrawer()" title="Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-deep-coffee text-logo-cream text-[10px] font-bold rounded-full flex items-center justify-center" id="cart-badge-count">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. BREADCRUMBS BAR
+       ========================================================================= -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 text-xs text-espresso/60 flex items-center gap-2">
+    <a href="index.html" class="hover:text-deep-coffee">Home</a>
+    <span>&rsaquo;</span>
+    <span id="breadcrumb-category">Handcrafted Décor</span>
+    <span>&rsaquo;</span>
+    <span class="text-espresso font-semibold truncate max-w-xs" id="breadcrumb-name">Product Name</span>
+  </div>
+
+  <!-- =========================================================================
+       4. MAIN PRODUCT HERO STAGE (2-Column Grid)
+       ========================================================================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      
+      <!-- LEFT COLUMN: 1:1 Image Stage & Gallery -->
+      <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
+        <div class="relative bg-[#EFE9DC] rounded-3xl overflow-hidden border border-sand/40 shadow-tactile aspect-square flex items-center justify-center group" id="gallery-stage">
+          <img id="main-product-img" 
+               src="assets/products/lady_teatrip.jpg" 
+               alt="Product Image" 
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-zoom-in" 
+               onclick="openLightbox()" />
+          
+          <span class="absolute top-4 left-4 bg-espresso/80 backdrop-blur-sm text-logo-cream text-xs font-bold px-3 py-1.5 rounded-full shadow-sm" id="badge-pill">
+            Bestseller
+          </span>
+        </div>
+
+        <!-- Thumbnails Strip -->
+        <div class="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar" id="thumbnails-track">
+          <!-- Dynamically populated or default thumbs -->
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Details, Pricing, Stepper & Buy Actions -->
+      <div class="lg:col-span-5 bg-white/95 rounded-3xl p-6 sm:p-8 border border-sand/40 shadow-tactile-lg space-y-6">
+        
+        <div>
+          <span class="text-xs uppercase font-bold tracking-wider text-coffee-tan block mb-1" id="pdp-category-tag">
+            Handcrafted Décor &bull; Coaster
+          </span>
+          <h1 class="font-serif-display text-2xl sm:text-3xl text-espresso leading-tight" id="pdp-title">
+            Lady TeaTrip Acrylic Coaster &amp; Teak Stand
+          </h1>
+          
+          <!-- Rating -->
+          <div class="flex items-center gap-2 mt-2">
+            <div class="flex text-gold-wax text-sm" id="pdp-stars">
+              ★★★★★
+            </div>
+            <span class="text-xs text-espresso/60" id="pdp-review-count">(214 verified reviews)</span>
+          </div>
+        </div>
+
+        <!-- Pricing Row -->
+        <div class="py-4 border-y border-sand/30 flex items-baseline justify-between">
+          <div>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif-display text-3xl sm:text-4xl font-bold text-deep-coffee" id="pdp-price">₹699</span>
+              <span class="text-base text-espresso/40 line-through" id="pdp-mrp">₹899</span>
+              <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-2.5 py-0.5 rounded-full" id="pdp-discount">
+                SAVE 22%
+              </span>
+            </div>
+            <p class="text-xs text-espresso/60 mt-1">Inclusive of all taxes &bull; Solid grooved teakwood stand included</p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="text-xs sm:text-sm text-espresso/80 leading-relaxed font-normal" id="pdp-desc">
+          Vibrant desi pop art illustration printed on premium scratch-resistant acrylic with a solid teakwood display easel. Designed to bring humor, character, and warmth to your tea and coffee tables.
+        </p>
+
+        <!-- Specifications Highlights -->
+        <div class="bg-warm-paper rounded-2xl p-4 border border-sand/30 space-y-2">
+          <span class="text-[11px] uppercase font-bold tracking-wider text-espresso block mb-1">Key Specifications</span>
+          <ul class="text-xs text-espresso/80 space-y-1.5" id="pdp-specs-list">
+            <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span>Dimensions: 95 x 95 mm square</span></li>
+            <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span>Material: High-gloss 4mm shatterproof optical acrylic</span></li>
+            <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span>Includes solid grooved teakwood easel stand</span></li>
+            <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span>Waterproof, heat-resistant up to 100°C and wipe-clean</span></li>
+          </ul>
+        </div>
+
+        <!-- Quantity Stepper & Add to Cart -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center border border-sand bg-warm-paper rounded-full p-1 shadow-sm">
+              <button type="button" class="w-9 h-9 rounded-full hover:bg-white text-espresso font-bold flex items-center justify-center transition-colors" onclick="changeQty(-1)">−</button>
+              <input type="number" id="pdp-qty-input" value="1" min="1" max="10" class="w-10 text-center bg-transparent text-espresso font-bold text-sm focus:outline-none" readonly />
+              <button type="button" class="w-9 h-9 rounded-full hover:bg-white text-espresso font-bold flex items-center justify-center transition-colors" onclick="changeQty(1)">+</button>
+            </div>
+
+            <button type="button" 
+                    id="pdp-add-cart-btn"
+                    class="btn-shimmer flex-1 bg-deep-coffee hover:bg-espresso text-logo-cream py-4 px-6 rounded-full font-bold text-sm sm:text-base tracking-wide flex items-center justify-center gap-3 shadow-tactile transition-all duration-300 transform active:scale-95"
+                    onclick="handleAddToCart()">
+              <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              <span class="relative z-10">Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pincode Estimator -->
+        <div class="p-3.5 bg-warm-paper/70 rounded-2xl border border-sand/30 space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-espresso">Estimated Delivery Date</span>
+            <span class="text-coffee-tan text-[11px]">Free Pan-India</span>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="pincode-input" placeholder="Enter 6-digit Indian PIN code..." maxlength="6" class="flex-1 bg-white border border-sand/40 rounded-full px-4 py-2 text-xs text-espresso focus:outline-none focus:border-deep-coffee" />
+            <button type="button" class="bg-espresso hover:bg-deep-coffee text-logo-cream text-xs font-bold px-4 py-2 rounded-full transition-colors" onclick="checkDeliveryPincode()">
+              Check
+            </button>
+          </div>
+          <p id="pincode-result" class="text-[11px] hidden font-medium"></p>
+        </div>
+
+        <!-- Details Accordion Stack -->
+        <div class="border-t border-sand/40 divide-y divide-sand/40 pt-2" id="details-accordion">
+          
+          <div class="accordion-item">
+            <button type="button" class="w-full py-3.5 text-left flex items-center justify-between text-sm font-semibold text-espresso hover:text-deep-coffee transition-colors" onclick="toggleAccordion(this)">
+              <span>Craftsmanship &amp; Studio Notes</span>
+              <svg class="w-4 h-4 text-coffee-tan transition-transform chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <p class="pb-4 pt-1 text-xs text-espresso/80 leading-relaxed">
+                Each piece is carefully printed, cut, and assembled by our in-house artisans in India. We use non-toxic inks, sustainably sourced plantation teakwood, and inspect every single item before sealing it with our signature kraft box.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="w-full py-3.5 text-left flex items-center justify-between text-sm font-semibold text-espresso hover:text-deep-coffee transition-colors" onclick="toggleAccordion(this)">
+              <span>Care &amp; Cleaning Instructions</span>
+              <svg class="w-4 h-4 text-coffee-tan transition-transform chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <p class="pb-4 pt-1 text-xs text-espresso/80 leading-relaxed">
+                Gently wipe clean with a soft damp cloth. Avoid harsh chemical cleaners or abrasive scouring pads. Teakwood stands can be polished with a drop of coconut or mineral oil to maintain their deep wood grain.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       5. YOU MAY ALSO LIKE SECTION
+       ========================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-sand/30">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="font-serif-display text-2xl sm:text-3xl text-espresso">
+        You May Also Like
+      </h2>
+      <a href="index.html#catalogue-section" class="text-xs font-bold uppercase tracking-wider text-deep-coffee hover:underline">
+        Explore Full Catalog &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6" id="related-products-grid">
+      <!-- Related products populated dynamically -->
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. GLOBAL FOOTER
+       ========================================================================= -->
+  <footer class="bg-espresso text-logo-cream border-t border-sand/20 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-logo-cream/60">
+        <p>&copy; 2026 Graffeine Tales Studio. All Rights Reserved. Where Stories Become Art.</p>
+        <div class="flex items-center gap-4 text-[11px]">
+          <a href="index.html" class="hover:text-white">Home</a>
+          <span>&bull;</span>
+          <a href="journal-pdp.html" class="hover:text-white">Journals &amp; Diaries</a>
+          <span>&bull;</span>
+          <a href="about.html" class="hover:text-white">About Studio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-notification" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-50 bg-espresso text-logo-cream text-xs font-medium py-3 px-6 rounded-full shadow-tactile-lg border border-sand/30 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+    <span id="toast-text">✦ Added to cart</span>
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden" onclick="toggleCartDrawer()">
+    <div class="absolute right-0 top-0 bottom-0 max-w-md w-full bg-warm-paper shadow-2xl p-6 flex flex-col justify-between" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-sand/30">
+        <h3 class="font-serif-display text-xl text-espresso">Your Atelier Bag</h3>
+        <button type="button" class="text-espresso hover:text-deep-coffee" onclick="toggleCartDrawer()">&times;</button>
+      </div>
+      <div class="flex-1 overflow-y-auto py-4 space-y-4" id="cart-items-container">
+        <!-- Cart items rendered here -->
+      </div>
+      <div class="pt-4 border-t border-sand/30 space-y-3">
+        <div class="flex items-center justify-between font-bold text-espresso text-sm">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal-price">₹0</span>
+        </div>
+        <button type="button" class="w-full bg-deep-coffee hover:bg-espresso text-logo-cream py-3 rounded-full font-bold text-xs uppercase tracking-wider transition-colors" onclick="alert('Proceeding to Secure Checkout...')">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="pdp-lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <div class="relative max-w-4xl max-h-[90vh] flex items-center justify-center" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Enlarged View" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl" />
+      <button type="button" class="absolute top-4 right-4 text-white text-2xl font-bold" onclick="closeLightbox()">&times;</button>
+    </div>
+  </div>
+
+  <!-- Product Data and Script Controller -->
+  <script src="app.js"></script>
+  <script>
+    let currentQty = 1;
+    let activeProduct = null;
+
+    function initDynamicProductPage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = urlParams.get('id') || 'prod-1';
+      
+      // If it's a journal, seamlessly redirect to journal-pdp.html
+      if (prodId === 'prod-chronicle' || prodId === 'prod-38' || prodId === 'prod-39') {
+        window.location.replace(`journal-pdp.html?id=${prodId}`);
+        return;
+      }
+
+      // Find in productsData
+      activeProduct = (typeof productsData !== 'undefined') ? productsData.find(p => p.id === prodId) : null;
+      if (!activeProduct && typeof productsData !== 'undefined') {
+        activeProduct = productsData[0];
+      }
+
+      if (!activeProduct) return;
+
+      // Populate Meta & Breadcrumb
+      document.title = `${activeProduct.name} — Graffeine Tales | Artisanal Goods`;
+      const bcCat = document.getElementById('breadcrumb-category');
+      const bcName = document.getElementById('breadcrumb-name');
+      if (bcCat) bcCat.textContent = activeProduct.category.split('•')[0].trim();
+      if (bcName) bcName.textContent = activeProduct.name;
+
+      // Hero Image & Badge
+      const mainImg = document.getElementById('main-product-img');
+      const badgePill = document.getElementById('badge-pill');
+      if (mainImg) {
+        mainImg.src = activeProduct.image;
+        mainImg.alt = activeProduct.name;
+      }
+      if (badgePill) {
+        badgePill.textContent = activeProduct.badge || 'Atelier Drop';
+      }
+
+      // Title & Category
+      const catTag = document.getElementById('pdp-category-tag');
+      const titleEl = document.getElementById('pdp-title');
+      if (catTag) catTag.textContent = activeProduct.category;
+      if (titleEl) titleEl.textContent = activeProduct.name;
+
+      // Rating & Reviews
+      const starsEl = document.getElementById('pdp-stars');
+      const reviewEl = document.getElementById('pdp-review-count');
+      if (starsEl) starsEl.textContent = '★'.repeat(Math.round(activeProduct.rating || 5)) + '☆'.repeat(5 - Math.round(activeProduct.rating || 5));
+      if (reviewEl) reviewEl.textContent = `(${activeProduct.reviews || 120} verified reviews)`;
+
+      // Pricing
+      const priceEl = document.getElementById('pdp-price');
+      const mrpEl = document.getElementById('pdp-mrp');
+      const discountEl = document.getElementById('pdp-discount');
+      if (priceEl) priceEl.textContent = '₹' + activeProduct.price.toLocaleString('en-IN');
+      if (mrpEl) mrpEl.textContent = activeProduct.mrp ? ('₹' + activeProduct.mrp.toLocaleString('en-IN')) : '';
+      if (discountEl) {
+        if (activeProduct.mrp && activeProduct.mrp > activeProduct.price) {
+          const pct = Math.round(((activeProduct.mrp - activeProduct.price) / activeProduct.mrp) * 100);
+          discountEl.textContent = `SAVE ${pct}%`;
+          discountEl.style.display = 'inline-block';
+        } else {
+          discountEl.style.display = 'none';
+        }
+      }
+
+      // Description
+      const descEl = document.getElementById('pdp-desc');
+      if (descEl) descEl.textContent = activeProduct.desc;
+
+      // Specs list
+      const specsList = document.getElementById('pdp-specs-list');
+      if (specsList && activeProduct.specs) {
+        specsList.innerHTML = activeProduct.specs.map(s => `
+          <li class="flex items-start gap-2">
+            <span class="text-deep-coffee font-bold">✦</span>
+            <span>${s}</span>
+          </li>
+        `).join('');
+      }
+
+      // Render Related Products
+      renderRelatedProducts(activeProduct);
+      updateCartDrawerUI();
+    }
+
+    function renderRelatedProducts(currProd) {
+      const grid = document.getElementById('related-products-grid');
+      if (!grid || typeof productsData === 'undefined') return;
+
+      const others = productsData.filter(p => p.id !== currProd.id && p.id !== 'prod-38' && p.id !== 'prod-39').slice(0, 4);
+      grid.innerHTML = others.map(p => `
+        <article class="bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+          <div>
+            <a href="${getProductUrl(p)}" class="block aspect-square overflow-hidden bg-warm-paper">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </a>
+            <div class="p-4 space-y-1">
+              <span class="text-[10px] uppercase font-bold tracking-wider text-coffee-tan block">${p.category.split('•')[0]}</span>
+              <a href="${getProductUrl(p)}" class="font-bold text-xs text-espresso hover:text-deep-coffee block line-clamp-1">${p.name}</a>
+              <div class="flex items-baseline gap-2 pt-1">
+                <span class="text-xs font-bold text-deep-coffee">₹${p.price.toLocaleString('en-IN')}</span>
+                ${p.mrp ? `<span class="text-[10px] text-espresso/40 line-through">₹${p.mrp}</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <div class="px-4 pb-4">
+            <a href="${getProductUrl(p)}" class="block w-full py-2 bg-warm-paper hover:bg-deep-coffee hover:text-logo-cream border border-sand/40 text-center rounded-xl text-xs font-bold text-espresso transition-colors">
+              View Details
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function changeQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      const input = document.getElementById('pdp-qty-input');
+      if (input) input.value = currentQty;
+    }
+
+    function handleAddToCart() {
+      if (!activeProduct) return;
+      addToCart(activeProduct.id, currentQty);
+      showToast(`✦ Added ${currentQty}x "${activeProduct.name}" to your bag!`);
+      toggleCartDrawer();
+    }
+
+    function toggleAccordion(btn) {
+      const panel = btn.nextElementSibling;
+      const chevron = btn.querySelector('.chevron');
+      const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+
+      if (isOpen) {
+        panel.style.maxHeight = '0px';
+        if (chevron) chevron.classList.remove('rotate-180');
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 30 + 'px';
+        if (chevron) chevron.classList.add('rotate-180');
+      }
+    }
+
+    function checkDeliveryPincode() {
+      const input = document.getElementById('pincode-input');
+      const result = document.getElementById('pincode-result');
+      const val = input ? input.value.trim() : '';
+
+      if (!val || val.length !== 6 || isNaN(val)) {
+        if (result) {
+          result.classList.remove('hidden', 'text-sage-craft');
+          result.classList.add('text-terracotta');
+          result.textContent = 'Please enter a valid 6-digit Indian PIN code.';
+        }
+        return;
+      }
+
+      const majorMetros = ['11', '12', '40', '56', '50', '60', '70', '41'];
+      const isExpress = majorMetros.includes(val.substring(0, 2));
+
+      if (result) {
+        result.classList.remove('hidden', 'text-terracotta');
+        result.classList.add('text-sage-craft');
+        if (isExpress) {
+          result.innerHTML = `<strong>✨ Express Dispatch:</strong> Expected delivery in <strong>2–3 business days</strong> via Bluedart Air Courier. Free tracking on WhatsApp.`;
+        } else {
+          result.innerHTML = `<strong>🚚 Standard Dispatch:</strong> Expected delivery in <strong>3–5 business days</strong> via Delhivery Express.`;
+        }
+      }
+    }
+
+    function openLightbox() {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      const mainImg = document.getElementById('main-product-img');
+      const target = document.getElementById('lightbox-img');
+      if (modal && mainImg && target) {
+        target.src = mainImg.src;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cart-drawer-overlay');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+        updateCartDrawerUI();
+      }
+    }
+
+    function updateCartDrawerUI() {
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal-price');
+      const badge = document.getElementById('cart-badge-count');
+      
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]');
+      } catch (e) {}
+
+      const totalCount = cart.reduce((acc, it) => acc + (it.qty || 1), 0);
+      if (badge) badge.textContent = totalCount;
+
+      let subtotal = 0;
+      if (container) {
+        if (!cart.length) {
+          container.innerHTML = `<p class="text-xs text-espresso/60 text-center py-8">Your atelier bag is empty.</p>`;
+        } else {
+          container.innerHTML = cart.map(item => {
+            const itemPrice = item.price || 0;
+            const itemQty = item.qty || 1;
+            subtotal += itemPrice * itemQty;
+            return `
+              <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-sand/30">
+                <img src="${item.image || 'assets/cat_journals.jpg'}" alt="${item.name}" class="w-12 h-12 object-cover rounded-lg border border-sand/20" />
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-xs font-bold text-espresso truncate">${item.name}</h4>
+                  <div class="text-[11px] text-espresso/60">₹${itemPrice.toLocaleString('en-IN')} &times; ${itemQty}</div>
+                </div>
+                <span class="text-xs font-bold text-deep-coffee">₹${(itemPrice * itemQty).toLocaleString('en-IN')}</span>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+      if (subtotalEl) subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-text');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }, 2500);
+    }
+
+    document.addEventListener('DOMContentLoaded', initDynamicProductPage);
+  </script>
+</body>
+</html>

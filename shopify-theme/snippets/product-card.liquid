@@ -23,12 +23,11 @@
 
     <!-- Quick Action Overlay -->
     <div class="card-actions-overlay">
-      <button type="button" 
-              class="quick-action-btn" 
-              onclick="openQuickView('prod-{{ product.id }}')" 
-              title="Quick View">
+      <a href="{{ product.url }}" 
+         class="quick-action-btn" 
+         title="View Details">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-      </button>
+      </a>
       <button type="button" 
               class="quick-action-btn" 
               onclick="toggleWishlist('prod-{{ product.id }}')" 

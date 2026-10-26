@@ -1009,14 +1009,33 @@ function initFeaturedSections() {
   renderBuiltWithHeartSection();
 }
 
+function getProductUrl(prodOrId) {
+  const prod = typeof prodOrId === 'object' ? prodOrId : (productsData.find(p => p.id === prodOrId) || { id: prodOrId });
+  if (!prod) return 'journal-pdp.html';
+  const id = prod.id || '';
+  const name = (prod.name || '').toLowerCase();
+  const cat = (prod.category || '').toLowerCase();
+
+  // All journals and diaries redirect to the new luxury journal PDP UI
+  if (id === 'prod-chronicle' || id === 'prod-38' || id === 'prod-39' || 
+      cat.includes('journal') || cat.includes('diary') || 
+      name.includes('journal') || name.includes('diary') || name.includes('chronicle')) {
+    return `journal-pdp.html?id=${id}`;
+  }
+  return `product.html?id=${id}`;
+}
+
 function renderProductCardHTML(prod) {
   const isWishlisted = wishlist.includes(prod.id);
   const discount = prod.mrp ? Math.round(((prod.mrp - prod.price) / prod.mrp) * 100) : 0;
+  const prodUrl = getProductUrl(prod);
 
   return `
-    <article class="product-card" data-id="${prod.id}" data-category="${prod.category}">
+    <article class="product-card cursor-pointer" data-id="${prod.id}" data-category="${prod.category}" onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href = '${prodUrl}';">
       <div class="product-thumb-wrap">
-        <img src="${prod.image}" alt="${prod.name}" class="product-thumb" loading="lazy" />
+        <a href="${prodUrl}" class="product-thumb-link block w-full h-full" aria-label="${prod.name}">
+          <img src="${prod.image}" alt="${prod.name}" class="product-thumb" loading="lazy" />
+        </a>
         
         <!-- Badge -->
         <span class="product-badge ${prod.badgeType || 'gold'}">${prod.badge || 'Atelier'}</span>
@@ -1028,21 +1047,23 @@ function renderProductCardHTML(prod) {
           </svg>
         </button>
 
-        <!-- Quick Actions Bar -->
+        <!-- Direct Action Bar -->
         <div class="quick-actions">
-          <button class="quick-btn" onclick="openQuickView('${prod.id}'); event.stopPropagation();">
+          <a href="${prodUrl}" class="quick-btn" onclick="event.stopPropagation();">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
-            Quick View
-          </button>
+            View Details
+          </a>
         </div>
       </div>
 
       <div class="product-details">
         <div class="product-info-top">
-          <h3 class="product-name" onclick="openQuickView('${prod.id}')">${prod.name}</h3>
+          <a href="${prodUrl}" class="product-name-link" style="text-decoration: none; color: inherit;">
+            <h3 class="product-name">${prod.name}</h3>
+          </a>
           
           <div class="product-rating">
             <div class="stars">
@@ -1511,6 +1532,9 @@ function initQuickView() {
 }
 
 function openQuickView(prodId) {
+  const targetUrl = getProductUrl(prodId);
+  window.location.href = targetUrl;
+  return;
   const prod = productsData.find(p => p.id === prodId);
   if (!prod) return;
 
