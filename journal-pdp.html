@@ -1509,11 +1509,60 @@
        18. CORE JAVASCRIPT & PDP INTERACTION CONTROLLER
        ========================================================================= -->
   <script>
-    // State variables
+    // Global PDP & Flipbook State variables (Top-level declaration prevents TDZ errors)
     let currentQty = 1;
     let currentVariant = 'espresso';
     let currentVariantName = 'Midnight Espresso Bookcloth';
     let currentLayout = 'Dated 2027 Year';
+    let currentJournalId = 'prod-chronicle';
+    let currentJournalPrice = 1299;
+    let currentJournalTitle = 'The 2027 Bound Chronicle & Daily Journal';
+    let currentJournalImage = 'assets/prod_journal.jpg';
+    let currentFlipIndex = 0;
+    let journalPageFlip = null;
+
+    let flipPages = [
+      {
+        img: 'assets/flip_cover.jpg',
+        title: 'Front Cover: The 2027 Bound Chronicle',
+        desc: 'Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem.'
+      },
+      {
+        img: 'assets/flip_page_01_belonging.jpg',
+        title: 'Opening Spread (Left): Belonging Nameplate & Manifesto',
+        desc: 'Gold-leaf framed owner inscription page with contact details and intention lines.'
+      },
+      {
+        img: 'assets/flip_page_02_vision.jpg',
+        title: 'Opening Spread (Right): 2027 Yearly Vision & Milestones',
+        desc: 'Dedicated quarterly aspiration quadrants for Career, Health, Joy & Financial goals.'
+      },
+      {
+        img: 'assets/flip_page_03_monthly.jpg',
+        title: 'Monthly Spread (Left): Panoramic Calendar Grid',
+        desc: 'Spacious double-page calendar view with Monday-Thursday grids and monthly priorities.'
+      },
+      {
+        img: 'assets/flip_page_04_habits.jpg',
+        title: 'Monthly Spread (Right): Habit Tracker & Budget Ledger',
+        desc: '31-day visual micro-grids for daily rituals alongside monthly income and savings tracking.'
+      },
+      {
+        img: 'assets/flip_page_05_weekly_left.jpg',
+        title: 'Weekly Focus (Left): Monday – Wednesday Timetable',
+        desc: 'Daily priority circles, hourly schedule timeblocks (6am–8pm), and micro-gratitude prompts.'
+      },
+      {
+        img: 'assets/flip_page_06_weekly_right.jpg',
+        title: 'Weekly Horizons (Right): Thursday – Sunday & Dot-Grid Sandbox',
+        desc: 'Weekend rituals schedule with generous 5mm ivory dot-grid sandbox for braindumps.'
+      },
+      {
+        img: 'assets/flip_back_cover.jpg',
+        title: 'Back Cover: Graffeine Tales Atelier Edition',
+        desc: 'Matching Japanese bookcloth casing with gold debossed atelier hallmark, FSC certification & barcode.'
+      }
+    ];
 
     // 0. PDP Hero Carousel Controller
     let currentSlideIndex = 0;
@@ -1950,55 +1999,19 @@
     }
 
     // 6. Realistic 3D Interactive Page Turning Engine (St.PageFlip)
-    let flipPages = [
-      {
-        img: 'assets/flip_cover.jpg',
-        title: 'Front Cover: The 2027 Bound Chronicle',
-        desc: 'Artisanal gold debossed Japanese bookcloth with metallic foil coffee leaf emblem.'
-      },
-      {
-        img: 'assets/flip_page_01_belonging.jpg',
-        title: 'Opening Spread (Left): Belonging Nameplate & Manifesto',
-        desc: 'Gold-leaf framed owner inscription page with contact details and intention lines.'
-      },
-      {
-        img: 'assets/flip_page_02_vision.jpg',
-        title: 'Opening Spread (Right): 2027 Yearly Vision & Milestones',
-        desc: 'Dedicated quarterly aspiration quadrants for Career, Health, Joy & Financial goals.'
-      },
-      {
-        img: 'assets/flip_page_03_monthly.jpg',
-        title: 'Monthly Spread (Left): Panoramic Calendar Grid',
-        desc: 'Spacious double-page calendar view with Monday-Thursday grids and monthly priorities.'
-      },
-      {
-        img: 'assets/flip_page_04_habits.jpg',
-        title: 'Monthly Spread (Right): Habit Tracker & Budget Ledger',
-        desc: '31-day visual micro-grids for daily rituals alongside monthly income and savings tracking.'
-      },
-      {
-        img: 'assets/flip_page_05_weekly_left.jpg',
-        title: 'Weekly Focus (Left): Monday – Wednesday Timetable',
-        desc: 'Daily priority circles, hourly schedule timeblocks (6am–8pm), and micro-gratitude prompts.'
-      },
-      {
-        img: 'assets/flip_page_06_weekly_right.jpg',
-        title: 'Weekly Horizons (Right): Thursday – Sunday & Dot-Grid Sandbox',
-        desc: 'Weekend rituals schedule with generous 5mm ivory dot-grid sandbox for braindumps.'
-      },
-      {
-        img: 'assets/flip_back_cover.jpg',
-        title: 'Back Cover: Graffeine Tales Atelier Edition',
-        desc: 'Matching Japanese bookcloth casing with gold debossed atelier hallmark, FSC certification & barcode.'
-      }
-    ];
-
-    let currentFlipIndex = 0;
-    let journalPageFlip = null;
 
     function initJournalPageFlip() {
+      // First ensure active journal product data and pages are hydrated
+      hydrateJournalPDP();
+
       const bookEl = document.getElementById('page-flip-book');
-      if (!bookEl || typeof St === 'undefined' || !St.PageFlip) return;
+      if (!bookEl) return;
+
+      if (typeof St === 'undefined' || !St.PageFlip) {
+        console.warn('St.PageFlip library loading... retrying mount in 100ms');
+        setTimeout(initJournalPageFlip, 100);
+        return;
+      }
 
       const isMobile = window.innerWidth < 768;
       const width = isMobile ? Math.min(window.innerWidth - 64, 340) : 380;
@@ -2079,13 +2092,15 @@
       }
     }
 
-    // Initialize on DOM ready or window load
-    hydrateJournalPDP();
+    // Initialize on DOM ready or window load safely
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initJournalPageFlip);
     } else {
       initJournalPageFlip();
     }
+    window.addEventListener('load', () => {
+      if (!journalPageFlip) initJournalPageFlip();
+    });
 
     function updateFlipDisplay(index) {
       if (typeof index === 'number') currentFlipIndex = index;
@@ -2263,10 +2278,6 @@
     }
 
     // 10. Add To Cart Handler
-    let currentJournalId = 'prod-chronicle';
-    let currentJournalPrice = 1299;
-    let currentJournalTitle = 'The 2027 Bound Chronicle & Daily Journal';
-    let currentJournalImage = 'assets/prod_journal.jpg';
 
     function handlePdpAddToCart() {
       const journalItem = {
