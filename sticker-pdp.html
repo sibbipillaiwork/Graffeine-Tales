@@ -257,28 +257,6 @@
            LEFT COLUMN: VISUAL GALLERY & INTERACTIVE STICKER PREVIEW
            --------------------------------------------------------------------- -->
       <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
-        
-        <!-- View Switcher Tabs (Gallery Mode vs Quick Laptop Customizer) -->
-        <div class="flex items-center justify-between bg-white/80 p-1.5 rounded-2xl border border-sand/40 shadow-sm">
-          <button type="button" 
-                  id="tab-btn-gallery"
-                  onclick="switchHeroView('gallery')"
-                  class="flex-1 py-2 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 bg-deep-coffee text-logo-cream shadow-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            Studio Photography
-          </button>
-          <button type="button" 
-                  id="tab-btn-customizer"
-                  onclick="switchHeroView('customizer')"
-                  class="flex-1 py-2 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 text-espresso hover:text-deep-coffee">
-            <svg class="w-4 h-4 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Interactive Laptop Test
-            <span class="w-2 h-2 rounded-full bg-terracotta animate-ping"></span>
-          </button>
-        </div>
-
-        <!-- 1. GALLERY VIEW (Default) -->
-        <div id="hero-gallery-view" class="space-y-4">
           <!-- Main 1:1 Aspect Ratio Carousel Stage -->
           <div class="relative bg-[#EFE9DC] rounded-3xl overflow-hidden border border-sand/40 shadow-tactile group aspect-square flex items-center justify-center select-none" id="sticker-gallery-stage">
             <div id="pdp-carousel-track" class="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar" onscroll="onCarouselScroll()">
@@ -374,43 +352,6 @@
             </button>
           </div>
         </div>
-
-        <!-- 2. QUICK INLINE LAPTOP PREVIEW (Toggled View) -->
-        <div id="hero-customizer-view" class="hidden bg-espresso rounded-3xl p-6 text-logo-cream border border-sand/30 shadow-tactile-lg space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-[10px] uppercase font-bold text-coffee-tan tracking-wider block">Interactive Playground</span>
-              <h3 class="font-serif-display text-lg text-white">Quick Laptop Preview</h3>
-            </div>
-            <a href="#laptop-customizer-section" class="text-xs text-sand hover:text-white underline font-medium flex items-center gap-1">
-              Open Full Studio Canvas &darr;
-            </a>
-          </div>
-          <p class="text-xs text-logo-cream/70">
-            Drag the stickers below onto the MacBook lid to test arrangements before buying!
-          </p>
-          
-          <!-- Mini Laptop Lid (MacBook Moonlight Finish with Apple Logo) -->
-          <div class="relative w-full aspect-[16/10] macbook-moonlight rounded-2xl border-2 shadow-laptop-depth overflow-hidden flex items-center justify-center p-4 transition-all duration-300" id="mini-laptop-target">
-            <!-- Center Authentic Apple Logo -->
-            <div class="flex items-center justify-center pointer-events-none transition-all duration-300" id="mini-apple-logo-wrap">
-              <svg id="mini-apple-logo-svg" class="w-8 h-8 text-[#9E9584] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.15c.66-.8 1.11-1.92.99-3.04-1 .04-2.14.65-2.82 1.45-.6.69-1.12 1.83-.98 2.94 1.12.09 2.15-.55 2.81-1.35z"/>
-              </svg>
-            </div>
-            <div class="absolute bottom-2 right-3 text-[10px] text-[#5A5246]/70 pointer-events-none font-medium" id="mini-laptop-label">
-              ✦ MacBook Moonlight &bull; Drop Zone Active
-            </div>
-          </div>
-
-          <div class="text-center pt-1">
-            <a href="#laptop-customizer-section" class="inline-flex items-center gap-2 bg-warm-paper text-espresso hover:bg-white text-xs font-bold py-2.5 px-6 rounded-full transition-all shadow-sm">
-              <span>✦ Go to Full-Width Customizer</span>
-              <span>&rarr;</span>
-            </a>
-          </div>
-        </div>
-
       </div>
 
       <!-- ---------------------------------------------------------------------
@@ -1736,14 +1677,12 @@
     // =========================================================================
     function toggleAppleLogo() {
       const mainWrap = document.getElementById('laptop-apple-logo-wrap');
-      const miniWrap = document.getElementById('mini-apple-logo-wrap');
       const btn = document.getElementById('toggle-logo-btn');
       if (!mainWrap) return;
       
       const isHidden = mainWrap.classList.contains('hidden');
       if (isHidden) {
         mainWrap.classList.remove('hidden');
-        if (miniWrap) miniWrap.classList.remove('hidden');
         if (btn) {
           btn.innerHTML = '<span>🍎 Logo: On</span>';
           btn.classList.add('bg-white/10');
@@ -1752,7 +1691,6 @@
         showToast('🍎 Apple mirror logo visible');
       } else {
         mainWrap.classList.add('hidden');
-        if (miniWrap) miniWrap.classList.add('hidden');
         if (btn) {
           btn.innerHTML = '<span>🚫 Logo: Off</span>';
           btn.classList.remove('bg-white/10');
@@ -1768,10 +1706,7 @@
     // =========================================================================
     function setLaptopColor(color) {
       const mainLid = document.getElementById('main-laptop-lid');
-      const miniLid = document.getElementById('mini-laptop-target');
       const mainAppleLogo = document.getElementById('main-apple-logo-svg');
-      const miniAppleLogo = document.getElementById('mini-apple-logo-svg');
-      const miniLabel = document.getElementById('mini-laptop-label');
       const watermark = document.getElementById('laptop-watermark-text');
       const hinge = document.getElementById('laptop-hinge');
       
@@ -1781,11 +1716,10 @@
       const btnSilver = document.getElementById('color-btn-silver');
 
       const allFinishes = ['macbook-moonlight', 'macbook-midnight', 'macbook-spacegray', 'macbook-silver'];
-      [mainLid, miniLid].forEach(el => {
-        if (!el) return;
-        allFinishes.forEach(f => el.classList.remove(f));
-        el.classList.add(`macbook-${color}`);
-      });
+      if (mainLid) {
+        allFinishes.forEach(f => mainLid.classList.remove(f));
+        mainLid.classList.add(`macbook-${color}`);
+      }
 
       // Update button active states
       [btnMoonlight, btnMidnight, btnSpaceGray, btnSilver].forEach(btn => {
@@ -1805,61 +1739,27 @@
 
       if (color === 'moonlight') {
         if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#A69E8E] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]');
-        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#9E9584] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-[#5A5246]/60 font-medium transition-colors';
         if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#BDB5A7] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (miniLabel) miniLabel.textContent = '✦ MacBook Moonlight • Drop Zone Active';
         showToast('✦ MacBook Finish: Moonlight / Starlight (Champagne Silver)');
       } else if (color === 'midnight') {
         if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#333E4F] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.12)]');
-        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#2F3A4A] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.1)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-logo-cream/40 font-medium transition-colors';
         if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#202835] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (miniLabel) miniLabel.textContent = '✦ MacBook Midnight • Drop Zone Active';
         showToast('✦ MacBook Finish: Midnight (Deep Anodized Navy)');
       } else if (color === 'spacegray') {
         if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#989BA3] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.25)]');
-        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#90939B] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.25)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-white/50 font-medium transition-colors';
         if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#484A50] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (miniLabel) miniLabel.textContent = '✦ MacBook Space Gray • Drop Zone Active';
         showToast('✦ MacBook Finish: Space Gray');
       } else if (color === 'silver') {
         if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#9397A0] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]');
-        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#8B8F98] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-[#4D525C]/60 font-medium transition-colors';
         if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#B5B8BE] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (miniLabel) miniLabel.textContent = '✦ MacBook Silver • Drop Zone Active';
         showToast('✦ MacBook Finish: Silver (Pure Anodized Aluminum)');
       }
 
       playTactileFeedback('lift');
-    }
-
-    // =========================================================================
-    // HERO VIEW SWITCHER (Gallery vs Quick Laptop Preview)
-    // =========================================================================
-    function switchHeroView(view) {
-      const gallery = document.getElementById('hero-gallery-view');
-      const customizer = document.getElementById('hero-customizer-view');
-      const btnGallery = document.getElementById('tab-btn-gallery');
-      const btnCustomizer = document.getElementById('tab-btn-customizer');
-
-      if (view === 'gallery') {
-        gallery.classList.remove('hidden');
-        customizer.classList.add('hidden');
-        btnGallery.classList.add('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
-        btnGallery.classList.remove('text-espresso');
-        btnCustomizer.classList.remove('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
-        btnCustomizer.classList.add('text-espresso');
-      } else {
-        gallery.classList.add('hidden');
-        customizer.classList.remove('hidden');
-        btnCustomizer.classList.add('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
-        btnCustomizer.classList.remove('text-espresso');
-        btnGallery.classList.remove('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
-        btnGallery.classList.add('text-espresso');
-      }
     }
 
     // =========================================================================
