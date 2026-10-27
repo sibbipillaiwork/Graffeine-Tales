@@ -1022,6 +1022,10 @@ function getProductUrl(prodOrId) {
       name.includes('journal') || name.includes('diary') || name.includes('chronicle')) {
     return `journal-pdp.html?id=${id}`;
   }
+  // All stickers redirect to the new interactive sticker PDP UI
+  if (cat.includes('sticker') || name.includes('sticker') || id.startsWith('prod-30') || id.startsWith('prod-31') || id.startsWith('prod-32') || id.startsWith('prod-33')) {
+    return `sticker-pdp.html?id=${id}`;
+  }
   return `product.html?id=${id}`;
 }
 

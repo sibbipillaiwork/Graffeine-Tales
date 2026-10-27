@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>Graffeine Tales — Homepage Image Dimensions & Asset Specifications</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #363638;
+    background-color: #ffffff;
+    line-height: 1.6;
+    padding: 30px;
+  }
+  h1 {
+    color: #4D351D;
+    font-size: 26pt;
+    border-bottom: 2px solid #C6B58E;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 12pt;
+    color: #927B53;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  h2 {
+    color: #4D351D;
+    font-size: 16pt;
+    margin-top: 26px;
+    border-bottom: 1px solid #E9DFC2;
+    padding-bottom: 4px;
+  }
+  h3 {
+    color: #363638;
+    font-size: 13pt;
+    margin-top: 18px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px 0;
+    font-size: 10pt;
+  }
+  th {
+    background-color: #4D351D;
+    color: #F8F5ED;
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #363638;
+  }
+  td {
+    padding: 8px 12px;
+    border: 1px solid #C6B58E;
+  }
+  tr:nth-child(even) {
+    background-color: #F8F5ED;
+  }
+  .badge {
+    background-color: #E9DFC2;
+    color: #4D351D;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 8.5pt;
+  }
+  ul {
+    margin-top: 4px;
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+  .highlight {
+    font-weight: bold;
+    color: #C85A32;
+  }
+  .card-box {
+    background-color: #FDFBF7;
+    border: 1px solid #C6B58E;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Graffeine Tales — Homepage Image Specifications</h1>
+<div class='subtitle'>Artisanal D2C Storefront & Shopify Online Store 2.0 Asset Sizing Guide</div>
+
+<p>This document details the exact display sizes, aspect ratios, recommended 2x Retina upload dimensions, formats, and compression budgets for every section of the Graffeine Tales homepage.</p>
+
+<h2>Quick Reference Summary Table</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Element</th>
+      <th>Aspect Ratio</th>
+      <th>Desktop Display</th>
+      <th>Recommended Upload (2x Retina)</th>
+      <th>Format</th>
+      <th>Max Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>01. Header & Nav</strong></td>
+      <td>Brand Cup Logo</td>
+      <td>1:1 (Square)</td>
+      <td>36 × 36 px</td>
+      <td><strong>512 × 512 px</strong></td>
+      <td>PNG (Transparent)</td>
+      <td>&lt; 30 KB</td>
+    </tr>
+    <tr>
+      <td><strong>01. Header & Nav</strong></td>
+      <td>Brand Wordmark</td>
+      <td>~4:1</td>
+      <td>200 × 48 px</td>
+      <td><strong>600 × 150 px</strong></td>
+      <td>SVG or PNG</td>
+      <td>&lt; 40 KB</td>
+    </tr>
+    <tr>
+      <td><strong>01. Header & Nav</strong></td>
+      <td>Mega Menu Dropdown Drop</td>
+      <td>3:2</td>
+      <td>220 × 120 px</td>
+      <td><strong>600 × 400 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 60 KB</td>
+    </tr>
+    <tr>
+      <td><strong>02. Hero Carousel</strong></td>
+      <td>Full-bleed Panoramic Slide</td>
+      <td>16:9 to 21:9</td>
+      <td>100vw × 480–640 px</td>
+      <td><strong>1920 × 800 px</strong> <em>(or 2400×1000)</em></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 250 KB</td>
+    </tr>
+    <tr>
+      <td><strong>03. Category Strip</strong></td>
+      <td>Category Pill Card</td>
+      <td>1:1.34 (3:4)</td>
+      <td>155 × 208 px</td>
+      <td><strong>600 × 800 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 80 KB</td>
+    </tr>
+    <tr>
+      <td><strong>04. New Launch</strong></td>
+      <td>Product Card Thumbnail</td>
+      <td>4:5 (or 1:1)</td>
+      <td>280 × 250 px</td>
+      <td><strong>1000 × 1250 px</strong> <em>(or 1200×1200)</em></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 120 KB</td>
+    </tr>
+    <tr>
+      <td><strong>05. Bestsellers</strong></td>
+      <td>Product Card Thumbnail</td>
+      <td>4:5 (or 1:1)</td>
+      <td>280 × 250 px</td>
+      <td><strong>1000 × 1250 px</strong> <em>(or 1200×1200)</em></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 120 KB</td>
+    </tr>
+    <tr>
+      <td><strong>06. Built with Heart</strong></td>
+      <td>Product Card Thumbnail</td>
+      <td>4:5 (or 1:1)</td>
+      <td>280 × 250 px</td>
+      <td><strong>1000 × 1250 px</strong> <em>(or 1200×1200)</em></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 120 KB</td>
+    </tr>
+    <tr>
+      <td><strong>07. Artisanal Catalog</strong></td>
+      <td>Catalog Product Thumbnail</td>
+      <td>4:5 (or 1:1)</td>
+      <td>280 × 250 px</td>
+      <td><strong>1000 × 1250 px</strong> <em>(or 1200×1200)</em></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 120 KB</td>
+    </tr>
+    <tr>
+      <td><strong>08. Stories in Motion</strong></td>
+      <td>Vertical Video Reel</td>
+      <td>9:16</td>
+      <td>290 × 515 px</td>
+      <td><strong>1080 × 1920 px (Full HD)</strong></td>
+      <td>MP4 (H.264)</td>
+      <td>&lt; 8 MB</td>
+    </tr>
+    <tr>
+      <td><strong>08. Stories in Motion</strong></td>
+      <td>Video Cover / Poster</td>
+      <td>9:16</td>
+      <td>290 × 515 px</td>
+      <td><strong>1080 × 1920 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 150 KB</td>
+    </tr>
+    <tr>
+      <td><strong>08. Stories in Motion</strong></td>
+      <td>Floating Product Pill</td>
+      <td>1:1 (Square)</td>
+      <td>42 × 42 px</td>
+      <td><strong>200 × 200 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 25 KB</td>
+    </tr>
+    <tr>
+      <td><strong>08. Stories in Motion</strong></td>
+      <td>Creator Avatar</td>
+      <td>1:1 (Circle)</td>
+      <td>38 × 38 px</td>
+      <td><strong>150 × 150 px</strong></td>
+      <td>PNG / WebP</td>
+      <td>&lt; 20 KB</td>
+    </tr>
+    <tr>
+      <td><strong>09. Founder & Craft</strong></td>
+      <td>Editorial Studio Photo</td>
+      <td>4:5 / 3:4</td>
+      <td>480 × 480 px</td>
+      <td><strong>1200 × 1500 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 200 KB</td>
+    </tr>
+    <tr>
+      <td><strong>10. Customer Reviews</strong></td>
+      <td>Reviewer Avatar</td>
+      <td>1:1 (Circle)</td>
+      <td>44 × 44 px</td>
+      <td><strong>180 × 180 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 25 KB</td>
+    </tr>
+    <tr>
+      <td><strong>11. Artisanal Footer</strong></td>
+      <td>Foliage Corner Vines</td>
+      <td>~3:2</td>
+      <td>240 × 160 px</td>
+      <td><strong>600 × 400 px</strong></td>
+      <td>PNG (Transparent)</td>
+      <td>&lt; 60 KB</td>
+    </tr>
+    <tr>
+      <td><strong>11. Artisanal Footer</strong></td>
+      <td>Handcrafted Desk Scene</td>
+      <td>~3.5:1</td>
+      <td>900 × 240 px</td>
+      <td><strong>1800 × 500 px</strong></td>
+      <td>PNG (Transparent)</td>
+      <td>&lt; 180 KB</td>
+    </tr>
+    <tr>
+      <td><strong>11. Artisanal Footer</strong></td>
+      <td>Bottom Flourishes</td>
+      <td>~2:1</td>
+      <td>180 × 90 px</td>
+      <td><strong>400 × 200 px</strong></td>
+      <td>PNG (Transparent)</td>
+      <td>&lt; 30 KB</td>
+    </tr>
+    <tr>
+      <td><strong>12. Quick View Modal</strong></td>
+      <td>Modal Product Inspection</td>
+      <td>1:1 (Square)</td>
+      <td>450 × 450 px</td>
+      <td><strong>1200 × 1200 px</strong></td>
+      <td>WebP / JPG</td>
+      <td>&lt; 150 KB</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Detailed Section Guidelines</h2>
+
+<div class='card-box'>
+  <h3>1. Hero Showcase Carousel (#hero)</h3>
+  <ul>
+    <li><strong>CSS Render Rule:</strong> <code>width: 100vw; height: clamp(480px, 45vw, 640px); object-fit: cover;</code></li>
+    <li><strong>Desktop Recommended Dimensions:</strong> <span class='highlight'>1920 × 800 px</span> (Standard 1080p) or <span class='highlight'>2400 × 1000 px</span> (Retina).</li>
+    <li><strong>Mobile Viewport:</strong> Clamps to 480px height; images scale seamlessly from the center.</li>
+    <li><strong>Art Direction:</strong> Warm, tactile flatlays of open journals, brass pens, wax seals, and espresso. Keep primary focal objects in the center 60% of the canvas.</li>
+  </ul>
+</div>
+
+<div class='card-box'>
+  <h3>2. Shop by Category Strip (#category-section)</h3>
+  <ul>
+    <li><strong>CSS Render Rule:</strong> <code>aspect-ratio: 1 / 1.34; object-fit: cover; border-radius: 14px;</code></li>
+    <li><strong>Recommended Dimensions:</strong> <span class='highlight'>600 × 800 px</span> (Portrait ratio 3:4).</li>
+    <li><strong>Display Dimensions:</strong> Desktop 155 × 208 px | Mobile 125 × 168 px.</li>
+    <li><strong>Art Direction:</strong> High-contrast editorial texture photography (e.g. linen bookcloth, teakwood coasters, brass bookmark).</li>
+  </ul>
+</div>
+
+<div class='card-box'>
+  <h3>3. Product Cards Across All Collections</h3>
+  <p>Applies to <strong>New Launch</strong>, <strong>Bestsellers</strong>, <strong>Built with Heart</strong>, and <strong>Artisanal Catalog</strong>.</p>
+  <ul>
+    <li><strong>CSS Render Rule:</strong> <code>aspect-ratio: 4 / 5; height: 240px–250px; background: #F8F6F0; object-fit: contain;</code></li>
+    <li><strong>Recommended Dimensions (4:5 Ratio):</strong> <span class='highlight'>1000 × 1250 px</span>.</li>
+    <li><strong>Recommended Dimensions (1:1 Square Alternative):</strong> <span class='highlight'>1200 × 1200 px</span>.</li>
+    <li><strong>Art Direction:</strong> Clean studio photography with 8–10% internal padding so products do not touch thumbnail borders. Soft natural shadow on warm ivory backdrop.</li>
+  </ul>
+</div>
+
+<div class='card-box'>
+  <h3>4. Stories in Motion / Shoppable Reels (#stories-in-motion)</h3>
+  <ul>
+    <li><strong>CSS Render Rule:</strong> <code>width: 290px; height: 515px; border-radius: 20px; object-fit: cover;</code></li>
+    <li><strong>Video Resolution:</strong> <span class='highlight'>1080 × 1920 px (9:16 Full HD)</span>.</li>
+    <li><strong>Encoding:</strong> MP4 (H.264 video, AAC audio, 30fps). Target file size: 3 MB – 6 MB.</li>
+    <li><strong>Fallback Poster Cover:</strong> <span class='highlight'>1080 × 1920 px</span> WebP / JPG under 150 KB.</li>
+  </ul>
+</div>
+
+<div class='card-box'>
+  <h3>5. Founder & Craft Story (#about-us)</h3>
+  <ul>
+    <li><strong>CSS Render Rule:</strong> <code>width: 100%; height: 480px; object-fit: cover; border: 6px solid #fff; border-radius: 16px;</code></li>
+    <li><strong>Recommended Dimensions:</strong> <span class='highlight'>1200 × 1500 px</span> (4:5 / 3:4 portrait).</li>
+    <li><strong>Art Direction:</strong> Authentic behind-the-scenes studio craft photograph (artisan binding a book, holding tools, warm studio daylight).</li>
+  </ul>
+</div>
+
+<div class='card-box'>
+  <h3>6. Artisanal Footer Illustrations</h3>
+  <ul>
+    <li><strong>Central Desk Scene:</strong> <span class='highlight'>1800 × 500 px</span> transparent PNG (displays at max 900 × 240 px).</li>
+    <li><strong>Corner Foliage Vines:</strong> <span class='highlight'>600 × 400 px</span> transparent PNG.</li>
+    <li><strong>Bottom Flourishes:</strong> <span class='highlight'>400 × 200 px</span> transparent PNG.</li>
+  </ul>
+</div>
+
+<h2>Optimization Best Practices</h2>
+<ul>
+  <li><strong>Format Priority:</strong> Use <strong>WebP</strong> as default for 30–35% bandwidth savings with JPG fallback.</li>
+  <li><strong>Color Space:</strong> Export all assets in standard <strong>sRGB</strong>.</li>
+  <li><strong>Quality Setting:</strong> Export at <strong>80%–84%</strong> quality for optimal visual sharpness without bloat.</li>
+  <li><strong>Lazy Loading:</strong> All below-the-fold images use <code>loading="lazy"</code>.</li>
+</ul>
+
+</body>
+</html>

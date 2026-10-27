@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Creative Chaos Sticker Pack — Graffeine Tales | Waterproof Vinyl Decals</title>
+  <meta name="description" content="Handcrafted waterproof vinyl stickers with custom die-cut borders. Interactive drag-and-drop laptop customizer, scratch-resistant matte & holographic finishes, residue-free removal. Where stories become art." />
+  
+  <!-- Favicon / Coffee Cup -->
+  <link rel="icon" type="image/png" href="assets/coffee_cup.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN with Graffeine Tales Custom Palette -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'warm-paper': '#F8F5ED',
+            'espresso': '#363638',
+            'logo-cream': '#E9DFC2',
+            'deep-coffee': '#4D351D',
+            'sand': '#C6B58E',
+            'coffee-tan': '#927B53',
+            'gold-wax': '#D4AF37',
+            'sage-craft': '#2D6A4F',
+            'terracotta': '#C85A32',
+            'cream-muted': '#F2EDE2',
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', '"Inter"', 'sans-serif'],
+            script: ['"Patrick Hand"', 'cursive'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'tactile': '0 10px 30px -5px rgba(77, 53, 29, 0.08), 0 4px 12px -2px rgba(77, 53, 29, 0.04)',
+            'tactile-lg': '0 20px 40px -10px rgba(54, 54, 56, 0.12), 0 8px 16px -4px rgba(77, 53, 29, 0.06)',
+            'sticker': '0 6px 16px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.08)',
+            'sticker-lifted': '0 20px 32px rgba(0, 0, 0, 0.28), 0 8px 12px rgba(0, 0, 0, 0.12)',
+            'laptop-depth': '0 30px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Global GTB Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      background-color: #F8F5ED;
+      color: #363638;
+      font-family: 'DM Sans', 'Inter', sans-serif;
+    }
+    .font-serif-display {
+      font-family: 'DM Serif Display', Georgia, serif;
+    }
+    .font-script {
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    /* Steam animation for brand header mark */
+    @keyframes steamFloat {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-16px) scaleX(1.4); opacity: 0; }
+    }
+    .steam-wisp {
+      animation: steamFloat 2.6s infinite ease-out;
+    }
+    .steam-wisp.w2 {
+      animation-delay: 1.3s;
+    }
+
+    /* Button Shimmer Animation */
+    @keyframes btnShimmer {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      35%, 100% { transform: translateX(250%) skewX(-20deg); }
+    }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+      transform: translateX(-150%) skewX(-20deg);
+      animation: btnShimmer 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* Die-Cut Sticker Base Styling */
+    .die-cut-sticker {
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-user-drag: none;
+      cursor: grab;
+      transition: transform 0.18s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.18s ease;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.14));
+    }
+    .die-cut-sticker:active,
+    .die-cut-sticker.dragging {
+      cursor: grabbing;
+      transition: none !important;
+      filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.32));
+      z-index: 9999 !important;
+    }
+
+    /* White Vinyl Sticker Outline */
+    .vinyl-border {
+      background: #FFFFFF;
+      border: 3.5px solid #FFFFFF;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+    }
+
+    /* Glowing drop zone feedback */
+    .laptop-dropzone-active {
+      box-shadow: 0 0 0 3px #D4AF37, 0 30px 60px -10px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /* Subtle custom scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Holographic sheen animation */
+    @keyframes holoShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .holo-badge {
+      background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 20%, #FF99AC 40%, #8BC6EC 70%, #9599E2 100%);
+      background-size: 200% 200%;
+      animation: holoShine 4s ease infinite;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-sand selection:text-espresso min-h-screen flex flex-col justify-between">
+
+  <!-- =========================================================================
+       1. TOP BRAND BANNER / ANNOUNCEMENT STRIP
+       ========================================================================= -->
+  <aside class="bg-espresso text-logo-cream py-2 px-4 text-center text-xs tracking-wide border-b border-sand/20" aria-label="Announcement">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold-wax animate-ping"></span>
+      <p class="font-medium">
+        Free Express Shipping on Orders Above ₹999 &bull; All Stickers 100% Waterproof, UV-Proof &amp; Residue-Free
+      </p>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. PRIMARY LUXURY NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-warm-paper/95 backdrop-blur-md border-b border-sand/30 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo / Identity -->
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none" aria-label="Graffeine Tales Home">
+        <div class="relative w-10 h-10 flex items-center justify-center">
+          <svg class="absolute -top-3 left-3 w-5 h-5 pointer-events-none overflow-visible" viewBox="0 0 20 20" fill="none">
+            <path class="steam-wisp" d="M4 16C4 13 6 11 4 8C3 6 3 4 5 1" stroke="#927B53" stroke-width="1.5" stroke-linecap="round"/>
+            <path class="steam-wisp w2" d="M10 16C10 13 12 11 10 8C9 6 9 4 11 1" stroke="#927B53" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <img src="assets/coffee_cup.png" alt="Graffeine Tales Studio Cup" class="w-9 h-9 object-contain drop-shadow-sm group-hover:scale-105 transition-transform" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif-display text-xl sm:text-2xl text-espresso tracking-tight leading-none group-hover:text-deep-coffee transition-colors">
+            Graffeine Tales
+          </span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-coffee-tan mt-0.5">
+            Artisanal Stationery &bull; Est. 2024
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-espresso/80">
+        <a href="index.html" class="hover:text-deep-coffee transition-colors">Home</a>
+        <a href="journal-pdp.html" class="hover:text-deep-coffee transition-colors">Journals &amp; Diaries</a>
+        <a href="sticker-pdp.html" class="text-deep-coffee font-semibold border-b-2 border-deep-coffee pb-1">Stickers &amp; Decals</a>
+        <a href="product.html?id=prod-1" class="hover:text-deep-coffee transition-colors">Coasters &amp; Décor</a>
+        <a href="about.html" class="hover:text-deep-coffee transition-colors">Our Story</a>
+      </nav>
+
+      <!-- Action Icons -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <a href="index.html" class="p-2 text-espresso hover:text-deep-coffee transition-colors" title="Back to Store">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </a>
+        <button type="button" class="p-2 text-espresso hover:text-deep-coffee relative transition-colors" onclick="toggleCartDrawer()" title="Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-deep-coffee text-logo-cream text-[10px] font-bold rounded-full flex items-center justify-center" id="cart-badge-count">1</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. BREADCRUMBS BAR
+       ========================================================================= -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 text-xs text-espresso/60 flex items-center gap-2">
+    <a href="index.html" class="hover:text-deep-coffee">Home</a>
+    <span>&rsaquo;</span>
+    <a href="index.html#catalogue-section" class="hover:text-deep-coffee">Stationaries</a>
+    <span>&rsaquo;</span>
+    <span class="text-coffee-tan font-medium">Stickers &amp; Decals</span>
+    <span>&rsaquo;</span>
+    <span class="text-espresso font-semibold truncate max-w-xs" id="breadcrumb-name">The Creative Chaos Sticker Pack</span>
+  </div>
+
+  <!-- =========================================================================
+       4. TOP PRODUCT HERO GRID (2-Column Split Desktop | Stacked Mobile)
+       ========================================================================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-8 sm:pb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-14 items-start">
+      
+      <!-- ---------------------------------------------------------------------
+           LEFT COLUMN: VISUAL GALLERY & INTERACTIVE STICKER PREVIEW
+           --------------------------------------------------------------------- -->
+      <div class="lg:col-span-7 space-y-4 lg:sticky lg:top-28">
+        
+        <!-- View Switcher Tabs (Gallery Mode vs Quick Laptop Customizer) -->
+        <div class="flex items-center justify-between bg-white/80 p-1.5 rounded-2xl border border-sand/40 shadow-sm">
+          <button type="button" 
+                  id="tab-btn-gallery"
+                  onclick="switchHeroView('gallery')"
+                  class="flex-1 py-2 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 bg-deep-coffee text-logo-cream shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Studio Photography
+          </button>
+          <button type="button" 
+                  id="tab-btn-customizer"
+                  onclick="switchHeroView('customizer')"
+                  class="flex-1 py-2 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 text-espresso hover:text-deep-coffee">
+            <svg class="w-4 h-4 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Interactive Laptop Test
+            <span class="w-2 h-2 rounded-full bg-terracotta animate-ping"></span>
+          </button>
+        </div>
+
+        <!-- 1. GALLERY VIEW (Default) -->
+        <div id="hero-gallery-view" class="space-y-4">
+          <!-- Main 1:1 Aspect Ratio Carousel Stage -->
+          <div class="relative bg-[#EFE9DC] rounded-3xl overflow-hidden border border-sand/40 shadow-tactile group aspect-square flex items-center justify-center select-none" id="sticker-gallery-stage">
+            <div id="pdp-carousel-track" class="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar" onscroll="onCarouselScroll()">
+              
+              <!-- Slide 0: Pack Flatlay -->
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightbox(0)">
+                <img id="main-product-img" 
+                     src="assets/products/sticker_desi_vibes.jpg" 
+                     alt="The Creative Chaos Sticker Pack Collection" 
+                     class="w-full h-full object-cover select-none" draggable="false" />
+              </div>
+
+              <!-- Slide 1: Laptop Collage Real Life -->
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightbox(1)">
+                <img src="assets/flip_stickers.jpg" 
+                     alt="Stickers Applied on Laptop Case" 
+                     class="w-full h-full object-cover select-none" draggable="false" />
+              </div>
+
+              <!-- Slide 2: Chai & Coffee Decal -->
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightbox(2)">
+                <img src="assets/products/sticker_chai_lover.jpg" 
+                     alt="Adrak Chai Vinyl Decal on Tumbler" 
+                     class="w-full h-full object-cover select-none" draggable="false" />
+              </div>
+
+              <!-- Slide 3: Tuxedo Cat & Book Club -->
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightbox(3)">
+                <img src="assets/products/sticker_cat_lover.jpg" 
+                     alt="Curious Cat and Book Club Decals" 
+                     class="w-full h-full object-cover select-none" draggable="false" />
+              </div>
+
+              <!-- Slide 4: Waterproof Test -->
+              <div class="w-full h-full flex-shrink-0 snap-center aspect-square flex items-center justify-center cursor-zoom-in relative" onclick="openLightbox(4)">
+                <img src="assets/products/sticker_bookworm.jpg" 
+                     alt="Waterproof Water Bottle Sticker Demonstration" 
+                     class="w-full h-full object-cover select-none" draggable="false" />
+              </div>
+
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button type="button" 
+                    onclick="scrollCarousel(-1); event.stopPropagation();" 
+                    class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-espresso shadow-md backdrop-blur-sm flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 sm:opacity-80" 
+                    aria-label="Previous image">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" 
+                    onclick="scrollCarousel(1); event.stopPropagation();" 
+                    class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-espresso shadow-md backdrop-blur-sm flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 sm:opacity-80" 
+                    aria-label="Next image">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+
+            <!-- Floating Badges -->
+            <div class="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none">
+              <span class="bg-sage-craft text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm tracking-wide">
+                ✦ Studio Drop
+              </span>
+              <span class="bg-espresso text-logo-cream text-[10px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm">
+                12 Die-Cut Decals
+              </span>
+            </div>
+
+            <!-- Indicator Dots -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full" id="carousel-dots-container">
+              <span class="carousel-dot transition-all duration-300 w-6 h-1.5 rounded-full bg-white"></span>
+              <span class="carousel-dot transition-all duration-300 w-1.5 h-1.5 rounded-full bg-white/50"></span>
+              <span class="carousel-dot transition-all duration-300 w-1.5 h-1.5 rounded-full bg-white/50"></span>
+              <span class="carousel-dot transition-all duration-300 w-1.5 h-1.5 rounded-full bg-white/50"></span>
+              <span class="carousel-dot transition-all duration-300 w-1.5 h-1.5 rounded-full bg-white/50"></span>
+            </div>
+          </div>
+
+          <!-- Thumbnails Row -->
+          <div class="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar" id="thumbnails-row">
+            <button type="button" class="thumb-btn border-2 border-deep-coffee rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 shadow-sm" onclick="selectThumbnail(0, 'assets/products/sticker_desi_vibes.jpg')">
+              <img src="assets/products/sticker_desi_vibes.jpg" alt="Thumb 1" class="w-full h-full object-cover" />
+            </button>
+            <button type="button" class="thumb-btn border border-sand/40 rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity" onclick="selectThumbnail(1, 'assets/flip_stickers.jpg')">
+              <img src="assets/flip_stickers.jpg" alt="Thumb 2" class="w-full h-full object-cover" />
+            </button>
+            <button type="button" class="thumb-btn border border-sand/40 rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity" onclick="selectThumbnail(2, 'assets/products/sticker_chai_lover.jpg')">
+              <img src="assets/products/sticker_chai_lover.jpg" alt="Thumb 3" class="w-full h-full object-cover" />
+            </button>
+            <button type="button" class="thumb-btn border border-sand/40 rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity" onclick="selectThumbnail(3, 'assets/products/sticker_cat_lover.jpg')">
+              <img src="assets/products/sticker_cat_lover.jpg" alt="Thumb 4" class="w-full h-full object-cover" />
+            </button>
+            <button type="button" class="thumb-btn border border-sand/40 rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity" onclick="selectThumbnail(4, 'assets/products/sticker_bookworm.jpg')">
+              <img src="assets/products/sticker_bookworm.jpg" alt="Thumb 5" class="w-full h-full object-cover" />
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. QUICK INLINE LAPTOP PREVIEW (Toggled View) -->
+        <div id="hero-customizer-view" class="hidden bg-espresso rounded-3xl p-6 text-logo-cream border border-sand/30 shadow-tactile-lg space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-coffee-tan tracking-wider block">Interactive Playground</span>
+              <h3 class="font-serif-display text-lg text-white">Quick Laptop Preview</h3>
+            </div>
+            <a href="#laptop-customizer-section" class="text-xs text-sand hover:text-white underline font-medium flex items-center gap-1">
+              Open Full Studio Canvas &darr;
+            </a>
+          </div>
+          <p class="text-xs text-logo-cream/70">
+            Drag the stickers below onto the MacBook lid to test arrangements before buying!
+          </p>
+          
+          <!-- Mini Laptop Lid -->
+          <div class="relative w-full aspect-[16/10] bg-[#232120] rounded-2xl border-2 border-[#403B38] shadow-laptop-depth overflow-hidden flex items-center justify-center p-4" id="mini-laptop-target">
+            <!-- Center Laser Logo -->
+            <div class="w-10 h-10 rounded-full border border-sand/20 flex items-center justify-center opacity-30 pointer-events-none">
+              <img src="assets/coffee_cup.png" alt="" class="w-6 h-6 object-contain grayscale" />
+            </div>
+            <div class="absolute bottom-2 right-3 text-[10px] text-logo-cream/40 pointer-events-none">
+              Drop Zone Active
+            </div>
+          </div>
+
+          <div class="text-center pt-1">
+            <a href="#laptop-customizer-section" class="inline-flex items-center gap-2 bg-warm-paper text-espresso hover:bg-white text-xs font-bold py-2.5 px-6 rounded-full transition-all shadow-sm">
+              <span>✦ Go to Full-Width Customizer</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ---------------------------------------------------------------------
+           RIGHT COLUMN: BUYING BOX & SPECIFICATIONS
+           --------------------------------------------------------------------- -->
+      <div class="lg:col-span-5 bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-sand/40 shadow-tactile-lg space-y-5 sm:space-y-6">
+        
+        <!-- Header Info -->
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs uppercase font-bold tracking-wider text-coffee-tan">
+              Stationaries &bull; Waterproof Vinyl Decals
+            </span>
+          </div>
+
+          <h1 class="font-serif-display text-2xl sm:text-3xl lg:text-4xl text-espresso leading-tight" id="pdp-title">
+            The Creative Chaos Sticker Pack
+          </h1>
+
+          <!-- Reviews Stars -->
+          <div class="flex items-center gap-2 mt-2">
+            <div class="flex text-gold-wax text-sm">
+              ★★★★★
+            </div>
+            <span class="text-xs text-espresso/60 font-medium">(186 verified reviews &bull; 99% recommend)</span>
+          </div>
+        </div>
+
+        <!-- Pricing Row -->
+        <div class="py-3 sm:py-4 border-y border-sand/30 flex items-baseline justify-between">
+          <div>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif-display text-3xl sm:text-4xl font-bold text-deep-coffee" id="pdp-price">₹349</span>
+              <span class="text-base text-espresso/40 line-through" id="pdp-mrp">₹499</span>
+              <span class="bg-terracotta/10 text-terracotta text-xs font-bold px-2.5 py-0.5 rounded-full" id="pdp-discount">
+                SAVE 30%
+              </span>
+            </div>
+            <p class="text-xs text-espresso/60 mt-1">Inclusive of all domestic taxes &bull; Curated set of 12 die-cut vinyl stickers</p>
+          </div>
+        </div>
+
+        <!-- 1. FINISH SELECTOR -->
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold uppercase tracking-wider text-espresso">
+              Choose Vinyl Finish: 
+              <span class="font-serif-display text-sm text-deep-coffee font-normal ml-1" id="active-finish-label">Matte Weatherproof</span>
+            </label>
+            <span class="text-[11px] text-coffee-tan font-medium">6-Mil Heavy Duty</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2" id="finish-selector">
+            <!-- Option 1: Matte (Default) -->
+            <button type="button" 
+                    class="finish-btn border-2 border-deep-coffee bg-warm-paper rounded-xl p-2.5 text-center transition-all relative shadow-sm"
+                    data-finish="Matte Weatherproof"
+                    onclick="selectFinish(this, 'Matte Weatherproof', 349, 499)">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#EAE2D2] border border-deep-coffee/40 mx-auto block mb-1"></span>
+              <span class="text-xs font-bold block text-espresso">Matte</span>
+              <span class="text-[9px] text-espresso/60 block">Zero Glare</span>
+              <span class="absolute top-1.5 right-1.5 text-deep-coffee text-[11px] font-bold check-mark">✓</span>
+            </button>
+
+            <!-- Option 2: Glossy UV -->
+            <button type="button" 
+                    class="finish-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-2.5 text-center transition-all relative"
+                    data-finish="Glossy UV-Protected"
+                    onclick="selectFinish(this, 'Glossy UV-Protected', 349, 499)">
+              <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-white to-[#DFD6C3] border border-sand mx-auto block mb-1"></span>
+              <span class="text-xs font-bold block text-espresso">Glossy</span>
+              <span class="text-[9px] text-espresso/60 block">Ultra Vibrant</span>
+              <span class="absolute top-1.5 right-1.5 text-deep-coffee text-[11px] font-bold check-mark hidden">✓</span>
+            </button>
+
+            <!-- Option 3: Holographic Sparkle -->
+            <button type="button" 
+                    class="finish-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-2.5 text-center transition-all relative"
+                    data-finish="Holographic Sparkle"
+                    onclick="selectFinish(this, 'Holographic Sparkle', 399, 549)">
+              <span class="w-3.5 h-3.5 rounded-full holo-badge border border-white mx-auto block mb-1"></span>
+              <span class="text-xs font-bold block text-espresso">Holo</span>
+              <span class="text-[9px] text-espresso/60 block">+₹50 Shine</span>
+              <span class="absolute top-1.5 right-1.5 text-deep-coffee text-[11px] font-bold check-mark hidden">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. PACK SIZE SELECTOR -->
+        <div class="space-y-2">
+          <label class="text-xs font-bold uppercase tracking-wider text-espresso">
+            Select Bundle Quantity:
+          </label>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button type="button" 
+                    class="pack-btn border-2 border-deep-coffee bg-warm-paper rounded-xl p-3 text-left transition-all relative shadow-sm"
+                    onclick="selectPack(this, 'Curated 10-Pack', 349, 499)">
+              <span class="text-xs font-bold block text-espresso">Curated 10-Pack</span>
+              <span class="text-[10px] text-espresso/60 block">Most Popular for Laptops</span>
+              <span class="text-xs font-bold text-deep-coffee mt-1 block">₹349</span>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark">✓</span>
+            </button>
+
+            <button type="button" 
+                    class="pack-btn border border-sand/40 bg-white hover:bg-warm-paper rounded-xl p-3 text-left transition-all relative"
+                    onclick="selectPack(this, 'Mega 25-Pack Collector Box', 699, 999)">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-bold text-espresso">25-Pack Mega Box</span>
+                <span class="text-[9px] bg-terracotta text-white font-bold px-1.5 py-0.2 rounded">Save 40%</span>
+              </div>
+              <span class="text-[10px] text-espresso/60 block">Full Studio Sticker Vault</span>
+              <span class="text-xs font-bold text-deep-coffee mt-1 block">₹699</span>
+              <span class="absolute top-2 right-2 text-deep-coffee text-xs font-bold check-mark hidden">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. QUANTITY STEPPER & SHIMMER ADD TO CART -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center gap-3">
+            <!-- Stepper -->
+            <div class="flex items-center border border-sand bg-warm-paper rounded-full p-1 shadow-sm">
+              <button type="button" class="w-9 h-9 rounded-full hover:bg-white text-espresso font-bold flex items-center justify-center transition-colors" onclick="changeQty(-1)" aria-label="Decrease quantity">−</button>
+              <input type="number" id="pdp-qty-input" value="1" min="1" max="10" class="w-10 text-center bg-transparent text-espresso font-bold text-sm focus:outline-none" readonly />
+              <button type="button" class="w-9 h-9 rounded-full hover:bg-white text-espresso font-bold flex items-center justify-center transition-colors" onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+            </div>
+
+            <!-- Shimmer Add to Cart Button -->
+            <button type="button" 
+                    id="pdp-add-cart-btn"
+                    class="btn-shimmer flex-1 bg-deep-coffee hover:bg-espresso text-logo-cream py-4 px-6 rounded-full font-bold text-sm sm:text-base tracking-wide flex items-center justify-center gap-3 shadow-tactile transition-all duration-300 transform active:scale-95 group"
+                    onclick="handleStickerAddToCart()">
+              <svg class="w-5 h-5 group-hover:rotate-12 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              <span class="relative z-10">Add Sticker Pack to Cart</span>
+            </button>
+          </div>
+
+          <!-- Instant Customizer Anchor Card -->
+          <div class="p-3.5 bg-warm-paper rounded-2xl border border-sand/40 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="text-lg">💻</span>
+              <div class="leading-tight">
+                <strong class="text-xs text-espresso block font-bold">Try on Your Laptop First</strong>
+                <span class="text-[10px] text-espresso/60">Drag, stick, and preview stickers in real-time</span>
+              </div>
+            </div>
+            <a href="#laptop-customizer-section" class="bg-espresso hover:bg-deep-coffee text-logo-cream text-[11px] font-bold px-3 py-1.5 rounded-full transition-colors whitespace-nowrap shadow-sm">
+              Design Now &darr;
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. PINCODE ESTIMATOR -->
+        <div class="p-3.5 bg-warm-paper/70 rounded-2xl border border-sand/30 space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-espresso">Estimated Delivery Date</span>
+            <span class="text-coffee-tan text-[11px]">Free Pan-India > ₹999</span>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="pincode-input" placeholder="Enter 6-digit Indian PIN code..." maxlength="6" class="flex-1 bg-white border border-sand/40 rounded-full px-4 py-2 text-xs text-espresso focus:outline-none focus:border-deep-coffee" />
+            <button type="button" class="bg-espresso hover:bg-deep-coffee text-logo-cream text-xs font-bold px-4 py-2 rounded-full transition-colors" onclick="checkDeliveryPincode()">
+              Check
+            </button>
+          </div>
+          <p id="pincode-result" class="text-[11px] hidden font-medium"></p>
+        </div>
+
+        <!-- 5. EDITORIAL PITCH & ACCORDION STACK -->
+        <div class="pt-2 border-t border-sand/40 space-y-4">
+          <p class="text-xs sm:text-sm text-espresso/80 leading-relaxed font-normal">
+            <strong class="text-espresso font-semibold">Give your gear the personality it deserves.</strong> Printed on thick, velvety 6-mil vinyl with high-opacity inks, our die-cut stickers are engineered to survive scalding coffee spills, monsoon rain, and daily laptop bag friction without peeling or leaving gooey adhesive residue when swapped.
+          </p>
+
+          <!-- Dropdown Accordion Stack -->
+          <div class="border-t border-sand/40 divide-y divide-sand/40" id="sticker-details-accordion">
+            
+            <!-- Accordion 1: What's in the Pack? -->
+            <div class="accordion-item">
+              <button type="button" class="w-full py-3.5 text-left flex items-center justify-between text-sm font-semibold text-espresso hover:text-deep-coffee transition-colors group" onclick="toggleDetailsAccordion(this)">
+                <span>What’s in the Pack? (12 Designs)</span>
+                <svg class="w-4 h-4 text-coffee-tan transition-transform duration-300 group-hover:text-deep-coffee chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+              </button>
+              <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="pb-4 pt-1 text-xs text-espresso/80 space-y-2 leading-relaxed">
+                  <ul class="space-y-1.5 pl-1">
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Adrak Chai Fuel</strong> (Cardamom cutting chai glass with steam wisp)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Too Many Tabs Open In My Brain</strong> (Retro computer error alert)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Curious Whisker Cat</strong> (Peeking tuxedo feline sticker)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Vintage Bookworm Club</strong> (Archival coffee &amp; open book crest)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Control Uday Control</strong> (Desi retro Bollywood pop art)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Slow Mornings &amp; Coffee</strong> (Botanical sun and cup emblem)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Where Stories Become Art</strong> (Metallic gold wax seal emblem)</span></li>
+                    <li class="flex items-start gap-2"><span class="text-deep-coffee font-bold">✦</span><span><strong>Bobby Deol Gupt Sunglasses</strong> (Nostalgic retro meme decal)</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 2: Specs & Vinyl Durability -->
+            <div class="accordion-item">
+              <button type="button" class="w-full py-3.5 text-left flex items-center justify-between text-sm font-semibold text-espresso hover:text-deep-coffee transition-colors group" onclick="toggleDetailsAccordion(this)">
+                <span>Vinyl Quality &amp; Durability Specs</span>
+                <svg class="w-4 h-4 text-coffee-tan transition-transform duration-300 group-hover:text-deep-coffee chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+              </button>
+              <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="pb-4 pt-1 text-xs text-espresso/80 space-y-2 leading-relaxed">
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="p-2.5 bg-warm-paper rounded-lg border border-sand/30">
+                      <span class="text-[10px] uppercase font-bold text-coffee-tan block">Material</span>
+                      <strong class="text-espresso">6-Mil Premium Vinyl</strong>
+                      <p class="text-[11px] text-espresso/70 mt-0.5">Heavyweight, tear-resistant waterproof film.</p>
+                    </div>
+                    <div class="p-2.5 bg-warm-paper rounded-lg border border-sand/30">
+                      <span class="text-[10px] uppercase font-bold text-coffee-tan block">Adhesive</span>
+                      <strong class="text-espresso">Residue-Free Clean Peel</strong>
+                      <p class="text-[11px] text-espresso/70 mt-0.5">Swaps cleanly off MacBooks &amp; Kindles.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 3: Packaging & Gift Dispatch -->
+            <div class="accordion-item">
+              <button type="button" class="w-full py-3.5 text-left flex items-center justify-between text-sm font-semibold text-espresso hover:text-deep-coffee transition-colors group" onclick="toggleDetailsAccordion(this)">
+                <span>Packaging &amp; Studio Mailer</span>
+                <svg class="w-4 h-4 text-coffee-tan transition-transform duration-300 group-hover:text-deep-coffee chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+              </button>
+              <div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <p class="pb-4 pt-1 text-xs text-espresso/80 leading-relaxed">
+                  Delivered inside an eco-friendly translucent glassine envelope hand-sealed with metallic gold wax and nestled inside a rigid, zero-plastic recycled kraft mailer to prevent bends during transit.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       5. CORE FEATURE: INTERACTIVE "DRAG & STICK" LAPTOP CUSTOMIZER
+       Inspired by designedbyoli.com with Graffeine Tales Brand Styling
+       ========================================================================= -->
+  <section class="py-14 sm:py-20 bg-espresso text-logo-cream relative overflow-hidden" id="laptop-customizer-section">
+    <!-- Ambient Studio Light Radial Backdrop -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#4D351D]/30 via-espresso to-[#222120] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Editorial Header -->
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-3">
+        <span class="font-script text-xl sm:text-2xl text-sand tracking-wide block">
+          ✦ The Atelier Workshop
+        </span>
+        <h2 class="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+          Customize Your Laptop
+        </h2>
+        <p class="text-xs sm:text-sm text-logo-cream/80 font-normal leading-relaxed">
+          Too many ideas? Try dragging and sticking the stickers onto the laptop! Reposition, rotate, or clear them anytime to build your dream desk aesthetic.
+        </p>
+      </div>
+
+      <!-- Workshop Control Toolbar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-white/10 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-sand/30 mb-6 max-w-4xl mx-auto text-xs">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-sage-craft animate-pulse"></span>
+          <span class="font-semibold text-logo-cream/90" id="customizer-status">12 Stickers in Tray • Drag anywhere</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button type="button" 
+                  onclick="autoCollageStickers()" 
+                  class="bg-deep-coffee hover:bg-sand hover:text-espresso text-logo-cream px-3.5 py-1.5 rounded-full font-bold transition-all shadow-sm flex items-center gap-1.5">
+            <span>✨ Auto-Collage</span>
+          </button>
+          <button type="button" 
+                  onclick="resetAllStickers()" 
+                  class="bg-white/10 hover:bg-white/20 text-logo-cream px-3.5 py-1.5 rounded-full font-bold transition-colors">
+            Reset
+          </button>
+          <button type="button" 
+                  onclick="saveLaptopSnapshot()" 
+                  class="bg-sand text-espresso hover:bg-white px-3.5 py-1.5 rounded-full font-bold transition-colors flex items-center gap-1.5">
+            <span>📸 Save Look</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- THE INTERACTIVE PLAYGROUND STAGE -->
+      <div class="relative max-w-5xl mx-auto select-none" id="customizer-playground-stage">
+        
+        <!-- ==============================================
+             1. THE LAPTOP MOCKUP LID (DROP TARGET)
+             ============================================== -->
+        <div class="relative w-full aspect-[16/10] max-w-3xl mx-auto bg-gradient-to-b from-[#2E2C2A] to-[#1F1E1D] rounded-3xl border-4 border-[#45413E] shadow-laptop-depth overflow-hidden p-6 sm:p-8 flex items-center justify-center transition-all duration-300"
+             id="main-laptop-lid">
+          
+          <!-- Subtle Brushed Aluminum Reflection Line -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none"></div>
+          
+          <!-- Centered Laser-Engraved Studio Logo (Debossed on MacBook Aluminum) -->
+          <div class="relative flex flex-col items-center justify-center pointer-events-none opacity-20 transition-opacity" id="laptop-center-logo">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-sand/40 flex items-center justify-center">
+              <img src="assets/coffee_cup.png" alt="Graffeine Logo" class="w-10 h-10 sm:w-12 sm:h-12 object-contain grayscale" />
+            </div>
+            <span class="text-[9px] tracking-widest uppercase font-bold text-logo-cream mt-2">
+              Graffeine Atelier
+            </span>
+          </div>
+
+          <!-- Helper Watermark Text -->
+          <div class="absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-logo-cream/30 font-medium">
+            ✦ Drag &amp; drop stickers here onto the lid surface &bull; Tap a placed sticker to rotate ✦
+          </div>
+
+          <!-- Sticked Elements Container Layer -->
+          <div id="laptop-stickers-mount" class="absolute inset-0 overflow-hidden pointer-events-none">
+            <!-- Stickers dropped on the laptop will live inside here with pointer-events:auto -->
+          </div>
+
+        </div>
+
+        <!-- Laptop Base / Hinge Shadow Aesthetic -->
+        <div class="w-[85%] h-3 mx-auto bg-gradient-to-b from-[#181716] to-transparent rounded-b-xl opacity-80 blur-[2px]"></div>
+        <div class="w-24 h-1.5 mx-auto bg-[#3D3A38] rounded-b-md -mt-3 shadow-inner"></div>
+
+        <!-- ==============================================
+             2. STICKER STATION TRAY (PICKUP ZONE)
+             ============================================== -->
+        <div class="mt-8 sm:mt-10 bg-white/5 backdrop-blur-md rounded-3xl p-5 sm:p-6 border border-sand/20 shadow-tactile">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase font-bold text-sand tracking-wider flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold-wax"></span>
+              Sticker Station (Grab &amp; Drag onto Laptop)
+            </span>
+            <span class="text-[11px] text-logo-cream/60">Tap twice to rotate +15&deg;</span>
+          </div>
+
+          <!-- Grid / Flex of Available Stickers -->
+          <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 min-h-[140px] p-2" id="sticker-station-tray">
+            
+            <!-- Sticker 1: Bobby Deol Sunglasses -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-bobby" 
+                 data-title="Bobby Deol Gupt"
+                 data-rot="-4"
+                 style="transform: rotate(-4deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_bobby_deol.png" alt="Bobby Deol" class="max-w-full max-h-full object-contain pointer-events-none" />
+            </div>
+
+            <!-- Sticker 2: Curious Cat -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-cat" 
+                 data-title="Curious Whisker Cat"
+                 data-rot="6"
+                 style="transform: rotate(6deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_cat_lover.jpg" alt="Curious Cat" class="max-w-full max-h-full object-contain rounded-lg pointer-events-none" />
+            </div>
+
+            <!-- Sticker 3: Adrak Chai Fuel -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-chai" 
+                 data-title="Adrak Chai Fuel"
+                 data-rot="-7"
+                 style="transform: rotate(-7deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_chai_lover.jpg" alt="Chai Lover" class="max-w-full max-h-full object-contain rounded-lg pointer-events-none" />
+            </div>
+
+            <!-- Sticker 4: Bookworm Vintage Club -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-bookworm" 
+                 data-title="Bookworm Vintage Club"
+                 data-rot="3"
+                 style="transform: rotate(3deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_bookworm.jpg" alt="Bookworm Club" class="max-w-full max-h-full object-contain rounded-lg pointer-events-none" />
+            </div>
+
+            <!-- Sticker 5: Control Uday -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-control" 
+                 data-title="Control Uday Control"
+                 data-rot="-5"
+                 style="transform: rotate(-5deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_control_uday.png" alt="Control Uday" class="max-w-full max-h-full object-contain pointer-events-none" />
+            </div>
+
+            <!-- Sticker 6: Mojo Jojo Pop -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-mojo" 
+                 data-title="Mojo Jojo Pop"
+                 data-rot="8"
+                 style="transform: rotate(8deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_mojo_jojo.png" alt="Mojo Jojo" class="max-w-full max-h-full object-contain pointer-events-none" />
+            </div>
+
+            <!-- Sticker 7: Desi Street Vibes -->
+            <div class="die-cut-sticker relative vinyl-border p-1 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+                 data-id="stk-desi" 
+                 data-title="Desi Vibes Pop Culture"
+                 data-rot="-2"
+                 style="transform: rotate(-2deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/products/sticker_desi_vibes.jpg" alt="Desi Vibes" class="max-w-full max-h-full object-contain rounded-lg pointer-events-none" />
+            </div>
+
+            <!-- Sticker 8: Witty Pop Text "TOO MANY TABS OPEN IN MY BRAIN" -->
+            <div class="die-cut-sticker relative bg-white border-2 border-white rounded-xl p-2 w-28 h-18 sm:w-32 sm:h-20 flex flex-col justify-between shadow-sticker text-espresso"
+                 data-id="stk-tabs" 
+                 data-title="Too Many Tabs Open"
+                 data-rot="5"
+                 style="transform: rotate(5deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <div class="flex items-center justify-between border-b border-sand/40 pb-1">
+                <span class="text-[9px] font-bold text-terracotta uppercase">System Alert</span>
+                <span class="text-[8px] text-espresso/50">404</span>
+              </div>
+              <span class="font-serif-display text-[11px] sm:text-xs leading-tight font-bold block my-1">
+                Too many tabs open in my brain.
+              </span>
+              <span class="text-[8px] text-coffee-tan font-semibold block text-right">✦ Graffeine</span>
+            </div>
+
+            <!-- Sticker 9: Handcrafted Coffee Cup & Steam -->
+            <div class="die-cut-sticker relative bg-[#363638] text-logo-cream border-2 border-white rounded-full p-2.5 w-20 h-20 sm:w-22 sm:h-22 flex flex-col items-center justify-center shadow-sticker"
+                 data-id="stk-coffee-cup" 
+                 data-title="Espresso Studio Badge"
+                 data-rot="-6"
+                 style="transform: rotate(-6deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <img src="assets/coffee_cup.png" alt="" class="w-8 h-8 object-contain pointer-events-none" />
+              <span class="text-[9px] font-bold tracking-wider uppercase mt-1">Caffeine</span>
+            </div>
+
+            <!-- Sticker 10: "SLOW MORNINGS" Botanical Arch Badge -->
+            <div class="die-cut-sticker relative bg-sage-craft text-white border-2 border-white rounded-2xl p-2 w-24 h-20 sm:w-28 sm:h-22 flex flex-col items-center justify-center shadow-sticker text-center"
+                 data-id="stk-slow-mornings" 
+                 data-title="Slow Mornings Arch"
+                 data-rot="4"
+                 style="transform: rotate(4deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <span class="text-[9px] uppercase tracking-widest text-sand font-bold">Quiet Ritual</span>
+              <span class="font-serif-display text-xs sm:text-sm font-bold block my-0.5">Slow Mornings</span>
+              <span class="text-[8px] text-white/80">Filtered Coffee &bull; 2026</span>
+            </div>
+
+            <!-- Sticker 11: "AURA +1000" Desi Pop Badge -->
+            <div class="die-cut-sticker relative bg-[#D4AF37] text-espresso border-2 border-white rounded-xl p-2 w-24 h-16 sm:w-28 sm:h-18 flex items-center justify-center shadow-sticker font-bold text-center"
+                 data-id="stk-aura" 
+                 data-title="Aura +1000"
+                 data-rot="-8"
+                 style="transform: rotate(-8deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <div>
+                <span class="font-serif-display text-sm sm:text-base font-bold block leading-none">Aura +1000</span>
+                <span class="text-[8px] uppercase tracking-widest text-deep-coffee block mt-1">Maximum Chai</span>
+              </div>
+            </div>
+
+            <!-- Sticker 12: Stories Become Art Wax Seal Stamp -->
+            <div class="die-cut-sticker relative bg-[#C85A32] text-logo-cream border-2 border-white rounded-full p-2.5 w-20 h-20 sm:w-22 sm:h-22 flex flex-col items-center justify-center shadow-sticker text-center"
+                 data-id="stk-wax-seal" 
+                 data-title="Atelier Wax Seal"
+                 data-rot="7"
+                 style="transform: rotate(7deg);"
+                 onpointerdown="startStickerDrag(event, this)">
+              <span class="text-xs">✦</span>
+              <span class="font-serif-display text-[10px] sm:text-[11px] leading-tight font-bold">Stories Become Art</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. PRODUCT SPECIFICATIONS & MATERIAL CRAFTSMANSHIP GRID
+       ========================================================================= -->
+  <section class="py-12 sm:py-16 bg-warm-paper border-t border-sand/30" id="specs-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+        <span class="text-xs uppercase font-bold text-coffee-tan tracking-wider block">Engineered for Daily Life</span>
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-espresso">
+          Built to Survive Everything
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso/70">
+          Heavy-duty outdoor grade vinyl crafted for high-touch personal electronics and kitchenware.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/40 shadow-sm space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-warm-paper text-deep-coffee flex items-center justify-center text-xl shadow-inner">
+            🛡️
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">Thick 6-Mil Vinyl</h3>
+          <p class="text-xs text-espresso/75 leading-relaxed">
+            Feels substantial in hand. Resists tearing, stretching, or wrinkling even when peeled and repositioned.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/40 shadow-sm space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-warm-paper text-deep-coffee flex items-center justify-center text-xl shadow-inner">
+            💧
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">100% Dishwasher Safe</h3>
+          <p class="text-xs text-espresso/75 leading-relaxed">
+            Safe on HydroFlasks, Yeti tumblers, and coffee mugs. Endures steam, dish soap, and hot water cycles.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/40 shadow-sm space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-warm-paper text-deep-coffee flex items-center justify-center text-xl shadow-inner">
+            ☀️
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">UV-Sunproof Matte Finish</h3>
+          <p class="text-xs text-espresso/75 leading-relaxed">
+            Protected with a satin UV-resistant top laminate. Inks will not bleach or fade even with direct outdoor sunlight.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-2xl p-6 border border-sand/40 shadow-sm space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-warm-paper text-deep-coffee flex items-center justify-center text-xl shadow-inner">
+            ✨
+          </div>
+          <h3 class="font-serif-display text-lg text-espresso">Residue-Free Clean Peel</h3>
+          <p class="text-xs text-espresso/75 leading-relaxed">
+            Uses Japanese micro-suction acrylic adhesive. Comes off aluminum MacBooks without leaving yellow glue slime.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. VIDEO COMMERCE CAROUSEL ("Stickers in the Wild")
+       ========================================================================= -->
+  <section class="py-10 sm:py-12 bg-espresso text-logo-cream relative overflow-hidden" id="pdp-video-commerce">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div>
+          <span class="text-xs uppercase font-bold text-coffee-tan tracking-wider block mb-1">Stories in Motion</span>
+          <h2 class="font-serif-display text-2xl sm:text-3xl md:text-4xl text-logo-cream">
+            Stickers in the Wild
+          </h2>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="scrollReelsCarousel(-1)" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-logo-cream border border-sand/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95" aria-label="Previous Reel">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button type="button" onclick="scrollReelsCarousel(1)" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-logo-cream border border-sand/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95" aria-label="Next Reel">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="pdp-reels-track" class="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-4 no-scrollbar scroll-smooth">
+        
+        <!-- Reel 1: ASMR Laptop Collage -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(0)">
+          <img src="assets/flip_stickers.jpg" alt="ASMR Laptop Collage" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">ASMR Laptop Collage</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">12-Sticker Setup</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handleStickerAddToCart();" title="Add to bag">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reel 2: Dishwasher Water Test -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(1)">
+          <img src="assets/products/sticker_chai_lover.jpg" alt="Dishwasher Water Test" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">Boiling Chai &amp; Water Test</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">100% Waterproof</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handleStickerAddToCart();">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reel 3: Clean Peel Test -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(2)">
+          <img src="assets/products/sticker_cat_lover.jpg" alt="Clean Peel Removal" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">Residue-Free Clean Peel</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">Zero Sticky Glue</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handleStickerAddToCart();">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reel 4: Kindle & Journal Decals -->
+        <div class="relative bg-black rounded-2xl overflow-hidden aspect-[9/16] shadow-tactile group cursor-pointer border border-sand/20 w-[220px] sm:w-[260px] md:w-[280px] flex-shrink-0 snap-start" onclick="playPdpReel(3)">
+          <img src="assets/products/sticker_bookworm.jpg" alt="Kindle Decals" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-12 h-12 rounded-full bg-deep-coffee/80 text-logo-cream flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <div class="absolute bottom-3 inset-x-3 bg-white/90 backdrop-blur-md rounded-xl p-2 text-espresso flex items-center justify-between shadow-sm">
+            <div class="truncate pr-1">
+              <span class="text-[10px] font-bold block truncate">Kindle Case Aesthetic Haul</span>
+              <span class="text-[9px] text-coffee-tan font-semibold">Bookish Vibes</span>
+            </div>
+            <button class="bg-deep-coffee text-logo-cream p-1.5 rounded-lg hover:bg-black transition-colors" onclick="event.stopPropagation(); handleStickerAddToCart();">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
+       ========================================================================= -->
+  <section class="py-12 sm:py-16 bg-warm-paper">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      
+      <div class="text-center space-y-2">
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-espresso">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso/70">
+          Everything you need to know about our stickers and studio shipping.
+        </p>
+      </div>
+
+      <div class="divide-y divide-sand/40 border-y border-sand/40" id="faq-group">
+        
+        <div class="py-4">
+          <button type="button" class="w-full text-left flex items-center justify-between text-sm sm:text-base font-semibold text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Will these stickers leave sticky glue residue on my laptop?</span>
+            <span class="text-coffee-tan text-lg font-bold icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="pt-2 text-xs text-espresso/80 leading-relaxed">
+              <strong>Absolutely not.</strong> We specifically chose low-tack, high-shear Japanese acrylic adhesive that peels off completely clean without leaving gummy yellow residue or damaging aluminum laptop anodization.
+            </p>
+          </div>
+        </div>
+
+        <div class="py-4">
+          <button type="button" class="w-full text-left flex items-center justify-between text-sm sm:text-base font-semibold text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Can I put these on water bottles that go through the dishwasher?</span>
+            <span class="text-coffee-tan text-lg font-bold icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="pt-2 text-xs text-espresso/80 leading-relaxed">
+              <strong>Yes!</strong> All our stickers are coated with a thick waterproof matte vinyl laminate. They can be washed, soaked in ice water, or put through standard dishwasher top-rack cycles without peeling or bleeding ink.
+            </p>
+          </div>
+        </div>
+
+        <div class="py-4">
+          <button type="button" class="w-full text-left flex items-center justify-between text-sm sm:text-base font-semibold text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Can I restick them if I place them crooked?</span>
+            <span class="text-coffee-tan text-lg font-bold icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="pt-2 text-xs text-espresso/80 leading-relaxed">
+              Yes, if you gently lift the edge immediately after applying, you can reposition the sticker easily. Over 24 hours, the adhesive cures to its full bond strength for long-term everyday durability.
+            </p>
+          </div>
+        </div>
+
+        <div class="py-4">
+          <button type="button" class="w-full text-left flex items-center justify-between text-sm sm:text-base font-semibold text-espresso hover:text-deep-coffee transition-colors" onclick="toggleFaq(this)">
+            <span>Do you offer custom sticker printing for bulk events or studios?</span>
+            <span class="text-coffee-tan text-lg font-bold icon">+</span>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="pt-2 text-xs text-espresso/80 leading-relaxed">
+              Yes! For college fests, corporate welcome kits, or weddings, we produce custom die-cut vinyl packs in quantities of 50+. Reach out to us via the Bulk Orders section or at <em>hello@graffeinetales.com</em>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. CUSTOMER REVIEWS ("Loved by 2,000+ Laptops & Desks")
+       ========================================================================= -->
+  <section class="py-12 sm:py-16 bg-white border-t border-sand/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs uppercase font-bold text-coffee-tan tracking-wider block mb-1">Community Reviews</span>
+          <h2 class="font-serif-display text-2xl sm:text-3xl text-espresso">
+            Loved by 2,000+ Laptops &amp; Desks
+          </h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="text-3xl font-serif-display font-bold text-deep-coffee">5.0</div>
+          <div class="text-xs leading-tight">
+            <div class="text-gold-wax">★★★★★</div>
+            <span class="text-espresso/60">Based on 186 verified reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-warm-paper rounded-2xl p-5 border border-sand/40 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex text-gold-wax text-xs">★★★★★</div>
+            <span class="text-[10px] text-sage-craft font-bold bg-sage-craft/10 px-2 py-0.5 rounded-full">✓ Verified Buyer</span>
+          </div>
+          <p class="text-xs text-espresso/80 leading-relaxed">
+            “The interactive laptop feature was so fun to test before buying! The stickers arrived in a gorgeous wax-sealed envelope. The matte texture feels so luxurious and zero glare on my MacBook.”
+          </p>
+          <div class="pt-2 border-t border-sand/30 flex items-center justify-between text-xs">
+            <strong class="text-espresso">Ananya M.</strong>
+            <span class="text-espresso/50 text-[11px]">Bangalore &bull; M2 MacBook Pro</span>
+          </div>
+        </div>
+
+        <div class="bg-warm-paper rounded-2xl p-5 border border-sand/40 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex text-gold-wax text-xs">★★★★★</div>
+            <span class="text-[10px] text-sage-craft font-bold bg-sage-craft/10 px-2 py-0.5 rounded-full">✓ Verified Buyer</span>
+          </div>
+          <p class="text-xs text-espresso/80 leading-relaxed">
+            “The 'Too Many Tabs Open' and Chai stickers are literally my personality. Put them on my Stanley tumbler and washed it 10+ times—no peeling or color fade at all. 10/10 quality.”
+          </p>
+          <div class="pt-2 border-t border-sand/30 flex items-center justify-between text-xs">
+            <strong class="text-espresso">Rohan S.</strong>
+            <span class="text-espresso/50 text-[11px]">Mumbai &bull; Designer</span>
+          </div>
+        </div>
+
+        <div class="bg-warm-paper rounded-2xl p-5 border border-sand/40 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex text-gold-wax text-xs">★★★★★</div>
+            <span class="text-[10px] text-sage-craft font-bold bg-sage-craft/10 px-2 py-0.5 rounded-full">✓ Verified Buyer</span>
+          </div>
+          <p class="text-xs text-espresso/80 leading-relaxed">
+            “I peel and swap stickers on my laptop often and hate when glue gets left behind. These peeled off cleanly like magic. Ordered the 25-pack collector box for my studio team!”
+          </p>
+          <div class="pt-2 border-t border-sand/30 flex items-center justify-between text-xs">
+            <strong class="text-espresso">Pooja K.</strong>
+            <span class="text-espresso/50 text-[11px]">Delhi &bull; Software Engineer</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. YOU MAY ALSO LIKE CAROUSEL
+       ========================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 border-t border-sand/30">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="font-serif-display text-2xl sm:text-3xl text-espresso">
+        You May Also Like
+      </h2>
+      <a href="index.html#catalogue-section" class="text-xs font-bold uppercase tracking-wider text-deep-coffee hover:underline">
+        Explore Catalog &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      
+      <!-- Companion 1: 2027 Chronicle -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+        <div>
+          <a href="journal-pdp.html?id=prod-chronicle" class="block aspect-square overflow-hidden bg-warm-paper">
+            <img src="assets/prod_journal.jpg" alt="The 2027 Bound Chronicle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </a>
+          <div class="p-4 space-y-1">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-coffee-tan block">Journals</span>
+            <a href="journal-pdp.html?id=prod-chronicle" class="font-bold text-xs text-espresso hover:text-deep-coffee block line-clamp-1">The 2027 Bound Chronicle</a>
+            <div class="flex items-baseline gap-2 pt-1">
+              <span class="text-xs font-bold text-deep-coffee">₹1,299</span>
+              <span class="text-[10px] text-espresso/40 line-through">₹1,699</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="journal-pdp.html?id=prod-chronicle" class="block w-full py-2 bg-warm-paper hover:bg-deep-coffee hover:text-logo-cream border border-sand/40 text-center rounded-xl text-xs font-bold text-espresso transition-colors">
+            View Details
+          </a>
+        </div>
+      </article>
+
+      <!-- Companion 2: Atelier Hardcover Linen -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+        <div>
+          <a href="journal-pdp.html?id=prod-38" class="block aspect-square overflow-hidden bg-warm-paper">
+            <img src="assets/cat_journals.jpg" alt="Linen Journal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </a>
+          <div class="p-4 space-y-1">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-coffee-tan block">Plain Journals</span>
+            <a href="journal-pdp.html?id=prod-38" class="font-bold text-xs text-espresso hover:text-deep-coffee block line-clamp-1">The Atelier Hardcover Linen Journal</a>
+            <div class="flex items-baseline gap-2 pt-1">
+              <span class="text-xs font-bold text-deep-coffee">₹899</span>
+              <span class="text-[10px] text-espresso/40 line-through">₹1,199</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="journal-pdp.html?id=prod-38" class="block w-full py-2 bg-warm-paper hover:bg-deep-coffee hover:text-logo-cream border border-sand/40 text-center rounded-xl text-xs font-bold text-espresso transition-colors">
+            View Details
+          </a>
+        </div>
+      </article>
+
+      <!-- Companion 3: Lady TeaTrip Coaster -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+        <div>
+          <a href="product.html?id=prod-1" class="block aspect-square overflow-hidden bg-warm-paper">
+            <img src="assets/products/lady_teatrip.jpg" alt="Lady TeaTrip" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </a>
+          <div class="p-4 space-y-1">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-coffee-tan block">Décor</span>
+            <a href="product.html?id=prod-1" class="font-bold text-xs text-espresso hover:text-deep-coffee block line-clamp-1">Lady TeaTrip Acrylic Coaster</a>
+            <div class="flex items-baseline gap-2 pt-1">
+              <span class="text-xs font-bold text-deep-coffee">₹699</span>
+              <span class="text-[10px] text-espresso/40 line-through">₹899</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="product.html?id=prod-1" class="block w-full py-2 bg-warm-paper hover:bg-deep-coffee hover:text-logo-cream border border-sand/40 text-center rounded-xl text-xs font-bold text-espresso transition-colors">
+            View Details
+          </a>
+        </div>
+      </article>
+
+      <!-- Companion 4: Wooden Bookmark -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+        <div>
+          <a href="product.html?id=prod-4" class="block aspect-square overflow-hidden bg-warm-paper">
+            <img src="assets/products/wood_book_oclock.jpg" alt="Wooden Bookmark" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </a>
+          <div class="p-4 space-y-1">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-coffee-tan block">Bookmarks</span>
+            <a href="product.html?id=prod-4" class="font-bold text-xs text-espresso hover:text-deep-coffee block line-clamp-1">Book O'Clock Wooden Keepsake</a>
+            <div class="flex items-baseline gap-2 pt-1">
+              <span class="text-xs font-bold text-deep-coffee">₹299</span>
+              <span class="text-[10px] text-espresso/40 line-through">₹399</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="product.html?id=prod-4" class="block w-full py-2 bg-warm-paper hover:bg-deep-coffee hover:text-logo-cream border border-sand/40 text-center rounded-xl text-xs font-bold text-espresso transition-colors">
+            View Details
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. GLOBAL ARTISANAL FOOTER
+       ========================================================================= -->
+  <footer class="bg-espresso text-logo-cream border-t border-sand/20 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-logo-cream/60">
+        <p>&copy; 2026 Graffeine Tales Studio. All Rights Reserved. Where Stories Become Art.</p>
+        <div class="flex items-center gap-4 text-[11px]">
+          <a href="index.html" class="hover:text-white">Home</a>
+          <span>&bull;</span>
+          <a href="journal-pdp.html" class="hover:text-white">Journals &amp; Diaries</a>
+          <span>&bull;</span>
+          <a href="sticker-pdp.html" class="hover:text-white">Stickers</a>
+          <span>&bull;</span>
+          <a href="about.html" class="hover:text-white">About Studio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-50 bg-espresso text-logo-cream text-xs font-medium py-3 px-6 rounded-full shadow-tactile-lg border border-sand/30 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+    <span id="toast-text">✦ Added to bag</span>
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden" onclick="toggleCartDrawer()">
+    <div class="absolute right-0 top-0 bottom-0 max-w-md w-full bg-warm-paper shadow-2xl p-6 flex flex-col justify-between" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-sand/30">
+        <h3 class="font-serif-display text-xl text-espresso">Your Atelier Bag</h3>
+        <button type="button" class="text-espresso hover:text-deep-coffee text-2xl" onclick="toggleCartDrawer()">&times;</button>
+      </div>
+      <div class="flex-1 overflow-y-auto py-4 space-y-4" id="cart-items-container">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="pt-4 border-t border-sand/30 space-y-3">
+        <div class="flex items-center justify-between font-bold text-espresso text-sm">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal-price">₹349</span>
+        </div>
+        <button type="button" class="w-full bg-deep-coffee hover:bg-espresso text-logo-cream py-3 rounded-full font-bold text-xs uppercase tracking-wider transition-colors" onclick="alert('Proceeding to Secure Checkout...')">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reel Video Modal -->
+  <div id="pdp-reel-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4" onclick="closePdpReelModal()">
+    <div class="relative max-w-sm w-full bg-espresso rounded-3xl overflow-hidden border border-sand/30 shadow-2xl aspect-[9/16] flex flex-col justify-between p-4" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between text-logo-cream z-10">
+        <span class="text-xs font-bold" id="reel-modal-title">Stickers in Action</span>
+        <button type="button" class="p-1 hover:text-white text-xl" onclick="closePdpReelModal()">&times;</button>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <img id="reel-modal-bg" src="assets/flip_stickers.jpg" alt="" class="w-full h-full object-cover opacity-90" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+        <div class="absolute text-center text-white px-6">
+          <span class="w-14 h-14 rounded-full bg-deep-coffee/90 text-logo-cream flex items-center justify-center mx-auto mb-3 shadow-tactile animate-pulse">
+            ▶
+          </span>
+          <p class="text-xs text-logo-cream/90 font-medium">Sticker Unboxing &amp; Peel Demo</p>
+        </div>
+      </div>
+      <div class="z-10 bg-warm-paper/95 rounded-2xl p-3 text-espresso flex items-center justify-between">
+        <div>
+          <span class="text-xs font-bold block">The Creative Chaos Pack</span>
+          <span class="text-xs text-deep-coffee font-bold">₹349</span>
+        </div>
+        <button type="button" class="bg-deep-coffee text-logo-cream px-4 py-2 rounded-xl text-xs font-bold" onclick="handleStickerAddToCart(); closePdpReelModal();">
+          Add to Bag
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="pdp-lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <div class="relative max-w-4xl max-h-[90vh] flex items-center justify-center" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Enlarged View" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl" />
+      <button type="button" class="absolute top-4 right-4 text-white text-3xl font-bold" onclick="closeLightbox()">&times;</button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       12. JAVASCRIPT CONTROLLER: DRAG & DROP ENGINE, BUY BOX & CAROUSEL
+       ========================================================================= -->
+  <script>
+    // State variables
+    let currentQty = 1;
+    let currentFinish = 'Matte Weatherproof';
+    let currentPack = 'Curated 10-Pack';
+    let currentPrice = 349;
+    let currentMrp = 499;
+
+    let currentSlideIndex = 0;
+    const galleryImages = [
+      'assets/products/sticker_desi_vibes.jpg',
+      'assets/flip_stickers.jpg',
+      'assets/products/sticker_chai_lover.jpg',
+      'assets/products/sticker_cat_lover.jpg',
+      'assets/products/sticker_bookworm.jpg'
+    ];
+
+    // =========================================================================
+    // AUDIO SYNTHESIZER: TACTILE SOUND FEEDBACK FOR DRAG & DROP
+    // =========================================================================
+    let audioCtx = null;
+    function playTactileFeedback(type) {
+      try {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+        if (type === 'lift') {
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.exponentialRampToValueAtTime(540, now + 0.05);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'stick') {
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(220, now + 0.06);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+          osc.start(now);
+          osc.stop(now + 0.06);
+        }
+      } catch (e) {}
+    }
+
+    // =========================================================================
+    // INTERACTIVE "DRAG & STICK" ENGINE (Pointer Events with Mobile Touch Support)
+    // =========================================================================
+    let activeDragEl = null;
+    let dragOffset = { x: 0, y: 0 };
+    let initialParent = null;
+    let isDragging = false;
+    let placedStickersCount = 0;
+
+    function startStickerDrag(e, element) {
+      // Don't drag if secondary mouse button
+      if (e.button && e.button !== 0) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      activeDragEl = element;
+      initialParent = element.parentElement;
+      isDragging = true;
+
+      playTactileFeedback('lift');
+
+      const rect = element.getBoundingClientRect();
+      dragOffset.x = e.clientX - rect.left;
+      dragOffset.y = e.clientY - rect.top;
+
+      // Bring element to top level body or absolute layer while dragging
+      element.classList.add('dragging');
+      element.style.position = 'fixed';
+      element.style.left = (e.clientX - dragOffset.x) + 'px';
+      element.style.top = (e.clientY - dragOffset.y) + 'px';
+      element.style.zIndex = '99999';
+
+      document.body.appendChild(element);
+
+      // Capture pointer
+      if (element.setPointerCapture && e.pointerId) {
+        try { element.setPointerCapture(e.pointerId); } catch (err) {}
+      }
+
+      window.addEventListener('pointermove', onStickerPointerMove, { passive: false });
+      window.addEventListener('pointerup', onStickerPointerUp, { once: true });
+      window.addEventListener('pointercancel', onStickerPointerUp, { once: true });
+    }
+
+    function onStickerPointerMove(e) {
+      if (!isDragging || !activeDragEl) return;
+      e.preventDefault();
+
+      const newLeft = e.clientX - dragOffset.x;
+      const newTop = e.clientY - dragOffset.y;
+      activeDragEl.style.left = newLeft + 'px';
+      activeDragEl.style.top = newTop + 'px';
+
+      // Check hover over laptop dropzone
+      const laptopLid = document.getElementById('main-laptop-lid');
+      if (laptopLid) {
+        const lidRect = laptopLid.getBoundingClientRect();
+        const isOverLid = (
+          e.clientX >= lidRect.left && e.clientX <= lidRect.right &&
+          e.clientY >= lidRect.top && e.clientY <= lidRect.bottom
+        );
+        if (isOverLid) {
+          laptopLid.classList.add('laptop-dropzone-active');
+        } else {
+          laptopLid.classList.remove('laptop-dropzone-active');
+        }
+      }
+    }
+
+    function onStickerPointerUp(e) {
+      if (!isDragging || !activeDragEl) return;
+      isDragging = false;
+
+      window.removeEventListener('pointermove', onStickerPointerMove);
+
+      const laptopLid = document.getElementById('main-laptop-lid');
+      const mountContainer = document.getElementById('laptop-stickers-mount');
+      const stationTray = document.getElementById('sticker-station-tray');
+
+      if (laptopLid) laptopLid.classList.remove('laptop-dropzone-active');
+
+      const lidRect = laptopLid.getBoundingClientRect();
+      const dropX = e.clientX;
+      const dropY = e.clientY;
+
+      const isInsideLaptop = (
+        dropX >= lidRect.left + 15 && dropX <= lidRect.right - 15 &&
+        dropY >= lidRect.top + 15 && dropY <= lidRect.bottom - 15
+      );
+
+      activeDragEl.classList.remove('dragging');
+
+      if (isInsideLaptop && mountContainer) {
+        // Drop successfully onto laptop!
+        playTactileFeedback('stick');
+
+        // Calculate relative % coords inside the laptop lid
+        const relX = dropX - lidRect.left - dragOffset.x;
+        const relY = dropY - lidRect.top - dragOffset.y;
+        const pctX = Math.max(2, Math.min(85, (relX / lidRect.width) * 100));
+        const pctY = Math.max(2, Math.min(85, (relY / lidRect.height) * 100));
+
+        mountContainer.appendChild(activeDragEl);
+        activeDragEl.style.position = 'absolute';
+        activeDragEl.style.left = pctX + '%';
+        activeDragEl.style.top = pctY + '%';
+        activeDragEl.style.zIndex = ++placedStickersCount;
+        activeDragEl.style.pointerEvents = 'auto';
+
+        const baseRot = parseFloat(activeDragEl.getAttribute('data-rot') || '0');
+        activeDragEl.style.transform = `rotate(${baseRot}deg) scale(1)`;
+
+        updateCustomizerStatus();
+      } else {
+        // Return to station tray
+        returnStickerToTray(activeDragEl);
+      }
+
+      activeDragEl = null;
+    }
+
+    function returnStickerToTray(element) {
+      const stationTray = document.getElementById('sticker-station-tray');
+      if (stationTray && element) {
+        element.style.position = 'relative';
+        element.style.left = 'auto';
+        element.style.top = 'auto';
+        element.style.zIndex = 'auto';
+        element.style.pointerEvents = 'auto';
+        const baseRot = parseFloat(element.getAttribute('data-rot') || '0');
+        element.style.transform = `rotate(${baseRot}deg)`;
+        stationTray.appendChild(element);
+        updateCustomizerStatus();
+      }
+    }
+
+    // Double-click/tap to rotate placed sticker +15 degrees
+    document.addEventListener('dblclick', function(e) {
+      const sticker = e.target.closest('.die-cut-sticker');
+      const mount = document.getElementById('laptop-stickers-mount');
+      if (sticker && mount && mount.contains(sticker)) {
+        let currentRot = parseFloat(sticker.getAttribute('data-current-rot') || sticker.getAttribute('data-rot') || '0');
+        currentRot = (currentRot + 15) % 360;
+        sticker.setAttribute('data-current-rot', currentRot);
+        sticker.style.transform = `rotate(${currentRot}deg) scale(1)`;
+        playTactileFeedback('stick');
+      }
+    });
+
+    function updateCustomizerStatus() {
+      const mount = document.getElementById('laptop-stickers-mount');
+      const count = mount ? mount.querySelectorAll('.die-cut-sticker').length : 0;
+      const statusEl = document.getElementById('customizer-status');
+      if (statusEl) {
+        if (count === 0) {
+          statusEl.textContent = '12 Stickers in Tray • Drag any sticker onto laptop!';
+        } else {
+          statusEl.textContent = `✦ ${count} Sticker${count > 1 ? 's' : ''} placed on Laptop! (Tap to rotate)`;
+        }
+      }
+    }
+
+    // Auto-Collage: Arranges an aesthetic curated layout on the laptop
+    function autoCollageStickers() {
+      const mount = document.getElementById('laptop-stickers-mount');
+      const tray = document.getElementById('sticker-station-tray');
+      if (!mount || !tray) return;
+
+      const stickers = Array.from(document.querySelectorAll('.die-cut-sticker'));
+      const placements = [
+        { left: '12%', top: '15%', rot: -8 },
+        { left: '68%', top: '12%', rot: 12 },
+        { left: '38%', top: '10%', rot: 3 },
+        { left: '15%', top: '56%', rot: 6 },
+        { left: '65%', top: '55%', rot: -10 },
+        { left: '42%', top: '60%', rot: 2 },
+        { left: '78%', top: '35%', rot: 15 },
+        { left: '8%', top: '36%', rot: -14 },
+      ];
+
+      stickers.forEach((stk, idx) => {
+        if (idx < placements.length) {
+          mount.appendChild(stk);
+          stk.style.position = 'absolute';
+          stk.style.left = placements[idx].left;
+          stk.style.top = placements[idx].top;
+          stk.style.zIndex = idx + 1;
+          stk.style.pointerEvents = 'auto';
+          stk.style.transform = `rotate(${placements[idx].rot}deg)`;
+          stk.setAttribute('data-current-rot', placements[idx].rot);
+        } else {
+          returnStickerToTray(stk);
+        }
+      });
+
+      playTactileFeedback('stick');
+      updateCustomizerStatus();
+      showToast('✨ Auto-Collage applied! Drag any sticker to fine-tune your look.');
+    }
+
+    // Reset Laptop: Clears all stickers back to tray
+    function resetAllStickers() {
+      const stickers = Array.from(document.querySelectorAll('.die-cut-sticker'));
+      stickers.forEach(stk => returnStickerToTray(stk));
+      updateCustomizerStatus();
+      showToast('🔄 Laptop cleared! Stickers returned to tray.');
+    }
+
+    // Save Laptop Look Toast
+    function saveLaptopSnapshot() {
+      const mount = document.getElementById('laptop-stickers-mount');
+      const count = mount ? mount.querySelectorAll('.die-cut-sticker').length : 0;
+      if (count === 0) {
+        showToast('💡 Try dragging at least 1 sticker onto the laptop before saving!');
+        return;
+      }
+      playTactileFeedback('stick');
+      showToast(`✦ Saved your laptop design with ${count} stickers! Added to your studio session.`);
+    }
+
+    // =========================================================================
+    // HERO VIEW SWITCHER (Gallery vs Quick Laptop Preview)
+    // =========================================================================
+    function switchHeroView(view) {
+      const gallery = document.getElementById('hero-gallery-view');
+      const customizer = document.getElementById('hero-customizer-view');
+      const btnGallery = document.getElementById('tab-btn-gallery');
+      const btnCustomizer = document.getElementById('tab-btn-customizer');
+
+      if (view === 'gallery') {
+        gallery.classList.remove('hidden');
+        customizer.classList.add('hidden');
+        btnGallery.classList.add('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
+        btnGallery.classList.remove('text-espresso');
+        btnCustomizer.classList.remove('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
+        btnCustomizer.classList.add('text-espresso');
+      } else {
+        gallery.classList.add('hidden');
+        customizer.classList.remove('hidden');
+        btnCustomizer.classList.add('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
+        btnCustomizer.classList.remove('text-espresso');
+        btnGallery.classList.remove('bg-deep-coffee', 'text-logo-cream', 'shadow-sm');
+        btnGallery.classList.add('text-espresso');
+      }
+    }
+
+    // =========================================================================
+    // HERO CAROUSEL CONTROLLER
+    // =========================================================================
+    function scrollCarousel(dir) {
+      const track = document.getElementById('pdp-carousel-track');
+      if (!track) return;
+      const slideWidth = track.clientWidth;
+      const maxSlides = galleryImages.length;
+      currentSlideIndex = Math.max(0, Math.min(maxSlides - 1, currentSlideIndex + dir));
+      track.scrollTo({ left: currentSlideIndex * slideWidth, behavior: 'smooth' });
+      updateCarouselDots(currentSlideIndex);
+      updateThumbBorder(currentSlideIndex);
+    }
+
+    function onCarouselScroll() {
+      const track = document.getElementById('pdp-carousel-track');
+      if (!track) return;
+      const idx = Math.round(track.scrollLeft / track.clientWidth);
+      if (idx !== currentSlideIndex) {
+        currentSlideIndex = idx;
+        updateCarouselDots(idx);
+        updateThumbBorder(idx);
+      }
+    }
+
+    function updateCarouselDots(activeIdx) {
+      const dots = document.querySelectorAll('#carousel-dots-container .carousel-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIdx) {
+          dot.classList.remove('w-1.5', 'bg-white/50');
+          dot.classList.add('w-6', 'bg-white');
+        } else {
+          dot.classList.remove('w-6', 'bg-white');
+          dot.classList.add('w-1.5', 'bg-white/50');
+        }
+      });
+    }
+
+    function updateThumbBorder(activeIdx) {
+      const thumbs = document.querySelectorAll('#thumbnails-row .thumb-btn');
+      thumbs.forEach((t, i) => {
+        if (i === activeIdx) {
+          t.className = 'thumb-btn border-2 border-deep-coffee rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 shadow-sm opacity-100';
+        } else {
+          t.className = 'thumb-btn border border-sand/40 rounded-2xl overflow-hidden w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity';
+        }
+      });
+    }
+
+    function selectThumbnail(idx, src) {
+      currentSlideIndex = idx;
+      const track = document.getElementById('pdp-carousel-track');
+      if (track) {
+        track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+      }
+      updateCarouselDots(idx);
+      updateThumbBorder(idx);
+    }
+
+    // =========================================================================
+    // FINISH & PACK VARIANT SELECTORS
+    // =========================================================================
+    function selectFinish(btn, finishName, price, mrp) {
+      currentFinish = finishName;
+      currentPrice = price;
+      currentMrp = mrp;
+
+      const label = document.getElementById('active-finish-label');
+      if (label) label.textContent = finishName;
+
+      // Update pricing display
+      const priceEl = document.getElementById('pdp-price');
+      const mrpEl = document.getElementById('pdp-mrp');
+      const discountEl = document.getElementById('pdp-discount');
+      if (priceEl) priceEl.textContent = '₹' + price.toLocaleString('en-IN');
+      if (mrpEl) mrpEl.textContent = '₹' + mrp.toLocaleString('en-IN');
+      if (discountEl) {
+        const pct = Math.round(((mrp - price) / mrp) * 100);
+        discountEl.textContent = `SAVE ${pct}%`;
+      }
+
+      // Update button states
+      const btns = document.querySelectorAll('.finish-btn');
+      btns.forEach(b => {
+        b.classList.remove('border-2', 'border-deep-coffee', 'bg-warm-paper', 'shadow-sm');
+        b.classList.add('border', 'border-sand/40', 'bg-white');
+        const check = b.querySelector('.check-mark');
+        if (check) check.classList.add('hidden');
+      });
+
+      btn.classList.remove('border-sand/40', 'bg-white');
+      btn.classList.add('border-2', 'border-deep-coffee', 'bg-warm-paper', 'shadow-sm');
+      const activeCheck = btn.querySelector('.check-mark');
+      if (activeCheck) activeCheck.classList.remove('hidden');
+
+      showToast(`Selected "${finishName}" Finish`);
+    }
+
+    function selectPack(btn, packName, price, mrp) {
+      currentPack = packName;
+      currentPrice = price;
+      currentMrp = mrp;
+
+      const priceEl = document.getElementById('pdp-price');
+      const mrpEl = document.getElementById('pdp-mrp');
+      const discountEl = document.getElementById('pdp-discount');
+      if (priceEl) priceEl.textContent = '₹' + price.toLocaleString('en-IN');
+      if (mrpEl) mrpEl.textContent = '₹' + mrp.toLocaleString('en-IN');
+      if (discountEl) {
+        const pct = Math.round(((mrp - price) / mrp) * 100);
+        discountEl.textContent = `SAVE ${pct}%`;
+      }
+
+      const btns = document.querySelectorAll('.pack-btn');
+      btns.forEach(b => {
+        b.classList.remove('border-2', 'border-deep-coffee', 'bg-warm-paper', 'shadow-sm');
+        b.classList.add('border', 'border-sand/40', 'bg-white');
+        const check = b.querySelector('.check-mark');
+        if (check) check.classList.add('hidden');
+      });
+
+      btn.classList.remove('border-sand/40', 'bg-white');
+      btn.classList.add('border-2', 'border-deep-coffee', 'bg-warm-paper', 'shadow-sm');
+      const activeCheck = btn.querySelector('.check-mark');
+      if (activeCheck) activeCheck.classList.remove('hidden');
+
+      showToast(`Selected "${packName}" Edition`);
+    }
+
+    function changeQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      const input = document.getElementById('pdp-qty-input');
+      if (input) input.value = currentQty;
+    }
+
+    // =========================================================================
+    // ACCORDIONS & PINCODE
+    // =========================================================================
+    function toggleDetailsAccordion(button) {
+      const panel = button.nextElementSibling;
+      const chevron = button.querySelector('.chevron');
+      const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+
+      if (isOpen) {
+        panel.style.maxHeight = '0px';
+        if (chevron) chevron.classList.remove('rotate-180');
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 40 + 'px';
+        if (chevron) chevron.classList.add('rotate-180');
+      }
+    }
+
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.icon');
+      const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+      const allAnswers = document.querySelectorAll('#faq-group .faq-answer');
+      const allIcons = document.querySelectorAll('#faq-group .icon');
+      allAnswers.forEach(a => a.style.maxHeight = '0px');
+      allIcons.forEach(i => i.textContent = '+');
+
+      if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.textContent = '−';
+      }
+    }
+
+    function checkDeliveryPincode() {
+      const input = document.getElementById('pincode-input');
+      const result = document.getElementById('pincode-result');
+      const val = input ? input.value.trim() : '';
+
+      if (!val || val.length !== 6 || isNaN(val)) {
+        if (result) {
+          result.classList.remove('hidden', 'text-sage-craft');
+          result.classList.add('text-terracotta');
+          result.textContent = 'Please enter a valid 6-digit Indian PIN code.';
+        }
+        return;
+      }
+
+      const majorMetros = ['11', '12', '40', '56', '50', '60', '70', '41'];
+      const isExpress = majorMetros.includes(val.substring(0, 2));
+
+      if (result) {
+        result.classList.remove('hidden', 'text-terracotta');
+        result.classList.add('text-sage-craft');
+        if (isExpress) {
+          result.innerHTML = `<strong>✨ Express Dispatch:</strong> Expected delivery in <strong>2&ndash;3 business days</strong> via Bluedart Air Courier. Free tracking on WhatsApp.`;
+        } else {
+          result.innerHTML = `<strong>🚚 Standard Dispatch:</strong> Expected delivery in <strong>3&ndash;5 business days</strong> via Delhivery Express.`;
+        }
+      }
+    }
+
+    // =========================================================================
+    // ADD TO CART & DRAWER
+    // =========================================================================
+    function handleStickerAddToCart() {
+      const stickerItem = {
+        id: 'prod-sticker-chaos',
+        name: `The Creative Chaos Sticker Pack (${currentFinish} • ${currentPack})`,
+        price: currentPrice,
+        image: 'assets/products/sticker_desi_vibes.jpg',
+        category: 'Stationaries • Vinyl Stickers',
+        qty: currentQty
+      };
+
+      try {
+        let cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]');
+        const existing = cart.find(it => it.name === stickerItem.name);
+        if (existing) {
+          existing.qty += currentQty;
+        } else {
+          cart.push(stickerItem);
+        }
+        localStorage.setItem('gtb_cart', JSON.stringify(cart));
+      } catch (e) {}
+
+      updateCartBadge();
+      updateCartDrawerUI();
+      showToast(`✦ Added ${currentQty}x "${stickerItem.name}" to your bag!`);
+      toggleCartDrawer();
+    }
+
+    function updateCartBadge() {
+      let cart = [];
+      try { cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]'); } catch (e) {}
+      const totalCount = cart.reduce((acc, it) => acc + (it.qty || 1), 0);
+      const badge = document.getElementById('cart-badge-count');
+      if (badge) badge.textContent = totalCount;
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cart-drawer-overlay');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+        updateCartDrawerUI();
+      }
+    }
+
+    function updateCartDrawerUI() {
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal-price');
+      let cart = [];
+      try { cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]'); } catch (e) {}
+
+      let subtotal = 0;
+      if (container) {
+        if (!cart.length) {
+          container.innerHTML = `<p class="text-xs text-espresso/60 text-center py-8">Your atelier bag is empty.</p>`;
+        } else {
+          container.innerHTML = cart.map(item => {
+            const itemPrice = item.price || 0;
+            const itemQty = item.qty || 1;
+            subtotal += itemPrice * itemQty;
+            return `
+              <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-sand/30">
+                <img src="${item.image || 'assets/products/sticker_desi_vibes.jpg'}" alt="${item.name}" class="w-12 h-12 object-cover rounded-lg border border-sand/20" />
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-xs font-bold text-espresso truncate">${item.name}</h4>
+                  <div class="text-[11px] text-espresso/60">₹${itemPrice.toLocaleString('en-IN')} &times; ${itemQty}</div>
+                </div>
+                <span class="text-xs font-bold text-deep-coffee">₹${(itemPrice * itemQty).toLocaleString('en-IN')}</span>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+      if (subtotalEl) subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+    }
+
+    // =========================================================================
+    // REEL MODAL & LIGHTBOX
+    // =========================================================================
+    function scrollReelsCarousel(dir) {
+      const track = document.getElementById('pdp-reels-track');
+      if (track) track.scrollBy({ left: dir * 280, behavior: 'smooth' });
+    }
+
+    function playPdpReel(idx) {
+      const modal = document.getElementById('pdp-reel-modal');
+      if (modal) modal.classList.remove('hidden'), modal.classList.add('flex');
+    }
+
+    function closePdpReelModal() {
+      const modal = document.getElementById('pdp-reel-modal');
+      if (modal) modal.classList.add('hidden'), modal.classList.remove('flex');
+    }
+
+    function openLightbox(idx) {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      const targetImg = document.getElementById('lightbox-img');
+      if (targetImg && galleryImages[idx]) targetImg.src = galleryImages[idx];
+      if (modal) modal.classList.remove('hidden'), modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('pdp-lightbox-modal');
+      if (modal) modal.classList.add('hidden'), modal.classList.remove('flex');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-text');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // Initialize on DOM Ready
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      updateCustomizerStatus();
+    });
+  </script>
+</body>
+</html>
