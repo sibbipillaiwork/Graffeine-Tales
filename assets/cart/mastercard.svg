@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" width="34" height="22" fill="none">
+  <!-- Left Red Circle -->
+  <circle cx="12" cy="12" r="11" fill="#EB001B"/>
+  <!-- Right Orange/Yellow Circle -->
+  <circle cx="26" cy="12" r="11" fill="#F79E1B"/>
+  <!-- Central Overlap Lens -->
+  <path d="M19 4.31A11 11 0 0 1 23.36 12 11 11 0 0 1 19 19.69 11 11 0 0 1 14.64 12 11 11 0 0 1 19 4.31Z" fill="#FF5F00"/>
+</svg>

@@ -1,0 +1,1656 @@
+/* ==========================================================================
+   Graffeine Tales Atelier — High-Converting Production Side Cart Drawer
+   Strictly styled to Graffeine Tales Brand Design System
+   Features: Server/Client Milestones, Confetti, One-Tick Upsell, Coupons,
+   Impulse Cross-Sells, GST Breakdown, and Juspay Hypercheckout.
+   ========================================================================== */
+
+:root {
+  --gtb-paper: #F8F5ED;
+  --gtb-paper-dark: #EFE9DD;
+  --gtb-coffee: #4D351D;
+  --gtb-coffee-hover: #382512;
+  --gtb-espresso: #363638;
+  --gtb-cream: #E9DFC2;
+  --gtb-sand: #C6B58E;
+  --gtb-sand-light: #EFE7D8;
+  --gtb-tan: #927B53;
+  --gtb-gold: #D4AF37;
+  --gtb-gold-light: #FFF8E7;
+  --gtb-sage: #2D6A4F;
+  --gtb-sage-light: #E8F5EE;
+  --gtb-terracotta: #C85A32;
+  --gtb-terracotta-light: #FBEFE9;
+  
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: "Patrick Hand", cursive;
+
+  --shadow-drawer: -12px 0 45px rgba(54, 54, 56, 0.22);
+  --shadow-card: 0 2px 8px rgba(77, 53, 29, 0.05);
+  --shadow-hover: 0 6px 18px rgba(77, 53, 29, 0.08);
+}
+
+/* ==========================================================================
+   CONFETTI CANVAS
+   ========================================================================== */
+.gtb-confetti-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100000;
+}
+
+/* ==========================================================================
+   SIDE CART DRAWER OVERLAY & CONTAINER
+   ========================================================================== */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 25, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99990;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-drawer-overlay.open,
+.cart-drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer-sheet {
+  width: 100%;
+  max-width: 460px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--gtb-paper);
+  box-shadow: var(--shadow-drawer);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  border-left: 1px solid rgba(198, 181, 142, 0.4);
+}
+
+.cart-drawer-overlay.open .cart-drawer-sheet,
+.cart-drawer-overlay.active .cart-drawer-sheet {
+  transform: translateX(0);
+}
+
+/* Standalone Viewport Layout when used on /cart.html */
+body.standalone-cart-page {
+  background-color: #EFEBE1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: var(--font-sans);
+  color: var(--gtb-espresso);
+  padding: 0;
+  margin: 0;
+}
+
+body.standalone-cart-page .cart-drawer-sheet {
+  max-width: 480px;
+  transform: none !important;
+  border-left: 1px solid var(--gtb-sand);
+  border-right: 1px solid var(--gtb-sand);
+  min-height: 100vh;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   1. DRAWER HEADER
+   ========================================================================== */
+.cart-drawer-header {
+  background: var(--gtb-paper);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(198, 181, 142, 0.35);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.cart-header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-cart-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gtb-coffee);
+  letter-spacing: -0.3px;
+  line-height: 1;
+  margin: 0;
+}
+
+.header-items-badge {
+  background: var(--gtb-espresso);
+  color: var(--gtb-cream);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  letter-spacing: 0.3px;
+}
+
+.btn-drawer-close {
+  background: transparent;
+  border: none;
+  color: var(--gtb-espresso);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.btn-drawer-close:hover {
+  background: rgba(198, 181, 142, 0.25);
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   CHECKOUT STEPPER (Cart → Address → Payment)
+   ========================================================================== */
+.checkout-stepper {
+  background: #FFFFFF;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(198, 181, 142, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gtb-tan);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.step-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gtb-sand);
+  background: #FFFFFF;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.step-item.active {
+  color: var(--gtb-coffee);
+  font-weight: 800;
+}
+
+.step-item.active .step-circle {
+  border-color: var(--gtb-coffee);
+  background: var(--gtb-coffee);
+  box-shadow: 0 0 0 3px rgba(77, 53, 29, 0.2);
+}
+
+.step-item:hover:not(.active) {
+  color: var(--gtb-espresso);
+}
+
+.step-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(198, 181, 142, 0.35);
+  margin: 0 10px;
+}
+
+/* ==========================================================================
+   MAIN SCROLLABLE BODY
+   ========================================================================== */
+.cart-scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px 16px 120px; /* Space for sticky bottom checkout */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background-color: var(--gtb-paper);
+  -webkit-overflow-scrolling: touch;
+}
+
+.cart-scroll-content::-webkit-scrollbar {
+  width: 5px;
+}
+.cart-scroll-content::-webkit-scrollbar-thumb {
+  background: rgba(198, 181, 142, 0.5);
+  border-radius: 99px;
+}
+
+/* ==========================================================================
+   2. SERVER-DRIVEN MILESTONE PROGRESS BAR
+   ========================================================================== */
+.reference-milestone-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 181, 142, 0.45);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.milestone-track-section {
+  position: relative;
+  padding: 34px 10px 38px;
+  margin: 4px 0 6px;
+}
+
+.milestone-track-line {
+  height: 6px;
+  background: var(--gtb-sand-light);
+  border-radius: 99px;
+  position: relative;
+  overflow: hidden;
+}
+
+.milestone-track-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gtb-tan) 0%, var(--gtb-sage) 60%, var(--gtb-gold) 100%);
+  border-radius: 99px;
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.milestone-nodes-row {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.m-node-col {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.m-threshold {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--gtb-coffee);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.m-dot-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid var(--gtb-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  line-height: 1;
+  color: var(--gtb-tan);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.m-node-col.unlocked .m-dot-circle {
+  background: var(--gtb-sage-light);
+  border: 2.5px solid var(--gtb-sage);
+  color: var(--gtb-sage);
+  box-shadow: 0 1px 6px rgba(45, 106, 79, 0.3);
+  transform: scale(1.1);
+}
+
+.m-title {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gtb-tan);
+  white-space: nowrap;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.m-node-col.unlocked .m-title {
+  color: var(--gtb-espresso);
+  font-weight: 800;
+}
+
+.milestone-caret-down {
+  position: absolute;
+  bottom: -3px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid var(--gtb-gold-light);
+  transform: translateX(-50%);
+  transition: left 0.3s ease;
+  z-index: 5;
+}
+
+.milestone-active-banner {
+  background: var(--gtb-gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+  animation: bannerFade 0.3s ease;
+}
+
+@keyframes bannerFade {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.banner-gift-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.banner-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.banner-headline {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--gtb-espresso);
+}
+
+.banner-timer {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gtb-terracotta);
+}
+
+/* ==========================================================================
+   3. CART LINE ITEMS
+   ========================================================================== */
+.cart-items-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-item-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
+}
+
+.cart-item-card:hover {
+  border-color: var(--gtb-sand);
+  box-shadow: var(--shadow-hover);
+}
+
+.cart-item-card.is-gift-card {
+  background: linear-gradient(135deg, #FBFBF9 0%, #FFFFFF 100%);
+  border: 1px solid rgba(45, 106, 79, 0.25);
+  box-shadow: 0 2px 10px rgba(45, 106, 79, 0.05);
+}
+
+.cart-item-card.is-vip-card {
+  background: linear-gradient(135deg, var(--gtb-gold-light) 0%, #FFFFFF 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.item-thumb-tile {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--gtb-paper);
+  flex-shrink: 0;
+  border: 1px solid rgba(198, 181, 142, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-thumb-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.cart-item-card:hover .item-thumb-tile img {
+  transform: scale(1.05);
+}
+
+.item-info-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-name {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gtb-espresso);
+  line-height: 1.3;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reward-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 99px;
+  align-self: flex-start;
+  line-height: 1.2;
+}
+
+.reward-pill.gift-pill {
+  background: var(--gtb-sage-light);
+  color: var(--gtb-sage);
+  border: 1px solid rgba(45, 106, 79, 0.2);
+}
+
+.reward-pill.vip-pill {
+  background: var(--gtb-gold-light);
+  color: #8A6D1B;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.item-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.item-price-current {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--gtb-coffee);
+  letter-spacing: -0.2px;
+}
+
+.reward-price-free {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--gtb-sage);
+}
+
+.item-price-mrp {
+  font-size: 0.74rem;
+  color: var(--gtb-tan);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.reward-savings-tag,
+.item-discount-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.reward-savings-tag {
+  background: var(--gtb-sage-light);
+  color: var(--gtb-sage);
+}
+
+.item-discount-tag {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.item-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.item-variant-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  border-radius: 99px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  color: var(--gtb-espresso);
+  background: var(--gtb-paper);
+}
+
+.item-stepper {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gtb-paper);
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stepper-btn {
+  background: transparent;
+  border: none;
+  width: 26px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gtb-coffee);
+  transition: background 0.15s ease;
+}
+
+.stepper-btn:hover {
+  background: rgba(198, 181, 142, 0.25);
+}
+
+.stepper-qty {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gtb-espresso);
+  min-width: 20px;
+  text-align: center;
+}
+
+.item-stepper.is-locked {
+  background: rgba(198, 181, 142, 0.15);
+}
+
+.stepper-lock-tag {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--gtb-tan);
+  padding: 2px 6px;
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================================
+   ONE-TICK UPSELL BUMP ("Add X for just ₹Y")
+   ========================================================================== */
+.gtb-addon-bump {
+  background: #FFFFFF;
+  border: 1.5px dashed var(--gtb-sand);
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.gtb-addon-bump:hover,
+.gtb-addon-bump.checked {
+  background: var(--gtb-gold-light);
+  border-color: var(--gtb-gold);
+  border-style: solid;
+}
+
+.addon-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.addon-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gtb-coffee);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.addon-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.addon-highlight-title {
+  font-weight: 700;
+  color: var(--gtb-espresso);
+}
+
+.addon-savings-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gtb-sage);
+}
+
+/* ==========================================================================
+   4. COUPON SECTION
+   ========================================================================== */
+.coupon-section {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coupon-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.coupon-input {
+  flex: 1;
+  background: var(--gtb-paper);
+  border: 1px solid rgba(198, 181, 142, 0.5);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gtb-espresso);
+  outline: none;
+  letter-spacing: 0.5px;
+}
+
+.coupon-input:focus {
+  border-color: var(--gtb-coffee);
+}
+
+.btn-apply-coupon {
+  background: var(--gtb-coffee);
+  color: var(--gtb-cream);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 0.80rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-apply-coupon:hover {
+  background: var(--gtb-coffee-hover);
+}
+
+.quick-coupons-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.quick-coupons-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.coupon-card {
+  background: var(--gtb-paper);
+  border: 1px dashed var(--gtb-sand);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 170px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coupon-card:hover {
+  background: #FFFFFF;
+  border-color: var(--gtb-coffee);
+}
+
+.coupon-card-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coupon-code-pill {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--gtb-coffee);
+}
+
+.coupon-discount-text {
+  font-size: 0.68rem;
+  color: var(--gtb-tan);
+}
+
+.btn-coupon-card-apply {
+  background: var(--gtb-sand);
+  color: var(--gtb-coffee);
+  border: none;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-coupon-card-apply:hover {
+  background: var(--gtb-coffee);
+  color: var(--gtb-cream);
+}
+
+.view-offers-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--gtb-coffee);
+  cursor: pointer;
+  padding-top: 4px;
+  border-top: 1px solid rgba(198, 181, 142, 0.25);
+}
+
+/* ==========================================================================
+   5. "BEST PAIRED WITH" CAROUSEL (Cross-sell Add-Ons)
+   ========================================================================== */
+.you-may-also-like-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cross-sell-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title-bold {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gtb-espresso);
+  margin: 0;
+}
+
+.carousel-nav-arrows {
+  display: flex;
+  gap: 6px;
+}
+
+.carousel-arrow-btn {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--gtb-coffee);
+  transition: all 0.15s ease;
+}
+
+.carousel-arrow-btn:hover {
+  background: var(--gtb-coffee);
+  color: var(--gtb-cream);
+}
+
+.recommended-products-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.recommended-products-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.rec-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 181, 142, 0.35);
+  border-radius: 14px;
+  padding: 10px;
+  width: 140px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
+}
+
+.rec-card:hover {
+  border-color: var(--gtb-sand);
+  box-shadow: var(--shadow-hover);
+}
+
+.rec-img-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--gtb-paper);
+}
+
+.rec-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.rec-card:hover .rec-img-wrap img {
+  transform: scale(1.06);
+}
+
+.rec-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--gtb-espresso);
+  line-height: 1.25;
+  height: 28px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.rec-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.rec-price {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--gtb-coffee);
+}
+
+.rec-mrp {
+  font-size: 0.68rem;
+  color: var(--gtb-tan);
+  text-decoration: line-through;
+}
+
+.btn-rec-add {
+  background: var(--gtb-paper);
+  border: 1px solid var(--gtb-sand);
+  color: var(--gtb-coffee);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.btn-rec-add:hover {
+  background: var(--gtb-coffee);
+  color: var(--gtb-cream);
+  border-color: var(--gtb-coffee);
+}
+
+/* ==========================================================================
+   6. PRICE SUMMARY SECTION
+   ========================================================================== */
+.price-summary-section {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.80rem;
+  color: var(--gtb-espresso);
+}
+
+.summary-row.savings {
+  color: var(--gtb-sage);
+  font-weight: 700;
+}
+
+.summary-dotted-line {
+  height: 1px;
+  border-top: 1px dashed rgba(198, 181, 142, 0.4);
+  margin: 4px 0;
+}
+
+.summary-row.grand-total-row {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gtb-coffee);
+  margin-top: 2px;
+}
+
+.summary-subtext {
+  font-size: 0.68rem;
+  color: var(--gtb-tan);
+  margin-top: -2px;
+}
+
+.payment-trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin-top: 6px;
+  border-top: 1px solid rgba(198, 181, 142, 0.25);
+}
+
+.payment-logos-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pay-logo-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+}
+
+.pay-logo-img {
+  height: 14px;
+  width: auto;
+  object-fit: contain;
+}
+
+.secured-shield {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--gtb-sage);
+}
+
+/* ==========================================================================
+   7. PREPAID REWARDS BANNER
+   ========================================================================== */
+.prepaid-rewards-banner {
+  background: var(--gtb-gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: var(--gtb-espresso);
+}
+
+.prepaid-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prepaid-icon {
+  font-size: 1.1rem;
+}
+
+.btn-prepaid-view {
+  background: transparent;
+  border: none;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gtb-coffee);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   8. STICKY BOTTOM CHECKOUT BAR
+   ========================================================================== */
+.sticky-checkout-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-top: 1px solid rgba(198, 181, 142, 0.4);
+  padding: 12px 20px max(14px, env(safe-area-inset-bottom, 14px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.bottom-price-view {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bottom-price-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--gtb-tan);
+}
+
+.bottom-grand-total {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--gtb-coffee);
+  line-height: 1;
+}
+
+.btn-checkout-primary {
+  flex: 1;
+  background: var(--gtb-coffee);
+  color: var(--gtb-cream);
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(77, 53, 29, 0.25);
+}
+
+.btn-checkout-primary:hover {
+  background: var(--gtb-coffee-hover);
+  transform: translateY(-1px);
+}
+
+.btn-checkout-primary:active {
+  transform: translateY(1px);
+}
+
+/* ==========================================================================
+   8.5. ALL OFFERS MODAL (Slide-up Drawer)
+   ========================================================================== */
+.offers-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 25, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100010;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.offers-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.offers-modal-sheet {
+  width: 100%;
+  max-width: 480px;
+  background: var(--gtb-paper);
+  border-radius: 20px 20px 0 0;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.offers-modal-backdrop.active .offers-modal-sheet {
+  transform: translateY(0);
+}
+
+.offers-sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--gtb-sand);
+  margin: 10px auto 4px;
+}
+
+.offers-modal-header {
+  padding: 12px 20px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(198, 181, 142, 0.3);
+}
+
+.offers-sheet-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gtb-coffee);
+  margin: 0;
+}
+
+.offers-sheet-subtitle {
+  font-size: 0.72rem;
+  color: var(--gtb-tan);
+  margin-top: 2px;
+}
+
+.btn-close-offers {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gtb-espresso);
+  padding: 4px;
+}
+
+.offers-modal-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.offers-tag-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.offers-tag-pill.milestones {
+  background: var(--gtb-gold-light);
+  color: var(--gtb-coffee);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.offers-tag-pill.coupons {
+  background: var(--gtb-sage-light);
+  color: var(--gtb-sage);
+  border: 1px solid rgba(45, 106, 79, 0.3);
+}
+
+.offers-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   9. JUSPAY HYPERCHECKOUT SIMULATOR MODAL
+   ========================================================================== */
+.juspay-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 25, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.juspay-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.juspay-modal {
+  width: 100%;
+  max-width: 500px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.juspay-modal-backdrop.active .juspay-modal {
+  transform: translateY(0) scale(1);
+}
+
+.juspay-modal-header {
+  background: linear-gradient(135deg, var(--gtb-coffee) 0%, var(--gtb-espresso) 100%);
+  color: #FFFFFF;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.juspay-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.juspay-logo-badge {
+  background: var(--gtb-cream);
+  color: var(--gtb-coffee);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.80rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.juspay-order-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.juspay-order-id {
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: monospace;
+}
+
+.juspay-amount-due {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.btn-close-juspay {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.btn-close-juspay:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.juspay-modal-body {
+  padding: 20px 22px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.payment-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: var(--gtb-paper);
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.pay-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 9px 6px;
+  font-family: var(--font-sans);
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--gtb-tan);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.pay-tab-btn.active {
+  background: #FFFFFF;
+  color: var(--gtb-coffee);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.pay-panel {
+  display: none;
+  animation: fadeIn 0.25s ease;
+}
+
+.pay-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.upi-apps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.upi-app-card {
+  border: 1.5px solid rgba(198, 181, 142, 0.4);
+  border-radius: 12px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--gtb-paper);
+}
+
+.upi-app-card:hover, .upi-app-card.selected {
+  border-color: var(--gtb-coffee);
+  background: var(--gtb-gold-light);
+}
+
+.upi-app-icon {
+  font-size: 1.4rem;
+}
+
+.upi-app-label {
+  font-size: 0.70rem;
+  font-weight: 700;
+  color: var(--gtb-espresso);
+}
+
+.upi-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.70rem;
+  color: var(--gtb-tan);
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+.upi-divider::before, .upi-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(198, 181, 142, 0.35);
+}
+
+.vpa-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.vpa-input {
+  flex: 1;
+  border: 1.5px solid rgba(198, 181, 142, 0.5);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  outline: none;
+  background: var(--gtb-paper);
+}
+
+.vpa-input:focus {
+  border-color: var(--gtb-coffee);
+  background: #FFFFFF;
+}
+
+.card-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gtb-espresso);
+  margin-bottom: 4px;
+}
+
+.form-control {
+  width: 100%;
+  border: 1.5px solid rgba(198, 181, 142, 0.5);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 0.86rem;
+  outline: none;
+  background: var(--gtb-paper);
+}
+
+.form-control:focus {
+  border-color: var(--gtb-coffee);
+  background: #FFFFFF;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-submit-payment {
+  width: 100%;
+  background: var(--gtb-coffee);
+  color: var(--gtb-cream);
+  border: none;
+  padding: 14px;
+  border-radius: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-card);
+  margin-top: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-submit-payment:hover {
+  background: var(--gtb-coffee-hover);
+}
+
+.juspay-processing-state {
+  display: none;
+  padding: 40px 24px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.spinner-ring {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--gtb-sand-light);
+  border-top-color: var(--gtb-coffee);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.order-success-card {
+  display: none;
+  padding: 30px 20px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.success-check-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gtb-sage-light);
+  color: var(--gtb-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.success-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gtb-coffee);
+}
+
+.order-receipt-box {
+  width: 100%;
+  background: var(--gtb-paper);
+  border: 1px solid rgba(198, 181, 142, 0.4);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: left;
+  font-size: 0.80rem;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.receipt-row .label {
+  color: var(--gtb-tan);
+}
+
+.receipt-row .val {
+  font-weight: 700;
+  color: var(--gtb-espresso);
+}
+
+@media screen and (max-width: 520px) {
+  .cart-drawer-sheet {
+    max-width: 100%;
+  }
+  
+  .juspay-modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .juspay-modal {
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+  }
+}

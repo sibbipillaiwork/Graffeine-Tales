@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74 20" width="56" height="15" fill="none">
+  <!-- RuPay Wordmark -->
+  <text x="1" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-style="italic" font-size="16" fill="#1C355E" letter-spacing="-0.4">RuPay</text>
+  <!-- Slanted Dynamic Speed Bars -->
+  <path d="M57.5 3L53 17H57L61.5 3H57.5Z" fill="#F47920"/>
+  <path d="M63.5 3L59 17H63L67.5 3H63.5Z" fill="#0079C1"/>
+</svg>
