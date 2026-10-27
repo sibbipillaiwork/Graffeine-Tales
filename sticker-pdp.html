@@ -133,21 +133,26 @@
       box-shadow: 0 0 0 4px #D4AF37, inset 0 0 25px rgba(212, 175, 55, 0.25), 0 30px 60px -10px rgba(0, 0, 0, 0.6) !important;
     }
 
-    /* MacBook Aluminum Finishes */
-    .macbook-moonlight {
-      background: linear-gradient(145deg, #F6F3EC 0%, #E9E3D6 32%, #DFD6C6 70%, #D1C6B4 100%) !important;
-      border-color: #C8BEAF !important;
-      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -2px 5px rgba(0, 0, 0, 0.12), 0 30px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.4) !important;
+    /* Official Apple MacBook Unibody Aluminum Finishes */
+    .macbook-starlight, .macbook-moonlight {
+      background: linear-gradient(145deg, #F3EFE6 0%, #E5DFD2 38%, #DAD3C5 75%, #C8BFB0 100%) !important;
+      border-color: #C6BEB0 !important;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -2px 4px rgba(0, 0, 0, 0.12), 0 30px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.35) !important;
     }
     .macbook-midnight {
-      background: linear-gradient(160deg, #1A222D 0%, #111720 50%, #0A0D12 100%) !important;
-      border-color: #2D3A4B !important;
-      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), inset 0 -2px 4px rgba(0, 0, 0, 0.6), 0 30px 60px -15px rgba(0, 0, 0, 0.7) !important;
+      background: linear-gradient(150deg, #222B38 0%, #171E28 42%, #0E131A 100%) !important;
+      border-color: #2D3949 !important;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14), inset 0 -2px 4px rgba(0, 0, 0, 0.6), 0 30px 60px -15px rgba(0, 0, 0, 0.7) !important;
     }
     .macbook-spacegray {
-      background: linear-gradient(155deg, #6B6D72 0%, #4D5055 50%, #37393D 100%) !important;
-      border-color: #7A7E85 !important;
-      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.4), 0 30px 60px -15px rgba(0, 0, 0, 0.6) !important;
+      background: linear-gradient(145deg, #787B82 0%, #585A60 50%, #424449 100%) !important;
+      border-color: #6C6F76 !important;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), inset 0 -2px 4px rgba(0, 0, 0, 0.4), 0 30px 60px -15px rgba(0, 0, 0, 0.6) !important;
+    }
+    .macbook-silver {
+      background: linear-gradient(145deg, #F5F6F8 0%, #E3E5E8 45%, #D5D7DC 100%) !important;
+      border-color: #C3C6CC !important;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.98), inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 30px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
     }
 
     /* Subtle custom scrollbar */
@@ -385,13 +390,15 @@
             Drag the stickers below onto the MacBook lid to test arrangements before buying!
           </p>
           
-          <!-- Mini Laptop Lid (MacBook Moonlight Finish) -->
+          <!-- Mini Laptop Lid (MacBook Moonlight Finish with Apple Logo) -->
           <div class="relative w-full aspect-[16/10] macbook-moonlight rounded-2xl border-2 shadow-laptop-depth overflow-hidden flex items-center justify-center p-4 transition-all duration-300" id="mini-laptop-target">
-            <!-- Center Laser Logo -->
-            <div class="w-10 h-10 rounded-full border border-[#8C8375]/40 flex items-center justify-center opacity-40 pointer-events-none bg-white/30 shadow-inner">
-              <img src="assets/coffee_cup.png" alt="" class="w-6 h-6 object-contain filter brightness-50" />
+            <!-- Center Authentic Apple Logo -->
+            <div class="flex items-center justify-center pointer-events-none transition-all duration-300">
+              <svg id="mini-apple-logo-svg" class="w-8 h-8 text-[#9E9584] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]" viewBox="0 0 170 170" fill="currentColor">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.73-7.85-12.08-14.3-6.42-9.5-11.53-20.5-15.34-33-3.8-12.5-5.71-24.32-5.71-35.47 0-14.54 3.73-26.68 11.2-36.42 7.47-9.74 16.94-14.7 28.43-14.88 5.48 0 11.45 1.5 17.9 4.5 6.45 3 10.59 4.56 12.43 4.67 1.52-.11 5.88-1.74 13.08-4.89 7.2-3.14 13.58-4.58 19.14-4.31 10.86.54 19.98 4.41 27.36 11.62 7.37 7.21 12.3 16.03 14.78 26.46-9.67 5.86-14.4 14.12-14.2 24.78.2 8.79 3.53 16.09 10 21.9 6.48 5.81 14.28 9.17 23.41 10.08-2.18 6.51-4.79 13.03-7.82 19.55zM119.22 31.84c0-7.72 2.76-14.79 8.27-21.2 5.52-6.42 12.28-10.23 20.3-11.45.22 1.3.33 2.5.33 3.59 0 7.6-2.93 14.89-8.8 21.86-5.87 6.96-12.72 10.74-20.56 11.34-.11-1.41-.17-2.79-.17-4.14z"/>
+              </svg>
             </div>
-            <div class="absolute bottom-2 right-3 text-[10px] text-[#5A5246]/70 pointer-events-none font-medium">
+            <div class="absolute bottom-2 right-3 text-[10px] text-[#5A5246]/70 pointer-events-none font-medium" id="mini-laptop-label">
               ✦ MacBook Moonlight &bull; Drop Zone Active
             </div>
           </div>
@@ -677,15 +684,15 @@
           <span class="font-semibold text-logo-cream/90" id="customizer-status">12 Stickers in Tray • Drag anywhere</span>
         </div>
 
-        <!-- MacBook Lid Color Switcher -->
-        <div class="flex items-center gap-1.5 bg-black/25 p-1 rounded-full border border-sand/25">
-          <span class="text-[10px] uppercase font-bold text-logo-cream/60 px-2 tracking-wide hidden sm:inline">Lid Finish:</span>
+        <!-- MacBook Official Lid Color Switcher -->
+        <div class="flex items-center gap-1 sm:gap-1.5 bg-black/25 p-1 rounded-full border border-sand/25">
+          <span class="text-[10px] uppercase font-bold text-logo-cream/60 px-2 tracking-wide hidden md:inline">MacBook:</span>
           <button type="button" 
                   onclick="setLaptopColor('moonlight')" 
                   id="color-btn-moonlight" 
                   class="px-2.5 py-1 rounded-full text-[11px] font-bold transition-all bg-warm-paper text-espresso shadow-xs flex items-center gap-1.5"
-                  title="MacBook Moonlight (Starlight Champagne Silver)">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#E5DFD3] border border-[#B3ABA0] shadow-inner"></span>
+                  title="MacBook Moonlight / Starlight (Champagne Silver)">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#E5DFD2] border border-[#B3ABA0] shadow-inner"></span>
             Moonlight
           </button>
           <button type="button" 
@@ -701,8 +708,16 @@
                   id="color-btn-spacegray" 
                   class="px-2.5 py-1 rounded-full text-[11px] font-bold transition-all text-logo-cream/70 hover:text-white flex items-center gap-1.5"
                   title="MacBook Space Gray">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#5D6066] border border-[#7D818A] shadow-inner"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#585A60] border border-[#7D818A] shadow-inner"></span>
             Space Gray
+          </button>
+          <button type="button" 
+                  onclick="setLaptopColor('silver')" 
+                  id="color-btn-silver" 
+                  class="px-2.5 py-1 rounded-full text-[11px] font-bold transition-all text-logo-cream/70 hover:text-white flex items-center gap-1.5"
+                  title="MacBook Silver (Pure Anodized Aluminum)">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#E3E5E8] border border-[#BAC0C8] shadow-inner"></span>
+            Silver
           </button>
         </div>
 
@@ -730,27 +745,27 @@
         
         <!-- ==============================================
              1. THE LAPTOP MOCKUP LID (DROP TARGET)
-             Styled in MacBook Moonlight Anodized Aluminum
+             Styled in Authentic MacBook Unibody Aluminum
              ============================================== -->
         <div class="relative w-full aspect-[16/10] max-w-3xl mx-auto macbook-moonlight rounded-3xl border-4 shadow-laptop-depth overflow-hidden p-6 sm:p-8 flex items-center justify-center transition-all duration-300"
              id="main-laptop-lid">
           
           <!-- Subtle Brushed Aluminum Reflection Line -->
           <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/25 to-transparent pointer-events-none"></div>
+
+          <!-- MacBook Display Notch / Bezel Accent -->
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-1.5 bg-black/20 rounded-b-md pointer-events-none"></div>
           
-          <!-- Centered Laser-Engraved Studio Logo (Debossed on MacBook Aluminum) -->
-          <div class="relative flex flex-col items-center justify-center pointer-events-none opacity-30 transition-opacity" id="laptop-center-logo">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#8C8375]/50 flex items-center justify-center bg-white/20 shadow-inner">
-              <img src="assets/coffee_cup.png" alt="Graffeine Logo" class="w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-50" />
-            </div>
-            <span class="text-[9px] tracking-widest uppercase font-bold text-[#5A5246] mt-2 transition-colors" id="laptop-center-text">
-              Graffeine Atelier
-            </span>
+          <!-- Centered Authentic Apple Mirror Logo -->
+          <div class="relative flex items-center justify-center pointer-events-none transition-all duration-300" id="laptop-apple-logo-wrap">
+            <svg id="main-apple-logo-svg" class="w-14 h-14 sm:w-16 sm:h-16 text-[#A69E8E] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]" viewBox="0 0 170 170" fill="currentColor">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.73-7.85-12.08-14.3-6.42-9.5-11.53-20.5-15.34-33-3.8-12.5-5.71-24.32-5.71-35.47 0-14.54 3.73-26.68 11.2-36.42 7.47-9.74 16.94-14.7 28.43-14.88 5.48 0 11.45 1.5 17.9 4.5 6.45 3 10.59 4.56 12.43 4.67 1.52-.11 5.88-1.74 13.08-4.89 7.2-3.14 13.58-4.58 19.14-4.31 10.86.54 19.98 4.41 27.36 11.62 7.37 7.21 12.3 16.03 14.78 26.46-9.67 5.86-14.4 14.12-14.2 24.78.2 8.79 3.53 16.09 10 21.9 6.48 5.81 14.28 9.17 23.41 10.08-2.18 6.51-4.79 13.03-7.82 19.55zM119.22 31.84c0-7.72 2.76-14.79 8.27-21.2 5.52-6.42 12.28-10.23 20.3-11.45.22 1.3.33 2.5.33 3.59 0 7.6-2.93 14.89-8.8 21.86-5.87 6.96-12.72 10.74-20.56 11.34-.11-1.41-.17-2.79-.17-4.14z"/>
+            </svg>
           </div>
 
           <!-- Helper Watermark Text -->
           <div class="absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-[#5A5246]/60 font-medium transition-colors" id="laptop-watermark-text">
-            ✦ Drag &amp; drop stickers here onto the lid surface &bull; Tap a placed sticker to rotate ✦
+            ✦ Drag &amp; drop stickers onto the MacBook lid &bull; Tap a placed sticker to rotate ✦
           </div>
 
           <!-- Sticked Elements Container Layer -->
@@ -1715,59 +1730,68 @@
     function setLaptopColor(color) {
       const mainLid = document.getElementById('main-laptop-lid');
       const miniLid = document.getElementById('mini-laptop-target');
-      const centerLogo = document.getElementById('laptop-center-logo');
-      const centerText = document.getElementById('laptop-center-text');
+      const mainAppleLogo = document.getElementById('main-apple-logo-svg');
+      const miniAppleLogo = document.getElementById('mini-apple-logo-svg');
+      const miniLabel = document.getElementById('mini-laptop-label');
       const watermark = document.getElementById('laptop-watermark-text');
       const hinge = document.getElementById('laptop-hinge');
       
       const btnMoonlight = document.getElementById('color-btn-moonlight');
       const btnMidnight = document.getElementById('color-btn-midnight');
       const btnSpaceGray = document.getElementById('color-btn-spacegray');
+      const btnSilver = document.getElementById('color-btn-silver');
 
+      const allFinishes = ['macbook-moonlight', 'macbook-midnight', 'macbook-spacegray', 'macbook-silver'];
       [mainLid, miniLid].forEach(el => {
         if (!el) return;
-        el.classList.remove('macbook-moonlight', 'macbook-midnight', 'macbook-spacegray');
+        allFinishes.forEach(f => el.classList.remove(f));
         el.classList.add(`macbook-${color}`);
       });
 
       // Update button active states
-      [btnMoonlight, btnMidnight, btnSpaceGray].forEach(btn => {
+      [btnMoonlight, btnMidnight, btnSpaceGray, btnSilver].forEach(btn => {
         if (!btn) return;
         btn.className = 'px-2.5 py-1 rounded-full text-[11px] font-bold transition-all text-logo-cream/70 hover:text-white flex items-center gap-1.5';
       });
 
-      const activeBtn = color === 'moonlight' ? btnMoonlight : (color === 'midnight' ? btnMidnight : btnSpaceGray);
-      if (activeBtn) {
-        activeBtn.className = 'px-2.5 py-1 rounded-full text-[11px] font-bold transition-all bg-warm-paper text-espresso shadow-xs flex items-center gap-1.5';
+      const activeMap = {
+        moonlight: btnMoonlight,
+        midnight: btnMidnight,
+        spacegray: btnSpaceGray,
+        silver: btnSilver
+      };
+      if (activeMap[color]) {
+        activeMap[color].className = 'px-2.5 py-1 rounded-full text-[11px] font-bold transition-all bg-warm-paper text-espresso shadow-xs flex items-center gap-1.5';
       }
 
       if (color === 'moonlight') {
-        if (centerText) centerText.className = 'text-[9px] tracking-widest uppercase font-bold text-[#5A5246] mt-2 transition-colors';
+        if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#A69E8E] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]');
+        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#9E9584] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-[#5A5246]/60 font-medium transition-colors';
         if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#BDB5A7] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (centerLogo) {
-          const img = centerLogo.querySelector('img');
-          if (img) img.className = 'w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-50';
-        }
-        showToast('✦ MacBook Finish: Moonlight (Starlight Champagne Silver)');
+        if (miniLabel) miniLabel.textContent = '✦ MacBook Moonlight • Drop Zone Active';
+        showToast('✦ MacBook Finish: Moonlight / Starlight (Champagne Silver)');
       } else if (color === 'midnight') {
-        if (centerText) centerText.className = 'text-[9px] tracking-widest uppercase font-bold text-logo-cream/80 mt-2 transition-colors';
+        if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#333E4F] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.12)]');
+        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#2F3A4A] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.1)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-logo-cream/40 font-medium transition-colors';
-        if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#242D3A] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (centerLogo) {
-          const img = centerLogo.querySelector('img');
-          if (img) img.className = 'w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-100 grayscale';
-        }
+        if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#202835] rounded-b-md -mt-3 shadow-inner transition-colors';
+        if (miniLabel) miniLabel.textContent = '✦ MacBook Midnight • Drop Zone Active';
         showToast('✦ MacBook Finish: Midnight (Deep Anodized Navy)');
       } else if (color === 'spacegray') {
-        if (centerText) centerText.className = 'text-[9px] tracking-widest uppercase font-bold text-white/80 mt-2 transition-colors';
+        if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#989BA3] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.25)]');
+        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#90939B] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.25)]');
         if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-white/50 font-medium transition-colors';
-        if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#4D5055] rounded-b-md -mt-3 shadow-inner transition-colors';
-        if (centerLogo) {
-          const img = centerLogo.querySelector('img');
-          if (img) img.className = 'w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-90 grayscale';
-        }
+        if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#484A50] rounded-b-md -mt-3 shadow-inner transition-colors';
+        if (miniLabel) miniLabel.textContent = '✦ MacBook Space Gray • Drop Zone Active';
         showToast('✦ MacBook Finish: Space Gray');
+      } else if (color === 'silver') {
+        if (mainAppleLogo) mainAppleLogo.setAttribute('class', 'w-14 h-14 sm:w-16 sm:h-16 text-[#9397A0] transition-all duration-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]');
+        if (miniAppleLogo) miniAppleLogo.setAttribute('class', 'w-8 h-8 text-[#8B8F98] transition-colors duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]');
+        if (watermark) watermark.className = 'absolute bottom-4 inset-x-0 text-center pointer-events-none text-[11px] text-[#4D525C]/60 font-medium transition-colors';
+        if (hinge) hinge.className = 'w-24 h-1.5 mx-auto bg-[#B5B8BE] rounded-b-md -mt-3 shadow-inner transition-colors';
+        if (miniLabel) miniLabel.textContent = '✦ MacBook Silver • Drop Zone Active';
+        showToast('✦ MacBook Finish: Silver (Pure Anodized Aluminum)');
       }
 
       playTactileFeedback('lift');
