@@ -465,15 +465,15 @@
         <div class="flex items-center gap-1.5" role="tablist">
           <button type="button" class="tech-device-tab is-active px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all bg-deep-coffee text-white shadow-sm" data-device="macbook" onclick="switchTechDevice('macbook')">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
-            <span>MacBook</span>
+            <span>Laptop</span>
           </button>
           <button type="button" class="tech-device-tab px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all text-logo-cream/80 hover:bg-white/10" data-device="ipad" onclick="switchTechDevice('ipad')">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="0.5"/></svg>
-            <span>iPad</span>
+            <span>Tablet</span>
           </button>
           <button type="button" class="tech-device-tab px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all text-logo-cream/80 hover:bg-white/10" data-device="iphone" onclick="switchTechDevice('iphone')">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
-            <span>iPhone 18 Pro Max</span>
+            <span>Phone</span>
           </button>
         </div>
 
@@ -1078,7 +1078,7 @@
     // ==========================================
     const techDeviceConfigs = {
       macbook: {
-        name: 'MacBook Pro',
+        name: 'Laptop',
         wrapId: 'tech-macbook-wrap',
         chassisId: 'tech-macbook-lid',
         mountId: 'tech-mount-macbook',
@@ -1092,7 +1092,7 @@
         ]
       },
       ipad: {
-        name: 'iPad Pro (Vertical)',
+        name: 'Tablet',
         wrapId: 'tech-ipad-wrap',
         chassisId: 'tech-ipad-chassis',
         mountId: 'tech-mount-ipad',
@@ -1105,7 +1105,7 @@
         ]
       },
       iphone: {
-        name: 'iPhone 18 Pro Max',
+        name: 'Phone',
         wrapId: 'tech-iphone-wrap',
         chassisId: 'tech-iphone-chassis',
         mountId: 'tech-mount-iphone',
