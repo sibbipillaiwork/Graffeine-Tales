@@ -1,10 +1,20 @@
 {
   "sections": {
+    "banner_tabs": {
+      "type": "gt-collection-banner-tabs",
+      "settings": {
+        "badge_text": "WEBSITE EXCLUSIVE",
+        "show_description": true,
+        "banner_height_desktop": 450,
+        "banner_height_mobile": 320
+      }
+    },
     "main": {
       "type": "main-collection"
     }
   },
   "order": [
+    "banner_tabs",
     "main"
   ]
 }

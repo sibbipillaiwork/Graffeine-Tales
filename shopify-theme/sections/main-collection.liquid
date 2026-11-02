@@ -1,34 +1,174 @@
-<section class="section-padding main-collection-section">
-  <div class="container">
-    <div class="collection-header" style="text-align: center; max-width: 800px; margin: 40px auto 48px;">
-      <span class="sub-heading" style="color: var(--c-accent, #C85A32); font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.85rem;">Atelier Curated Edition</span>
-      <h1 class="section-title" style="font-family: var(--font-display, 'DM Serif Display', serif); font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--c-primary, #5A3825); margin: 12px 0;">
-        {{ collection.title }}
-      </h1>
-      {% if collection.description != blank %}
-        <p class="collection-desc" style="color: #6E625A; font-size: 1.1rem; line-height: 1.6;">
-          {{ collection.description }}
-        </p>
-      {% endif %}
+{% comment %}
+  Graffeine Tales — Main Collection Product Grid
+  Brand Palette:
+    Warm Paper: #F8F5ED
+    Espresso Charcoal: #363638
+    Sand: #C6B58E
+    Deep Coffee: #4D351D
+{% endcomment %}
+
+{%- style -%}
+  .gt-collection-grid-section {
+    background-color: {{ section.settings.bg_color | default: '#F8F5ED' }};
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .gt-collection-grid-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Toolbar */
+  .gt-collection-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(198, 181, 142, 0.4);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .gt-product-count {
+    font-size: 0.875rem;
+    color: #7A6B63;
+    font-weight: 500;
+  }
+
+  .gt-sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: #363638;
+  }
+
+  .gt-sort-select {
+    padding: 0.45rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid #C6B58E;
+    background-color: #F8F5ED;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #363638;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .gt-sort-select:focus {
+    border-color: #4D351D;
+  }
+
+  /* Grid */
+  .gt-catalogue-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .gt-catalogue-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gt-catalogue-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .gt-empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 5rem 1.5rem;
+    background: rgba(233, 223, 194, 0.25);
+    border-radius: 1.5rem;
+    border: 1px dashed #C6B58E;
+  }
+
+  .gt-empty-state p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: #4D351D;
+    margin-bottom: 1rem;
+  }
+
+  .gt-empty-btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background-color: #4D351D;
+    color: #E9DFC2;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 9999px;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+  }
+
+  .gt-empty-btn:hover {
+    background-color: #363638;
+    transform: translateY(-2px);
+  }
+{%- style -%}
+
+<section class="gt-collection-grid-section" aria-label="Collection products">
+  <div class="gt-collection-grid-container">
+
+    <!-- Collection Toolbar -->
+    <div class="gt-collection-toolbar">
+      <div class="gt-product-count">
+        Showing <strong>{{ collection.products_count }}</strong> handcrafted editions
+      </div>
+      
+      <div class="gt-sort-wrapper">
+        <label for="gt-sort-by">Sort By:</label>
+        <select id="gt-sort-by" class="gt-sort-select" onchange="location = this.value;">
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <option value="?sort_by=manual" {% if sort_by == 'manual' %}selected{% endif %}>Curated Selection</option>
+          <option value="?sort_by=best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>Bestselling</option>
+          <option value="?sort_by=price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+          <option value="?sort_by=price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+          <option value="?sort_by=created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>Latest Releases</option>
+        </select>
+      </div>
     </div>
 
     <!-- Product Grid -->
-    <div class="catalogue-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px;">
-      {% for product in collection.products %}
+    <div class="gt-catalogue-grid">
+      {%- for product in collection.products -%}
         {% render 'product-card', product: product %}
-      {% else %}
-        <div class="empty-collection" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-          <p style="font-size: 1.2rem; color: #7A6B63;">No editions found in this curated collection.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary" style="margin-top: 20px; display: inline-block;">Explore All Editions</a>
+      {%- else -%}
+        <div class="gt-empty-state">
+          <p>No editions currently found in this curated collection.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="gt-empty-btn">Explore All Curations</a>
         </div>
-      {% endfor %}
+      {%- endfor -%}
     </div>
+
+    {%- if paginate.pages > 1 -%}
+      <div class="pagination" style="text-align: center; margin-top: 3rem;">
+        {{ paginate | default_pagination }}
+      </div>
+    {%- endif -%}
+
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Collection Page",
-  "settings": []
+  "name": "Collection Grid",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Grid Background",
+      "default": "#F8F5ED"
+    }
+  ]
 }
 {% endschema %}

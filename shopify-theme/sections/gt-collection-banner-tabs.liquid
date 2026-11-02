@@ -1,0 +1,484 @@
+{% comment %}
+  Graffeine Tales - Editorial Collection Banner & Circular Sub-Collection Tabs
+  Brand Tokens:
+    Warm Paper: #F8F5ED
+    Espresso Charcoal: #363638
+    Logo Cream: #E9DFC2
+    Sand: #C6B58E
+    Deep Coffee: #4D351D
+{% endcomment %}
+
+<!-- Google Fonts: DM Serif Display & DM Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+{%- style -%}
+  :root {
+    --gt-warm-paper: {{ section.settings.bg_color | default: '#F8F5ED' }};
+    --gt-espresso: {{ section.settings.text_color | default: '#363638' }};
+    --gt-logo-cream: #E9DFC2;
+    --gt-sand: #C6B58E;
+    --gt-deep-coffee: #4D351D;
+  }
+
+  .gt-collection-wrapper {
+    background-color: var(--gt-warm-paper);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* --- BANNER STYLES --- */
+  .gt-banner {
+    position: relative;
+    width: 100%;
+    min-height: {{ section.settings.banner_height_mobile }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--gt-espresso);
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .gt-banner {
+      min-height: {{ section.settings.banner_height_desktop }}px;
+    }
+  }
+
+  .gt-banner-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+  }
+
+  .gt-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(54, 54, 56, 0.25) 0%,
+      rgba(54, 54, 56, 0.65) 60%,
+      rgba(54, 54, 56, 0.90) 100%
+    );
+    z-index: 2;
+  }
+
+  .gt-banner-content {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    padding: 2.5rem 1.25rem;
+    color: var(--gt-logo-cream);
+  }
+
+  .gt-banner-badge {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gt-logo-cream);
+    background: rgba(77, 53, 29, 0.65);
+    border: 1px solid var(--gt-sand);
+    backdrop-filter: blur(4px);
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+  }
+
+  .gt-banner-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    line-height: 1.1;
+    color: var(--gt-logo-cream);
+    margin: 0;
+    font-weight: 400;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+    letter-spacing: 0.02em;
+  }
+
+  .gt-banner-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gt-warm-paper);
+    margin-top: 1rem;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.92;
+  }
+
+  /* --- CIRCULAR NAVIGATION TABS --- */
+  .gt-tabs-container {
+    padding: 2.25rem 1rem 2.5rem;
+    border-bottom: 1px solid rgba(198, 181, 142, 0.35);
+  }
+
+  .gt-tabs-scroll-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0.5rem 1rem;
+    scrollbar-width: none;
+  }
+
+  .gt-tabs-scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .gt-tabs-scroll-row {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.25rem;
+      overflow-x: visible;
+      padding-bottom: 0;
+    }
+  }
+
+  .gt-tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: 86px;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (min-width: 768px) {
+    .gt-tab-item {
+      width: 108px;
+    }
+  }
+
+  .gt-tab-circle {
+    position: relative;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #E2DAC8;
+    border: 2px solid var(--gt-sand);
+    box-shadow: 0 4px 10px rgba(54, 54, 56, 0.08);
+    transition: all 0.28s ease-in-out;
+  }
+
+  @media (min-width: 768px) {
+    .gt-tab-circle {
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  .gt-tab-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .gt-tab-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.815rem;
+    font-weight: 500;
+    color: var(--gt-espresso);
+    text-align: center;
+    margin-top: 0.65rem;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+  }
+
+  @media (min-width: 768px) {
+    .gt-tab-title {
+      font-size: 0.875rem;
+      margin-top: 0.75rem;
+    }
+  }
+
+  /* Hover States */
+  .gt-tab-item:hover .gt-tab-circle {
+    border-color: var(--gt-deep-coffee);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 18px rgba(77, 53, 29, 0.22);
+  }
+
+  .gt-tab-item:hover .gt-tab-img {
+    transform: scale(1.08);
+  }
+
+  .gt-tab-item:hover .gt-tab-title {
+    color: var(--gt-deep-coffee);
+    font-weight: 700;
+  }
+
+  /* Active State (Current Collection) */
+  .gt-tab-item.is-active .gt-tab-circle {
+    border: 3px solid var(--gt-deep-coffee);
+    box-shadow: 0 0 0 3px var(--gt-sand), 0 8px 16px rgba(77, 53, 29, 0.25);
+    transform: scale(1.04);
+  }
+
+  .gt-tab-item.is-active .gt-tab-title {
+    color: var(--gt-deep-coffee);
+    font-weight: 700;
+  }
+
+  .gt-tab-item.is-active::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--gt-deep-coffee);
+    margin-top: 0.35rem;
+  }
+{%- style -%}
+
+<div class="gt-collection-wrapper">
+  
+  <!-- ================= DYNAMIC EDITORIAL BANNER ================= -->
+  <section class="gt-banner" aria-label="{{ collection.title | escape }} Banner">
+    {%- if collection.image -%}
+      {{ collection.image | image_url: width: 2400 | image_tag: 
+        loading: 'eager',
+        fetchpriority: 'high',
+        class: 'gt-banner-image',
+        alt: collection.title | escape 
+      }}
+    {%- elsif section.settings.fallback_banner != blank -%}
+      {{ section.settings.fallback_banner | image_url: width: 2400 | image_tag: 
+        loading: 'eager',
+        class: 'gt-banner-image',
+        alt: collection.title | escape 
+      }}
+    {%- endif -%}
+
+    <div class="gt-banner-overlay"></div>
+
+    <div class="gt-banner-content">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="gt-banner-badge">{{ section.settings.badge_text }}</span>
+      {%- endif -%}
+
+      <h1 class="gt-banner-title">{{ collection.title }}</h1>
+
+      {%- if section.settings.show_description and collection.description != blank -%}
+        <div class="gt-banner-description">
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <!-- ================= CIRCULAR SUB-COLLECTION NAVIGATION TABS ================= -->
+  {%- liquid
+    assign metafield_tabs = collection.metafields.custom.collection_tabs.value
+  -%}
+
+  {%- if metafield_tabs != blank or section.blocks.size > 0 -%}
+    <nav class="gt-tabs-container" aria-label="Sub-collections">
+      <div class="gt-tabs-scroll-row">
+        
+        {%- comment -%} 1. Render from Metafields (List of Collections) {%- endcomment -%}
+        {%- if metafield_tabs != blank -%}
+          {%- for sub_col in metafield_tabs -%}
+            {%- liquid
+              assign is_current = false
+              if sub_col.handle == collection.handle
+                assign is_current = true
+              endif
+
+              # Custom metafield title fallback to sub-collection title
+              assign tab_title = sub_col.metafields.custom.collection_tab_title.value | default: sub_col.title
+
+              # Custom metafield image fallback to collection image
+              assign tab_image = sub_col.metafields.custom.collection_tab_image.value | default: sub_col.image
+            -%}
+
+            <a 
+              href="{{ sub_col.url }}" 
+              class="gt-tab-item {% if is_current %}is-active{% endif %}"
+              {% if is_current %}aria-current="page"{% endif %}
+            >
+              <div class="gt-tab-circle">
+                {%- if tab_image != blank -%}
+                  {{ tab_image | image_url: width: 240, height: 240, crop: 'center' | image_tag: 
+                    loading: 'lazy', 
+                    class: 'gt-tab-img',
+                    alt: tab_title | escape 
+                  }}
+                {%- else -%}
+                  <div style="width:100%;height:100%;background-color:#E9DFC2;display:flex;align-items:center;justify-content:center;color:#4D351D;font-weight:700;">
+                    {{ tab_title | slice: 0, 1 | upcase }}
+                  </div>
+                {%- endif -%}
+              </div>
+              <span class="gt-tab-title">{{ tab_title }}</span>
+            </a>
+          {%- endfor -%}
+
+        {%- comment -%} 2. Fallback: Render from Customizer Blocks if Metafields not set {%- endcomment -%}
+        {%- elsif section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign block_col = block.settings.collection
+              if block_col != blank
+                assign is_current = false
+                if block_col.handle == collection.handle
+                  assign is_current = true
+                endif
+
+                assign tab_title = block.settings.custom_title | default: block_col.title
+                assign tab_image = block.settings.custom_image | default: block_col.image
+              else
+                assign tab_title = block.settings.custom_title | default: "Tab"
+                assign tab_image = block.settings.custom_image
+                assign is_current = false
+              endif
+            -%}
+
+            <a 
+              href="{{ block_col.url | default: '#' }}" 
+              class="gt-tab-item {% if is_current %}is-active{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="gt-tab-circle">
+                {%- if tab_image != blank -%}
+                  {{ tab_image | image_url: width: 240, height: 240, crop: 'center' | image_tag: 
+                    loading: 'lazy', 
+                    class: 'gt-tab-img',
+                    alt: tab_title | escape 
+                  }}
+                {%- else -%}
+                  <div style="width:100%;height:100%;background-color:#E9DFC2;display:flex;align-items:center;justify-content:center;color:#4D351D;font-weight:700;">
+                    {{ tab_title | slice: 0, 1 | upcase }}
+                  </div>
+                {%- endif -%}
+              </div>
+              <span class="gt-tab-title">{{ tab_title }}</span>
+            </a>
+          {%- endfor -%}
+        {%- endif -%}
+
+      </div>
+    </nav>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "GT Editorial Banner & Tabs",
+  "tag": "section",
+  "class": "gt-section-editorial-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Settings"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "WEBSITE EXCLUSIVE"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show Collection Description",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_banner",
+      "label": "Fallback Banner Image",
+      "info": "Used only if the collection has no featured image uploaded."
+    },
+    {
+      "type": "range",
+      "id": "banner_height_desktop",
+      "min": 250,
+      "max": 650,
+      "step": 25,
+      "unit": "px",
+      "label": "Banner Height (Desktop)",
+      "default": 450
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "min": 200,
+      "max": 500,
+      "step": 25,
+      "unit": "px",
+      "label": "Banner Height (Mobile)",
+      "default": 325
+    },
+    {
+      "type": "header",
+      "content": "Color Palette"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background (Warm Paper)",
+      "default": "#F8F5ED"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Primary Text (Espresso)",
+      "default": "#363638"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sub_collection",
+      "name": "Sub-Collection Tab",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Target Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Circle Image",
+          "info": "Defaults to collection image if blank."
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Tab Title",
+          "info": "Defaults to collection title if blank."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GT Editorial Banner & Tabs",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
+

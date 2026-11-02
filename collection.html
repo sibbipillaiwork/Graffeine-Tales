@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curated Collections — Graffeine Tales | Handcrafted Luxury Goods</title>
+  <meta name="description" content="Explore handcrafted artisanal décor, desk calendars, wooden bookmarks, and luxury journals by Graffeine Tales Studio. Where stories become art." />
+  
+  <!-- Favicon / Coffee Cup -->
+  <link rel="icon" type="image/png" href="assets/coffee_cup.png" />
+
+  <!-- Google Fonts: DM Serif Display & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=DM+Serif+Display:ital@0;1&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN with Graffeine Tales Design System Tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'warm-paper': '#F8F5ED',
+            'espresso': '#363638',
+            'logo-cream': '#E9DFC2',
+            'deep-coffee': '#4D351D',
+            'sand': '#C6B58E',
+            'coffee-tan': '#927B53',
+            'gold-wax': '#D4AF37',
+            'sage-craft': '#2D6A4F',
+            'terracotta': '#C85A32',
+            'cream-muted': '#F2EDE2',
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            script: ['"Patrick Hand"', 'cursive'],
+          },
+          boxShadow: {
+            'tactile': '0 10px 30px -5px rgba(77, 53, 29, 0.08), 0 4px 12px -2px rgba(77, 53, 29, 0.04)',
+            'tactile-lg': '0 20px 40px -10px rgba(54, 54, 56, 0.14), 0 8px 16px -4px rgba(77, 53, 29, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --gt-warm-paper: #F8F5ED;
+      --gt-espresso: #363638;
+      --gt-logo-cream: #E9DFC2;
+      --gt-sand: #C6B58E;
+      --gt-deep-coffee: #4D351D;
+    }
+
+    body {
+      background-color: var(--gt-warm-paper);
+      color: var(--gt-espresso);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .font-serif-display {
+      font-family: 'DM Serif Display', Georgia, serif;
+    }
+
+    /* Steam Animation for Studio Logo */
+    @keyframes steamFloat {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-16px) scaleX(1.4); opacity: 0; }
+    }
+    .steam-wisp {
+      animation: steamFloat 2.6s infinite ease-out;
+    }
+    .steam-wisp.w2 {
+      animation-delay: 1.3s;
+    }
+
+    /* Circular Tab Scrollbar Hide */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Tab Circle Active and Hover Transitions */
+    .gt-tab-btn {
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gt-tab-btn:hover .gt-tab-circle {
+      border-color: var(--gt-deep-coffee);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 10px 22px rgba(77, 53, 29, 0.22);
+    }
+    .gt-tab-btn:hover .gt-tab-title {
+      color: var(--gt-deep-coffee);
+      font-weight: 700;
+    }
+    .gt-tab-btn.is-active .gt-tab-circle {
+      border: 3px solid var(--gt-deep-coffee);
+      box-shadow: 0 0 0 3px var(--gt-sand), 0 8px 18px rgba(77, 53, 29, 0.28);
+      transform: scale(1.05);
+    }
+    .gt-tab-btn.is-active .gt-tab-title {
+      color: var(--gt-deep-coffee);
+      font-weight: 700;
+    }
+    .gt-tab-btn.is-active .gt-active-dot {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Product Card Interactions */
+    .gt-card {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    }
+    .gt-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px -8px rgba(77, 53, 29, 0.14);
+    }
+    .gt-card:hover .gt-card-img {
+      transform: scale(1.06);
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-sand selection:text-espresso min-h-screen flex flex-col justify-between">
+
+  <!-- =========================================================================
+       1. TOP BRAND BANNER / ANNOUNCEMENT STRIP
+       ========================================================================= -->
+  <aside class="bg-espresso text-logo-cream py-2 px-4 text-center text-xs tracking-wide border-b border-sand/20" aria-label="Announcement">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold-wax animate-ping"></span>
+      <p class="font-medium">
+        Free Express Shipping on Orders Above ₹999 &bull; Handcrafted in India with Studio Care
+      </p>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. PRIMARY LUXURY NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-warm-paper/95 backdrop-blur-md border-b border-sand/30 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo / Identity -->
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none" aria-label="Graffeine Tales Home">
+        <div class="relative w-10 h-10 flex items-center justify-center">
+          <svg class="absolute -top-3 left-3 w-5 h-5 pointer-events-none overflow-visible" viewBox="0 0 20 20" fill="none">
+            <path class="steam-wisp" d="M4 16C4 13 6 11 4 8C3 6 3 4 5 1" stroke="#927B53" stroke-width="1.5" stroke-linecap="round"/>
+            <path class="steam-wisp w2" d="M10 16C10 13 12 11 10 8C9 6 9 4 11 1" stroke="#927B53" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <img src="assets/coffee_cup.png" alt="Graffeine Tales Studio Cup" class="w-9 h-9 object-contain drop-shadow-sm group-hover:scale-105 transition-transform" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif-display text-xl sm:text-2xl text-espresso tracking-tight leading-none group-hover:text-deep-coffee transition-colors">
+            Graffeine Tales
+          </span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-coffee-tan mt-0.5">
+            Artisanal Goods &bull; Est. 2024
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-espresso/80">
+        <a href="index.html" class="hover:text-deep-coffee transition-colors">Home</a>
+        <a href="collection.html" class="text-deep-coffee font-bold border-b-2 border-deep-coffee pb-1">Curated Collections</a>
+        <a href="journal-pdp.html" class="hover:text-deep-coffee transition-colors">Journals &amp; Diaries</a>
+        <a href="index.html#bestsellers-section" class="hover:text-deep-coffee transition-colors">Bestsellers</a>
+        <a href="about.html" class="hover:text-deep-coffee transition-colors">Our Story</a>
+      </nav>
+
+      <!-- Action Icons -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <a href="index.html" class="p-2 text-espresso hover:text-deep-coffee transition-colors" title="Back to Home">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </a>
+        <button type="button" class="p-2 text-espresso hover:text-deep-coffee relative transition-colors" onclick="toggleCartDrawer()" title="Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-deep-coffee text-logo-cream text-[10px] font-bold rounded-full flex items-center justify-center" id="cart-badge-count">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. BREADCRUMBS BAR
+       ========================================================================= -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 text-xs text-espresso/60 flex items-center gap-2">
+    <a href="index.html" class="hover:text-deep-coffee">Home</a>
+    <span>&rsaquo;</span>
+    <a href="collection.html" class="hover:text-deep-coffee">Collections</a>
+    <span>&rsaquo;</span>
+    <span class="text-espresso font-semibold truncate max-w-xs" id="breadcrumb-current-collection">All Atelier Curations</span>
+  </div>
+
+  <!-- =========================================================================
+       4. DYNAMIC EDITORIAL COLLECTION BANNER (Strict Design System)
+       ========================================================================= -->
+  <section class="relative w-full min-h-[340px] md:min-h-[440px] flex items-center justify-center text-center bg-espresso overflow-hidden shadow-tactile" aria-label="Collection Editorial Banner">
+    <!-- Dynamic Collection Banner Image -->
+    <img id="collection-banner-bg" 
+         src="assets/hero_banner.jpg" 
+         alt="Curated Collection Banner" 
+         class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 filter brightness-90" />
+
+    <!-- Editorial Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-espresso/95 via-espresso/60 to-espresso/30 z-10"></div>
+
+    <!-- Editorial Overlay Content -->
+    <div class="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 py-12 text-logo-cream flex flex-col items-center">
+      
+      <!-- Studio Exclusive Badge -->
+      <span class="inline-block text-[11px] font-bold tracking-[0.2em] uppercase text-logo-cream bg-deep-coffee/75 border border-sand/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-4 shadow-sm" id="banner-badge">
+        WEBSITE EXCLUSIVE
+      </span>
+
+      <!-- Headline in DM Serif Display -->
+      <h1 class="font-serif-display text-3xl sm:text-5xl md:text-6xl text-logo-cream leading-tight drop-shadow-md tracking-wide" id="banner-title">
+        The Atelier Curations
+      </h1>
+
+      <!-- Editorial Subtitle in DM Sans -->
+      <p class="font-sans text-sm sm:text-base text-warm-paper/90 max-w-2xl mt-4 leading-relaxed font-light" id="banner-desc">
+        A celebration of tactile storytelling, slow craftsmanship, and intentional design. Each edition is carefully handcrafted in our studio to elevate your creative sanctuary.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. CIRCULAR SUB-COLLECTION NAVIGATION TABS
+       ========================================================================= -->
+  <nav class="bg-warm-paper border-b border-sand/40 py-8 px-4" aria-label="Sub-collection Navigation">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-start justify-start md:justify-center gap-6 sm:gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory px-2 pb-2">
+        
+        <!-- Tab 1: All Curations -->
+        <button type="button" 
+                class="gt-tab-btn is-active flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="all"
+                data-title="The Atelier Curations"
+                data-desc="Explore the entire spectrum of slow-made stationeries, bespoke décor, and heirloom accessories handcrafted at Graffeine Tales Studio."
+                data-image="assets/hero_banner.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm flex items-center justify-center">
+            <img src="assets/coffee_cup.png" alt="All Collections" class="w-10 h-10 object-contain drop-shadow" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-semibold text-espresso mt-2.5 transition-colors">All Curations</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 2: Handcrafted Décor -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="decor"
+                data-title="Handcrafted Décor & Wall Art"
+                data-desc="Artisanal door name tags, hand-embroidered wall hoops, and botanical displays made with natural wood and thread art."
+                data-image="assets/cat_decor.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/cat_decor.jpg" alt="Handcrafted Décor" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Décor Pieces</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 3: Desk Calendars -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="calendar"
+                data-title="Artisanal 2026 Desk Calendars"
+                data-desc="Die-cut monthly illustrated calendar cards mounted on handcrafted solid teakwood easels to inspire every work day."
+                data-image="assets/products/artist_calendar.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/products/artist_calendar.jpg" alt="Desk Calendars" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Desk Calendars</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 4: Wooden Bookmarks -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="bookmark"
+                data-title="Hand-Cut Wooden Bookmarks"
+                data-desc="Natural birchwood bookmarks laser-cut and hand-finished with silky tassels, engraved motifs, and gentle tactile edges."
+                data-image="assets/products/wood_flower_bookmark.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/products/wood_flower_bookmark.jpg" alt="Wooden Bookmarks" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Bookmarks</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 5: Artisanal Coasters -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="coaster"
+                data-title="Artisanal Pop Art Coasters"
+                data-desc="Shatterproof optical acrylic coasters with desi pop illustrations paired with mini teakwood tabletop easels."
+                data-image="assets/prod_coasters.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/prod_coasters.jpg" alt="Artisanal Coasters" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Coasters</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 6: Photo Thread Art -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="thread"
+                data-title="Bespoke Photo Thread Art"
+                data-desc="Transforming your most sacred photographs into museum-grade hand-embroidered heirlooms with geometric threadwork."
+                data-image="assets/prod_embroidery.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/prod_embroidery.jpg" alt="Photo Thread Art" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Thread Art</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 7: Journals & Diaries -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="journal"
+                data-title="Handmade Journals & Planners"
+                data-desc="Casebound 120 GSM bleedproof paper journals, vision planners, and habit trackers bound with tactile linen and foil stamping."
+                data-image="assets/cat_journals.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/cat_journals.jpg" alt="Journals & Diaries" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Journals</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+        <!-- Tab 8: Luxury Wax Seals -->
+        <button type="button" 
+                class="gt-tab-btn flex flex-col items-center flex-shrink-0 snap-center w-[84px] sm:w-[104px] text-center focus:outline-none" 
+                data-filter="waxseal"
+                data-title="Vintage Wax Seal Stamps & Kits"
+                data-desc="Engraved brass stamp heads and pearlescent sealing waxes that bring an old-world aristocratic signature to your letters."
+                data-image="assets/prod_waxseal.jpg"
+                onclick="handleSubCollectionSelect(this)">
+          <div class="gt-tab-circle relative w-[76px] h-[76px] sm:w-[94px] sm:h-[94px] rounded-full overflow-hidden bg-[#EAE2D2] border-2 border-sand shadow-sm">
+            <img src="assets/prod_waxseal.jpg" alt="Wax Seals" class="w-full h-full object-cover transition-transform duration-300" />
+          </div>
+          <span class="gt-tab-title text-xs sm:text-sm font-medium text-espresso mt-2.5 transition-colors">Wax Seals</span>
+          <span class="gt-active-dot w-1.5 h-1.5 rounded-full bg-deep-coffee mt-1 opacity-0 transition-all"></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       6. COLLECTION TOOLBAR & PRODUCT CATALOG GRID
+       ========================================================================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+    
+    <!-- Controls Toolbar -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-sand/40 mb-8">
+      
+      <!-- Counter & Active Filter Badge -->
+      <div class="flex items-center gap-3">
+        <span class="text-sm font-bold text-espresso" id="product-count-display">Showing 0 Editions</span>
+        <span class="text-xs bg-sand/20 text-deep-coffee font-semibold px-2.5 py-0.5 rounded-full border border-sand/40" id="current-filter-pill">
+          All Editions
+        </span>
+      </div>
+
+      <!-- Search & Sort Controls -->
+      <div class="flex items-center gap-3 flex-wrap">
+        
+        <!-- Live Instant Search -->
+        <div class="relative flex-1 sm:w-60">
+          <input type="text" 
+                 id="collection-search-input" 
+                 placeholder="Search this collection..." 
+                 class="w-full text-xs bg-white/70 border border-sand/60 rounded-full pl-8 pr-4 py-2 text-espresso placeholder-espresso/50 focus:outline-none focus:border-deep-coffee focus:bg-white transition-all"
+                 oninput="handleSearch(this.value)" />
+          <svg class="w-3.5 h-3.5 absolute left-3 top-2.5 text-espresso/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="flex items-center gap-2">
+          <label for="collection-sort-select" class="text-xs font-semibold text-espresso/70 hidden sm:inline">Sort:</label>
+          <select id="collection-sort-select" 
+                  class="text-xs bg-white/70 border border-sand/60 rounded-full px-3 py-2 text-espresso focus:outline-none focus:border-deep-coffee focus:bg-white cursor-pointer"
+                  onchange="handleSort(this.value)">
+            <option value="featured">Curated Studio Order</option>
+            <option value="bestseller">Bestselling First</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated &bull; 5 Stars</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Product Cards Grid -->
+    <div id="collection-product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 min-h-[400px]">
+      <!-- Dynamically Rendered by JavaScript below -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="collection-empty-state" class="hidden text-center py-20 px-4 bg-white/40 border border-dashed border-sand rounded-3xl my-8">
+      <div class="w-16 h-16 mx-auto mb-4 bg-sand/20 rounded-full flex items-center justify-center text-deep-coffee">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="font-serif-display text-2xl text-espresso mb-2">No Curations Found</h3>
+      <p class="text-sm text-espresso/70 max-w-md mx-auto mb-6">We couldn't find any studio editions matching your current filter or search criteria.</p>
+      <button type="button" onclick="resetAllFilters()" class="bg-deep-coffee text-logo-cream font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full hover:bg-espresso transition-all shadow-sm">
+        View All Curations
+      </button>
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       7. CART DRAWER OVERLAY
+       ========================================================================= -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-espresso/60 backdrop-blur-sm hidden transition-opacity" onclick="if(event.target === this) toggleCartDrawer()">
+    <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-warm-paper border-l border-sand shadow-tactile-lg flex flex-col justify-between">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-sand/40 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-deep-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="font-serif-display text-xl text-espresso">Your Atelier Bag</h3>
+        </div>
+        <button type="button" class="p-2 text-espresso/60 hover:text-espresso" onclick="toggleCartDrawer()">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Items Track -->
+      <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-6 border-t border-sand/40 bg-white/50 space-y-4">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-espresso/70">Subtotal</span>
+          <span class="font-bold text-deep-coffee text-base" id="cart-subtotal-price">₹0</span>
+        </div>
+        <a href="cart.html" class="block w-full py-3.5 bg-deep-coffee text-logo-cream text-center font-bold text-xs uppercase tracking-widest rounded-full hover:bg-espresso transition-colors shadow-tactile">
+          Proceed to Checkout
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       8. TOAST NOTIFICATION
+       ========================================================================= -->
+  <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-espresso text-logo-cream border border-sand px-5 py-3 rounded-2xl shadow-tactile-lg flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
+    <span class="w-2 h-2 rounded-full bg-gold-wax animate-ping"></span>
+    <span id="toast-text" class="text-xs font-semibold">Added to your bag</span>
+  </div>
+
+  <!-- =========================================================================
+       9. BRAND FOOTER
+       ========================================================================= -->
+  <footer class="bg-espresso text-logo-cream border-t border-sand/30 pt-16 pb-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Col 1: Identity -->
+        <div class="space-y-4 md:col-span-1">
+          <div class="flex items-center gap-3">
+            <img src="assets/coffee_cup.png" alt="Cup" class="w-8 h-8 object-contain" />
+            <span class="font-serif-display text-2xl text-logo-cream">Graffeine Tales</span>
+          </div>
+          <p class="text-xs text-logo-cream/70 leading-relaxed font-light">
+            Where coffee, art, and stories intertwine. Handcrafting mindful stationary, desk accessories, and wall decor with love in India.
+          </p>
+        </div>
+
+        <!-- Col 2: Curated Collections -->
+        <div class="space-y-3">
+          <h4 class="font-serif-display text-sm uppercase tracking-wider text-sand">Curations</h4>
+          <ul class="text-xs space-y-2 text-logo-cream/75">
+            <li><a href="collection.html?category=decor" class="hover:text-sand transition-colors">Handcrafted Décor</a></li>
+            <li><a href="collection.html?category=calendar" class="hover:text-sand transition-colors">Desk Calendars</a></li>
+            <li><a href="collection.html?category=bookmark" class="hover:text-sand transition-colors">Wooden Bookmarks</a></li>
+            <li><a href="collection.html?category=coaster" class="hover:text-sand transition-colors">Artisanal Coasters</a></li>
+            <li><a href="journal-pdp.html" class="hover:text-sand transition-colors">Premium Journals</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Studio & Care -->
+        <div class="space-y-3">
+          <h4 class="font-serif-display text-sm uppercase tracking-wider text-sand">Studio &amp; Care</h4>
+          <ul class="text-xs space-y-2 text-logo-cream/75">
+            <li><a href="about.html" class="hover:text-sand transition-colors">Our Story &amp; Philosophy</a></li>
+            <li><a href="about.html#contact" class="hover:text-sand transition-colors">Custom Corporate Gifting</a></li>
+            <li><a href="index.html#reviews-section" class="hover:text-sand transition-colors">Artisan Reviews</a></li>
+            <li><a href="about.html" class="hover:text-sand transition-colors">Shipping &amp; Studio Care</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Dispatch Club -->
+        <div class="space-y-3">
+          <h4 class="font-serif-display text-sm uppercase tracking-wider text-sand">Atelier Dispatch</h4>
+          <p class="text-xs text-logo-cream/70 font-light">Receive intimate studio dispatches, early collector access, and creative stationery ideas.</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="Your email address" class="bg-white/10 border border-sand/40 text-xs px-3.5 py-2.5 rounded-full text-logo-cream placeholder-logo-cream/40 focus:outline-none focus:border-sand flex-1" />
+            <button class="bg-sand text-espresso font-bold text-xs px-4 py-2 rounded-full hover:bg-logo-cream transition-colors">Join</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 border-t border-sand/20 flex flex-col sm:flex-row items-center justify-between text-[11px] text-logo-cream/60 gap-4">
+        <p>&copy; 2026 Graffeine Tales Studio. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-sand">Privacy Policy</a>
+          <a href="#" class="hover:text-sand">Terms of Service</a>
+          <a href="#" class="hover:text-sand">Instagram &bull; @graffeinetales</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       10. CLIENT ENGINE SCRIPT
+       ========================================================================= -->
+  <script src="app.js"></script>
+  <script>
+    // State
+    let activeFilter = 'all';
+    let searchQuery = '';
+    let sortMode = 'featured';
+
+    // Parse URL parameter if user landed via link like ?category=decor
+    function checkUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get('category');
+      if (catParam) {
+        const matchingBtn = document.querySelector(`.gt-tab-btn[data-filter="${catParam}"]`);
+        if (matchingBtn) {
+          handleSubCollectionSelect(matchingBtn);
+        }
+      }
+    }
+
+    // Circular Sub-Collection Select Handler
+    function handleSubCollectionSelect(btn) {
+      document.querySelectorAll('.gt-tab-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const filter = btn.getAttribute('data-filter') || 'all';
+      const title = btn.getAttribute('data-title') || 'The Atelier Curations';
+      const desc = btn.getAttribute('data-desc') || '';
+      const img = btn.getAttribute('data-image');
+
+      activeFilter = filter;
+
+      // Update Banner content smoothly
+      const bannerTitle = document.getElementById('banner-title');
+      const bannerDesc = document.getElementById('banner-desc');
+      const bannerBg = document.getElementById('collection-banner-bg');
+      const breadcrumbCurrent = document.getElementById('breadcrumb-current-collection');
+      const filterPill = document.getElementById('current-filter-pill');
+
+      if (bannerTitle) bannerTitle.textContent = title;
+      if (bannerDesc && desc) bannerDesc.textContent = desc;
+      if (breadcrumbCurrent) breadcrumbCurrent.textContent = title;
+      if (filterPill) filterPill.textContent = btn.querySelector('.gt-tab-title').textContent;
+
+      if (bannerBg && img) {
+        bannerBg.style.opacity = '0.3';
+        setTimeout(() => {
+          bannerBg.src = img;
+          bannerBg.style.opacity = '1';
+        }, 200);
+      }
+
+      renderCollectionGrid();
+    }
+
+    // Filter Logic
+    function getFilteredProducts() {
+      if (typeof productsData === 'undefined' || !Array.isArray(productsData)) return [];
+
+      let list = productsData.filter(item => {
+        let matchesCategory = false;
+        if (activeFilter === 'all') {
+          matchesCategory = true;
+        } else if (activeFilter === 'decor') {
+          matchesCategory = (item.categoryGroup === 'decor' || (item.filterCat && item.filterCat.includes('decor')));
+        } else if (activeFilter === 'calendar') {
+          matchesCategory = (item.filterCat && item.filterCat.includes('calendar')) || (item.name && item.name.toLowerCase().includes('calendar'));
+        } else if (activeFilter === 'bookmark') {
+          matchesCategory = (item.filterCat && item.filterCat.includes('bookmark')) || (item.name && item.name.toLowerCase().includes('bookmark'));
+        } else if (activeFilter === 'coaster') {
+          matchesCategory = (item.filterCat && item.filterCat.includes('coaster')) || (item.name && item.name.toLowerCase().includes('coaster'));
+        } else if (activeFilter === 'thread') {
+          matchesCategory = (item.filterCat && (item.filterCat.includes('wall') || item.filterCat.includes('gifting'))) || (item.name && (item.name.toLowerCase().includes('thread') || item.name.toLowerCase().includes('embroidered')));
+        } else if (activeFilter === 'journal') {
+          matchesCategory = (item.categoryGroup === 'stationaries' || (item.name && item.name.toLowerCase().includes('journal')));
+        } else if (activeFilter === 'waxseal') {
+          matchesCategory = (item.name && item.name.toLowerCase().includes('wax'));
+        }
+
+        let matchesSearch = true;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          matchesSearch = item.name.toLowerCase().includes(q) || 
+                          (item.desc && item.desc.toLowerCase().includes(q)) ||
+                          (item.category && item.category.toLowerCase().includes(q));
+        }
+
+        return matchesCategory && matchesSearch;
+      });
+
+      // Sorting
+      if (sortMode === 'bestseller') {
+        list.sort((a, b) => (b.isBestseller ? 1 : 0) - (a.isBestseller ? 1 : 0));
+      } else if (sortMode === 'price-low') {
+        list.sort((a, b) => a.price - b.price);
+      } else if (sortMode === 'price-high') {
+        list.sort((a, b) => b.price - a.price);
+      } else if (sortMode === 'rating') {
+        list.sort((a, b) => (b.rating || 5) - (a.rating || 5));
+      }
+
+      return list;
+    }
+
+    // Render Grid
+    function renderCollectionGrid() {
+      const grid = document.getElementById('collection-product-grid');
+      const emptyState = document.getElementById('collection-empty-state');
+      const countDisplay = document.getElementById('product-count-display');
+      if (!grid) return;
+
+      const items = getFilteredProducts();
+
+      if (countDisplay) {
+        countDisplay.textContent = `Showing ${items.length} ${items.length === 1 ? 'Edition' : 'Editions'}`;
+      }
+
+      if (items.length === 0) {
+        grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      grid.innerHTML = items.map(prod => {
+        const prodUrl = getProductUrl ? getProductUrl(prod) : `product.html?id=${prod.id}`;
+        const discount = prod.mrp ? Math.round(((prod.mrp - prod.price) / prod.mrp) * 100) : 0;
+        
+        return `
+          <article class="gt-card bg-white rounded-2xl overflow-hidden border border-sand/40 shadow-tactile flex flex-col justify-between group cursor-pointer"
+                   onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href = '${prodUrl}';">
+            
+            <div class="relative aspect-square overflow-hidden bg-[#F2EDE2]">
+              <img src="${prod.image}" 
+                   alt="${prod.name}" 
+                   class="gt-card-img w-full h-full object-cover transition-transform duration-500 ease-out" 
+                   loading="lazy" />
+              
+              <!-- Badge -->
+              <span class="absolute top-3 left-3 bg-espresso/85 text-logo-cream backdrop-blur-sm text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                ${prod.badge || 'Atelier'}
+              </span>
+
+              ${discount > 0 ? `
+                <span class="absolute top-3 right-3 bg-gold-wax text-espresso font-black text-[10px] px-2 py-0.5 rounded-md shadow-sm">
+                  ${discount}% OFF
+                </span>
+              ` : ''}
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-4 flex flex-col flex-1 justify-between">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-coffee-tan">
+                  ${prod.category ? prod.category.split('•')[0] : 'Handcrafted'}
+                </span>
+                <h3 class="font-serif-display text-sm sm:text-base text-espresso group-hover:text-deep-coffee transition-colors mt-1 line-clamp-2 leading-snug">
+                  <a href="${prodUrl}">${prod.name}</a>
+                </h3>
+              </div>
+
+              <!-- Pricing & 1-Tap Buy -->
+              <div class="pt-4 border-t border-sand/20 mt-4 flex items-center justify-between gap-2">
+                <div>
+                  <span class="text-sm sm:text-base font-bold text-deep-coffee">₹${prod.price.toLocaleString('en-IN')}</span>
+                  ${prod.mrp && prod.mrp > prod.price ? `<span class="text-xs text-espresso/50 line-through ml-1.5">₹${prod.mrp.toLocaleString('en-IN')}</span>` : ''}
+                </div>
+
+                <button type="button" 
+                        class="p-2 sm:px-3 sm:py-1.5 bg-deep-coffee hover:bg-espresso text-logo-cream rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+                        onclick="event.stopPropagation(); addToAtelierCart('${prod.id}', 1)"
+                        title="Add to Bag">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                  <span class="hidden sm:inline text-[11px]">Add</span>
+                </button>
+              </div>
+
+            </div>
+
+          </article>
+        `;
+      }).join('');
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim();
+      renderCollectionGrid();
+    }
+
+    function handleSort(val) {
+      sortMode = val;
+      renderCollectionGrid();
+    }
+
+    function resetAllFilters() {
+      searchQuery = '';
+      const input = document.getElementById('collection-search-input');
+      if (input) input.value = '';
+      const firstTab = document.querySelector('.gt-tab-btn[data-filter="all"]');
+      if (firstTab) handleSubCollectionSelect(firstTab);
+    }
+
+    // Cart Integration
+    function addToAtelierCart(prodId, qty) {
+      if (typeof productsData === 'undefined') return;
+      const product = productsData.find(p => p.id === prodId);
+      if (!product) return;
+
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]');
+      } catch(e) {}
+
+      const existingIndex = cart.findIndex(it => it.id === prodId);
+      if (existingIndex > -1) {
+        cart[existingIndex].qty = (cart[existingIndex].qty || 1) + qty;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          qty: qty
+        });
+      }
+
+      localStorage.setItem('gtb_cart', JSON.stringify(cart));
+      showToast(`Added "${product.name.slice(0, 22)}..." to your bag`);
+      updateCartDrawerUI();
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cart-drawer-overlay');
+      if (drawer) {
+        drawer.classList.toggle('hidden');
+        updateCartDrawerUI();
+      }
+    }
+
+    function updateCartDrawerUI() {
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal-price');
+      const badge = document.getElementById('cart-badge-count');
+      
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('gtb_cart') || '[]');
+      } catch (e) {}
+
+      const totalCount = cart.reduce((acc, it) => acc + (it.qty || 1), 0);
+      if (badge) badge.textContent = totalCount;
+
+      let subtotal = 0;
+      if (container) {
+        if (!cart.length) {
+          container.innerHTML = `<p class="text-xs text-espresso/60 text-center py-12">Your atelier bag is empty.</p>`;
+        } else {
+          container.innerHTML = cart.map(item => {
+            const itemPrice = item.price || 0;
+            const itemQty = item.qty || 1;
+            subtotal += itemPrice * itemQty;
+            return `
+              <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-sand/30 shadow-sm">
+                <img src="${item.image || 'assets/cat_journals.jpg'}" alt="${item.name}" class="w-12 h-12 object-cover rounded-lg border border-sand/20" />
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-xs font-bold text-espresso truncate">${item.name}</h4>
+                  <div class="text-[11px] text-espresso/60">₹${itemPrice.toLocaleString('en-IN')} &times; ${itemQty}</div>
+                </div>
+                <span class="text-xs font-bold text-deep-coffee">₹${(itemPrice * itemQty).toLocaleString('en-IN')}</span>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+      if (subtotalEl) subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-text');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // Startup
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCollectionGrid();
+      checkUrlParams();
+      updateCartDrawerUI();
+    });
+  </script>
+
+</body>
+</html>
+
