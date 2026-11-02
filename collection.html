@@ -434,6 +434,168 @@
   </main>
 
   <!-- =========================================================================
+       6.5. INTERACTIVE TECH STICKER CUSTOMIZER (MacBook, iPad, iPhone 18 Pro Max)
+       ========================================================================= -->
+  <section class="py-16 sm:py-20 bg-espresso text-logo-cream relative overflow-hidden border-t border-sand/30" id="tech-customizer-section">
+    <!-- Ambient Studio Light Radial Backdrop -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-deep-coffee/40 via-espresso to-[#1D1C1B] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-2 font-['Quicksand'] text-xs font-bold tracking-[0.15em] uppercase text-logo-cream bg-deep-coffee/70 border border-sand/80 px-4 py-1.5 rounded-full mb-3 shadow-sm">
+          ✦ INTERACTIVE ATELIER PLAYGROUND ✦
+        </span>
+        <h2 class="font-serif-display text-3xl sm:text-5xl text-logo-cream mb-2 font-normal">
+          Style Your Tech with Studio Vinyl
+        </h2>
+        <p class="font-['Playfair_Display'] text-sm sm:text-base text-sand italic max-w-xl mx-auto leading-relaxed">
+          Where slow-crafted stories meet your modern everyday devices.
+        </p>
+        <span class="font-script text-xl text-gold-wax block mt-2">
+          Drag &amp; drop stickers onto the device • Double-click any sticker to rotate ↻
+        </span>
+      </div>
+
+      <!-- Controls Toolbar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-white/5 border border-sand/30 backdrop-blur-md rounded-2xl sm:rounded-full p-2 sm:px-6 mb-8 shadow-tactile">
+        
+        <!-- Device Switcher Tabs -->
+        <div class="flex items-center gap-1.5" role="tablist">
+          <button type="button" class="tech-device-tab is-active px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all bg-deep-coffee text-white shadow-sm" data-device="macbook" onclick="switchTechDevice('macbook')">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+            <span>MacBook</span>
+          </button>
+          <button type="button" class="tech-device-tab px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all text-logo-cream/80 hover:bg-white/10" data-device="ipad" onclick="switchTechDevice('ipad')">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="0.5"/></svg>
+            <span>iPad</span>
+          </button>
+          <button type="button" class="tech-device-tab px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all text-logo-cream/80 hover:bg-white/10" data-device="iphone" onclick="switchTechDevice('iphone')">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
+            <span>iPhone 18 Pro Max</span>
+          </button>
+        </div>
+
+        <!-- Color Variant Finish Switcher -->
+        <div class="flex items-center gap-2">
+          <span class="font-['Quicksand'] text-[11px] uppercase font-bold tracking-wider text-logo-cream/70">Finish:</span>
+          <div id="tech-color-dots" class="flex items-center gap-2">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="autoCollageTechStickers()" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 border border-sand/40 text-logo-cream flex items-center gap-1.5 transition-all">
+            <span>✨ Auto-Collage</span>
+          </button>
+          <button type="button" onclick="resetTechStickers()" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 border border-sand/40 text-logo-cream flex items-center gap-1.5 transition-all">
+            <span>🔄 Reset</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Device Chassis Stage -->
+      <div class="flex flex-col items-center justify-center min-h-[420px] mb-8">
+        
+        <!-- Chassis Container -->
+        <div id="tech-chassis" class="relative user-select-none transition-all duration-300 w-full max-w-[640px] aspect-[16/10] rounded-2xl shadow-[0_35px_70px_-15px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-[#53565A]" data-device="macbook">
+          
+          <!-- Brushed Aluminum Reflection -->
+          <div class="absolute inset-0 rounded-[inherit] bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-10"></div>
+
+          <!-- Apple Logo Center -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+            <svg id="tech-apple-logo" class="w-12 h-12 text-[#989BA3] transition-colors drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.15c.66-.8 1.11-1.92.99-3.04-1 .04-2.14.65-2.82 1.45-.6.69-1.12 1.83-.98 2.94 1.12.09 2.15-.55 2.81-1.35z"/>
+            </svg>
+          </div>
+
+          <!-- iPhone 18 Pro Max Triple Lens Camera Bump -->
+          <div id="tech-iphone-camera" class="hidden absolute top-3.5 left-3.5 w-24 h-24 rounded-3xl bg-inherit filter brightness-90 shadow-[2px_4px_14px_rgba(0,0,0,0.35),inset_0_0_0_1px_rgba(255,255,255,0.2)] pointer-events-none z-20">
+            <div class="absolute top-2.5 left-2.5 w-8 h-8 rounded-full bg-[#111] border-2 border-white/30 shadow-inner"></div>
+            <div class="absolute bottom-2.5 left-2.5 w-8 h-8 rounded-full bg-[#111] border-2 border-white/30 shadow-inner"></div>
+            <div class="absolute top-7 right-2.5 w-8 h-8 rounded-full bg-[#111] border-2 border-white/30 shadow-inner"></div>
+            <div class="absolute top-3 right-4 w-3 h-3 rounded-full bg-[#FFF9E6] border border-black/30"></div>
+            <div class="absolute bottom-3.5 right-4 w-3.5 h-3.5 rounded-full bg-[#080808] border border-white/20"></div>
+          </div>
+
+          <!-- Subtle Hint -->
+          <div class="absolute bottom-3 inset-x-0 text-center pointer-events-none text-[11px] text-white/50 font-medium z-20">
+            ✦ Drag stickers onto device lid • Double-click sticker to rotate ↻ ✦
+          </div>
+
+          <!-- Mount Container for Dropped Stickers -->
+          <div id="tech-stickers-mount" class="absolute inset-0 overflow-hidden rounded-[inherit] z-30 pointer-events-none">
+            <!-- Stickers dropped live here -->
+          </div>
+
+        </div>
+
+        <!-- MacBook Bottom Hinge -->
+        <div id="tech-laptop-hinge" class="w-28 h-1.5 mx-auto bg-[#484A50] rounded-b-md -mt-1 shadow-inner transition-colors"></div>
+
+      </div>
+
+      <!-- Sticker Tray (Pickup Zone) -->
+      <div class="bg-white/5 border border-sand/30 backdrop-blur-md rounded-3xl p-6 shadow-tactile">
+        <div class="flex items-center justify-between pb-3 border-b border-sand/20 mb-4">
+          <h3 class="font-serif-display text-xl text-logo-cream">Studio Die-Cut Vinyl Tray</h3>
+          <span class="text-xs font-semibold text-sand" id="tech-tray-count">10 Stickers Ready</span>
+        </div>
+
+        <div id="tech-tray-grid" class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 min-h-[130px] p-2">
+          
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s1" data-title="Bobby Deol Gupt" data-rot="0">
+            <img src="assets/sticker_bobby_deol.png" alt="Bobby Deol" class="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s2" data-title="Bookworm Cat" data-rot="0">
+            <img src="assets/sticker_cat_lover.jpg" alt="Bookworm Cat" class="w-full h-full object-contain rounded-xl pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s3" data-title="Control Uday" data-rot="0">
+            <img src="assets/sticker_control_uday.png" alt="Control Uday" class="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s4" data-title="Desi Chai Society" data-rot="0">
+            <img src="assets/sticker_desi_chai.jpg" alt="Desi Chai" class="w-full h-full object-contain rounded-xl pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s5" data-title="Mojo Jojo Pop" data-rot="0">
+            <img src="assets/sticker_mojo_jojo.png" alt="Mojo Jojo" class="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s6" data-title="Chugli Chai Society" data-rot="0">
+            <img src="assets/chugli_chai.png" alt="Chugli Chai" class="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s7" data-title="Reading Boo Ghost" data-rot="0">
+            <img src="assets/products/magnetic_reading_boo.jpg" alt="Reading Boo" class="w-full h-full object-contain rounded-xl pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s8" data-title="Desi Vibes" data-rot="0">
+            <img src="assets/sticker_desi_vibes.jpg" alt="Desi Vibes" class="w-full h-full object-contain rounded-xl pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s9" data-title="Studio Cup Mascot" data-rot="0">
+            <img src="assets/coffee_cup.png" alt="Cup Mascot" class="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+          <div class="tech-sticker relative w-20 h-20 sm:w-24 sm:h-24 cursor-grab select-none touch-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)] transition-transform hover:scale-108" data-id="s10" data-title="Bookworm Badge" data-rot="0">
+            <img src="assets/sticker_bookworm.jpg" alt="Bookworm" class="w-full h-full object-contain rounded-xl pointer-events-none drop-shadow-[0_0_2px_rgba(255,255,255,0.85)]" />
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
        7. CART DRAWER OVERLAY
        ========================================================================= -->
   <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-espresso/60 backdrop-blur-sm hidden transition-opacity" onclick="if(event.target === this) toggleCartDrawer()">
@@ -837,11 +999,292 @@
       }, 2500);
     }
 
+    // ==========================================
+    // TECH STICKER CUSTOMIZER LOGIC
+    // ==========================================
+    const techDeviceConfigs = {
+      macbook: {
+        name: 'MacBook',
+        aspect: 'aspect-[16/10]',
+        maxW: 'max-w-[640px]',
+        radius: 'rounded-2xl',
+        colors: [
+          { id: 'spacegray', name: 'Space Gray', hex: '#53565A', logo: '#989BA3', hinge: '#484A50' },
+          { id: 'silver', name: 'Silver', hex: '#E3E4E6', logo: '#8E9094', hinge: '#B5B8BE' },
+          { id: 'midnight', name: 'Midnight Navy', hex: '#1E242B', logo: '#333E4F', hinge: '#161B22' },
+          { id: 'starlight', name: 'Starlight Champagne', hex: '#E5DED3', logo: '#A69E8E', hinge: '#BDB5A7' }
+        ]
+      },
+      ipad: {
+        name: 'iPad',
+        aspect: 'aspect-[4/3]',
+        maxW: 'max-w-[440px]',
+        radius: 'rounded-3xl',
+        colors: [
+          { id: 'spacegray', name: 'Space Gray', hex: '#4B4D52', logo: '#989BA3' },
+          { id: 'silver', name: 'Silver', hex: '#E3E4E6', logo: '#8E9094' },
+          { id: 'starlight', name: 'Starlight', hex: '#E6E0D6', logo: '#A8A093' },
+          { id: 'skyblue', name: 'Sky Blue', hex: '#A8BDCD', logo: '#688296' }
+        ]
+      },
+      iphone: {
+        name: 'iPhone 18 Pro Max',
+        aspect: 'aspect-[9/18.5]',
+        maxW: 'max-w-[300px]',
+        radius: 'rounded-[40px]',
+        colors: [
+          { id: 'desert', name: 'Desert Titanium', hex: '#C5B5A5', logo: '#8F7E6D' },
+          { id: 'natural', name: 'Natural Titanium', hex: '#9E9992', logo: '#69645E' },
+          { id: 'white', name: 'White Titanium', hex: '#ECEAE6', logo: '#B3B0AB' },
+          { id: 'black', name: 'Black Titanium', hex: '#2C2B29', logo: '#1A1918' }
+        ]
+      }
+    };
+
+    let activeTechDevice = 'macbook';
+    let activeTechColorIdx = 0;
+    let activeStickerDrag = null;
+    let stickerOffset = { x: 0, y: 0 };
+    let isStickerDragging = false;
+
+    function switchTechDevice(deviceKey) {
+      if (!techDeviceConfigs[deviceKey]) return;
+      activeTechDevice = deviceKey;
+      activeTechColorIdx = 0;
+
+      // Update tabs
+      document.querySelectorAll('.tech-device-tab').forEach(b => {
+        const isMatch = b.getAttribute('data-device') === deviceKey;
+        b.classList.toggle('is-active', isMatch);
+        b.classList.toggle('bg-deep-coffee', isMatch);
+        b.classList.toggle('text-white', isMatch);
+        b.classList.toggle('text-logo-cream/80', !isMatch);
+      });
+
+      // Update chassis
+      const chassis = document.getElementById('tech-chassis');
+      const hinge = document.getElementById('tech-laptop-hinge');
+      const camera = document.getElementById('tech-iphone-camera');
+
+      chassis.setAttribute('data-device', deviceKey);
+      chassis.className = `relative user-select-none transition-all duration-300 w-full ${techDeviceConfigs[deviceKey].maxW} ${techDeviceConfigs[deviceKey].aspect} ${techDeviceConfigs[deviceKey].radius} shadow-[0_35px_70px_-15px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)]`;
+
+      if (hinge) hinge.style.display = deviceKey === 'macbook' ? 'block' : 'none';
+      if (camera) camera.style.display = deviceKey === 'iphone' ? 'block' : 'none';
+
+      renderTechColorDots();
+      applyTechColor(0);
+      showToast(`Switched to ${techDeviceConfigs[deviceKey].name}`);
+    }
+
+    function renderTechColorDots() {
+      const dotsWrap = document.getElementById('tech-color-dots');
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = '';
+
+      techDeviceConfigs[activeTechDevice].colors.forEach((col, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-5 h-5 rounded-full border-2 transition-all ${idx === activeTechColorIdx ? 'border-sand scale-110 shadow-sm' : 'border-transparent hover:scale-110'}`;
+        btn.style.backgroundColor = col.hex;
+        btn.title = col.name;
+        btn.onclick = () => applyTechColor(idx);
+        dotsWrap.appendChild(btn);
+      });
+    }
+
+    function applyTechColor(idx) {
+      activeTechColorIdx = idx;
+      const conf = techDeviceConfigs[activeTechDevice].colors[idx];
+      const chassis = document.getElementById('tech-chassis');
+      const logo = document.getElementById('tech-apple-logo');
+      const hinge = document.getElementById('tech-laptop-hinge');
+
+      if (chassis) chassis.style.backgroundColor = conf.hex;
+      if (logo) logo.style.color = conf.logo;
+      if (hinge && conf.hinge) hinge.style.backgroundColor = conf.hinge;
+
+      // Update active dot
+      const dots = document.querySelectorAll('#tech-color-dots button');
+      dots.forEach((d, i) => {
+        d.classList.toggle('border-sand', i === idx);
+        d.classList.toggle('scale-110', i === idx);
+        d.classList.toggle('border-transparent', i !== idx);
+      });
+    }
+
+    function initTechStickersDrag() {
+      const stickers = document.querySelectorAll('.tech-sticker');
+      stickers.forEach(stk => {
+        stk.addEventListener('pointerdown', (e) => startTechStickerDrag(e, stk));
+      });
+
+      // Double-click to rotate placed sticker
+      document.addEventListener('dblclick', (e) => {
+        const stk = e.target.closest('#tech-stickers-mount .tech-sticker');
+        if (stk) {
+          let rot = (parseFloat(stk.getAttribute('data-rot') || '0') + 15) % 360;
+          stk.setAttribute('data-rot', rot);
+          stk.style.transform = `rotate(${rot}deg) scale(1)`;
+        }
+      });
+    }
+
+    function startTechStickerDrag(e, el) {
+      if (e.button && e.button !== 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      activeStickerDrag = el;
+      isStickerDragging = true;
+
+      const r = el.getBoundingClientRect();
+      stickerOffset.x = e.clientX - r.left;
+      stickerOffset.y = e.clientY - r.top;
+
+      el.classList.add('fixed', 'z-[99999]');
+      el.style.left = (e.clientX - stickerOffset.x) + 'px';
+      el.style.top = (e.clientY - stickerOffset.y) + 'px';
+      document.body.appendChild(el);
+
+      window.addEventListener('pointermove', onTechStickerMove, { passive: false });
+      window.addEventListener('pointerup', onTechStickerUp, { once: true });
+      window.addEventListener('pointercancel', onTechStickerUp, { once: true });
+    }
+
+    function onTechStickerMove(e) {
+      if (!isStickerDragging || !activeStickerDrag) return;
+      e.preventDefault();
+
+      activeStickerDrag.style.left = (e.clientX - stickerOffset.x) + 'px';
+      activeStickerDrag.style.top = (e.clientY - stickerOffset.y) + 'px';
+
+      const chassis = document.getElementById('tech-chassis');
+      if (chassis) {
+        const r = chassis.getBoundingClientRect();
+        const isOver = (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom);
+        chassis.style.boxShadow = isOver 
+          ? '0 0 0 4px #D4AF37, 0 35px 70px -15px rgba(0,0,0,0.65)' 
+          : '0 35px 70px -15px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.12)';
+      }
+    }
+
+    function onTechStickerUp(e) {
+      if (!isStickerDragging || !activeStickerDrag) return;
+      isStickerDragging = false;
+      window.removeEventListener('pointermove', onTechStickerMove);
+
+      const chassis = document.getElementById('tech-chassis');
+      const mount = document.getElementById('tech-stickers-mount');
+      const tray = document.getElementById('tech-tray-grid');
+
+      if (chassis) {
+        chassis.style.boxShadow = '0 35px 70px -15px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.12)';
+      }
+      activeStickerDrag.classList.remove('fixed', 'z-[99999]');
+
+      const r = chassis.getBoundingClientRect();
+      const dropX = e.clientX;
+      const dropY = e.clientY;
+
+      const isInside = (dropX >= r.left && dropX <= r.right && dropY >= r.top && dropY <= r.bottom);
+
+      if (isInside && mount) {
+        mount.appendChild(activeStickerDrag);
+        activeStickerDrag.classList.add('absolute', 'pointer-events-auto');
+
+        const relX = ((dropX - stickerOffset.x - r.left) / r.width) * 100;
+        const relY = ((dropY - stickerOffset.y - r.top) / r.height) * 100;
+
+        activeStickerDrag.style.left = Math.max(3, Math.min(78, relX)) + '%';
+        activeStickerDrag.style.top = Math.max(3, Math.min(78, relY)) + '%';
+
+        let rot = parseFloat(activeStickerDrag.getAttribute('data-rot') || '0');
+        if (rot === 0) {
+          rot = Math.round(Math.random() * 24 - 12);
+          activeStickerDrag.setAttribute('data-rot', rot);
+        }
+        activeStickerDrag.style.transform = `rotate(${rot}deg)`;
+        showToast(`Stuck "${activeStickerDrag.getAttribute('data-title')}" to ${techDeviceConfigs[activeTechDevice].name}`);
+      } else {
+        tray.appendChild(activeStickerDrag);
+        activeStickerDrag.classList.remove('absolute', 'pointer-events-auto');
+        activeStickerDrag.style.left = 'auto';
+        activeStickerDrag.style.top = 'auto';
+        activeStickerDrag.style.transform = 'none';
+        activeStickerDrag.setAttribute('data-rot', '0');
+      }
+
+      updateTechTrayCounter();
+      activeStickerDrag = null;
+    }
+
+    function autoCollageTechStickers() {
+      const mount = document.getElementById('tech-stickers-mount');
+      const tray = document.getElementById('tech-tray-grid');
+      const stickers = Array.from(document.querySelectorAll('.tech-sticker'));
+
+      const layouts = [
+        { left: '12%', top: '16%', rot: -9 },
+        { left: '60%', top: '18%', rot: 14 },
+        { left: '38%', top: '55%', rot: -6 },
+        { left: '16%', top: '62%', rot: 11 },
+        { left: '68%', top: '60%', rot: -12 },
+        { left: '40%', top: '14%', rot: 6 }
+      ];
+
+      stickers.forEach((stk, i) => {
+        if (i < layouts.length) {
+          mount.appendChild(stk);
+          stk.classList.add('absolute', 'pointer-events-auto');
+          stk.style.left = layouts[i].left;
+          stk.style.top = layouts[i].top;
+          stk.setAttribute('data-rot', layouts[i].rot);
+          stk.style.transform = `rotate(${layouts[i].rot}deg)`;
+        } else {
+          tray.appendChild(stk);
+          stk.classList.remove('absolute', 'pointer-events-auto');
+          stk.style.left = 'auto';
+          stk.style.top = 'auto';
+          stk.style.transform = 'none';
+          stk.setAttribute('data-rot', '0');
+        }
+      });
+
+      updateTechTrayCounter();
+      showToast('✨ Auto-Collaged with studio aesthetics');
+    }
+
+    function resetTechStickers() {
+      const tray = document.getElementById('tech-tray-grid');
+      const placed = document.querySelectorAll('#tech-stickers-mount .tech-sticker');
+      placed.forEach(stk => {
+        tray.appendChild(stk);
+        stk.classList.remove('absolute', 'pointer-events-auto');
+        stk.style.left = 'auto';
+        stk.style.top = 'auto';
+        stk.style.transform = 'none';
+        stk.setAttribute('data-rot', '0');
+      });
+      updateTechTrayCounter();
+      showToast('Returned all stickers to tray');
+    }
+
+    function updateTechTrayCounter() {
+      const counter = document.getElementById('tech-tray-count');
+      const remaining = document.querySelectorAll('#tech-tray-grid .tech-sticker').length;
+      if (counter) counter.textContent = `${remaining} Stickers in Tray`;
+    }
+
     // Startup
     document.addEventListener('DOMContentLoaded', () => {
       renderCollectionGrid();
       checkUrlParams();
       updateCartDrawerUI();
+      renderTechColorDots();
+      applyTechColor(0);
+      initTechStickersDrag();
+      updateTechTrayCounter();
     });
   </script>
 
